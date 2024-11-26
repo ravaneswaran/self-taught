@@ -6,7 +6,7 @@
     <artifactId>razorpay-payment-gateway-web-integration</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>razorpay-web-integration-demo-app</name>
+    <name>razorpay-payment-gateway-web-integration</name>
     <url>http://maven.apache.org</url>
 
     <properties>
