@@ -11,6 +11,7 @@
         <module>java-design-patterns</module>
         <module>candle-stick-patterns</module>
         <module>razorpay-payment-gateway-web-integration</module>
+        <module>utilities</module>
     </modules>
 
     <name>self-taught</name>
