@@ -32,6 +32,7 @@
         <!-- Plugin Version -->
         <jetty-maven-plugin.version>9.4.12.v20180830</jetty-maven-plugin.version>
         <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
+        <maven-war-plugin-version>3.4.0</maven-war-plugin-version>
 
     </properties>
 
@@ -151,12 +152,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.4.0</version>
+                <version>${maven-war-plugin-version}</version>
                 <dependencies>
                     <dependency>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-war-plugin</artifactId>
-                        <version>3.4.0</version>
+                        <version>${maven-war-plugin-version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
