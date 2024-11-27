@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -13,7 +14,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "payment-transaction")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
-@Data
 public class PaymentTransaction extends Transaction {
 
     @Id

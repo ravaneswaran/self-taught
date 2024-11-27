@@ -4,18 +4,17 @@
 
     <persistence-unit name="razorpay" transaction-type="RESOURCE_LOCAL">
 
-        <class>rave.code.models.OrderTransaction</class>
-        <class>rave.code.models.PaymentTransaction</class>
-
         <class>rave.code.models.User</class>
         <class>rave.code.models.Product</class>
         <class>rave.code.models.Order</class>
         <class>rave.code.models.OrderProductJoin</class>
+        <class>rave.code.models.OrderTransaction</class>
+        <class>rave.code.models.PaymentTransaction</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbc.JDBCDriver"/>
             <property name="javax.persistence.jdbc.url"
-                      value="jdbc:hsqldb:file:/tmp/payment-gateway-database;sql.syntax_pgs=true"/>
+                      value="jdbc:hsqldb:file:/tmp/razorpay-payment-gateway-db;sql.syntax_pgs=true"/>
             <property name="javax.persistence.jdbc.user" value="admin"/>
             <property name="javax.persistence.jdbc.password" value="admin"/>
 

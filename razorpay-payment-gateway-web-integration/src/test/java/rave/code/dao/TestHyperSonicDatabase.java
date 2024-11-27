@@ -14,7 +14,7 @@ public class TestHyperSonicDatabase extends TestCase {
             //Registering the HSQLDB JDBC driver
             Class.forName("org.hsqldb.jdbc.JDBCDriver");
             //Creating the connection with HSQLDB
-            connection = DriverManager.getConnection("jdbc:hsqldb:file:/home/fiera-mm/razorpay", "admin", "admin");
+            connection = DriverManager.getConnection("jdbc:hsqldb:/tmp/razorpay-payment-gateway-db", "admin", "admin");
             if (connection != null) {
                 System.out.println("Connection created successfully");
             } else {
