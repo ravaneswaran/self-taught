@@ -15,8 +15,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class LoginController extends LoginControllerHelper {
-	
-	private static final long serialVersionUID = 1L;
+
+    private static final long serialVersionUID = 1L;
 
     private static final Logger LOGGER = Logger.getLogger(LoginController.class.getName());
 
@@ -28,7 +28,7 @@ public class LoginController extends LoginControllerHelper {
 
         int status = validateRequestParameters(emailId, password);
 
-        if(0 == status) {
+        if (0 == status) {
             User registeredUser = this.login(emailId, password);
 
             if (null != registeredUser) {
@@ -52,7 +52,7 @@ public class LoginController extends LoginControllerHelper {
             }
         } else {
             try {
-                switch(status) {
+                switch (status) {
                     case -1:
                         response.getWriter().print("Your email id cannot be blank...");
                         break;
@@ -68,12 +68,12 @@ public class LoginController extends LoginControllerHelper {
         }
     }
 
-    protected int validateRequestParameters(String emailId, String password){
-        if(StringUtils.isEmpty(emailId)){
+    protected int validateRequestParameters(String emailId, String password) {
+        if (StringUtils.isEmpty(emailId)) {
             return -1;
         }
 
-        if(StringUtils.isEmpty(password)){
+        if (StringUtils.isEmpty(password)) {
             return -2;
         }
 

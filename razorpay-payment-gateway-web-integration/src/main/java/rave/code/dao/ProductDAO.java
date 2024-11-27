@@ -6,25 +6,25 @@ import rave.code.models.Product;
 
 import java.util.List;
 
-public class ProductDAO extends AbstractDAO<Product>{
+public class ProductDAO extends AbstractDAO<Product> {
 
     public ProductDAO() {
         super(Product.class);
     }
 
     @SuppressWarnings("unchecked")
-	public List<Product> findAll(){
+    public List<Product> findAll() {
         Query query = this.getEntityManager().createQuery("SELECT p FROM Product AS p ORDER BY p.rowId");
-        return  query.getResultList();
+        return query.getResultList();
     }
 
-    public Product findById(String id){
+    public Product findById(String id) {
         return this.getEntityManager().find(Product.class, id);
     }
 
-    public int deleteById(String id){
+    public int deleteById(String id) {
         Product product = this.findById(id);
-        if(null != product){
+        if (null != product) {
             this.delete(product);
             return 0;
         } else {

@@ -11,9 +11,9 @@ import rave.code.RequestParameter;
 
 public class CartController extends CartControllerHelper {
 
-	private static final long serialVersionUID = 1L;
-	
-	private static final Logger LOGGER = Logger.getLogger(CartController.class.getName());
+    private static final long serialVersionUID = 1L;
+
+    private static final Logger LOGGER = Logger.getLogger(CartController.class.getName());
 
     public static final String ADD_TO_CART = "add-to-cart";
     public static final String REMOVE_FROM_CART = "remove-from-cart";
@@ -24,7 +24,7 @@ public class CartController extends CartControllerHelper {
         String command = request.getParameter(RequestParameter.COMMAND);
 
         LOGGER.log(Level.INFO, String.format("command ==============>>>>>>> %s", command));
-        
+
         switch (command) {
             case ADD_TO_CART:
                 addToCart(request, response);

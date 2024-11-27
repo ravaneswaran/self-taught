@@ -7,9 +7,9 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class LogOutController extends RazorPayController{
-	
-	private static final long serialVersionUID = 1L;
+public class LogOutController extends RazorPayController {
+
+    private static final long serialVersionUID = 1L;
 
     private static final Logger LOGGER = Logger.getLogger(LogOutController.class.getName());
 
@@ -17,7 +17,7 @@ public class LogOutController extends RazorPayController{
     protected void doProcess(HttpServletRequest request, HttpServletResponse response) {
         HttpSession httpSession = request.getSession(false);
 
-        if(null != httpSession){
+        if (null != httpSession) {
             httpSession.invalidate();
         }
 

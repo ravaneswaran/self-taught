@@ -7,17 +7,17 @@ public class Cart {
 
     private List<String> productIds;
 
-    public Cart(){
+    public Cart() {
         this.productIds = new ArrayList<>();
     }
 
-    public void addProductId(String id){
-        if(!this.productIds.contains(id)) {
+    public void addProductId(String id) {
+        if (!this.productIds.contains(id)) {
             this.productIds.add(id);
         }
     }
 
-    public void removeProductId(String id){
+    public void removeProductId(String id) {
         this.productIds.remove(id);
     }
 

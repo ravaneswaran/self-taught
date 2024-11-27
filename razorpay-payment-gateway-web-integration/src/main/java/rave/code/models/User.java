@@ -14,7 +14,7 @@ import java.util.UUID;
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 @Data
-@Table(name="USERS")
+@Table(name = "USERS")
 public class User {
 
     public static final String ADMIN_USER = "ADMIN-USER";
@@ -33,7 +33,7 @@ public class User {
     @XmlElement(name = "last_name")
     private String lastName;
 
-    @Column(unique=true)
+    @Column(unique = true)
     @XmlElement(name = "email_id")
     private String emailId;
 
@@ -55,7 +55,7 @@ public class User {
     @Temporal(TemporalType.TIMESTAMP)
     private Date modifiedDate;
 
-    public User(){
+    public User() {
         this.setId(UUID.randomUUID().toString());
         this.setType(User.APP_USER);
         Date date = new Date();
@@ -135,7 +135,7 @@ public class User {
         this.modifiedDate = modifiedDate;
     }
 
-    public boolean isAdiminUser(){
+    public boolean isAdiminUser() {
         return ADMIN_USER.equals(this.getType());
     }
 }

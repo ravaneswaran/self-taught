@@ -18,8 +18,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class PaymentControllerHelper extends RazorPayController {
-	
-	private static final long serialVersionUID = 1L;
+
+    private static final long serialVersionUID = 1L;
 
     private static final Logger LOGGER = Logger.getLogger(PaymentControllerHelper.class.getName());
 
@@ -32,7 +32,7 @@ public class PaymentControllerHelper extends RazorPayController {
     }
 
     private void newTransaction(String paymentId, String checkoutType) throws RazorpayException {
-        PaymentTransaction paymentTransaction  = PaymentGatewayService.fetchPaymentTransaction(paymentId);
+        PaymentTransaction paymentTransaction = PaymentGatewayService.fetchPaymentTransaction(paymentId);
         paymentTransaction.setCheckoutType(checkoutType);
 
         if (null != paymentTransaction) {
@@ -50,19 +50,19 @@ public class PaymentControllerHelper extends RazorPayController {
         newTransaction(paymentId, MANUAL);
     }
 
-    protected void deletePaymentTransaction(String paymentId){
+    protected void deletePaymentTransaction(String paymentId) {
         PaymentTransaction paymentTransaction = PaymentTransactionLocalService.fetch(paymentId);
         PaymentTransactionLocalService.delete(paymentTransaction);
     }
 
     protected void syncPaymentTransactionsWithGateway() throws RazorpayException {
         List<PaymentTransaction> paymentTransactions = PaymentTransactionLocalService.list();
-        for(PaymentTransaction paymentTransaction : paymentTransactions){
+        for (PaymentTransaction paymentTransaction : paymentTransactions) {
             PaymentTransactionLocalService.delete(paymentTransaction);
         }
 
         paymentTransactions = PaymentGatewayService.listPaymentTransactions();
-        for(PaymentTransaction paymentTransaction : paymentTransactions){
+        for (PaymentTransaction paymentTransaction : paymentTransactions) {
             PaymentTransactionLocalService.save(paymentTransaction);
         }
     }
@@ -70,7 +70,7 @@ public class PaymentControllerHelper extends RazorPayController {
     protected String paymentTransactionDetails(String paymentTransactionId) throws RazorpayException {
         PaymentTransaction paymentTransaction = PaymentTransactionLocalService.fetch(paymentTransactionId);
 
-        if(null == paymentTransaction){
+        if (null == paymentTransaction) {
             paymentTransaction = PaymentGatewayService.fetchPaymentTransaction(paymentTransactionId);
             PaymentTransactionLocalService.save(paymentTransaction);
         }
@@ -81,7 +81,7 @@ public class PaymentControllerHelper extends RazorPayController {
     protected String refundPaymentTransaction(String paymentTransactionId) throws RazorpayException {
         PaymentTransaction paymentTransaction = PaymentTransactionLocalService.fetch(paymentTransactionId);
 
-        if(null == paymentTransaction){
+        if (null == paymentTransaction) {
             paymentTransaction = PaymentGatewayService.fetchPaymentTransaction(paymentTransactionId);
             PaymentTransactionLocalService.save(paymentTransaction);
         }
@@ -92,7 +92,7 @@ public class PaymentControllerHelper extends RazorPayController {
     protected String settlePaymentTransaction(String paymentTransactionId) throws RazorpayException {
         PaymentTransaction paymentTransaction = PaymentTransactionLocalService.fetch(paymentTransactionId);
 
-        if(null == paymentTransaction){
+        if (null == paymentTransaction) {
             paymentTransaction = PaymentGatewayService.fetchPaymentTransaction(paymentTransactionId);
             PaymentTransactionLocalService.save(paymentTransaction);
         }
@@ -100,7 +100,7 @@ public class PaymentControllerHelper extends RazorPayController {
         return getPaymentTransactionDetails(paymentTransaction, "color:#209c20");
     }
 
-    protected String getPaymentTransactionDetails(PaymentTransaction paymentTransaction, String style){
+    protected String getPaymentTransactionDetails(PaymentTransaction paymentTransaction, String style) {
         StringBuffer paymentTransactionBuffer = new StringBuffer();
 
         paymentTransactionBuffer.append(HTMLUtil.HTML_TABLE_ROW_START_TAG);

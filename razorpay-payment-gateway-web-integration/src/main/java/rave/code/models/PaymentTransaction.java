@@ -16,203 +16,203 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Data
 public class PaymentTransaction extends Transaction {
 
-	@Id
-	@XmlElement(name = "amount")
-	private String id;
-	
-	@XmlElement(name = "entity")
-	private String entity;
-	
-	@XmlElement(name = "amount")
-	private int amount;
-	
-	@XmlElement(name = "currency")
-	private String currency;
-	
-	@XmlElement(name = "status")
-	private String status;
-	
-	@XmlElement(name = "method")
-	private String method;
-	
-	@XmlElement(name = "order_id")
-	private String orderId;
-	
-	@XmlElement(name = "description")
-	private String description;
-	
-	@XmlElement(name = "amount_refunded")
-	private int amountRefunded;
-	
-	@XmlElement(name = "refund_status")
-	private String refundStatus;
-	
-	@XmlElement(name = "email")
-	private String email;
-	
-	@XmlElement(name = "contact")
-	private String contact;
-	
-	@XmlElement(name = "notes")
-	@Transient
-	private Object notes;
-	
-	@XmlElement(name = "fee")
-	private int fee;
-	
-	@XmlElement(name = "tax")
-	private int tax;
-	
-	@XmlElement(name = "error_code")
-	private String errorCode;
-	
-	@XmlElement(name = "error_description")
-	private String errorDescription;
+    @Id
+    @XmlElement(name = "amount")
+    private String id;
 
-	@XmlElement(name = "created_at")
-	private long createdAt;
+    @XmlElement(name = "entity")
+    private String entity;
 
-	public String getId() {
-		return id;
-	}
+    @XmlElement(name = "amount")
+    private int amount;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    @XmlElement(name = "currency")
+    private String currency;
 
-	public String getEntity() {
-		return entity;
-	}
+    @XmlElement(name = "status")
+    private String status;
 
-	public void setEntity(String entity) {
-		this.entity = entity;
-	}
+    @XmlElement(name = "method")
+    private String method;
 
-	public int getAmount() {
-		return amount;
-	}
+    @XmlElement(name = "order_id")
+    private String orderId;
 
-	public void setAmount(int amount) {
-		this.amount = amount;
-	}
+    @XmlElement(name = "description")
+    private String description;
 
-	public String getCurrency() {
-		return currency;
-	}
+    @XmlElement(name = "amount_refunded")
+    private int amountRefunded;
 
-	public void setCurrency(String currency) {
-		this.currency = currency;
-	}
+    @XmlElement(name = "refund_status")
+    private String refundStatus;
 
-	public String getStatus() {
-		return status;
-	}
+    @XmlElement(name = "email")
+    private String email;
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    @XmlElement(name = "contact")
+    private String contact;
 
-	public String getMethod() {
-		return method;
-	}
+    @XmlElement(name = "notes")
+    @Transient
+    private Object notes;
 
-	public void setMethod(String method) {
-		this.method = method;
-	}
+    @XmlElement(name = "fee")
+    private int fee;
 
-	public String getOrderId() {
-		return orderId;
-	}
+    @XmlElement(name = "tax")
+    private int tax;
 
-	public void setOrderId(String orderId) {
-		this.orderId = orderId;
-	}
+    @XmlElement(name = "error_code")
+    private String errorCode;
 
-	public String getDescription() {
-		return description;
-	}
+    @XmlElement(name = "error_description")
+    private String errorDescription;
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    @XmlElement(name = "created_at")
+    private long createdAt;
 
-	public int getAmountRefunded() {
-		return amountRefunded;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setAmountRefunded(int amountRefunded) {
-		this.amountRefunded = amountRefunded;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getRefundStatus() {
-		return refundStatus;
-	}
+    public String getEntity() {
+        return entity;
+    }
 
-	public void setRefundStatus(String refundStatus) {
-		this.refundStatus = refundStatus;
-	}
+    public void setEntity(String entity) {
+        this.entity = entity;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public int getAmount() {
+        return amount;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
 
-	public String getContact() {
-		return contact;
-	}
+    public String getCurrency() {
+        return currency;
+    }
 
-	public void setContact(String contact) {
-		this.contact = contact;
-	}
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
 
-	public Object getNotes() {
-		return notes;
-	}
+    public String getStatus() {
+        return status;
+    }
 
-	public void setNotes(Object notes) {
-		this.notes = notes;
-	}
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-	public int getFee() {
-		return fee;
-	}
+    public String getMethod() {
+        return method;
+    }
 
-	public void setFee(int fee) {
-		this.fee = fee;
-	}
+    public void setMethod(String method) {
+        this.method = method;
+    }
 
-	public int getTax() {
-		return tax;
-	}
+    public String getOrderId() {
+        return orderId;
+    }
 
-	public void setTax(int tax) {
-		this.tax = tax;
-	}
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
 
-	public String getErrorCode() {
-		return errorCode;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setErrorCode(String errorCode) {
-		this.errorCode = errorCode;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public String getErrorDescription() {
-		return errorDescription;
-	}
+    public int getAmountRefunded() {
+        return amountRefunded;
+    }
 
-	public void setErrorDescription(String errorDescription) {
-		this.errorDescription = errorDescription;
-	}
+    public void setAmountRefunded(int amountRefunded) {
+        this.amountRefunded = amountRefunded;
+    }
 
-	public long getCreatedAt() {
-		return createdAt;
-	}
+    public String getRefundStatus() {
+        return refundStatus;
+    }
 
-	public void setCreatedAt(long createdAt) {
-		this.createdAt = createdAt;
-	}
+    public void setRefundStatus(String refundStatus) {
+        this.refundStatus = refundStatus;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public Object getNotes() {
+        return notes;
+    }
+
+    public void setNotes(Object notes) {
+        this.notes = notes;
+    }
+
+    public int getFee() {
+        return fee;
+    }
+
+    public void setFee(int fee) {
+        this.fee = fee;
+    }
+
+    public int getTax() {
+        return tax;
+    }
+
+    public void setTax(int tax) {
+        this.tax = tax;
+    }
+
+    public String getErrorCode() {
+        return errorCode;
+    }
+
+    public void setErrorCode(String errorCode) {
+        this.errorCode = errorCode;
+    }
+
+    public String getErrorDescription() {
+        return errorDescription;
+    }
+
+    public void setErrorDescription(String errorDescription) {
+        this.errorDescription = errorDescription;
+    }
+
+    public long getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(long createdAt) {
+        this.createdAt = createdAt;
+    }
 }

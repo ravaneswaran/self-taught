@@ -21,7 +21,7 @@ import rave.code.util.HTMLUtil;
 
 public class OrderControllerHelper extends RazorPayController {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     @Override
     protected void doProcess(HttpServletRequest request, HttpServletResponse response) {
@@ -33,8 +33,8 @@ public class OrderControllerHelper extends RazorPayController {
     protected int deleteOrder(String orderId) throws RazorpayException {
         List<OrderProductJoin> orderProductJoins = OrderProductJoinLocalService.listOrderProductJoinsByOrderId(orderId);
 
-        if(null != orderProductJoins && !orderProductJoins.isEmpty()){
-            for(OrderProductJoin orderProductJoin : orderProductJoins){
+        if (null != orderProductJoins && !orderProductJoins.isEmpty()) {
+            for (OrderProductJoin orderProductJoin : orderProductJoins) {
                 OrderProductJoinLocalService.delete(orderProductJoin);
             }
         }
@@ -49,12 +49,12 @@ public class OrderControllerHelper extends RazorPayController {
 
     protected void syncOrderTransactionsWithGateway() throws RazorpayException {
         List<OrderTransaction> orderTransactions = OrderTransactionLocalService.list();
-        for(OrderTransaction orderTransaction : orderTransactions){
+        for (OrderTransaction orderTransaction : orderTransactions) {
             OrderTransactionLocalService.delete(orderTransaction);
         }
 
         orderTransactions = OrderGatewayService.listOrderTransactions();
-        for(OrderTransaction orderTransaction : orderTransactions){
+        for (OrderTransaction orderTransaction : orderTransactions) {
             OrderTransactionLocalService.save(orderTransaction);
         }
     }
@@ -62,7 +62,7 @@ public class OrderControllerHelper extends RazorPayController {
     protected String orderTransactionDetails(String orderTransactionId) throws RazorpayException {
         OrderTransaction orderTransaction = OrderTransactionLocalService.get(orderTransactionId);
 
-        if(null == orderTransaction){
+        if (null == orderTransaction) {
             orderTransaction = OrderGatewayService.fetchOrderTransaction(orderTransactionId);
             OrderTransactionLocalService.save(orderTransaction);
         }
@@ -73,7 +73,7 @@ public class OrderControllerHelper extends RazorPayController {
     protected String cancelOrderTransaction(String orderTransactionId) throws RazorpayException {
         OrderTransaction orderTransaction = OrderTransactionLocalService.get(orderTransactionId);
 
-        if(null == orderTransaction){
+        if (null == orderTransaction) {
             orderTransaction = OrderGatewayService.fetchOrderTransaction(orderTransactionId);
             OrderTransactionLocalService.save(orderTransaction);
         }
@@ -84,10 +84,9 @@ public class OrderControllerHelper extends RazorPayController {
     protected void cancelOrder(String orderTransactionId) throws RazorpayException {
 
 
-
         OrderTransaction orderTransaction = OrderTransactionLocalService.get(orderTransactionId);
 
-        if(null == orderTransaction){
+        if (null == orderTransaction) {
             orderTransaction = OrderGatewayService.fetchOrderTransaction(orderTransactionId);
             OrderTransactionLocalService.save(orderTransaction);
         }
@@ -96,7 +95,7 @@ public class OrderControllerHelper extends RazorPayController {
     protected String confirmOrderTransaction(String orderTransactionId) throws RazorpayException {
         OrderTransaction orderTransaction = OrderTransactionLocalService.get(orderTransactionId);
 
-        if(null == orderTransaction){
+        if (null == orderTransaction) {
             orderTransaction = OrderGatewayService.fetchOrderTransaction(orderTransactionId);
             OrderTransactionLocalService.save(orderTransaction);
         }
@@ -104,7 +103,7 @@ public class OrderControllerHelper extends RazorPayController {
         return getOrderTransactionDetails(orderTransaction, "color:#209c20");
     }
 
-    private String getOrderTransactionDetails(OrderTransaction orderTransaction, String style){
+    private String getOrderTransactionDetails(OrderTransaction orderTransaction, String style) {
         StringBuffer orderTransactionBuffer = new StringBuffer();
 
         orderTransactionBuffer.append(HTMLUtil.HTML_TABLE_ROW_START_TAG);

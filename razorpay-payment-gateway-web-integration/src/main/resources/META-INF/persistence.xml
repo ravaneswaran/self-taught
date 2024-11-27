@@ -13,13 +13,14 @@
         <class>rave.code.models.OrderProductJoin</class>
 
         <properties>
-            <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbc.JDBCDriver" />
-            <property name="javax.persistence.jdbc.url"    value="jdbc:hsqldb:file:/tmp/payment-gateway-database;sql.syntax_pgs=true" />
-            <property name="javax.persistence.jdbc.user" value="admin" />
-            <property name="javax.persistence.jdbc.password" value="admin" />
+            <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbc.JDBCDriver"/>
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:hsqldb:file:/tmp/payment-gateway-database;sql.syntax_pgs=true"/>
+            <property name="javax.persistence.jdbc.user" value="admin"/>
+            <property name="javax.persistence.jdbc.password" value="admin"/>
 
-            <property name="eclipselink.ddl-generation" value="create-tables" />
-            <property name="eclipselink.ddl-generation.output-mode" value="database" />
+            <property name="eclipselink.ddl-generation" value="create-tables"/>
+            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
         </properties>
 
     </persistence-unit>

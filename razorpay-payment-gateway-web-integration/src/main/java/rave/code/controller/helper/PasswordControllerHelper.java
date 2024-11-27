@@ -11,16 +11,16 @@ import rave.code.models.User;
 
 public class PasswordControllerHelper extends RazorPayController {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     @Override
     protected void doProcess(HttpServletRequest request, HttpServletResponse response) {
         throw new NotImplementedException("'doprocess()' method should be overridden...");
     }
 
-    protected String getUserPassword(String email){
+    protected String getUserPassword(String email) {
         User user = UserLocalService.fetchUserBy(email);
-        if(null != user){
+        if (null != user) {
             return user.getPassword();
         }
         return null;

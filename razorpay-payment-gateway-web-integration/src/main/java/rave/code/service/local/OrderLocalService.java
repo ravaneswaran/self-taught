@@ -9,15 +9,15 @@ public class OrderLocalService {
 
     private static final OrderDAO ORDER_DAO = new OrderDAO();
 
-    public static final Order fetchOrderById(String orderId){
+    public static final Order fetchOrderById(String orderId) {
         return ORDER_DAO.findById(orderId);
     }
 
-    public static final List<Order> listOrdersByUserId(String userId){
+    public static final List<Order> listOrdersByUserId(String userId) {
         return ORDER_DAO.findByUserId(userId);
     }
 
-    public static final void registerOrder(Order order){
+    public static final void registerOrder(Order order) {
         ORDER_DAO.save(order);
     }
 

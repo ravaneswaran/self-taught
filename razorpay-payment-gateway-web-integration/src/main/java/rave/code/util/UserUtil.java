@@ -10,7 +10,7 @@ public class UserUtil {
 
     private static final Logger LOGGER = Logger.getLogger(UserUtil.class.getName());
 
-    public static final int registerUser(String id, String firstName, String middleInitial, String lastName, String emailId, String password, String type){
+    public static final int registerUser(String id, String firstName, String middleInitial, String lastName, String emailId, String password, String type) {
 
         User user = new User();
         user.setId(id);
@@ -29,10 +29,10 @@ public class UserUtil {
 
     }
 
-    public static final int deRegisterUserById(String id){
+    public static final int deRegisterUserById(String id) {
         try {
             return UserLocalService.deRegisterUserById(id);
-        } catch(IllegalArgumentException iae){
+        } catch (IllegalArgumentException iae) {
             LOGGER.severe(iae.getMessage());
             return -1;
         }

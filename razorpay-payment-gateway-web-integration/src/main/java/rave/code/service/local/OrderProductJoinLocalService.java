@@ -9,15 +9,15 @@ public class OrderProductJoinLocalService {
 
     private static final OrderProductJoinDAO ORDER_PRODUCT_JOIN_DAO = new OrderProductJoinDAO();
 
-    public static final OrderProductJoin fetchById(String orderProductJoinId){
+    public static final OrderProductJoin fetchById(String orderProductJoinId) {
         return ORDER_PRODUCT_JOIN_DAO.findById(orderProductJoinId);
     }
 
-    public static final List<OrderProductJoin> listOrderProductJoinsByOrderId(String orderId){
+    public static final List<OrderProductJoin> listOrderProductJoinsByOrderId(String orderId) {
         return ORDER_PRODUCT_JOIN_DAO.findByOrderId(orderId);
     }
 
-    public static final void register(OrderProductJoin orderProductJoin){
+    public static final void register(OrderProductJoin orderProductJoin) {
         ORDER_PRODUCT_JOIN_DAO.save(orderProductJoin);
     }
 

@@ -23,7 +23,7 @@ public class TestHyperSonicDatabase extends TestCase {
         } catch (Exception e) {
             e.printStackTrace(System.out);
         } finally {
-            if(null != connection){
+            if (null != connection) {
                 try {
                     connection.close();
                 } catch (SQLException e) {

@@ -9,7 +9,7 @@ public class ProductUtil {
 
     private static final Logger LOGGER = Logger.getLogger(ProductUtil.class.getName());
 
-    public static final void registerProduct(String id, int rowId, String name, long price, String displayPrice, String performance, String display, String storage, String camera, String battery, String ram, String launchDate, String imageLocation){
+    public static final void registerProduct(String id, int rowId, String name, long price, String displayPrice, String performance, String display, String storage, String camera, String battery, String ram, String launchDate, String imageLocation) {
         Product product = new Product();
 
         product.setId(id);
@@ -29,10 +29,10 @@ public class ProductUtil {
         ProductLocalService.registerProduct(product);
     }
 
-    public static final void deRegisterProductById(String id){
+    public static final void deRegisterProductById(String id) {
         try {
             ProductLocalService.deRegisterProductUsingId(id);
-        } catch(IllegalArgumentException iae){
+        } catch (IllegalArgumentException iae) {
             LOGGER.severe(iae.getMessage());
         }
     }

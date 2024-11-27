@@ -16,7 +16,7 @@ public class TestEntityManager extends TestCase {
     private static EntityManagerFactory factory;
 
     @SuppressWarnings("unchecked")
-	public void testEntityManager() {
+    public void testEntityManager() {
         factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
         EntityManager entityManager = factory.createEntityManager();
         // read the existing entries and write to console

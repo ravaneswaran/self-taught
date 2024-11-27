@@ -6,14 +6,14 @@ import rave.code.models.PaymentTransaction;
 
 import java.util.List;
 
-public class PaymentTransactionDAO extends AbstractDAO<PaymentTransaction>{
+public class PaymentTransactionDAO extends AbstractDAO<PaymentTransaction> {
 
-    public PaymentTransactionDAO(){
+    public PaymentTransactionDAO() {
         super(PaymentTransaction.class);
     }
 
     @SuppressWarnings("unchecked")
-	public List<PaymentTransaction> list(){
+    public List<PaymentTransaction> list() {
         Query query = this.getEntityManager().createQuery("SELECT pt FROM PaymentTransaction AS pt");
         return query.getResultList();
     }

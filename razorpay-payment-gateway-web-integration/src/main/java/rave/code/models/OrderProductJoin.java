@@ -14,7 +14,7 @@ import java.util.UUID;
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 @Data
-@Table(name="ORDER_PRODUCT_JOIN")
+@Table(name = "ORDER_PRODUCT_JOIN")
 public class OrderProductJoin {
 
     @Id
@@ -39,7 +39,7 @@ public class OrderProductJoin {
     @Temporal(TemporalType.TIMESTAMP)
     private Date modifiedDate;
 
-    public OrderProductJoin(){
+    public OrderProductJoin() {
         this.setId(UUID.randomUUID().toString());
 
         Date date = new Date();

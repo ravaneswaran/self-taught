@@ -20,12 +20,12 @@ public class RequestFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        HttpServletRequest httpServletRequest = (HttpServletRequest)servletRequest;
+        HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         HttpSession httpSession = httpServletRequest.getSession(false);
 
         Object userSession = httpSession.getAttribute("SESSION-USER");
 
-        if(null != userSession){
+        if (null != userSession) {
             filterChain.doFilter(servletRequest, servletResponse);
         }
     }

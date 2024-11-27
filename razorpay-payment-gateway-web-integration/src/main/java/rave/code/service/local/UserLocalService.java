@@ -10,11 +10,11 @@ public class UserLocalService {
 
     private static final UserDAO USER_DAO = new UserDAO();
 
-    public static int registerUser(String firstName, String middleInitial, String lastName, String emailId, String password){
+    public static int registerUser(String firstName, String middleInitial, String lastName, String emailId, String password) {
 
         User testUser = fetchUserBy(emailId);
 
-        if(null != testUser){
+        if (null != testUser) {
             return -1;
         }
 
@@ -33,16 +33,16 @@ public class UserLocalService {
         return 0;
     }
 
-    public static int registerUser(User user){
+    public static int registerUser(User user) {
         USER_DAO.save(user);
         return 0;
     }
 
-    public static User fetchUserBy(String emailId, String password){
+    public static User fetchUserBy(String emailId, String password) {
         return USER_DAO.findBy(emailId, password);
     }
 
-    public static User fetchUserBy(String emailId){
+    public static User fetchUserBy(String emailId) {
         return USER_DAO.findBy(emailId);
     }
 
@@ -50,7 +50,7 @@ public class UserLocalService {
         return USER_DAO.deleteById(id);
     }
 
-    public static List<User> fetchAllUsers(){
+    public static List<User> fetchAllUsers() {
         return USER_DAO.findAll();
     }
 
@@ -58,7 +58,7 @@ public class UserLocalService {
         return !fetchAllUsers().isEmpty();
     }
 
-	public static void updateUser(User user) {
-		USER_DAO.update(user);
-	}
+    public static void updateUser(User user) {
+        USER_DAO.update(user);
+    }
 }

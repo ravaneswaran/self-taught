@@ -11,8 +11,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class RegistrationController extends RegistrationControllerHelper {
-	
-	private static final long serialVersionUID = 1L;
+
+    private static final long serialVersionUID = 1L;
 
     private static final Logger LOGGER = Logger.getLogger(RegistrationController.class.getName());
 
@@ -28,10 +28,10 @@ public class RegistrationController extends RegistrationControllerHelper {
 
         int status = validateRequestParameters(firstName, middleInitial, lastName, emailId, password, confirmPassword);
 
-        if(0 == status){
+        if (0 == status) {
             status = registerUser(firstName, middleInitial, lastName, emailId, password);
             try {
-                switch(status) {
+                switch (status) {
                     case 0:
                         response.getWriter().print(status);
                         break;
@@ -46,7 +46,7 @@ public class RegistrationController extends RegistrationControllerHelper {
             }
         } else {
             try {
-                switch(status) {
+                switch (status) {
                     case -1:
                         response.getWriter().print("Your firstname cannot be blank...");
                         break;
@@ -71,25 +71,25 @@ public class RegistrationController extends RegistrationControllerHelper {
         }
     }
 
-    private int validateRequestParameters(String firstName, String middleInitial, String lastName, String emailId, String password, String confirmPassword){
+    private int validateRequestParameters(String firstName, String middleInitial, String lastName, String emailId, String password, String confirmPassword) {
 
-        if(StringUtils.isEmpty(firstName)){
+        if (StringUtils.isEmpty(firstName)) {
             return -1;
         }
 
-        if(StringUtils.isEmpty(emailId)){
+        if (StringUtils.isEmpty(emailId)) {
             return -2;
         }
 
-        if(StringUtils.isEmpty(password)){
+        if (StringUtils.isEmpty(password)) {
             return -3;
         }
 
-        if(StringUtils.isEmpty(confirmPassword)){
+        if (StringUtils.isEmpty(confirmPassword)) {
             return -4;
         }
 
-        if(!password.equals(confirmPassword)){
+        if (!password.equals(confirmPassword)) {
             return -5;
         }
 

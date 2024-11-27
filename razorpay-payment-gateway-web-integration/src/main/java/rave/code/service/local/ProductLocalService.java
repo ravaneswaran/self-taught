@@ -9,23 +9,23 @@ public class ProductLocalService {
 
     private static final ProductDAO PRODUCT_DAO = new ProductDAO();
 
-    public static List<Product> fetchAllProducts(){
+    public static List<Product> fetchAllProducts() {
         return PRODUCT_DAO.findAll();
     }
 
-    public static void registerProduct(Product product){
+    public static void registerProduct(Product product) {
         PRODUCT_DAO.save(product);
     }
 
-    public static void deRegisterProduct(Product product){
+    public static void deRegisterProduct(Product product) {
         PRODUCT_DAO.delete(product);
     }
 
-    public static void deRegisterProductUsingId(String id){
+    public static void deRegisterProductUsingId(String id) {
         PRODUCT_DAO.deleteById(id);
     }
 
-    public static final Product fetchById(String productId){
+    public static final Product fetchById(String productId) {
         return PRODUCT_DAO.findById(productId);
     }
 

@@ -19,6 +19,6 @@ public class HTMLUtil {
 
     public static final String HTML_INPUT = "input";
 
-    public static final String HTML_INPUT_BUTTON = String.format("%s%s type=\"button\" onclick=\"%s\" value=\"%s\" %s%s",HTML_LESSER_THAN, HTML_INPUT, "%s", "%s" ,HTML_FORWARDSLASH, HTML_GREATER_THAN);
+    public static final String HTML_INPUT_BUTTON = String.format("%s%s type=\"button\" onclick=\"%s\" value=\"%s\" %s%s", HTML_LESSER_THAN, HTML_INPUT, "%s", "%s", HTML_FORWARDSLASH, HTML_GREATER_THAN);
 
 }

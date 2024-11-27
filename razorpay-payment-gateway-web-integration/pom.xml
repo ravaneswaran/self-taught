@@ -15,7 +15,7 @@
         the following property is included to remove the above warning during the build.
         -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        
+
         <!-- Dependency Versions  -->
         <junit.version>3.8.1</junit.version>
         <jsp-api.version>2.0</jsp-api.version>
@@ -28,11 +28,11 @@
         <eclipselink.version>2.5.0</eclipselink.version>
         <hibernate-entitymanager.version>5.4.4.Final</hibernate-entitymanager.version>
         <lombok.version>1.18.24</lombok.version>
-        
+
         <!-- Plugin Version -->
         <jetty-maven-plugin.version>9.4.12.v20180830</jetty-maven-plugin.version>
         <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
-        
+
     </properties>
 
     <dependencies>

@@ -14,7 +14,7 @@ import java.util.UUID;
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 @Data
-@Table(name="ORDERS")
+@Table(name = "ORDERS")
 public class Order {
 
     public static final String PAYMENT_PENDING = "PAYMENT-PENDING";
@@ -41,7 +41,7 @@ public class Order {
     @Temporal(TemporalType.TIMESTAMP)
     private Date modifiedDate;
 
-    public Order(){
+    public Order() {
         this.setId(UUID.randomUUID().toString());
         Date date = new Date();
         this.setCreatedDate(date);
