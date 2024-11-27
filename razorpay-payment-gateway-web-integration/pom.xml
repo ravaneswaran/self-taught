@@ -108,7 +108,7 @@
     </dependencies>
 
     <build>
-        <finalName>demo-razorpay-web-integration</finalName>
+        <finalName>razorpay-payment-gateway-web-integration</finalName>
         <plugins>
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
@@ -146,6 +146,19 @@
                     <source>17</source>
                     <target>17</target>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>3.4.0</version>
+                    </dependency>
+                </dependencies>
             </plugin>
 
         </plugins>
