@@ -15,6 +15,9 @@
         <javax.mail.version>1.4.7</javax.mail.version>
         <com.itextpdf.version>5.5.13</com.itextpdf.version>
         <net.sf.barcode4j.version>2.1</net.sf.barcode4j.version>
+        <commons-collections4.version>4.0</commons-collections4.version>
+        <commons-lang.version>2.3</commons-lang.version>
+        <commons-io.version>2.5</commons-io.version>
     </properties>
 
     <dependencies>
@@ -44,6 +47,22 @@
             <version>${net.sf.barcode4j.version}</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>${commons-collections4.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${commons-lang.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+
     </dependencies>
 
 </project>

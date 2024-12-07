@@ -1,6 +1,4 @@
-package rave.code.utility.mail.javaxmail;
-
-import rave.code.utility.mail.Mail;
+package rave.code.utility.mail;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -15,7 +13,7 @@ import java.io.File;
 import java.util.Properties;
 
 
-public class Mailer implements Mail {
+public class JavaMailer implements Mail {
 
     public static final String MAIL_HOST_PROPERTY = "mail.smtp.host";
     public static final String PROTOCOL_POP3 = "pop3s";
