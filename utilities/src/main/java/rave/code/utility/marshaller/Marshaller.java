@@ -1,6 +1,6 @@
 package rave.code.utility.marshaller;
 
-import javax.xml.bind.JAXBException;
+import jakarta.xml.bind.JAXBException;
 
 public interface Marshaller {
 

@@ -1,6 +1,6 @@
 package rave.code;
 
-public class RequestParameter {
+public class  RequestParameter {
 
     public static final String COMMAND = "cmd";
     public static final String CHECKOUT_TYPE = "checkout-type";
