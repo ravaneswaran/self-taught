@@ -7,13 +7,14 @@
     <artifactId>self-taught</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <name>self-taught</name>
+
     <modules>
         <module>java-design-patterns</module>
         <module>candle-stick-patterns</module>
         <module>razorpay-payment-gateway-web-integration</module>
         <module>utilities</module>
+        <module>selenium-quick-start</module>
     </modules>
-
-    <name>self-taught</name>
 
 </project>

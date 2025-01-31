@@ -35,6 +35,8 @@ public class ApplicationContextListener implements ServletContextListener {
             }
         }
 
+        System.out.println("------------------>>>>>>>>> "+databaseFile.getAbsolutePath());
+
         try {
 
             boolean hasUsers = UserLocalService.hasUsers();

@@ -14,7 +14,7 @@
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbc.JDBCDriver"/>
             <property name="javax.persistence.jdbc.url"
-                      value="jdbc:hsqldb:file:/tmp/razorpay-payment-gateway-db;sql.syntax_pgs=true"/>
+                      value="jdbc:hsqldb:file:/tmp/razorpay-payment-gateway-db;sql.syntax_pgs=true;hsqldb.lock_file=false"/>
             <property name="javax.persistence.jdbc.user" value="admin"/>
             <property name="javax.persistence.jdbc.password" value="admin"/>
 

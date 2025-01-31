@@ -1,11 +1,19 @@
 /.gradle/
 /.idea/
+
 /candle-stick-patterns/.mvn/
-/java-design-patterns/.mvn/
-/razorpay-payment-gateway-web-integration/.mvn/
-/utilities/.mvn/
-/razorpay-payment-gateway-web-integration/target/
 /candle-stick-patterns/target/
-/java-design-patterns/target/
+
+/razorpay-payment-gateway-web-integration/.mvn/
+/razorpay-payment-gateway-web-integration/target/
+/razorpay-payment-gateway-web-integration/tmp/
+
+/utilities/.mvn/
 /utilities/target/
+
+/java-design-patterns/.mvn/
+/java-design-patterns/target/
+
+/selenium-quick-start/.mvn/
+/selenium-quick-start/target/
 
