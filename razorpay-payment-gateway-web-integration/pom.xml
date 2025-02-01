@@ -26,7 +26,8 @@
         <jaxb-api.version>2.1</jaxb-api.version>
         <org.eclipse.persistence.moxy.version>2.5.2</org.eclipse.persistence.moxy.version>
         <javax.persistence.version>2.2.1</javax.persistence.version>
-        <eclipselink.version>2.5.0</eclipselink.version>
+        <!--<eclipselink.version>2.5.0</eclipselink.version>-->
+        <eclipselink.version>2.7.7</eclipselink.version>
         <hibernate-entitymanager.version>5.4.4.Final</hibernate-entitymanager.version>
         <lombok.version>1.18.20</lombok.version>
 

@@ -53,6 +53,28 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
       <version>7.20.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.concordion</groupId>
+      <artifactId>concordion</artifactId>
+      <version>4.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>5.4.0</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>5.4.0</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.jbehave/jbehave-maven-plugin -->
+    <dependency>
+      <groupId>org.jbehave</groupId>
+      <artifactId>jbehave-maven-plugin</artifactId>
+      <version>5.2.0</version>
+    </dependency>
   </dependencies>
 
   <build>
