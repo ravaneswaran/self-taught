@@ -1,4 +1,4 @@
-package rave.code;
+package rave.code.selenium;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -14,13 +14,13 @@ import java.time.Duration;
 /**
  * Unit test for simple App.
  */
-public class SeleniumDummyTest {
+public class DryRunTest {
 
     /**
      * Rigorous Test :-)
      */
     @Test
-    public void seleniumDummyRun() {
+    public void seleniumDryRun() {
 
         /*
         * Note when you use chrome for automation make sure the browser and its driver are of same version...

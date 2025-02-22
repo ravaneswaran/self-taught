@@ -1,26 +1,26 @@
-package rave.code;
+package rave.code.selenium.data;
 
 import org.junit.jupiter.api.Test;
-import rave.code.data.ReadXlsxTestData;
+import rave.code.selenium.xls.ReadExcelFile;
 
 import java.io.IOException;
 
-public class SeleniumDataDrivenTest {
+public class LoginDataDrivenTest {
 
     @Test
-    public void seleniumDataDrivenRun() throws IOException {
+    public void loginDataDrivenRun() throws IOException {
 
         String testDataFilePath = this.getClass().getResource("/test-data/test-data-file.xlsx").getFile();
-        ReadXlsxTestData testData = new ReadXlsxTestData();
+        ReadExcelFile testData = new ReadExcelFile();
         testData.openFile(testDataFilePath);
         int numberOfSheets = testData.getNumberOfSheets();
 
         for(int sheetNumber = 0; sheetNumber < numberOfSheets; sheetNumber++){
             int numberOfRows = testData.getSheetAt(sheetNumber).getPhysicalNumberOfRows();
-            for(int rowNumber = 0; rowNumber < numberOfRows; rowNumber++){
+            for(int rowNumber = 1; rowNumber < numberOfRows; rowNumber++){
                 for(int columnNumber = 0; columnNumber < 1; columnNumber++){
-                    String username = testData.getData(sheetNumber, rowNumber, columnNumber);
-                    String password = testData.getData(sheetNumber, rowNumber, columnNumber+1);
+                    String username = testData.getCellStringValue(sheetNumber, rowNumber, columnNumber);
+                    String password = testData.getCellStringValue(sheetNumber, rowNumber, columnNumber+1);
                     System.out.println(username +" : "+password);
                 }
             }

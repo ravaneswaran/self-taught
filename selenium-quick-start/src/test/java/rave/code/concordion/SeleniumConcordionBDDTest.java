@@ -1,4 +1,4 @@
-package rave.code;
+package rave.code.concordion;
 
 public class SeleniumConcordionBDDTest {
 }
