@@ -14,7 +14,7 @@
         <module>candle-stick-patterns</module>
         <module>razorpay-payment-gateway-web-integration</module>
         <module>utilities</module>
-        <module>selenium-quick-start</module>
+        <module>software-testing-quick-start-guide</module>
     </modules>
 
 </project>

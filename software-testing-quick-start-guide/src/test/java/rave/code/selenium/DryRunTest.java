@@ -2,18 +2,25 @@ package rave.code.selenium;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Test;
+import junit.framework.TestCase;
+import junit.textui.TestRunner;
+import org.junit.Test;
+import org.junit.rules.TestRule;
+import org.junit.runner.RunWith;
+import org.junit.runner.Runner;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import rave.code.JUnitCustomTestRunner;
 
 import java.time.Duration;
 
 /**
  * Unit test for simple App.
  */
+@RunWith(JUnitCustomTestRunner.class)
 public class DryRunTest {
 
     /**
