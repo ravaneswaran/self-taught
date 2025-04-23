@@ -16,6 +16,7 @@
         <module>utilities</module>
         <module>software-testing-quick-start-guide</module>
         <module>bse-equity-trade-forecast</module>
+        <module>money-control-webs</module>
     </modules>
 
 </project>
