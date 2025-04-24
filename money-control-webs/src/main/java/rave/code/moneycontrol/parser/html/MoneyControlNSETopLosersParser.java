@@ -4,12 +4,15 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import rave.code.moneycontrol.model.MoneyControlLoserModel;
 import rave.code.moneycontrol.parser.HTMLSourceParser;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class MoneyControlNSETopLosersParser extends HTMLSourceParser {
+public class MoneyControlNSETopLosersParser extends HTMLSourceParser<MoneyControlLoserModel> {
 
     public MoneyControlNSETopLosersParser() {
         super("https://www.moneycontrol.com/stocks/marketstats/nseloser/index.php");
@@ -21,7 +24,7 @@ public class MoneyControlNSETopLosersParser extends HTMLSourceParser {
     }
 
     @Override
-    public void parse() {
+    public List<MoneyControlLoserModel> parse() {
         try {
             Document doc = Jsoup.connect("https://www.moneycontrol.com/stocks/marketstats/nseloser/index.php").get();
             Element table = doc.select("table").get(1);
@@ -44,10 +47,12 @@ public class MoneyControlNSETopLosersParser extends HTMLSourceParser {
                     //do nothing
                 }
             }
+            return null;
         } catch (SocketTimeoutException e) {
-            this.parse();
+            return this.parse();
         } catch (IOException e) {
             e.printStackTrace();
+            return new ArrayList<>();
         }
     }
 }

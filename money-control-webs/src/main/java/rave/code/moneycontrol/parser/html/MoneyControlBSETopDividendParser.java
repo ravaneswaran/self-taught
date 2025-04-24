@@ -12,14 +12,14 @@ import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoneyControlBSETopDividendParser extends HTMLSourceParser {
+public class MoneyControlBSETopDividendParser extends HTMLSourceParser<MoneyControlDividendModel> {
 
     public MoneyControlBSETopDividendParser() {
         super("https://www.moneycontrol.com/stocks/marketstats/bsetopdiv/");
     }
 
     @Override
-    public void parse() {
+    public List<MoneyControlDividendModel> parse() {
         try {
             Document doc = Jsoup.connect(this.getSourceUrl()).get();
             Element table = doc.select("table").get(1);
@@ -51,10 +51,12 @@ public class MoneyControlBSETopDividendParser extends HTMLSourceParser {
                     //do nothing
                 }
             }
+            return moneyControlDividendModels;
         } catch (SocketTimeoutException e) {
-            this.parse();
+            return this.parse();
         } catch (IOException e) {
             e.printStackTrace();
+            return new ArrayList<>();
         }
     }
 

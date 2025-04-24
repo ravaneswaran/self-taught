@@ -12,10 +12,10 @@ import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoneyControlBSEActive200Parser extends HTMLSourceParser<MoneyControlGainerModel> {
+public class MoneyControlNSENiftySmallCap100GainerParser extends HTMLSourceParser<MoneyControlGainerModel> {
 
-    public MoneyControlBSEActive200Parser() {
-        super("https://www.moneycontrol.com/stocks/marketstats/bse-gainer/bse-200_2/");
+    public MoneyControlNSENiftySmallCap100GainerParser() {
+        super("https://www.moneycontrol.com/stocks/marketstats/nse-gainer/nifty-smallcap-100_53/");
     }
 
     @Override
@@ -50,10 +50,12 @@ public class MoneyControlBSEActive200Parser extends HTMLSourceParser<MoneyContro
                     moneyControlGainerModel.setPercentageGain(percentageGain);
 
                     moneyControlGainerModels.add(moneyControlGainerModel);
+
                 }catch (IndexOutOfBoundsException e) {
                     //do nothing
                 }
             }
+            System.out.println("--------------------------->>>>>>>> "+moneyControlGainerModels.size());
             return moneyControlGainerModels;
         } catch (SocketTimeoutException e) {
             return this.parse();
@@ -64,7 +66,7 @@ public class MoneyControlBSEActive200Parser extends HTMLSourceParser<MoneyContro
     }
 
     public static void main(String[] args) {
-        MoneyControlBSEActive200Parser moneyControlBSEActive200Parser = new MoneyControlBSEActive200Parser();
-        moneyControlBSEActive200Parser.parse();
+        MoneyControlNSENiftySmallCap100GainerParser moneyControlNSENiftySmallCap100GainerParser = new MoneyControlNSENiftySmallCap100GainerParser();
+        moneyControlNSENiftySmallCap100GainerParser.parse();
     }
 }

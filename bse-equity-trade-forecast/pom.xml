@@ -51,12 +51,12 @@
       <artifactId>httpclient</artifactId>
       <version>${httpclient.version}</version>
     </dependency>
-
-    <!--<dependency>
+    <dependency>
       <groupId>rave.code</groupId>
-      <artifactId>utility/utilities</artifactId>
+      <artifactId>money-control-webs</artifactId>
       <version>1.0-SNAPSHOT</version>
-    </dependency>-->
+    </dependency>
+
    <!-- <dependency>
       <groupId>com.razorpay</groupId>
       <artifactId>razorpay-java</artifactId>

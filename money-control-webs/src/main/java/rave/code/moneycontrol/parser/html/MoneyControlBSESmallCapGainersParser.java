@@ -12,14 +12,14 @@ import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoneyControlBSESmallCapGainersParser extends HTMLSourceParser {
+public class MoneyControlBSESmallCapGainersParser extends HTMLSourceParser<MoneyControlGainerModel> {
 
     public MoneyControlBSESmallCapGainersParser() {
         super("https://www.moneycontrol.com/stocks/marketstats/bse-gainer/bse-smallcap_26/");
     }
 
     @Override
-    public void parse() {
+    public List<MoneyControlGainerModel> parse() {
         try {
             Document doc = Jsoup.connect(this.getSourceUrl()).get();
             Element table = doc.select("table").get(1);
@@ -55,11 +55,12 @@ public class MoneyControlBSESmallCapGainersParser extends HTMLSourceParser {
                     //do nothing
                 }
             }
-            System.out.println("--------------------------->>>>>>>> "+moneyControlNSETopGainerModelList.size());
+            return moneyControlNSETopGainerModelList;
         } catch (SocketTimeoutException e) {
-            this.parse();
+            return this.parse();
         } catch (IOException e) {
             e.printStackTrace();
+            return new ArrayList<>();
         }
     }
 

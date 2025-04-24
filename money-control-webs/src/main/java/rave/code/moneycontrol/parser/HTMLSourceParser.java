@@ -1,6 +1,8 @@
 package rave.code.moneycontrol.parser;
 
-public abstract class HTMLSourceParser {
+import java.util.List;
+
+public abstract class HTMLSourceParser<T> {
 
     private String sourceUrl;
 
@@ -8,7 +10,11 @@ public abstract class HTMLSourceParser {
         this.sourceUrl = sourceUrl;
     }
 
-    public abstract void parse();
+    public abstract List<T> parse();
+
+    public T get(int index){
+        return this.parse().get(index);
+    }
 
     public String getSourceUrl(){
         return this.sourceUrl;
