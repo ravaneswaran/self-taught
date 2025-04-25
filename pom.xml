@@ -17,7 +17,8 @@
         <module>software-testing-quick-start-guide</module>
         <module>money-control-webs</module>
         <module>nse-trade-forecast-web-platform</module>
-        <module>bse-trade-forcast-web-platform</module>
+        <module>rave.code.bse-trade-forcast-web-platform</module>
+        <module>rave.code.bse-trade-forecast-web-platform</module>
     </modules>
 
 </project>
