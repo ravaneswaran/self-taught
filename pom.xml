@@ -17,6 +17,8 @@
         <module>software-testing-quick-start-guide</module>
         <module>bse-equity-trade-forecast</module>
         <module>money-control-webs</module>
+        <module>nse-trade-forecast-web-platform</module>
+        <module>bse-trade-forcast-web-platform</module>
     </modules>
 
 </project>
