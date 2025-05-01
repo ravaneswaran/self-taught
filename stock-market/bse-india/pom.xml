@@ -11,7 +11,7 @@
   <name>bse-india</name>
 
   <modules>
-    <module>moneycontrol-website-bse-data</module>
+      <module>moneycontrol-website-bse-data-parser</module>
   </modules>
 
 </project>
