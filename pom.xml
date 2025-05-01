@@ -18,6 +18,7 @@
         <module>money-control-webs</module>
         <module>nse-trade-forecast-web-platform</module>
         <module>bse-trade-forecast-web-platform</module>
+        <module>stock-market</module>
     </modules>
 
 </project>
