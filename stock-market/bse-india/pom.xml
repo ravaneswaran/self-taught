@@ -6,9 +6,9 @@
   <packaging>pom</packaging>
   <groupId>rave.code</groupId>
   <artifactId>bse-india</artifactId>
-  <version>bse-india</version>
+  <version>1.0-SNAPSHOT</version>
 
-  <name>stock-market</name>
+  <name>bse-india</name>
 
   <modules>
     <module>moneycontrol-website-bse-data</module>
