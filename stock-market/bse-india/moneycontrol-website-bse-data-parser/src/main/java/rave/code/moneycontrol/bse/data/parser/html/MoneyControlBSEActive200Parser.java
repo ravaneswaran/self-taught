@@ -5,29 +5,28 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import rave.code.moneycontrol.bse.data.parser.HTMLSourceParser;
-import rave.code.moneycontrol.website.data.model.MoneyControlGainerModel;
-
+import rave.code.moneycontrol.website.data.model.MoneyControlGenericModel;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoneyControlBSEActive200Parser extends HTMLSourceParser<MoneyControlGainerModel> {
+public class MoneyControlBSEActive200Parser extends HTMLSourceParser<MoneyControlGenericModel> {
 
     public MoneyControlBSEActive200Parser() {
         super("https://www.moneycontrol.com/stocks/marketstats/bse-gainer/bse-200_2/");
     }
 
     @Override
-    public List<MoneyControlGainerModel> parse() {
+    public List<MoneyControlGenericModel> parse() {
         try {
             Document doc = Jsoup.connect(this.getSourceUrl()).get();
             Element table = doc.select("table").get(1);
             Element tableBody = table.select("tbody").get(0);
             Elements tableRows = tableBody.select("tr");
 
-            List<MoneyControlGainerModel> moneyControlGainerModels = new ArrayList<MoneyControlGainerModel>();
+            List<MoneyControlGenericModel> moneyControlGainerModels = new ArrayList<MoneyControlGenericModel>();
 
             for (Element tr : tableRows) {
                 try {
@@ -41,7 +40,7 @@ public class MoneyControlBSEActive200Parser extends HTMLSourceParser<MoneyContro
                     String change = tableData.get(5).text();
                     String percentageGain = tableData.get(6).text();
 
-                    MoneyControlGainerModel moneyControlGainerModel = new MoneyControlGainerModel();
+                    MoneyControlGenericModel moneyControlGainerModel = new MoneyControlGenericModel();
                     moneyControlGainerModel.setCompanyName(companyName);
                     moneyControlGainerModel.setHigh(high);
                     moneyControlGainerModel.setLow(low);

@@ -12,6 +12,7 @@
 
   <modules>
       <module>moneycontrol-website-bse-data-parser</module>
+      <module>db-tables-4-moneycontrol-bse-data</module>
   </modules>
 
 </project>

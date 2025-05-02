@@ -1,6 +1,6 @@
 package rave.code.moneycontrol.website.data.model;
 
-public class MoneyControlGainerModel{
+public class MoneyControlGenericModel {
 
     private String companyName;
     private String high;
