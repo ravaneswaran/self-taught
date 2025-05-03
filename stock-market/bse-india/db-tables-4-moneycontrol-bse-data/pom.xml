@@ -64,8 +64,9 @@
                     <artifactId>liquibase-maven-plugin</artifactId>
                     <version>4.31.1</version>
                     <configuration>
-                        <changeLogFile>changelog.sql</changeLogFile>
-                        <url>jdbc:mysql://localhost/stock_market</url>
+                        <propertyFile>src/main/resources/liquibase/liquibase.properties</propertyFile>
+                        <changeLogFile>src/main/resources/liquibase/changelogs/master-changelog.xml</changeLogFile>
+                        <url>jdbc:mysql://localhost:3306/stock_market</url>
                         <username>admin</username>
                         <password>admin</password>
                     </configuration>
