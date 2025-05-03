@@ -11,4 +11,23 @@
         http://www.liquibase.org/xml/ns/pro
         http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
+    <changeSet id="001" author="Ravaneswaran Chinnasamy">
+        <createTable tableName="moneycontrol_bse_active_100">
+            <column name="id" type="varchar2(100)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="company_name" type="varchar2(100)"/>
+            <column name="high" type="varchar2(100)"/>
+            <column name="low" type="varchar2(100)"/>
+            <column name="last_price" type="varchar2(100)"/>
+            <column name="previous_close" type="varchar2(100)"/>
+            <column name="change" type="varchar2(100)"/>
+            <column name="percentage_gain" type="varchar2(100)"/>
+            <column name="created_date" type="datetime"/>
+            <column name="modified_date" type="datetime"/>
+            <column name="created_by" type="varchar2(100)"/>
+            <column name="modified_by" type="varchar2(100)"/>
+        </createTable>
+    </changeSet>
+
 </databaseChangeLog>
