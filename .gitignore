@@ -21,3 +21,7 @@ stock-market/bse-india/moneycontrol-website-bse-data-parser/target/
 stock-market/moneycontrol-website-data-models/target/
 utilities/.mvn/
 utilities/target/
+stock-market/bse-india/db-tables-4-moneycontrol-bse-data/target/
+stock-market/stock-market-data-access/target/
+
+

@@ -13,6 +13,7 @@
     <modules>
         <module>bse-india</module>
         <module>moneycontrol-website-data-models</module>
+        <module>stock-market-data-access</module>
     </modules>
 
 </project>
