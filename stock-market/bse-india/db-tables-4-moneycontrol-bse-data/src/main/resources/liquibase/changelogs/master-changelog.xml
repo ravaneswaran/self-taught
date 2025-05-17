@@ -14,5 +14,6 @@
     <include relativeToChangelogFile="true" file="moneycontrol-bse-active-100-changelog.xml"/>
     <include relativeToChangelogFile="true" file="moneycontrol-bse-active-100-temp-changelog.xml"/>
     <include relativeToChangelogFile="true" file="moneycontrol-bse-active-200-changelog.xml"/>
+    <include relativeToChangelogFile="true" file="moneycontrol-bse-active-500-changelog.xml"/>
 
 </databaseChangeLog>
