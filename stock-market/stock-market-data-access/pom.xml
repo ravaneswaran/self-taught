@@ -22,6 +22,7 @@
         <eclipselink.version>2.7.7</eclipselink.version>
         <hibernate-entitymanager.version>5.4.4.Final</hibernate-entitymanager.version>
         <lombok.version>1.18.20</lombok.version>
+        <junit.version>3.8.1</junit.version>
     </properties>
 
     <dependencyManagement>
@@ -37,15 +38,22 @@
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
+        <!--<dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- Optionally: parameterized tests support -->
+        &lt;!&ndash; Optionally: parameterized tests support &ndash;&gt;
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
+            <scope>test</scope>
+        </dependency>-->
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -64,10 +72,22 @@
             <artifactId>javax.persistence</artifactId>
             <version>${javax.persistence.version}</version>
         </dependency>
-        <dependency>
+       <!-- <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>eclipselink</artifactId>
             <version>${eclipselink.version}</version>
+        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/org.eclipse.persistence/eclipselink -->
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>eclipselink</artifactId>
+            <version>4.0.6</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>

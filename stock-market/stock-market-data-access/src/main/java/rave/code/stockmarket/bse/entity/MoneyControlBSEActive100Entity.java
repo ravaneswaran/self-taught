@@ -1,56 +1,62 @@
 package rave.code.stockmarket.bse.entity;
 
 import lombok.Data;
+import rave.code.stockmarket.AbstractEntity;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
+import java.util.UUID;
 
 @XmlRootElement(name = "money-control-bse-active-100")
 @Entity
 @Data
 @Table(name = "moneycontrol_bse_active_100")
-public class MoneyControlBSEActive100Entity {
+public class MoneyControlBSEActive100Entity extends AbstractEntity {
 
     @Id
-    @XmlElement(name = "id")
-    private String id;
+    @Column(name = "id")
+    protected String id;
 
-    @XmlElement(name = "companyname")
+    @Column(name = "company_name")
     private String companyName;
 
-    @XmlElement(name = "high")
+    @Column(name = "high")
     private String high;
 
-    @XmlElement(name = "low")
+    @Column(name = "low")
     private String low;
 
-    @XmlElement(name = "lastprice")
+    @Column(name = "last_price")
     private String lastPrice;
 
-    @XmlElement(name = "previousclose")
+    @Column(name = "previous_close")
     private String previousClose;
 
-    @XmlElement(name = "change")
-    private String change;
+    @Column(name = "variation")
+    private String variation;
 
-    @XmlElement(name = "percentagegain")
+    @Column(name = "percentage_gain")
     private String percentageGain;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @XmlElement(name = "createddate")
-    private Date createdDate;
+    @Column(name = "created_date")
+    protected Date createdDate;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @XmlElement(name = "modifieddate")
-    private Date modifiedDate;
+    @Column(name = "modified_date")
+    protected Date modifiedDate;
 
-    @XmlElement(name = "createdby")
-    private String createdBy;
+    @Column(name = "created_by")
+    protected String createdBy;
 
-    @XmlElement(name = "modifiedby")
-    private String modifiedBy;
+    @Column(name = "modified_by")
+    protected String modifiedBy;
+
+    public MoneyControlBSEActive100Entity(){
+        super();
+        this.setId(UUID.randomUUID().toString());
+    }
 
     public String getId() {
         return id;
@@ -100,12 +106,12 @@ public class MoneyControlBSEActive100Entity {
         this.previousClose = previousClose;
     }
 
-    public String getChange() {
-        return change;
+    public String getVariation() {
+        return variation;
     }
 
-    public void setChange(String change) {
-        this.change = change;
+    public void setVariation(String variation) {
+        this.variation = variation;
     }
 
     public String getPercentageGain() {
@@ -147,4 +153,5 @@ public class MoneyControlBSEActive100Entity {
     public void setModifiedBy(String modifiedBy) {
         this.modifiedBy = modifiedBy;
     }
+
 }

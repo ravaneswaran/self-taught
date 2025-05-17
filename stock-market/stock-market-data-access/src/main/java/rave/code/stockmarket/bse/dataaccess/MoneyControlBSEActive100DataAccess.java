@@ -8,5 +8,4 @@ public class MoneyControlBSEActive100DataAccess extends AbstractDataAccess<Money
     public MoneyControlBSEActive100DataAccess(Class<MoneyControlBSEActive100Entity> type) {
         super(type);
     }
-
 }

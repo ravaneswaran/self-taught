@@ -12,5 +12,6 @@
         http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
     <include relativeToChangelogFile="true" file="moneycontrol-bse-active-100-changelog.xml"/>
+    <include relativeToChangelogFile="true" file="moneycontrol-bse-active-100-temp-changelog.xml"/>
 
 </databaseChangeLog>

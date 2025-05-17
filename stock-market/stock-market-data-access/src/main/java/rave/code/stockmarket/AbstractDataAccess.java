@@ -32,7 +32,7 @@ public class AbstractDataAccess<T> {
         return this.entityManager;
     }
 
-    protected void closeEnityManager() {
+    protected void closeEntityManager() {
         if (null != this.entityManager && this.entityManager.isOpen()) {
             this.entityManager.close();
         }
