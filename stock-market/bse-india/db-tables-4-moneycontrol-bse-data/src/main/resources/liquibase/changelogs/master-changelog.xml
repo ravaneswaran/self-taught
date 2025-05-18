@@ -16,5 +16,6 @@
     <include relativeToChangelogFile="true" file="moneycontrol-bse-active-200-changelog.xml"/>
     <include relativeToChangelogFile="true" file="moneycontrol-bse-active-500-changelog.xml"/>
     <include relativeToChangelogFile="true" file="moneycontrol-bse-top-dividend-changelog.xml"/>
+    <include relativeToChangelogFile="true" file="moneycontrol-bse-small-cap-gainer-changelog.xml"/>
 
 </databaseChangeLog>
