@@ -13,10 +13,10 @@ public class TestMoneyControlBSEActive200DataAccess extends TestCase {
         moneyControlBSEActive200Entity.setCompanyName("test-company");
         moneyControlBSEActive200Entity.setHigh("some-high");
         moneyControlBSEActive200Entity.setLow("some-low");
-        moneyControlBSEActive200Entity.setVariation("some-change");
+        moneyControlBSEActive200Entity.setCategory("some-category");
         moneyControlBSEActive200Entity.setLastPrice("some-price");
-        moneyControlBSEActive200Entity.setPercentageGain("some-percentage-gain");
-        moneyControlBSEActive200Entity.setPreviousClose("some-previous-close");
+        moneyControlBSEActive200Entity.setPercentageChange("some-percentage-change");
+        moneyControlBSEActive200Entity.setValueInCrores("some-value-in-crores");
         Date toDate = new Date();
         moneyControlBSEActive200Entity.setCreatedDate(toDate);
         moneyControlBSEActive200Entity.setModifiedDate(toDate);
@@ -26,12 +26,12 @@ public class TestMoneyControlBSEActive200DataAccess extends TestCase {
         MoneyControlBSEActive200DataAccess moneyControlBSEActive200DataAccess = new MoneyControlBSEActive200DataAccess(MoneyControlBSEActive200Entity.class);
 
         System.out.println("------------------------>>>>>>> "+moneyControlBSEActive200Entity.getId());
-        System.out.println("------------------------>>>>>>> "+moneyControlBSEActive200Entity.getVariation());
         System.out.println("------------------------>>>>>>> "+moneyControlBSEActive200Entity.getCompanyName());
+        System.out.println("------------------------>>>>>>> "+moneyControlBSEActive200Entity.getCategory());
         System.out.println("------------------------>>>>>>> "+moneyControlBSEActive200Entity.getHigh());
         System.out.println("------------------------>>>>>>> "+moneyControlBSEActive200Entity.getLastPrice());
-        System.out.println("------------------------>>>>>>> "+moneyControlBSEActive200Entity.getPercentageGain());
-        System.out.println("------------------------>>>>>>> "+moneyControlBSEActive200Entity.getPreviousClose());
+        System.out.println("------------------------>>>>>>> "+moneyControlBSEActive200Entity.getPercentageChange());
+        System.out.println("------------------------>>>>>>> "+moneyControlBSEActive200Entity.getValueInCrores());
         System.out.println("------------------------>>>>>>> "+moneyControlBSEActive200Entity.getLow());
         System.out.println("------------------------>>>>>>> "+moneyControlBSEActive200Entity.getCreatedDate());
         System.out.println("------------------------>>>>>>> "+moneyControlBSEActive200Entity.getCreatedBy());

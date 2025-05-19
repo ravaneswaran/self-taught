@@ -5,14 +5,14 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import rave.code.moneycontrol.bse.data.parser.HTMLSourceParser;
-import rave.code.moneycontrol.website.data.model.MoneyControlBSEActive100Model;
+import rave.code.moneycontrol.website.data.model.MoneyControlGenericBSEActiveModel;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoneyControlBSEActive100Parser extends HTMLSourceParser<MoneyControlBSEActive100Model> {
+public class MoneyControlBSEActive100Parser extends HTMLSourceParser<MoneyControlGenericBSEActiveModel> {
 
     public MoneyControlBSEActive100Parser() {
         //https://www.moneycontrol.com/stocks/marketstats/bse-gainer/bse-100_1/
@@ -20,14 +20,14 @@ public class MoneyControlBSEActive100Parser extends HTMLSourceParser<MoneyContro
     }
 
     @Override
-    public List<MoneyControlBSEActive100Model> parse() {
+    public List<MoneyControlGenericBSEActiveModel> parse() {
         try {
             Document doc = Jsoup.connect(this.getSourceUrl()).get();
             Element table = doc.select("table").get(1);
             Element tableBody = table.select("tbody").get(0);
             Elements tableRows = tableBody.select("tr");
 
-            List<MoneyControlBSEActive100Model> moneyControlBSEActive100Models = new ArrayList<>();
+            List<MoneyControlGenericBSEActiveModel> moneyControlBSEActive100Models = new ArrayList<>();
 
             for (Element tr : tableRows) {
                 try {
@@ -42,7 +42,7 @@ public class MoneyControlBSEActive100Parser extends HTMLSourceParser<MoneyContro
                     String percentageChange = tableData.get(5).text();
                     String valueInCrores = tableData.get(6).text();
 
-                    MoneyControlBSEActive100Model moneyControlBSEActive100Model = new MoneyControlBSEActive100Model();
+                    MoneyControlGenericBSEActiveModel moneyControlBSEActive100Model = new MoneyControlGenericBSEActiveModel();
                     moneyControlBSEActive100Model.setCompanyName(companyName);
                     moneyControlBSEActive100Model.setGroup(group);
                     moneyControlBSEActive100Model.setHigh(high);

@@ -16,10 +16,13 @@ public class MoneyControlBSEActive200Entity extends AbstractEntity {
 
     @Id
     @Column(name = "id")
-    protected String id;
+    private String id;
 
     @Column(name = "company_name")
     private String companyName;
+
+    @Column(name = "category")
+    private String category;
 
     @Column(name = "high")
     private String high;
@@ -30,14 +33,11 @@ public class MoneyControlBSEActive200Entity extends AbstractEntity {
     @Column(name = "last_price")
     private String lastPrice;
 
-    @Column(name = "previous_close")
-    private String previousClose;
+    @Column(name = "percentage_change")
+    private String percentageChange;
 
-    @Column(name = "variation")
-    private String variation;
-
-    @Column(name = "percentage_gain")
-    private String percentageGain;
+    @Column(name = "value_in_crores")
+    private String valueInCrores;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_date")
@@ -53,7 +53,7 @@ public class MoneyControlBSEActive200Entity extends AbstractEntity {
     @Column(name = "modified_by")
     protected String modifiedBy;
 
-    public MoneyControlBSEActive200Entity(){
+    public MoneyControlBSEActive200Entity() {
         super();
         this.setId(UUID.randomUUID().toString());
     }
@@ -98,28 +98,28 @@ public class MoneyControlBSEActive200Entity extends AbstractEntity {
         this.lastPrice = lastPrice;
     }
 
-    public String getPreviousClose() {
-        return previousClose;
+    public String getCategory() {
+        return category;
     }
 
-    public void setPreviousClose(String previousClose) {
-        this.previousClose = previousClose;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public String getVariation() {
-        return variation;
+    public String getPercentageChange() {
+        return percentageChange;
     }
 
-    public void setVariation(String variation) {
-        this.variation = variation;
+    public void setPercentageChange(String percentageChange) {
+        this.percentageChange = percentageChange;
     }
 
-    public String getPercentageGain() {
-        return percentageGain;
+    public String getValueInCrores() {
+        return valueInCrores;
     }
 
-    public void setPercentageGain(String percentageGain) {
-        this.percentageGain = percentageGain;
+    public void setValueInCrores(String valueInCrores) {
+        this.valueInCrores = valueInCrores;
     }
 
     public Date getCreatedDate() {

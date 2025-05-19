@@ -4,7 +4,7 @@ import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import rave.code.moneycontrol.bse.data.parser.html.MoneyControlBSEActive100Parser;
-import rave.code.moneycontrol.website.data.model.MoneyControlBSEActive100Model;
+import rave.code.moneycontrol.website.data.model.MoneyControlGenericBSEActiveModel;
 import rave.code.stockmarket.bse.dataaccess.MoneyControlBSEActive100DataAccess;
 import rave.code.stockmarket.bse.entity.MoneyControlBSEActive100Entity;
 
@@ -22,9 +22,9 @@ public class MoneyControlBSEActive100Job implements Job {
         NumberFormat format = NumberFormat.getInstance();
         MoneyControlBSEActive100Parser moneyControlBSEActive100Parser = new MoneyControlBSEActive100Parser();
         MoneyControlBSEActive100DataAccess moneyControlBSEActive100DataAccess = new MoneyControlBSEActive100DataAccess(MoneyControlBSEActive100Entity.class);
-        List<MoneyControlBSEActive100Model> moneyControlBSEActive100Models = moneyControlBSEActive100Parser.parse();
+        List<MoneyControlGenericBSEActiveModel> moneyControlBSEActive100Models = moneyControlBSEActive100Parser.parse();
 
-        for (MoneyControlBSEActive100Model moneyControlBSEActive100Model  : moneyControlBSEActive100Models){
+        for (MoneyControlGenericBSEActiveModel moneyControlBSEActive100Model  : moneyControlBSEActive100Models){
             MoneyControlBSEActive100Entity moneyControlBSEActive100Entity = new MoneyControlBSEActive100Entity();
             moneyControlBSEActive100Entity.setCompanyName(moneyControlBSEActive100Model.getCompanyName());
             moneyControlBSEActive100Entity.setCategory(moneyControlBSEActive100Model.getGroup());
