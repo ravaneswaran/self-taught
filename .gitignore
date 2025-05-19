@@ -23,5 +23,9 @@ utilities/.mvn/
 utilities/target/
 stock-market/bse-india/db-tables-4-moneycontrol-bse-data/target/
 stock-market/stock-market-data-access/target/
+stock-market/bse-india/bse-quartz-schedulers/src/test/
+stock-market/bse-india/bse-quartz-schedulers/target/
+
+
 
 

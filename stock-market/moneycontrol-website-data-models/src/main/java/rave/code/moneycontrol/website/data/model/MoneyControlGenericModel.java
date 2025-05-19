@@ -2,10 +2,10 @@ package rave.code.moneycontrol.website.data.model;
 
 public class MoneyControlGenericModel {
 
-    private String companyName;
-    private String high;
-    private String low;
-    private String lastPrice;
+    protected String companyName;
+    protected String high;
+    protected String low;
+    protected String lastPrice;
     private String previousClose;
     private String change;
     private String percentageGain;

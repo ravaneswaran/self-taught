@@ -17,12 +17,12 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="company_name" type="varchar2(100)"/>
+            <column name="category" type="varchar2(100)"/>
             <column name="high" type="varchar2(100)"/>
             <column name="low" type="varchar2(100)"/>
             <column name="last_price" type="varchar2(100)"/>
-            <column name="previous_close" type="varchar2(100)"/>
-            <column name="variation" type="varchar2(100)"/>
-            <column name="percentage_gain" type="varchar2(100)"/>
+            <column name="percentage_change" type="varchar2(100)"/>
+            <column name="value_in_crores" type="varchar2(100)"/>
             <column name="created_date" type="datetime"/>
             <column name="modified_date" type="datetime"/>
             <column name="created_by" type="varchar2(100)"/>
