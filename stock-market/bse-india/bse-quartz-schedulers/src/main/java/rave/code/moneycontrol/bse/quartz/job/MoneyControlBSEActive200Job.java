@@ -75,6 +75,15 @@ public class MoneyControlBSEActive200Job implements Job {
                 moneyControlBSEActive200Entity.setValueInCrores(String.valueOf(doubleValueInCrores));
             }
 
+            moneyControlBSEActive200Entity.setAverageVolume5Days(moneyControlBSEActive200Model.getAverageVolume5Days());
+            moneyControlBSEActive200Entity.setAverageVolume10Days(moneyControlBSEActive200Model.getAverageVolume10Days());
+            moneyControlBSEActive200Entity.setAverageVolume30Days(moneyControlBSEActive200Model.getAverageVolume30Days());
+            moneyControlBSEActive200Entity.setPriceToEarningRatio(moneyControlBSEActive200Model.getPriceToEarningRatio());
+            moneyControlBSEActive200Entity.setPriceToBookRatio(moneyControlBSEActive200Model.getPriceToBookRatio());
+            moneyControlBSEActive200Entity.setUpperCircuit(moneyControlBSEActive200Model.getUpperCircuit());
+            moneyControlBSEActive200Entity.setLowerCircuit(moneyControlBSEActive200Model.getLowerCircuit());
+            moneyControlBSEActive200Entity.setVmap(moneyControlBSEActive200Model.getVmap());
+
             Date toDate = new Date();
             moneyControlBSEActive200Entity.setCreatedDate(toDate);
             moneyControlBSEActive200Entity.setModifiedDate(toDate);

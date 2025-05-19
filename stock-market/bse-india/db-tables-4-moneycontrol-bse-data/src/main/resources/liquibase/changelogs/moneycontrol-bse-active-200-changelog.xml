@@ -23,6 +23,16 @@
             <column name="last_price" type="varchar2(100)"/>
             <column name="percentage_change" type="varchar2(100)"/>
             <column name="value_in_crores" type="varchar2(100)"/>
+
+            <column name="average_volume_5d" type="varchar2(100)"/>
+            <column name="average_volume_10d" type="varchar2(100)"/>
+            <column name="average_volume_30d" type="varchar2(100)"/>
+            <column name="price_to_earning_ratio" type="varchar2(100)"/>
+            <column name="price_to_book_ratio" type="varchar2(100)"/>
+            <column name="upper_circuit" type="varchar2(100)"/>
+            <column name="lower_circuit" type="varchar2(100)"/>
+            <column name="vmap" type="varchar2(100)"/>
+
             <column name="created_date" type="datetime"/>
             <column name="modified_date" type="datetime"/>
             <column name="created_by" type="varchar2(100)"/>

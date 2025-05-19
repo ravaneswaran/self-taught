@@ -39,6 +39,30 @@ public class MoneyControlBSEActive200Entity extends AbstractEntity {
     @Column(name = "value_in_crores")
     private String valueInCrores;
 
+    @Column(name = "average_volume_5d")
+    private String averageVolume5Days;
+
+    @Column(name = "average_volume_10d")
+    private String averageVolume10Days;
+
+    @Column(name = "average_volume_30d")
+    private String averageVolume30Days;
+
+    @Column(name = "price_to_earning_ratio")
+    private String priceToEarningRatio;
+
+    @Column(name = "price_to_book_ratio")
+    private String priceToBookRatio;
+
+    @Column(name = "upper_circuit")
+    private String upperCircuit;
+
+    @Column(name = "lower_circuit")
+    private String lowerCircuit;
+
+    @Column(name = "vmap")
+    private String vmap;
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_date")
     protected Date createdDate;
@@ -120,6 +144,70 @@ public class MoneyControlBSEActive200Entity extends AbstractEntity {
 
     public void setValueInCrores(String valueInCrores) {
         this.valueInCrores = valueInCrores;
+    }
+
+    public String getAverageVolume5Days() {
+        return averageVolume5Days;
+    }
+
+    public void setAverageVolume5Days(String averageVolume5Days) {
+        this.averageVolume5Days = averageVolume5Days;
+    }
+
+    public String getAverageVolume10Days() {
+        return averageVolume10Days;
+    }
+
+    public void setAverageVolume10Days(String averageVolume10Days) {
+        this.averageVolume10Days = averageVolume10Days;
+    }
+
+    public String getAverageVolume30Days() {
+        return averageVolume30Days;
+    }
+
+    public void setAverageVolume30Days(String averageVolume30Days) {
+        this.averageVolume30Days = averageVolume30Days;
+    }
+
+    public String getPriceToEarningRatio() {
+        return priceToEarningRatio;
+    }
+
+    public void setPriceToEarningRatio(String priceToEarningRatio) {
+        this.priceToEarningRatio = priceToEarningRatio;
+    }
+
+    public String getPriceToBookRatio() {
+        return priceToBookRatio;
+    }
+
+    public void setPriceToBookRatio(String priceToBookRatio) {
+        this.priceToBookRatio = priceToBookRatio;
+    }
+
+    public String getUpperCircuit() {
+        return upperCircuit;
+    }
+
+    public void setUpperCircuit(String upperCircuit) {
+        this.upperCircuit = upperCircuit;
+    }
+
+    public String getLowerCircuit() {
+        return lowerCircuit;
+    }
+
+    public void setLowerCircuit(String lowerCircuit) {
+        this.lowerCircuit = lowerCircuit;
+    }
+
+    public String getVmap() {
+        return vmap;
+    }
+
+    public void setVmap(String vmap) {
+        this.vmap = vmap;
     }
 
     public Date getCreatedDate() {

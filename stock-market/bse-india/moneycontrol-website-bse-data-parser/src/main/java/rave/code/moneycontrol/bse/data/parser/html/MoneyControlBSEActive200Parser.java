@@ -33,6 +33,12 @@ public class MoneyControlBSEActive200Parser extends HTMLSourceParser<MoneyContro
             for (Element tr : tableRows) {
                 try {
                     Elements tableData = tr.select("td");
+
+                    /*for(int i=0; i <= 25; i++) {
+                        String element = tableData.get(i).toString();
+                        System.out.println(i + " ================>>>>>>> " + element);
+                    }*/
+
                     Element companyNameElement = tableData.get(0).select("a").get(0);
 
                     String companyName = companyNameElement.text();
@@ -43,6 +49,22 @@ public class MoneyControlBSEActive200Parser extends HTMLSourceParser<MoneyContro
                     String percentageChange = tableData.get(5).text();
                     String valueInCrores = tableData.get(6).text();
 
+                    Element averageVolumeTable = tableData.get(7).select("table").get(0);
+                    Element averageVolumeTableBody = averageVolumeTable.select("tbody").get(0);
+
+                    Element averageVolume5DaysTableRow = averageVolumeTableBody.select("tr").get(0);
+                    Element averageVolume10DaysTableRow = averageVolumeTableBody.select("tr").get(1);
+                    Element averageVolume30DaysTableRow = averageVolumeTableBody.select("tr").get(2);
+
+                    String averageVolume5Days = averageVolume5DaysTableRow.select("td").get(1).select("strong").get(0).text();
+                    String averageVolume10Days = averageVolume10DaysTableRow.select("td").get(1).select("strong").get(0).text();
+                    String averageVolume30Days = averageVolume30DaysTableRow.select("td").get(1).select("strong").get(0).text();
+                    String priceToEarningRatio = tableData.get(18).text();
+                    String priceToBookRatio = tableData.get(19).text();
+                    String upperCircuit = tableData.get(22).text();
+                    String lowerCircuit = tableData.get(23).text();
+                    String vmap = tableData.get(24).text();
+
                     MoneyControlGenericBSEActiveModel moneyControlBSEActive200Model = new MoneyControlGenericBSEActiveModel();
                     moneyControlBSEActive200Model.setCompanyName(companyName);
                     moneyControlBSEActive200Model.setGroup(group);
@@ -51,11 +73,20 @@ public class MoneyControlBSEActive200Parser extends HTMLSourceParser<MoneyContro
                     moneyControlBSEActive200Model.setLastPrice(lastPrice);
                     moneyControlBSEActive200Model.setPercentageChange(percentageChange);
                     moneyControlBSEActive200Model.setValueInCrores(valueInCrores);
+                    moneyControlBSEActive200Model.setAverageVolume5Days(averageVolume5Days);
+                    moneyControlBSEActive200Model.setAverageVolume10Days(averageVolume10Days);
+                    moneyControlBSEActive200Model.setAverageVolume30Days(averageVolume30Days);
+                    moneyControlBSEActive200Model.setPriceToEarningRatio(priceToEarningRatio);
+                    moneyControlBSEActive200Model.setPriceToBookRatio(priceToBookRatio);
+                    moneyControlBSEActive200Model.setUpperCircuit(upperCircuit);
+                    moneyControlBSEActive200Model.setLowerCircuit(lowerCircuit);
+                    moneyControlBSEActive200Model.setVmap(vmap);
 
                     moneyControlBSEActive200Models.add(moneyControlBSEActive200Model);
                 }catch (IndexOutOfBoundsException e) {
                     //do nothing
                 }
+                System.out.println("----------------------------------------");
             }
             return moneyControlBSEActive200Models;
         } catch (SocketTimeoutException e) {
