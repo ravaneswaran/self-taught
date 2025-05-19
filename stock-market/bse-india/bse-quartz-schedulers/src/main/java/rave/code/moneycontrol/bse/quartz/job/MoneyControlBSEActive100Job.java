@@ -19,18 +19,13 @@ public class MoneyControlBSEActive100Job implements Job {
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         System.out.println("MoneyControlBSEActive100Job in Action.....");
 
+        NumberFormat format = NumberFormat.getInstance();
         MoneyControlBSEActive100Parser moneyControlBSEActive100Parser = new MoneyControlBSEActive100Parser();
         MoneyControlBSEActive100DataAccess moneyControlBSEActive100DataAccess = new MoneyControlBSEActive100DataAccess(MoneyControlBSEActive100Entity.class);
         List<MoneyControlBSEActive100Model> moneyControlBSEActive100Models = moneyControlBSEActive100Parser.parse();
 
-        NumberFormat format = NumberFormat.getInstance();
-
-
-
         for (MoneyControlBSEActive100Model moneyControlBSEActive100Model  : moneyControlBSEActive100Models){
-
             MoneyControlBSEActive100Entity moneyControlBSEActive100Entity = new MoneyControlBSEActive100Entity();
-
             moneyControlBSEActive100Entity.setCompanyName(moneyControlBSEActive100Model.getCompanyName());
             moneyControlBSEActive100Entity.setCategory(moneyControlBSEActive100Model.getGroup());
             Number value = null;
