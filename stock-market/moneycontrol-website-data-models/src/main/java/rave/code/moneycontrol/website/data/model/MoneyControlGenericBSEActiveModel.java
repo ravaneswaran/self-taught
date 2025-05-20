@@ -12,7 +12,13 @@ public class MoneyControlGenericBSEActiveModel extends MoneyControlGenericModel 
     private String priceToBookRatio;
     private String upperCircuit;
     private String lowerCircuit;
-    private String vmap;
+    private String volumeWeightedAveragePrice;
+
+    private String displacedMovingAverage30D;
+    private String displacedMovingAverage50D;
+    private String displacedMovingAverage150D;
+    private String displacedMovingAverage200D;
+
 
     public String getGroup() {
         return group;
@@ -94,11 +100,43 @@ public class MoneyControlGenericBSEActiveModel extends MoneyControlGenericModel 
         this.lowerCircuit = lowerCircuit;
     }
 
-    public String getVmap() {
-        return vmap;
+    public String getVolumeWeightedAveragePrice() {
+        return volumeWeightedAveragePrice;
     }
 
-    public void setVmap(String vmap) {
-        this.vmap = vmap;
+    public void setVolumeWeightedAveragePrice(String volumeWeightedAveragePrice) {
+        this.volumeWeightedAveragePrice = volumeWeightedAveragePrice;
+    }
+
+    public String getDisplacedMovingAverage30D() {
+        return displacedMovingAverage30D;
+    }
+
+    public void setDisplacedMovingAverage30D(String displacedMovingAverage30D) {
+        this.displacedMovingAverage30D = displacedMovingAverage30D;
+    }
+
+    public String getDisplacedMovingAverage50D() {
+        return displacedMovingAverage50D;
+    }
+
+    public void setDisplacedMovingAverage50D(String displacedMovingAverage50D) {
+        this.displacedMovingAverage50D = displacedMovingAverage50D;
+    }
+
+    public String getDisplacedMovingAverage150D() {
+        return displacedMovingAverage150D;
+    }
+
+    public void setDisplacedMovingAverage150D(String displacedMovingAverage150D) {
+        this.displacedMovingAverage150D = displacedMovingAverage150D;
+    }
+
+    public String getDisplacedMovingAverage200D() {
+        return displacedMovingAverage200D;
+    }
+
+    public void setDisplacedMovingAverage200D(String displacedMovingAverage200D) {
+        this.displacedMovingAverage200D = displacedMovingAverage200D;
     }
 }

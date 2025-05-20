@@ -60,8 +60,20 @@ public class MoneyControlBSEActive200Entity extends AbstractEntity {
     @Column(name = "lower_circuit")
     private String lowerCircuit;
 
-    @Column(name = "vmap")
-    private String vmap;
+    @Column(name = "volume_weighted_average_price")
+    private String volumeWeightedAveragePrice;
+
+    @Column(name = "displaced_moving_average_30d")
+    private String displacedMovingAverage30D;
+
+    @Column(name = "displaced_moving_average_50d")
+    private String displacedMovingAverage50D;
+
+    @Column(name = "displaced_moving_average_150")
+    private String displacedMovingAverage150D;
+
+    @Column(name = "displaced_moving_average_200")
+    private String displacedMovingAverage200D;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_date")
@@ -202,12 +214,44 @@ public class MoneyControlBSEActive200Entity extends AbstractEntity {
         this.lowerCircuit = lowerCircuit;
     }
 
-    public String getVmap() {
-        return vmap;
+    public String getVolumeWeightedAveragePrice() {
+        return volumeWeightedAveragePrice;
     }
 
-    public void setVmap(String vmap) {
-        this.vmap = vmap;
+    public void setVolumeWeightedAveragePrice(String volumeWeightedAveragePrice) {
+        this.volumeWeightedAveragePrice = volumeWeightedAveragePrice;
+    }
+
+    public String getDisplacedMovingAverage30D() {
+        return displacedMovingAverage30D;
+    }
+
+    public void setDisplacedMovingAverage30D(String displacedMovingAverage30D) {
+        this.displacedMovingAverage30D = displacedMovingAverage30D;
+    }
+
+    public String getDisplacedMovingAverage50D() {
+        return displacedMovingAverage50D;
+    }
+
+    public void setDisplacedMovingAverage50D(String displacedMovingAverage50D) {
+        this.displacedMovingAverage50D = displacedMovingAverage50D;
+    }
+
+    public String getDisplacedMovingAverage150D() {
+        return displacedMovingAverage150D;
+    }
+
+    public void setDisplacedMovingAverage150D(String displacedMovingAverage150D) {
+        this.displacedMovingAverage150D = displacedMovingAverage150D;
+    }
+
+    public String getDisplacedMovingAverage200D() {
+        return displacedMovingAverage200D;
+    }
+
+    public void setDisplacedMovingAverage200D(String displacedMovingAverage200D) {
+        this.displacedMovingAverage200D = displacedMovingAverage200D;
     }
 
     public Date getCreatedDate() {
