@@ -11,8 +11,12 @@ import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MoneyControlBSEActive200Parser extends HTMLSourceParser<MoneyControlGenericBSEActiveModel> {
+
+    private static final Logger LOGGER = Logger.getLogger(MoneyControlBSEActive200Parser.class.getName());
 
     public MoneyControlBSEActive200Parser() {
         //https://www.moneycontrol.com/stocks/marketstats/bse-gainer/bse-200_2/
@@ -92,15 +96,16 @@ public class MoneyControlBSEActive200Parser extends HTMLSourceParser<MoneyContro
                     moneyControlBSEActive200Model.setDisplacedMovingAverage200D(displacedMovingAverage200Days);
 
                     moneyControlBSEActive200Models.add(moneyControlBSEActive200Model);
-                }catch (IndexOutOfBoundsException e) {
-                    //do nothing
+                }catch (IndexOutOfBoundsException indexOutOfBoundsException) {
+                    LOGGER.log(Level.SEVERE, indexOutOfBoundsException.getMessage(), indexOutOfBoundsException);
                 }
             }
             return moneyControlBSEActive200Models;
-        } catch (SocketTimeoutException e) {
+        } catch (SocketTimeoutException socketTimeoutException) {
+            LOGGER.log(Level.SEVERE, socketTimeoutException.getMessage(), socketTimeoutException);
             return this.parse();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ioException) {
+            LOGGER.log(Level.SEVERE, ioException.getMessage(), ioException);
             return new ArrayList<>();
         }
     }
