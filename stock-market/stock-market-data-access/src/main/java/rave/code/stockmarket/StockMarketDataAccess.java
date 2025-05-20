@@ -4,7 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class AbstractDataAccess<T> {
+public class StockMarketDataAccess<T> {
 
     private static final String PERSISTENCE_UNIT_NAME = "stock_market";
     private static EntityManagerFactory factory;
@@ -13,7 +13,7 @@ public class AbstractDataAccess<T> {
 
     private Class<T> type;
 
-    public AbstractDataAccess(Class<T> type) {
+    public StockMarketDataAccess(Class<T> type) {
         this.type = type;
 
         factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);

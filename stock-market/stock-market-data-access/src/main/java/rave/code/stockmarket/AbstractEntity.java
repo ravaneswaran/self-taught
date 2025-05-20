@@ -1,5 +1,5 @@
 package rave.code.stockmarket;
 
-public class AbstractEntity {
+public abstract class AbstractEntity {
 
 }
