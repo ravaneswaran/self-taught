@@ -1,7 +1,5 @@
 package rave.code.moneycontrol.bse.quartz.job;
 
-import org.quartz.Job;
-import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import rave.code.moneycontrol.bse.data.parser.html.MoneyControlBSEActive100Parser;
 import rave.code.moneycontrol.website.data.model.MoneyControlGenericBSEActiveModel;
@@ -10,25 +8,30 @@ import rave.code.stockmarket.bse.entity.MoneyControlBSEActive100Entity;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MoneyControlBSEActive100Job implements Job {
+public class MoneyControlBSEActive100Job extends AbstractMoneyControlBSEJob<MoneyControlGenericBSEActiveModel, MoneyControlBSEActive100Entity> {
 
     private static final Logger LOGGER = Logger.getLogger(MoneyControlBSEActive100Job.class.getName());
 
     @Override
-    public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        LOGGER.log(Level.INFO, "***** MoneyControlBSEActive100Job in action *****");
+    public List<MoneyControlGenericBSEActiveModel> getDataFromSource() {
+        MoneyControlBSEActive100Parser moneyControlBSEActive100Parser = new MoneyControlBSEActive100Parser();
+        List<MoneyControlGenericBSEActiveModel> moneyControlBSEActive100Models = moneyControlBSEActive100Parser.parse();
+        return moneyControlBSEActive100Models;
+    }
+
+    @Override
+    public List<MoneyControlBSEActive100Entity> transformSourceData(List<MoneyControlGenericBSEActiveModel> sourceData) {
+
+        List<MoneyControlBSEActive100Entity> moneyControlBSEActive100Entities = new ArrayList<>();
 
         NumberFormat format = NumberFormat.getInstance();
-        MoneyControlBSEActive100Parser moneyControlBSEActive100Parser = new MoneyControlBSEActive100Parser();
-        MoneyControlBSEActive100DataAccess moneyControlBSEActive100DataAccess = new MoneyControlBSEActive100DataAccess(MoneyControlBSEActive100Entity.class);
-        List<MoneyControlGenericBSEActiveModel> moneyControlBSEActive100Models = moneyControlBSEActive100Parser.parse();
-
-        for (MoneyControlGenericBSEActiveModel moneyControlBSEActive100Model : moneyControlBSEActive100Models) {
+        for (MoneyControlGenericBSEActiveModel moneyControlBSEActive100Model : sourceData) {
             MoneyControlBSEActive100Entity moneyControlBSEActive100Entity = new MoneyControlBSEActive100Entity();
             moneyControlBSEActive100Entity.setCompanyName(moneyControlBSEActive100Model.getCompanyName());
             moneyControlBSEActive100Entity.setCategory(moneyControlBSEActive100Model.getGroup());
@@ -53,7 +56,7 @@ public class MoneyControlBSEActive100Job implements Job {
             try {
                 value = format.parse(moneyControlBSEActive100Model.getLastPrice());
                 moneyControlBSEActive100Entity.setLastPrice(String.valueOf(value.doubleValue()));
-            }  catch (ParseException parseException) {
+            } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
                 moneyControlBSEActive100Entity.setLastPrice(String.valueOf(0.00));
             }
@@ -61,7 +64,7 @@ public class MoneyControlBSEActive100Job implements Job {
             try {
                 value = format.parse(moneyControlBSEActive100Model.getPercentageChange());
                 moneyControlBSEActive100Entity.setPercentageChange(String.valueOf(value.doubleValue()));
-            }  catch (ParseException parseException) {
+            } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
                 moneyControlBSEActive100Entity.setPercentageChange(String.valueOf(0.00));
             }
@@ -69,7 +72,7 @@ public class MoneyControlBSEActive100Job implements Job {
             try {
                 value = format.parse(moneyControlBSEActive100Model.getValueInCrores());
                 moneyControlBSEActive100Entity.setValueInCrores(String.valueOf(value.doubleValue()));
-            }  catch (ParseException parseException) {
+            } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
                 moneyControlBSEActive100Entity.setValueInCrores(String.valueOf(0.00));
             }
@@ -77,7 +80,7 @@ public class MoneyControlBSEActive100Job implements Job {
             try {
                 value = format.parse(moneyControlBSEActive100Model.getAverageVolume5Days());
                 moneyControlBSEActive100Entity.setAverageVolume5Days(String.valueOf(value.doubleValue()));
-            }  catch (ParseException parseException) {
+            } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
                 moneyControlBSEActive100Entity.setAverageVolume5Days(String.valueOf(0.00));
             }
@@ -85,7 +88,7 @@ public class MoneyControlBSEActive100Job implements Job {
             try {
                 value = format.parse(moneyControlBSEActive100Model.getAverageVolume10Days());
                 moneyControlBSEActive100Entity.setAverageVolume10Days(String.valueOf(value.doubleValue()));
-            }  catch (ParseException parseException) {
+            } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
                 moneyControlBSEActive100Entity.setAverageVolume10Days(String.valueOf(0.00));
             }
@@ -93,7 +96,7 @@ public class MoneyControlBSEActive100Job implements Job {
             try {
                 value = format.parse(moneyControlBSEActive100Model.getAverageVolume30Days());
                 moneyControlBSEActive100Entity.setAverageVolume30Days(String.valueOf(value.doubleValue()));
-            }  catch (ParseException parseException) {
+            } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
                 moneyControlBSEActive100Entity.setAverageVolume30Days(String.valueOf(0.00));
             }
@@ -101,7 +104,7 @@ public class MoneyControlBSEActive100Job implements Job {
             try {
                 value = format.parse(moneyControlBSEActive100Model.getPriceToEarningRatio());
                 moneyControlBSEActive100Entity.setPriceToEarningRatio(String.valueOf(value.doubleValue()));
-            }  catch (ParseException parseException) {
+            } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
                 moneyControlBSEActive100Entity.setPriceToEarningRatio(String.valueOf(0.00));
             }
@@ -109,7 +112,7 @@ public class MoneyControlBSEActive100Job implements Job {
             try {
                 value = format.parse(moneyControlBSEActive100Model.getPriceToBookRatio());
                 moneyControlBSEActive100Entity.setPriceToBookRatio(String.valueOf(value.doubleValue()));
-            }  catch (ParseException parseException) {
+            } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
                 moneyControlBSEActive100Entity.setPriceToBookRatio(String.valueOf(0.00));
             }
@@ -117,7 +120,7 @@ public class MoneyControlBSEActive100Job implements Job {
             try {
                 value = format.parse(moneyControlBSEActive100Model.getUpperCircuit());
                 moneyControlBSEActive100Entity.setUpperCircuit(String.valueOf(value.doubleValue()));
-            }  catch (ParseException parseException) {
+            } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
                 moneyControlBSEActive100Entity.setUpperCircuit(String.valueOf(0.00));
             }
@@ -125,7 +128,7 @@ public class MoneyControlBSEActive100Job implements Job {
             try {
                 value = format.parse(moneyControlBSEActive100Model.getLowerCircuit());
                 moneyControlBSEActive100Entity.setLowerCircuit(String.valueOf(value.doubleValue()));
-            }  catch (ParseException parseException) {
+            } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
                 moneyControlBSEActive100Entity.setLowerCircuit(String.valueOf(0.00));
             }
@@ -133,7 +136,7 @@ public class MoneyControlBSEActive100Job implements Job {
             try {
                 value = format.parse(moneyControlBSEActive100Model.getVolumeWeightedAveragePrice());
                 moneyControlBSEActive100Entity.setVolumeWeightedAveragePrice(String.valueOf(value.doubleValue()));
-            }  catch (ParseException parseException) {
+            } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
                 moneyControlBSEActive100Entity.setVolumeWeightedAveragePrice(String.valueOf(0.00));
             }
@@ -141,7 +144,7 @@ public class MoneyControlBSEActive100Job implements Job {
             try {
                 value = format.parse(moneyControlBSEActive100Model.getDisplacedMovingAverage30D());
                 moneyControlBSEActive100Entity.setDisplacedMovingAverage30D(String.valueOf(value.doubleValue()));
-            }  catch (ParseException parseException) {
+            } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
                 moneyControlBSEActive100Entity.setDisplacedMovingAverage30D(String.valueOf(0.00));
             }
@@ -149,7 +152,7 @@ public class MoneyControlBSEActive100Job implements Job {
             try {
                 value = format.parse(moneyControlBSEActive100Model.getDisplacedMovingAverage50D());
                 moneyControlBSEActive100Entity.setDisplacedMovingAverage50D(String.valueOf(value.doubleValue()));
-            }  catch (ParseException parseException) {
+            } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
                 moneyControlBSEActive100Entity.setDisplacedMovingAverage50D(String.valueOf(0.00));
             }
@@ -157,7 +160,7 @@ public class MoneyControlBSEActive100Job implements Job {
             try {
                 value = format.parse(moneyControlBSEActive100Model.getDisplacedMovingAverage150D());
                 moneyControlBSEActive100Entity.setDisplacedMovingAverage150D(String.valueOf(value.doubleValue()));
-            }  catch (ParseException parseException) {
+            } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
                 moneyControlBSEActive100Entity.setDisplacedMovingAverage150D(String.valueOf(0.00));
             }
@@ -165,7 +168,7 @@ public class MoneyControlBSEActive100Job implements Job {
             try {
                 value = format.parse(moneyControlBSEActive100Model.getDisplacedMovingAverage200D());
                 moneyControlBSEActive100Entity.setDisplacedMovingAverage200D(String.valueOf(value.doubleValue()));
-            }  catch (ParseException parseException) {
+            } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
                 moneyControlBSEActive100Entity.setDisplacedMovingAverage200D(String.valueOf(0.00));
             }
@@ -176,6 +179,16 @@ public class MoneyControlBSEActive100Job implements Job {
             moneyControlBSEActive100Entity.setCreatedBy("SYSTEM");
             moneyControlBSEActive100Entity.setModifiedBy("SYSTEM");
 
+            moneyControlBSEActive100Entities.add(moneyControlBSEActive100Entity);
+        }
+
+        return moneyControlBSEActive100Entities;
+    }
+
+    @Override
+    public void saveTransformedData(List<MoneyControlBSEActive100Entity> transformedData) {
+        MoneyControlBSEActive100DataAccess moneyControlBSEActive100DataAccess = new MoneyControlBSEActive100DataAccess(MoneyControlBSEActive100Entity.class);
+        for (MoneyControlBSEActive100Entity moneyControlBSEActive100Entity : transformedData) {
             moneyControlBSEActive100DataAccess.save(moneyControlBSEActive100Entity);
         }
     }
