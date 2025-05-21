@@ -72,7 +72,7 @@ public class MoneyControlBSEActive200HistoryJob extends AbstractMoneyControlBSEA
     }
 
     public static void main(String[] args) throws JobExecutionException {
-        MoneyControlBSEActive200HistoryJob moneyControlBSEActive100HistoryJob = new MoneyControlBSEActive200HistoryJob();
-        moneyControlBSEActive100HistoryJob.execute(null);
+        MoneyControlBSEActive200HistoryJob moneyControlBSEActive200HistoryJob = new MoneyControlBSEActive200HistoryJob();
+        moneyControlBSEActive200HistoryJob.execute(null);
     }
 }
