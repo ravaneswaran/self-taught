@@ -44,80 +44,86 @@ public class MoneyControlBSEActiveParser extends HTMLSourceParser<MoneyControlGe
 
                 for (Element tr : tableRows) {
 
-                /*Elements tableData = tr.select("td");
-                for (int i = 0; i < tableData.size(); i++) {
-                    String element = tableData.get(i).toString();
-                    //System.out.println(i + " ================>>>>>>> " + element);
-                    Element companyNameElement = tableData.get(0).select("a").get(0);
-                    System.out.println(companyNameElement.text());
-                }*/
-
                     Elements tableData = tr.select("td");
-                    if (tableData.size() > 0) {
+
+                    /*for (int i = 0; i < tableData.size() - 1; i++) {
+                        String element = tableData.get(i).toString();
+                        System.out.println(i + " ================>>>>>>> " + element);
+                        Elements companyNameAnchorElements = tableData.get(0).select("a");
+                        String companyName = "COMPANY-NAME : SOURCE DATA ERROR";
+                        if (companyNameAnchorElements.size() > 0) {
+                            companyName = companyNameAnchorElements.get(0).text();
+                            //System.out.println(companyName);
+                        }
+                    }*/
+
+                    // the reason why we check this condition is to make sure that we have more or equal to 24 <td>s for the data to be parsed for our need.
+                    if (tableData.size() >= 24) {
                         Elements companyNameAnchorElements = tableData.get(0).select("a");
 
+                        String companyName = "COMPANY-NAME : SOURCE DATA ERROR";
                         if (companyNameAnchorElements.size() > 0) {
-                            String companyName = companyNameAnchorElements.get(0).text();
-
-                            String group = tableData.get(1).text();
-                            String high = tableData.get(2).text();
-                            String low = tableData.get(3).text();
-                            String lastPrice = tableData.get(4).text();
-                            String percentageChange = tableData.get(5).text();
-                            String valueInCrores = tableData.get(6).text();
-
-                            Elements averageVolumeTables = tableData.get(7).select("table");
-                            String averageVolume5Days = "0.00";
-                            String averageVolume10Days = "0.00";
-                            String averageVolume30Days = "0.00";
-
-                            if (averageVolumeTables.size() > 0) {
-                                Element averageVolumeTable = tableData.get(7).select("table").get(0);
-                                Element averageVolumeTableBody = averageVolumeTable.select("tbody").get(0);
-
-                                Element averageVolume5DaysTableRow = averageVolumeTableBody.select("tr").get(0);
-                                Element averageVolume10DaysTableRow = averageVolumeTableBody.select("tr").get(1);
-                                Element averageVolume30DaysTableRow = averageVolumeTableBody.select("tr").get(2);
-
-                                averageVolume5Days = averageVolume5DaysTableRow.select("td").get(1).select("strong").get(0).text();
-                                averageVolume10Days = averageVolume10DaysTableRow.select("td").get(1).select("strong").get(0).text();
-                                averageVolume30Days = averageVolume30DaysTableRow.select("td").get(1).select("strong").get(0).text();
-                            }
-
-                            String displacedMovingAverage30Days = tableData.get(14).text();
-                            String displacedMovingAverage50Days = tableData.get(15).text();
-                            String displacedMovingAverage150Days = tableData.get(16).text();
-                            String displacedMovingAverage200Days = tableData.get(17).text();
-
-                            String priceToEarningRatio = tableData.get(18).text();
-                            String priceToBookRatio = tableData.get(19).text();
-                            String upperCircuit = tableData.get(22).text();
-                            String lowerCircuit = tableData.get(23).text();
-                            String volumeWeightedAveragePrice = tableData.get(24).text();
-
-                            MoneyControlGenericBSEActiveModel moneyControlGenericBSEActiveModel = new MoneyControlGenericBSEActiveModel();
-                            moneyControlGenericBSEActiveModel.setCompanyName(companyName);
-                            moneyControlGenericBSEActiveModel.setGroup(group);
-                            moneyControlGenericBSEActiveModel.setHigh(high);
-                            moneyControlGenericBSEActiveModel.setLow(low);
-                            moneyControlGenericBSEActiveModel.setLastPrice(lastPrice);
-                            moneyControlGenericBSEActiveModel.setPercentageChange(percentageChange);
-                            moneyControlGenericBSEActiveModel.setValueInCrores(valueInCrores);
-                            moneyControlGenericBSEActiveModel.setAverageVolume5Days(averageVolume5Days);
-                            moneyControlGenericBSEActiveModel.setAverageVolume10Days(averageVolume10Days);
-                            moneyControlGenericBSEActiveModel.setAverageVolume30Days(averageVolume30Days);
-                            moneyControlGenericBSEActiveModel.setPriceToEarningRatio(priceToEarningRatio);
-                            moneyControlGenericBSEActiveModel.setPriceToBookRatio(priceToBookRatio);
-                            moneyControlGenericBSEActiveModel.setUpperCircuit(upperCircuit);
-                            moneyControlGenericBSEActiveModel.setLowerCircuit(lowerCircuit);
-                            moneyControlGenericBSEActiveModel.setVolumeWeightedAveragePrice(volumeWeightedAveragePrice);
-                            moneyControlGenericBSEActiveModel.setDisplacedMovingAverage30D(displacedMovingAverage30Days);
-                            moneyControlGenericBSEActiveModel.setDisplacedMovingAverage50D(displacedMovingAverage50Days);
-                            moneyControlGenericBSEActiveModel.setDisplacedMovingAverage150D(displacedMovingAverage150Days);
-                            moneyControlGenericBSEActiveModel.setDisplacedMovingAverage200D(displacedMovingAverage200Days);
-
-                            moneyControlBSEActiveModels.add(moneyControlGenericBSEActiveModel);
+                            companyName = companyNameAnchorElements.get(0).text();
                         }
+
+                        String group = tableData.get(1).text();
+                        String high = tableData.get(2).text();
+                        String low = tableData.get(3).text();
+                        String lastPrice = tableData.get(4).text();
+                        String percentageChange = tableData.get(5).text();
+                        String valueInCrores = tableData.get(6).text();
+
+                        Elements averageVolumeTables = tableData.get(7).select("table");
+                        String averageVolume5Days = "0.00";
+                        String averageVolume10Days = "0.00";
+                        String averageVolume30Days = "0.00";
+
+                        if (averageVolumeTables.size() > 0) {
+                            Element averageVolumeTable = tableData.get(7).select("table").get(0);
+                            Element averageVolumeTableBody = averageVolumeTable.select("tbody").get(0);
+
+                            Element averageVolume5DaysTableRow = averageVolumeTableBody.select("tr").get(0);
+                            Element averageVolume10DaysTableRow = averageVolumeTableBody.select("tr").get(1);
+                            Element averageVolume30DaysTableRow = averageVolumeTableBody.select("tr").get(2);
+
+                            averageVolume5Days = averageVolume5DaysTableRow.select("td").get(1).select("strong").get(0).text();
+                            averageVolume10Days = averageVolume10DaysTableRow.select("td").get(1).select("strong").get(0).text();
+                            averageVolume30Days = averageVolume30DaysTableRow.select("td").get(1).select("strong").get(0).text();
+                        }
+
+                        String displacedMovingAverage30Days = tableData.get(14).text();
+                        String displacedMovingAverage50Days = tableData.get(15).text();
+                        String displacedMovingAverage150Days = tableData.get(16).text();
+                        String displacedMovingAverage200Days = tableData.get(17).text();
+
+                        String priceToEarningRatio = tableData.get(18).text();
+                        String priceToBookRatio = tableData.get(19).text();
+                        String upperCircuit = tableData.get(22).text();
+                        String lowerCircuit = tableData.get(23).text();
+                        String volumeWeightedAveragePrice = tableData.get(24).text();
+
+                        MoneyControlGenericBSEActiveModel moneyControlGenericBSEActiveModel = new MoneyControlGenericBSEActiveModel();
+                        moneyControlGenericBSEActiveModel.setCompanyName(companyName);
+                        moneyControlGenericBSEActiveModel.setGroup(group);
+                        moneyControlGenericBSEActiveModel.setHigh(high);
+                        moneyControlGenericBSEActiveModel.setLow(low);
+                        moneyControlGenericBSEActiveModel.setLastPrice(lastPrice);
+                        moneyControlGenericBSEActiveModel.setPercentageChange(percentageChange);
+                        moneyControlGenericBSEActiveModel.setValueInCrores(valueInCrores);
+                        moneyControlGenericBSEActiveModel.setAverageVolume5Days(averageVolume5Days);
+                        moneyControlGenericBSEActiveModel.setAverageVolume10Days(averageVolume10Days);
+                        moneyControlGenericBSEActiveModel.setAverageVolume30Days(averageVolume30Days);
+                        moneyControlGenericBSEActiveModel.setPriceToEarningRatio(priceToEarningRatio);
+                        moneyControlGenericBSEActiveModel.setPriceToBookRatio(priceToBookRatio);
+                        moneyControlGenericBSEActiveModel.setUpperCircuit(upperCircuit);
+                        moneyControlGenericBSEActiveModel.setLowerCircuit(lowerCircuit);
+                        moneyControlGenericBSEActiveModel.setVolumeWeightedAveragePrice(volumeWeightedAveragePrice);
+                        moneyControlGenericBSEActiveModel.setDisplacedMovingAverage30D(displacedMovingAverage30Days);
+                        moneyControlGenericBSEActiveModel.setDisplacedMovingAverage50D(displacedMovingAverage50Days);
+                        moneyControlGenericBSEActiveModel.setDisplacedMovingAverage150D(displacedMovingAverage150Days);
+                        moneyControlGenericBSEActiveModel.setDisplacedMovingAverage200D(displacedMovingAverage200Days);
+
+                        moneyControlBSEActiveModels.add(moneyControlGenericBSEActiveModel);
                     }
                 }
             }

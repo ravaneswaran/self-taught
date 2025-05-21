@@ -28,8 +28,6 @@ public class MoneyControlBSEActive500Job extends AbstractMoneyControlBSEJob<Mone
     @Override
     public List<MoneyControlBSEActive500Entity> transformSourceData(List<MoneyControlGenericBSEActiveModel> sourceData) {
 
-        System.out.println("----------------------->>>>>> "+sourceData.size());
-
         List<MoneyControlBSEActive500Entity> moneyControlBSEActive500Entities = new ArrayList<>();
         NumberFormat format = NumberFormat.getInstance();
 
