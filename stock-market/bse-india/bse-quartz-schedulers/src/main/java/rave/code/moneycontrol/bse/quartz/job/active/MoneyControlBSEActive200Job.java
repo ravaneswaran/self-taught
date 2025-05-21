@@ -1,4 +1,4 @@
-package rave.code.moneycontrol.bse.quartz.job;
+package rave.code.moneycontrol.bse.quartz.job.active;
 
 import org.quartz.JobExecutionException;
 import rave.code.moneycontrol.bse.data.parser.html.MoneyControlBSEActive200Parser;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MoneyControlBSEActive200Job extends AbstractMoneyControlBSEJob<MoneyControlGenericBSEActiveModel, MoneyControlBSEActive200Entity> {
+public class MoneyControlBSEActive200Job extends AbstractMoneyControlBSEActiveJob<MoneyControlGenericBSEActiveModel, MoneyControlBSEActive200Entity> {
 
     private static final Logger LOGGER = Logger.getLogger(MoneyControlBSEActive200Job.class.getName());
 

@@ -1,4 +1,4 @@
-package rave.code.moneycontrol.bse.quartz.job;
+package rave.code.moneycontrol.bse.quartz.job.active;
 
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
@@ -6,7 +6,7 @@ import org.quartz.JobExecutionException;
 
 import java.util.List;
 
-public abstract class AbstractMoneyControlBSEJob<S, T> implements Job {
+public abstract class AbstractMoneyControlBSEActiveJob<S, T> implements Job {
 
     public abstract List<S> getDataFromSource();
 

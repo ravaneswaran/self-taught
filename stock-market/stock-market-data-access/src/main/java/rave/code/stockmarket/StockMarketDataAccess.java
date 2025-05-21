@@ -3,6 +3,8 @@ package rave.code.stockmarket;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
+import java.util.List;
 
 public class StockMarketDataAccess<T> {
 
@@ -61,5 +63,13 @@ public class StockMarketDataAccess<T> {
         this.entityManager.merge(entity);
         this.entityManager.getTransaction().commit();
         return entity;
+    }
+
+    // method introduced specially to moving the data to the history tables...
+    public List findAll(){
+        EntityManager entityManager = this.getEntityManager();
+        String queryString = "from ? entity".replace("?", type.getName());
+        Query query = entityManager.createQuery(queryString, type);
+        return query.getResultList();
     }
 }
