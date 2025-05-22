@@ -17,7 +17,6 @@
         <module>software-testing-quick-start-guide</module>
         <module>money-control-webs</module>
         <module>stock-market</module>
-        <module>stock-market-data-access</module>
     </modules>
 
 </project>

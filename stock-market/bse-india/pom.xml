@@ -14,6 +14,7 @@
       <module>moneycontrol-website-bse-data-parser</module>
       <module>db-tables-4-moneycontrol-bse-data</module>
       <module>bse-quartz-schedulers</module>
+      <module>bse-india-springboot-webapp</module>
   </modules>
 
 </project>
