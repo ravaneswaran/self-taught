@@ -32,6 +32,40 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--
+            Below dependency is included for the sake of hot deployment...including this module alone would not enable
+            hot deployment feature of spring boot...some tweaks need to be done at the IDE level too... in my case i was
+            IntelliJ. the following steps would let you enable the hot deployment feature of spring boot and enables easy
+            development...
+
+            1. adding the devtools dependency to the project
+            2. In Intellij goto
+                File->Settings-> Build-Execution-Deployment -> Compiler
+            3. Build project automatically option...by default it will be unchecked
+            4. In older version of intelliJ instead of "Build project automatically" you would be having "Make project automatically"
+            5. Restart the IDE...i,e IntelliJ
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+
+        <!-- MOdule dependencies  -->
+        <dependency>
+            <groupId>rave.code</groupId>
+            <artifactId>stock-market-data-access</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>rave.code</groupId>
+            <artifactId>bse-quartz-schedulers</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>rave.code</groupId>
+            <artifactId>moneycontrol-website-bse-data-parser</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>
