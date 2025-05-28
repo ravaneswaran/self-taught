@@ -15,11 +15,11 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MoneyControlPriceShockersParser extends HTMLSourceParser<MoneyControlPriceShockerModel> {
+public class MoneyControlBSEPriceShockersParser extends HTMLSourceParser<MoneyControlPriceShockerModel> {
 
-    private static final Logger LOGGER = Logger.getLogger(MoneyControlPriceShockersParser.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(MoneyControlBSEPriceShockersParser.class.getName());
 
-    public MoneyControlPriceShockersParser() {
+    public MoneyControlBSEPriceShockersParser() {
         //https://www.moneycontrol.com/stocks/marketstats/bse_pshockers/index.php
         super("https://www.moneycontrol.com/stocks/marketstats/bse_pshockers/index.php");
     }
@@ -127,7 +127,7 @@ public class MoneyControlPriceShockersParser extends HTMLSourceParser<MoneyContr
     }
 
     public static void main(String[] args) {
-        MoneyControlPriceShockersParser moneyControlPriceShockersParser = new MoneyControlPriceShockersParser();
+        MoneyControlBSEPriceShockersParser moneyControlPriceShockersParser = new MoneyControlBSEPriceShockersParser();
         moneyControlPriceShockersParser.parse();
     }
 }
