@@ -156,8 +156,8 @@ a:active {
 }
 
 .right-content-container-div {
-    width:1620px;
-    height:780px;
+    width:1625px;
+    height:800px;
     border:0px solid #353839;
     float:left;
     margin-left:10px;
@@ -165,11 +165,15 @@ a:active {
 }
 
 .right-content-container-header-div{
+    width:1625px;
     height: 42px;
     color: #ffffff;
+    text-indent:10px;
     background: #353839;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
+    font-size:28px;
+    font-weight:bold;
 }
 
 .right-content-container-content-holder-div{
@@ -185,15 +189,21 @@ a:active {
     border:1px solid #0BDA51;
     border-radius:6px;
     margin: 8px;
+    float:left;
 }
 
 .company-content-title-div{
     height:35px;
     background: #0BDA51;
     font-size:25px;
-    text-align:center;
+    text-indent:10px;
     font-weight:bold;
     color:#000000;
+    position: relative;
+    top: 6%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 .company-content-table-div{
@@ -208,7 +218,12 @@ a:active {
     text-align:left;
     font-weight:bold;
     color:#000000;
-    text-indent:5px;
+    text-indent:10px;
+    position: relative;
+    top: 6%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 

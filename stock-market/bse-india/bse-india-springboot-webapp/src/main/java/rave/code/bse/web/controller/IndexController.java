@@ -9,6 +9,9 @@ public class IndexController {
 
     @RequestMapping("/")
     public ModelAndView index(){
-        return new ModelAndView("index.html");
+        ModelAndView indexModelAndView = new ModelAndView();
+        indexModelAndView.setViewName("index.html");
+        return indexModelAndView;
     }
+
 }
