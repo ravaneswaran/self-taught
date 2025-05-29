@@ -1,0 +1,14 @@
+<html>
+<head>
+    <link th:replace="fragments/common/css"/>
+    <script th:replace="fragments/common/javascript" />
+</head>
+<body>
+<div class="header" th:insert="fragments/common/header"></div>
+<div class="container">
+    <div th:replace="fragments/page/active100left"></div>
+    <div th:replace="fragments/page/active100right"></div>
+</div>
+<div class="footer" th:insert="fragments/common/footer"></div>
+</body>
+</html>
