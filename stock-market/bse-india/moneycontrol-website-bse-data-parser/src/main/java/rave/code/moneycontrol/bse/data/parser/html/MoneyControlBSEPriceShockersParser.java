@@ -88,7 +88,7 @@ public class MoneyControlBSEPriceShockersParser extends HTMLSourceParser<MoneyCo
                         String priceToBookRatio = tableData.get(18).text();
                         String upperCircuit = tableData.get(21).text();
                         String lowerCircuit = tableData.get(22).text();
-                        //String volumeWeightedAveragePrice = tableData.get(24).text();
+                        String volumeWeightedAveragePrice = "NO_DATA";
 
                         MoneyControlPriceShockerModel moneyControlPriceShockerModel = new MoneyControlPriceShockerModel();
                         moneyControlPriceShockerModel.setCompanyName(companyName);
@@ -104,7 +104,7 @@ public class MoneyControlBSEPriceShockersParser extends HTMLSourceParser<MoneyCo
                         moneyControlPriceShockerModel.setPriceToBookRatio(priceToBookRatio);
                         moneyControlPriceShockerModel.setUpperCircuit(upperCircuit);
                         moneyControlPriceShockerModel.setLowerCircuit(lowerCircuit);
-                        //moneyControlPriceShockerModel.setVolumeWeightedAveragePrice(volumeWeightedAveragePrice);
+                        moneyControlPriceShockerModel.setVolumeWeightedAveragePrice(volumeWeightedAveragePrice);
                         moneyControlPriceShockerModel.setDisplacedMovingAverage30D(displacedMovingAverage30Days);
                         moneyControlPriceShockerModel.setDisplacedMovingAverage50D(displacedMovingAverage50Days);
                         moneyControlPriceShockerModel.setDisplacedMovingAverage150D(displacedMovingAverage150Days);
@@ -114,7 +114,6 @@ public class MoneyControlBSEPriceShockersParser extends HTMLSourceParser<MoneyCo
                     }
                 }
             }
-            System.out.println("====================>>>>>> "+moneyControlPriceShockerModels.size());
             return moneyControlPriceShockerModels;
         } catch (SocketTimeoutException socketTimeoutException) {
             LOGGER.log(Level.SEVERE, socketTimeoutException.getMessage(), socketTimeoutException);

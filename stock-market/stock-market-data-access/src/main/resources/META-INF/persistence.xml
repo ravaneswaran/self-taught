@@ -8,6 +8,7 @@
         <class>rave.code.stockmarket.bse.entity.MoneyControlBSEActive100HistoryEntity</class>
         <class>rave.code.stockmarket.bse.entity.MoneyControlBSEActive200Entity</class>
         <class>rave.code.stockmarket.bse.entity.MoneyControlBSEActive500Entity</class>
+        <class>rave.code.stockmarket.bse.entity.MoneyControlBSEPriceShockerEntity</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
