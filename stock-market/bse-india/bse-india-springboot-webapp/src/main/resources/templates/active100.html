@@ -4,11 +4,12 @@
     <script th:replace="fragments/common/javascript" />
 </head>
 <body>
-<div class="header" th:insert="fragments/common/header"></div>
+<!--<div class="header" th:insert="fragments/common/header"></div>-->
 <div class="container">
-    <div th:replace="fragments/page/active100left"></div>
-    <div th:replace="fragments/page/active100right"></div>
+    <div th:replace="fragments/page/active100left" />
+    <div th:replace="fragments/common/container_vertical_separator" />
+    <div th:replace="fragments/page/active100right" />
 </div>
-<div class="footer" th:insert="fragments/common/footer"></div>
+<!--<div class="footer" th:insert="fragments/common/footer"></div>-->
 </body>
 </html>

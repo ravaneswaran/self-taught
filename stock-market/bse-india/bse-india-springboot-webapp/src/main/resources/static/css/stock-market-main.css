@@ -30,11 +30,45 @@ a:active {
     border:1px solid black;
 }
 
-.container{
+.left-container{
+    width:12%;
+    height:99%;
+    border:0px solid black;
+    float:left;
+    border-radius:5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-.footer{
+.right-container{
+    width:86.7%;
+    height:99%;
+    border:0px solid black;
+    float:left;
+    border-radius:5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
+
+.container-vertical-separator{
+   width: 1%;
+   height:99%;
+   border:0px solid black;
+   float:left;
+}
+
+.container-horizontal-separator{
+   width: 99%;
+   height:1%;
+   border:0px solid black;
+}
+
+.left-container-site-links{
+    width: 98%;
+    height:10%;
+    border:2px solid #ffffff;
+    background: #353839;
+    border-radius:5px;
+}
+
 
 .td-green-right{
     border:1px solid #0BDA51;
