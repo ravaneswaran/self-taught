@@ -279,18 +279,13 @@ a:active {
 }
 
 .company-content-trading-stats-div{
-    height:35px;
+    height:25px;
     background: #0BDA51;
     font-size:20px;
     text-align:left;
     font-weight:bold;
     color:#000000;
     text-indent:10px;
-    position: relative;
-    top: 6%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
 }
 
 
