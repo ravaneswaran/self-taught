@@ -42,7 +42,7 @@ a:active {
 .right-container{
     width:86.7%;
     height:99%;
-    border:0px solid black;
+    border:0px solid #353839;
     float:left;
     border-radius:5px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
@@ -61,14 +61,38 @@ a:active {
    border:0px solid black;
 }
 
-.left-container-site-links{
+.left-container-external-site-links-div{
     width: 98%;
-    height:10%;
+    height:15%;
     border:2px solid #ffffff;
     background: #353839;
     border-radius:5px;
 }
 
+.left-container-application-link-div{
+    width:98%;
+    height:4%;
+    border:0px solid black;
+    vertical-align:block;
+}
+
+.left-container-application-link-icon{
+    width:10%;
+    height:75%;
+    indent:5%;
+    border:0px solid black;
+    padding:2%;
+    float:left;
+}
+
+.left-container-application-link{
+    width:80%;
+    height:75%;
+    indent:0%;
+    border:0px solid black;
+    padding:2%;
+    float:right;
+}
 
 .td-green-right{
     border:1px solid #0BDA51;
@@ -151,10 +175,7 @@ a:active {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-.icon{
-    height:18px;
-    padding-left:10px;
-}
+
 
 .left-menu-item-padding{
     margin-left:10px
