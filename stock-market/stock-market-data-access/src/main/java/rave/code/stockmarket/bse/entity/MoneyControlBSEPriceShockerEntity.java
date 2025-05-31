@@ -66,10 +66,10 @@ public class MoneyControlBSEPriceShockerEntity extends AbstractEntity {
     @Column(name = "displaced_moving_average_50d")
     private String displacedMovingAverage50D;
 
-    @Column(name = "displaced_moving_average_150")
+    @Column(name = "displaced_moving_average_150d")
     private String displacedMovingAverage150D;
 
-    @Column(name = "displaced_moving_average_200")
+    @Column(name = "displaced_moving_average_200d")
     private String displacedMovingAverage200D;
 
     @Temporal(TemporalType.TIMESTAMP)

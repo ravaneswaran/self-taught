@@ -19,6 +19,7 @@ a:visited {
 a:hover {
   color: #353839;
   text-decoration:underline;
+  font-weight:bold;
 }
 /* selected link */
 a:active {
