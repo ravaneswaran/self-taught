@@ -9,12 +9,12 @@ import rave.code.bse.web.service.Active100Service;
 @Controller
 public class BSEController {
 
-    @GetMapping("/")
+    @GetMapping("/bse")
     public ModelAndView home() {
         return this.bseActive100();
     }
 
-    @GetMapping("/bse-active-100")
+    @GetMapping("/bse/active-100")
     public ModelAndView bseActive100() {
         Active100Service active100Service = new Active100Service();
         Page active100Page = active100Service.getPageModel();
@@ -26,7 +26,7 @@ public class BSEController {
         return indexModelAndView;
     }
 
-    @GetMapping("/bse-active-200")
+    @GetMapping("/bse/active-200")
     public ModelAndView bseActive200() {
         Active100Service active100Service = new Active100Service();
         Page active100Page = active100Service.getPageModel();
@@ -38,7 +38,7 @@ public class BSEController {
         return indexModelAndView;
     }
 
-    @GetMapping("/bse-active-500")
+    @GetMapping("/bse/active-500")
     public ModelAndView bseActive500() {
         Active100Service active100Service = new Active100Service();
         Page active100Page = active100Service.getPageModel();
@@ -50,7 +50,7 @@ public class BSEController {
         return indexModelAndView;
     }
 
-    @GetMapping("/bse-price-shockers")
+    @GetMapping("/bse/price-shockers")
     public ModelAndView bsePriceShockers() {
         Active100Service active100Service = new Active100Service();
         Page active100Page = active100Service.getPageModel();
