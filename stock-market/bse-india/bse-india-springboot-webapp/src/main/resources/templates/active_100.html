@@ -1,15 +1,14 @@
 <html>
 <head>
+    <title th:replace="fragments/common/title"/>
     <link th:replace="fragments/common/css"/>
-    <script th:replace="fragments/common/javascript" />
+    <script th:replace="fragments/common/javascript"/>
 </head>
 <body>
-<!--<div class="header" th:insert="fragments/common/header"></div>-->
 <div class="container">
-    <div th:replace="fragments/page/active_100_left" />
-    <div th:replace="fragments/common/container_vertical_separator" />
-    <div th:replace="fragments/page/active_100_right" />
+    <div th:replace="fragments/common/left_container"/>
+    <div th:replace="fragments/common/container_vertical_separator"/>
+    <div th:replace="fragments/page/active_100_right_container"/>
 </div>
-<!--<div class="footer" th:insert="fragments/common/footer"></div>-->
 </body>
 </html>
