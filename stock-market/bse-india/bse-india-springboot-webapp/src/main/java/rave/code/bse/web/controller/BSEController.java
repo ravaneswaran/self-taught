@@ -17,7 +17,7 @@ public class BSEController {
     @GetMapping("/bse-active-100")
     public ModelAndView bseActive100() {
         Active100Service active100Service = new Active100Service();
-        Page active100Page = active100Service.getPage();
+        Page active100Page = active100Service.getPageModel();
 
         ModelAndView indexModelAndView = new ModelAndView();
         indexModelAndView.addObject("page", active100Page);
@@ -29,7 +29,7 @@ public class BSEController {
     @GetMapping("/bse-active-200")
     public ModelAndView bseActive200() {
         Active100Service active100Service = new Active100Service();
-        Page active100Page = active100Service.getPage();
+        Page active100Page = active100Service.getPageModel();
 
         ModelAndView indexModelAndView = new ModelAndView();
         indexModelAndView.addObject("page", active100Page);
@@ -41,7 +41,7 @@ public class BSEController {
     @GetMapping("/bse-active-500")
     public ModelAndView bseActive500() {
         Active100Service active100Service = new Active100Service();
-        Page active100Page = active100Service.getPage();
+        Page active100Page = active100Service.getPageModel();
 
         ModelAndView indexModelAndView = new ModelAndView();
         indexModelAndView.addObject("page", active100Page);
@@ -53,7 +53,7 @@ public class BSEController {
     @GetMapping("/bse-price-shockers")
     public ModelAndView bsePriceShockers() {
         Active100Service active100Service = new Active100Service();
-        Page active100Page = active100Service.getPage();
+        Page active100Page = active100Service.getPageModel();
 
         ModelAndView indexModelAndView = new ModelAndView();
         indexModelAndView.addObject("page", active100Page);

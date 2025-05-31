@@ -1,6 +1,5 @@
 package rave.code.bse.web.service;
 
-import rave.code.bse.web.model.Active100Page;
 import rave.code.bse.web.model.Page;
 import rave.code.bse.web.model.Stock;
 import rave.code.stockmarket.bse.dataaccess.MoneyControlBSEActive100DataAccess;
@@ -11,20 +10,23 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Active100Service {
+public class Active100Service extends AbstractService<MoneyControlBSEActive100Entity>{
 
     private static final Logger LOGGER = Logger.getLogger(Active100Service.class.getName());
 
-    public Page getPage() {
+    public Page getPageModel() {
+        Page active100Page = new Page();
+        active100Page.setActive100LinkStyle("font-weight: bold;");
 
-        Page active100Page = new Active100Page();
-        active100Page.setActive100Link(true);
-
-        MoneyControlBSEActive100DataAccess moneyControlBSEActive100DataAccess = new MoneyControlBSEActive100DataAccess();
-        List<MoneyControlBSEActive100Entity> moneyControlBSEActive100Entities = moneyControlBSEActive100DataAccess.findAll();
-        active100Page.setStocks(this.getStocks(moneyControlBSEActive100Entities));
+        List<MoneyControlBSEActive100Entity> entities = this.getEntities();
+        active100Page.setStocks(this.getStocks(entities));
 
         return active100Page;
+    }
+
+    public List<MoneyControlBSEActive100Entity> getEntities(){
+        MoneyControlBSEActive100DataAccess moneyControlBSEActive100DataAccess = new MoneyControlBSEActive100DataAccess();
+        return moneyControlBSEActive100DataAccess.findAll();
     }
 
     public List<Stock> getStocks(List<MoneyControlBSEActive100Entity> moneyControlBSEActive100Entities) {

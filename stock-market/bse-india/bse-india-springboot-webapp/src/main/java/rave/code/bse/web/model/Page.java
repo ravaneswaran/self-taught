@@ -4,46 +4,42 @@ import java.util.List;
 
 public class Page {
 
-    private boolean active100Link;
-
-    private boolean active200Link;
-
-    private boolean active500Link;
-
-    private boolean priceShockersLink;
-
+    private String active100LinkStyle = "";
+    private String active200LinkStyle = "";
+    private String active500LinkStyle = "";
+    private String priceShockersLinkStyle = "";
     private List<Stock> stocks;
 
-    public boolean isActive100Link() {
-        return active100Link;
+    public String getActive100LinkStyle() {
+        return active100LinkStyle;
     }
 
-    public void setActive100Link(boolean active100Link) {
-        this.active100Link = active100Link;
+    public void setActive100LinkStyle(String active100LinkStyle) {
+        this.active100LinkStyle = active100LinkStyle;
     }
 
-    public boolean isActive200Link() {
-        return active200Link;
+    public String getActive200LinkStyle() {
+        return active200LinkStyle;
     }
 
-    public void setActive200Link(boolean active200Link) {
-        this.active200Link = active200Link;
+    public void setActive200LinkStyle(String active200LinkStyle) {
+        this.active200LinkStyle = active200LinkStyle;
     }
 
-    public boolean isActive500Link() {
-        return active500Link;
+    public String getActive500LinkStyle() {
+        return active500LinkStyle;
     }
 
-    public void setActive500Link(boolean active500Link) {
-        this.active500Link = active500Link;
+    public void setActive500LinkStyle(String active500LinkStyle) {
+        this.active500LinkStyle = active500LinkStyle;
     }
 
-    public boolean isPriceShockersLink() {
-        return priceShockersLink;
+    public String getPriceShockersLinkStyle() {
+        return priceShockersLinkStyle;
     }
 
-    public void setPriceShockersLink(boolean priceShockersLink) {
-        this.priceShockersLink = priceShockersLink;
+    public void setPriceShockersLinkStyle(String priceShockersLinkStyle) {
+        this.priceShockersLinkStyle = priceShockersLinkStyle;
     }
 
     public List<Stock> getStocks() {
