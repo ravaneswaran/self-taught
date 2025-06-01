@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 import rave.code.bse.web.model.page.WebPage;
+import rave.code.bse.web.service.MidCapGainerService;
 import rave.code.bse.web.service.SmallCapGainerService;
 import rave.code.bse.web.service.TopDividendService;
 
@@ -30,6 +31,18 @@ public class BSEInvestorsLoungeController {
         ModelAndView indexModelAndView = new ModelAndView();
         indexModelAndView.addObject("page", webPage);
         indexModelAndView.setViewName("small_cap_gainers");
+
+        return indexModelAndView;
+    }
+
+    @GetMapping("/bse/mid-cap-gainers")
+    public ModelAndView bseMidCapGainers() {
+        MidCapGainerService midCapGainerService = new MidCapGainerService();
+        WebPage webPage = midCapGainerService.getPageModel();
+
+        ModelAndView indexModelAndView = new ModelAndView();
+        indexModelAndView.addObject("page", webPage);
+        indexModelAndView.setViewName("mid_cap_gainers");
 
         return indexModelAndView;
     }

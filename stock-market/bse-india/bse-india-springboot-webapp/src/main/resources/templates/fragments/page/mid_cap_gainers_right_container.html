@@ -1,0 +1,42 @@
+<div class="right-container">
+
+    <div class="right-container-company-frame-div" th:each="stock : ${page.stocks}">
+        <div class="right-container-company-div">
+            <div th:class="${stock.titleCssStyle}" th:text="${stock.companyName}"></div>
+            <div class="right-container-company-table-div">
+                <table>
+                    <tbody>
+                    <tr>
+                        <td class="td-left">High</td>
+                        <td class="td-right" th:text="${stock.high}"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-left">Low</td>
+                        <td class="td-right" th:text="${stock.low}"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-left">Last Price</td>
+                        <td class="td-right"th:text="${stock.lastPrice}"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-left">Previous Close</td>
+                        <td class="td-right"th:text="${stock.previousClose}"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-left">Variation</td>
+                        <td class="td-right" th:text="${stock.variation}"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-left">Percentage Gain</td>
+                        <td class="td-right" th:text="${stock.percentageGain}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--<div class="right-container-company-trading-stats-div red-to-dark-red">
+                Trading Statistics
+            </div>-->
+        </div>
+    </div>
+
+</div>

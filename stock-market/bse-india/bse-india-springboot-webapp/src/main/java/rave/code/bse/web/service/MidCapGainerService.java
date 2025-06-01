@@ -2,35 +2,34 @@ package rave.code.bse.web.service;
 
 import rave.code.bse.web.model.page.WebPage;
 import rave.code.bse.web.model.stock.CapitalGainerStock;
-import rave.code.stockmarket.bse.dataaccess.MoneyControlBSESmallCapGainerDataAccess;
-import rave.code.stockmarket.bse.entity.MoneyControlBSESmallCapGainerEntity;
+import rave.code.stockmarket.bse.dataaccess.MoneyControlBSEMidCapGainerDataAccess;
+import rave.code.stockmarket.bse.entity.MoneyControlBSEMidCapGainerEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class SmallCapGainerService extends AbstractService<MoneyControlBSESmallCapGainerEntity, CapitalGainerStock> {
+public class MidCapGainerService extends AbstractService<MoneyControlBSEMidCapGainerEntity, CapitalGainerStock> {
 
-    private static final Logger LOGGER = Logger.getLogger(SmallCapGainerService.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(MidCapGainerService.class.getName());
 
     @Override
     public WebPage getPageModel() {
         WebPage webPage = super.getPageModel();
-        webPage.setSmallCapGainerLinkStyle("font-weight: bold;");
+        webPage.setMidCapGainerLinkStyle("font-weight: bold;");
         return webPage;
     }
 
     @Override
-    public List<MoneyControlBSESmallCapGainerEntity> getEntities() {
-        return new MoneyControlBSESmallCapGainerDataAccess().findAll();
+    public List<MoneyControlBSEMidCapGainerEntity> getEntities() {
+        return new MoneyControlBSEMidCapGainerDataAccess().findAll();
     }
 
     @Override
-    public List<CapitalGainerStock> getStocks(List<MoneyControlBSESmallCapGainerEntity> entities) {
-
+    public List<CapitalGainerStock> getStocks(List<MoneyControlBSEMidCapGainerEntity> entities) {
         List<CapitalGainerStock> stocks = new ArrayList<>();
-        for (MoneyControlBSESmallCapGainerEntity entity : entities) {
+        for (MoneyControlBSEMidCapGainerEntity entity : entities) {
             CapitalGainerStock stock = new CapitalGainerStock();
 
             stock.setId(entity.getId());
@@ -106,5 +105,4 @@ public class SmallCapGainerService extends AbstractService<MoneyControlBSESmallC
         }
         return stocks;
     }
-
 }

@@ -1,6 +1,6 @@
 package rave.code.bse.web.model.stock;
 
-public class SmallCapGainerStock extends Stock{
+public class CapitalGainerStock extends Stock{
 
     private double high;
     private double low;
