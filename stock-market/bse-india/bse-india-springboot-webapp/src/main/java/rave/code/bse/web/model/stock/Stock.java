@@ -1,27 +1,27 @@
-package rave.code.bse.web.model;
+package rave.code.bse.web.model.stock;
 
 public class Stock {
 
-    public String id;
-    public String companyName;
-    public String category;
-    public double high;
-    public double low;
-    public double lastPrice;
-    public double valueInCrores;
-    public double percentageChange;
-    public double averageVolume5D;
-    public double averageVolume10D;
-    public double averageVolume30D;
-    public double priceToEarningRatio;
-    public double priceToBookRatio;
-    public double upperCircuit;
-    public double lowerCircuit;
-    public double volumeWeightedAveragePrice;
-    public double displacedMovingAverage30D;
-    public double displacedMovingAverage50D;
-    public double displacedMovingAverage150D;
-    public double displacedMovingAverage200D;
+    private String id;
+    private String companyName;
+    private String category;
+    private double high;
+    private double low;
+    private double lastPrice;
+    private double valueInCrores;
+    private double percentageChange;
+    private double averageVolume5D;
+    private double averageVolume10D;
+    private double averageVolume30D;
+    private double priceToEarningRatio;
+    private double priceToBookRatio;
+    private double upperCircuit;
+    private double lowerCircuit;
+    private double volumeWeightedAveragePrice;
+    private double displacedMovingAverage30D;
+    private double displacedMovingAverage50D;
+    private double displacedMovingAverage150D;
+    private double displacedMovingAverage200D;
 
     private String titleCssStyle = "right-container-company-title-div";
 

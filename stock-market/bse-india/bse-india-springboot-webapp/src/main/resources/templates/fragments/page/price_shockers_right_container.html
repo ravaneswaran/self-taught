@@ -1,22 +1,22 @@
 <div class="right-container">
 
-    <div class="right-container-company-frame-div" th:each="stock : ${page.stocks}">
+    <div class="right-container-company-frame-div" th:each="stock : ${page.priceShockerStocks}">
         <div class="right-container-company-div">
             <div th:class="${stock.titleCssStyle}" th:text="${stock.companyName}"></div>
             <div class="right-container-company-table-div">
                 <table>
                     <tbody>
                     <tr>
-                        <td class="td-left">High</td>
-                        <td class="td-right" th:text="${stock.high}"></td>
+                        <td class="td-left">Sector</td>
+                        <td class="td-right" th:text="${stock.sector}"></td>
                     </tr>
                     <tr>
-                        <td class="td-left">Low</td>
-                        <td class="td-right" th:text="${stock.low}"></td>
+                        <td class="td-left">Current Price</td>
+                        <td class="td-right" th:text="${stock.currentPrice}"></td>
                     </tr>
                     <tr>
-                        <td class="td-left">Last Price</td>
-                        <td class="td-right"th:text="${stock.lastPrice}"></td>
+                        <td class="td-left">Previous Price</td>
+                        <td class="td-right"th:text="${stock.previousPrice}"></td>
                     </tr>
                     <tr>
                         <td class="td-left">% Change</td>

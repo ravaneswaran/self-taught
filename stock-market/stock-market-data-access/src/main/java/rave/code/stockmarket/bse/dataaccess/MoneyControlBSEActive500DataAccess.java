@@ -5,6 +5,10 @@ import rave.code.stockmarket.bse.entity.MoneyControlBSEActive500Entity;
 
 public class MoneyControlBSEActive500DataAccess extends StockMarketDataAccess<MoneyControlBSEActive500Entity> {
 
+    public MoneyControlBSEActive500DataAccess(){
+        this(MoneyControlBSEActive500Entity.class);
+    }
+
     public MoneyControlBSEActive500DataAccess(Class<MoneyControlBSEActive500Entity> type) {
         super(type);
     }

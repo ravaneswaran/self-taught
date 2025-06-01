@@ -1,8 +1,10 @@
-package rave.code.bse.web.model;
+package rave.code.bse.web.model.page;
+
+import rave.code.bse.web.model.stock.Stock;
 
 import java.util.List;
 
-public class Page {
+public class WebPage {
 
     private String active100LinkStyle = "";
     private String active200LinkStyle = "";

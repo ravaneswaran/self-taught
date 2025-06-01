@@ -9,6 +9,10 @@ public class MoneyControlBSEActive200DataAccess extends StockMarketDataAccess<Mo
 
     private static final Logger LOGGER = Logger.getLogger(MoneyControlBSEActive200DataAccess.class.getName());
 
+    public MoneyControlBSEActive200DataAccess(){
+        this(MoneyControlBSEActive200Entity.class);
+    }
+
     public MoneyControlBSEActive200DataAccess(Class<MoneyControlBSEActive200Entity> type) {
         super(type);
     }
