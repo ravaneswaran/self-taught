@@ -1,6 +1,6 @@
 package rave.code.bse.web.service;
 
-import rave.code.bse.web.model.page.PriceShockersWebPage;
+import rave.code.bse.web.model.page.PriceShockerWebPage;
 import rave.code.bse.web.model.stock.PriceShockerStock;
 import rave.code.stockmarket.bse.dataaccess.MoneyControlBSEPriceShockerDataAccess;
 import rave.code.stockmarket.bse.entity.MoneyControlBSEPriceShockerEntity;
@@ -10,18 +10,18 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class PriceShockersService extends AbstractService<MoneyControlBSEPriceShockerEntity> {
+public class PriceShockerService extends AbstractService<MoneyControlBSEPriceShockerEntity, PriceShockerStock> {
 
     private static final Logger LOGGER = Logger.getLogger(Active100Service.class.getName());
 
-    public PriceShockersWebPage getPageModel() {
-        PriceShockersWebPage priceShockersWebPage = new PriceShockersWebPage();
-        priceShockersWebPage.setPriceShockersLinkStyle("font-weight: bold;");
+    public PriceShockerWebPage getPageModel() {
+        PriceShockerWebPage priceShockerWebPage = new PriceShockerWebPage();
+        priceShockerWebPage.setPriceShockersLinkStyle("font-weight: bold;");
 
         List<MoneyControlBSEPriceShockerEntity> entities = this.getEntities();
-        priceShockersWebPage.setPriceShockerStocks(this.getStocks(entities));
+        priceShockerWebPage.setPriceShockerStocks(this.getStocks(entities));
 
-        return priceShockersWebPage;
+        return priceShockerWebPage;
     }
 
     public List<MoneyControlBSEPriceShockerEntity> getEntities() {
@@ -38,7 +38,12 @@ public class PriceShockersService extends AbstractService<MoneyControlBSEPriceSh
             stock.setId(entity.getId());
             stock.setCompanyName(entity.getCompanyName());
             stock.setCategory(entity.getCategory());
-            stock.setSector(entity.getSector());
+
+            String sector = entity.getSector();
+            if(null != sector && sector.length() > 6){
+                sector = sector.substring(0, 6) + "..";
+            }
+            stock.setSector(sector);
 
             try {
                 String currentPrice = entity.getCurrentPrice();

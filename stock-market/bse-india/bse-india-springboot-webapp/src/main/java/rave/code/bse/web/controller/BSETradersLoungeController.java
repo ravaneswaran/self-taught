@@ -3,15 +3,15 @@ package rave.code.bse.web.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
-import rave.code.bse.web.model.page.PriceShockersWebPage;
+import rave.code.bse.web.model.page.PriceShockerWebPage;
 import rave.code.bse.web.model.page.WebPage;
 import rave.code.bse.web.service.Active100Service;
 import rave.code.bse.web.service.Active200Service;
 import rave.code.bse.web.service.Active500Service;
-import rave.code.bse.web.service.PriceShockersService;
+import rave.code.bse.web.service.PriceShockerService;
 
 @Controller
-public class BSEController {
+public class BSETradersLoungeController {
 
     @GetMapping("/bse")
     public ModelAndView home() {
@@ -56,8 +56,8 @@ public class BSEController {
 
     @GetMapping("/bse/price-shockers")
     public ModelAndView bsePriceShockers() {
-        PriceShockersService priceShockersService = new PriceShockersService();
-        PriceShockersWebPage priceShockersWebPage = priceShockersService.getPageModel();
+        PriceShockerService priceShockerService = new PriceShockerService();
+        PriceShockerWebPage priceShockersWebPage = priceShockerService.getPageModel();
 
         ModelAndView indexModelAndView = new ModelAndView();
         indexModelAndView.addObject("page", priceShockersWebPage);

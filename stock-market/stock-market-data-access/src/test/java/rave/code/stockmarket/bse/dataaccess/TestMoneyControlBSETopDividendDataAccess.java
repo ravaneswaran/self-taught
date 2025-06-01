@@ -1,7 +1,6 @@
 package rave.code.stockmarket.bse.dataaccess;
 
 import junit.framework.TestCase;
-import rave.code.stockmarket.bse.entity.MoneyControlBSEActive500Entity;
 import rave.code.stockmarket.bse.entity.MoneyControlBSETopDividendEntity;
 
 import java.util.Date;
@@ -25,7 +24,7 @@ public class TestMoneyControlBSETopDividendDataAccess extends TestCase {
         moneyControlBSETopDividendEntity.setCreatedBy("SYSTEM");
         moneyControlBSETopDividendEntity.setModifiedBy("SYSTEM");
 
-        MoneyControlBSETopDividendataAccess moneyControlBSETopDividendataAccess = new MoneyControlBSETopDividendataAccess(MoneyControlBSETopDividendEntity.class);
+        MoneyControlBSETopDividendDataAccess moneyControlBSETopDividendataAccess = new MoneyControlBSETopDividendDataAccess(MoneyControlBSETopDividendEntity.class);
 
         System.out.println("------------------------>>>>>>> "+moneyControlBSETopDividendEntity.getId());
         System.out.println("------------------------>>>>>>> "+moneyControlBSETopDividendEntity.getCompanyName());

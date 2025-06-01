@@ -1,6 +1,7 @@
 package rave.code.bse.web.service;
 
 import rave.code.bse.web.model.page.WebPage;
+import rave.code.bse.web.model.stock.ActiveStock;
 import rave.code.bse.web.model.stock.Stock;
 import rave.code.stockmarket.bse.dataaccess.MoneyControlBSEActive500DataAccess;
 import rave.code.stockmarket.bse.entity.MoneyControlBSEActive500Entity;
@@ -10,18 +11,15 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Active500Service extends AbstractService<MoneyControlBSEActive500Entity> {
+public class Active500Service extends AbstractService<MoneyControlBSEActive500Entity, ActiveStock> {
 
     private static final Logger LOGGER = Logger.getLogger(Active100Service.class.getName());
 
+    @Override
     public WebPage getPageModel() {
-        WebPage active500Page = new WebPage();
-        active500Page.setActive500LinkStyle("font-weight: bold;");
-
-        List<MoneyControlBSEActive500Entity> entities = this.getEntities();
-        active500Page.setStocks(this.getStocks(entities));
-
-        return active500Page;
+        WebPage webPage =  super.getPageModel();
+        webPage.setActive500LinkStyle("font-weight: bold;");
+        return webPage;
     }
 
     public List<MoneyControlBSEActive500Entity> getEntities() {
@@ -29,11 +27,11 @@ public class Active500Service extends AbstractService<MoneyControlBSEActive500En
         return moneyControlBSEActive500DataAccess.findAll();
     }
 
-    public List<Stock> getStocks(List<MoneyControlBSEActive500Entity> entities) {
+    public List<ActiveStock> getStocks(List<MoneyControlBSEActive500Entity> entities) {
 
-        List<Stock> stocks = new ArrayList<>();
+        List<ActiveStock> stocks = new ArrayList<>();
         for (MoneyControlBSEActive500Entity entity : entities) {
-            Stock stock = new Stock();
+            ActiveStock stock = new ActiveStock();
 
             stock.setId(entity.getId());
             stock.setCompanyName(entity.getCompanyName());

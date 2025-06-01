@@ -4,7 +4,7 @@ import rave.code.bse.web.model.stock.PriceShockerStock;
 
 import java.util.List;
 
-public class PriceShockersWebPage extends WebPage {
+public class PriceShockerWebPage extends WebPage {
 
     private List<PriceShockerStock> priceShockerStocks;
 

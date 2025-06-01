@@ -10,6 +10,7 @@ public class WebPage {
     private String active200LinkStyle = "";
     private String active500LinkStyle = "";
     private String priceShockersLinkStyle = "";
+    private String topDividendLinkStyle = "";
     private List<Stock> stocks;
 
     public String getActive100LinkStyle() {
@@ -43,6 +44,14 @@ public class WebPage {
     public void setPriceShockersLinkStyle(String priceShockersLinkStyle) {
         this.priceShockersLinkStyle = priceShockersLinkStyle;
     }
+    
+    public String getTopDividendLinkStyle() {
+        return topDividendLinkStyle;
+    }
+
+    public void setTopDividendLinkStyle(String topDividendLinkStyle) {
+        this.topDividendLinkStyle = topDividendLinkStyle;
+    }
 
     public List<Stock> getStocks() {
         return stocks;
@@ -51,5 +60,4 @@ public class WebPage {
     public void setStocks(List<Stock> stocks) {
         this.stocks = stocks;
     }
-
 }
