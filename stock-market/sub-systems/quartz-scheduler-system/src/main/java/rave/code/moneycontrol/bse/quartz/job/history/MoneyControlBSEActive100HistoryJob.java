@@ -1,6 +1,7 @@
 package rave.code.moneycontrol.bse.quartz.job.history;
 
 import org.quartz.JobExecutionException;
+import rave.code.moneycontrol.bse.quartz.job.AbstractMoneyControlHistoryJob;
 import rave.code.stockmarket.StockMarketDataAccess;
 import rave.code.stockmarket.bse.dataaccess.MoneyControlBSEActive100DataAccess;
 import rave.code.stockmarket.bse.entity.MoneyControlBSEActive100Entity;
@@ -9,7 +10,7 @@ import rave.code.stockmarket.bse.entity.MoneyControlBSEActive100HistoryEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoneyControlBSEActive100HistoryJob extends AbstractMoneyControlBSEActiveHistoryJob<MoneyControlBSEActive100Entity, MoneyControlBSEActive100HistoryEntity> {
+public class MoneyControlBSEActive100HistoryJob extends AbstractMoneyControlHistoryJob<MoneyControlBSEActive100Entity, MoneyControlBSEActive100HistoryEntity> {
 
     @Override
     public void saveToHistory(List<MoneyControlBSEActive100HistoryEntity> historyData) {

@@ -37,6 +37,17 @@ public class Active100Service extends AbstractService<MoneyControlBSEActive100En
             stock.setCategory(moneyControlBSEActive100Entity.getCategory());
 
             try {
+                String lastPrice = moneyControlBSEActive100Entity.getLastPrice();
+                if (null != lastPrice) {
+                    stock.setLastPrice(Double.parseDouble(lastPrice));
+                } else {
+                    stock.setLastPrice(0.0);
+                }
+            } catch (NumberFormatException nfe) {
+                LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
+                stock.setHigh(0.0);
+            }
+            try {
                 String high = moneyControlBSEActive100Entity.getHigh();
                 if (null != high) {
                     stock.setHigh(Double.parseDouble(high));

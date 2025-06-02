@@ -1,7 +1,7 @@
-package rave.code.moneycontrol.bse.quartz.job.active;
+package rave.code.moneycontrol.bse.quartz.job.trading;
 
-import org.quartz.JobExecutionException;
 import rave.code.moneycontrol.bse.data.parser.html.MoneyControlBSEActive100Parser;
+import rave.code.moneycontrol.bse.quartz.job.AbstractMoneyControlTradingJob;
 import rave.code.moneycontrol.website.data.model.MoneyControlGenericBSEActiveModel;
 import rave.code.stockmarket.bse.dataaccess.MoneyControlBSEActive100DataAccess;
 import rave.code.stockmarket.bse.entity.MoneyControlBSEActive100Entity;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MoneyControlBSEActive100Job extends AbstractMoneyControlBSEActiveJob<MoneyControlGenericBSEActiveModel, MoneyControlBSEActive100Entity> {
+public class MoneyControlBSEActive100Job extends AbstractMoneyControlTradingJob<MoneyControlGenericBSEActiveModel, MoneyControlBSEActive100Entity> {
 
     private static final Logger LOGGER = Logger.getLogger(MoneyControlBSEActive100Job.class.getName());
 
@@ -191,10 +191,5 @@ public class MoneyControlBSEActive100Job extends AbstractMoneyControlBSEActiveJo
         for (MoneyControlBSEActive100Entity moneyControlBSEActive100Entity : transformedData) {
             moneyControlBSEActive100DataAccess.save(moneyControlBSEActive100Entity);
         }
-    }
-
-    public static void main(String[] args) throws JobExecutionException {
-        MoneyControlBSEActive100Job moneyControlBSEActive100Job = new MoneyControlBSEActive100Job();
-        moneyControlBSEActive100Job.execute(null);
     }
 }

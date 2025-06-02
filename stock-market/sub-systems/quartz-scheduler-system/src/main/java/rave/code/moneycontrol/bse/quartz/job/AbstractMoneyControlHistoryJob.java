@@ -1,4 +1,4 @@
-package rave.code.moneycontrol.bse.quartz.job.history;
+package rave.code.moneycontrol.bse.quartz.job;
 
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
@@ -6,7 +6,7 @@ import org.quartz.JobExecutionException;
 
 import java.util.List;
 
-public abstract class AbstractMoneyControlBSEActiveHistoryJob<S, T> implements Job {
+public abstract class AbstractMoneyControlHistoryJob<S, T> implements Job {
 
     public abstract void saveToHistory(List<T> historyData);
 
