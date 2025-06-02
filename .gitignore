@@ -21,10 +21,14 @@ stock-market/bse-india/moneycontrol-website-bse-data-parser/target/
 stock-market/moneycontrol-website-data-models/target/
 utilities/.mvn/
 utilities/target/
-stock-market/bse-india/db-tables-4-moneycontrol-bse-data/target/
-stock-market/stock-market-data-access/target/
-stock-market/bse-india/bse-quartz-schedulers/src/test/
-stock-market/bse-india/bse-quartz-schedulers/target/
+
+stock-market/sub-systems/data-access-system/target/
+stock-market/sub-systems/data-model-system/target/
+stock-market/sub-systems/data-parser-system/target/
+stock-market/sub-systems/database-table-generation-system/target/
+stock-market/sub-systems/quartz-scheduler-system/src/test/
+stock-market/sub-systems/quartz-scheduler-system/target/
+
 
 
 
