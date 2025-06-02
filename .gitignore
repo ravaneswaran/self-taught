@@ -26,7 +26,6 @@ stock-market/sub-systems/data-access-system/target/
 stock-market/sub-systems/data-model-system/target/
 stock-market/sub-systems/data-parser-system/target/
 stock-market/sub-systems/database-table-generation-system/target/
-stock-market/sub-systems/quartz-scheduler-system/src/test/
 stock-market/sub-systems/quartz-scheduler-system/target/
 
 
