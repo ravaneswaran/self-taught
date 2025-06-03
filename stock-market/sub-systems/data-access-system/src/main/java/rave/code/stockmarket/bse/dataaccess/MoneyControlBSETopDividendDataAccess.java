@@ -1,9 +1,9 @@
 package rave.code.stockmarket.bse.dataaccess;
 
-import rave.code.stockmarket.StockMarketDataAccess;
+import rave.code.stockmarket.StockMarketHistoryEnabledDataAccess;
 import rave.code.stockmarket.bse.entity.MoneyControlBSETopDividendEntity;
 
-public class MoneyControlBSETopDividendDataAccess extends StockMarketDataAccess<MoneyControlBSETopDividendEntity> {
+public class MoneyControlBSETopDividendDataAccess extends StockMarketHistoryEnabledDataAccess<MoneyControlBSETopDividendEntity> {
 
     public MoneyControlBSETopDividendDataAccess(){
         this(MoneyControlBSETopDividendEntity.class);
@@ -12,4 +12,5 @@ public class MoneyControlBSETopDividendDataAccess extends StockMarketDataAccess<
     public MoneyControlBSETopDividendDataAccess(Class<MoneyControlBSETopDividendEntity> type) {
         super(type);
     }
+
 }

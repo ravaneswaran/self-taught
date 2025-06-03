@@ -6,7 +6,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.List;
 
-public class StockMarketDataAccess<T> {
+public class StockMarketHistoryEnabledDataAccess<T> extends StockMarketDataAccess<T>{
 
     private static final String PERSISTENCE_UNIT_NAME = "stock_market";
     private static EntityManagerFactory factory;
@@ -15,7 +15,8 @@ public class StockMarketDataAccess<T> {
 
     private Class<T> type;
 
-    public StockMarketDataAccess(Class<T> type) {
+    public StockMarketHistoryEnabledDataAccess(Class<T> type) {
+        super(type);
         this.type = type;
 
         factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
@@ -66,10 +67,25 @@ public class StockMarketDataAccess<T> {
     }
 
     // method introduced specially to moving the data to the history tables...
-    public List findAll() {
+    public List findAll(){
         EntityManager entityManager = this.getEntityManager();
         String queryString = "from ? entity".replace("?", type.getName());
         Query query = entityManager.createQuery(queryString, type);
         return query.getResultList();
     }
+
+    public  void moveToHistoryAndDeleteSource(final String MOVE_TO_HISTORY_QUERY, final String DELETE_SOURCE_QUERY){
+        EntityManager entityManager = this.getEntityManager();
+        entityManager.getTransaction().begin();
+
+        Query query = entityManager.createNativeQuery(MOVE_TO_HISTORY_QUERY);
+        int result = query.executeUpdate();
+        if (result > 0) {
+            query = entityManager.createNativeQuery(DELETE_SOURCE_QUERY);
+            result = query.executeUpdate();
+        }
+
+        entityManager.getTransaction().commit();
+    }
+
 }
