@@ -2,10 +2,15 @@ package rave.code;
 
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
+import rave.code.moneycontrol.bse.quartz.job.history.MoneyControlBSEActive100HistoryJob;
+import rave.code.moneycontrol.bse.quartz.job.history.MoneyControlBSEActive200HistoryJob;
+import rave.code.moneycontrol.bse.quartz.job.history.MoneyControlBSEActive500HistoryJob;
+import rave.code.moneycontrol.bse.quartz.job.history.MoneyControlBSEPriceShockersHistoryJob;
 import rave.code.moneycontrol.bse.quartz.job.trading.MoneyControlBSEActive100Job;
 import rave.code.moneycontrol.bse.quartz.job.trading.MoneyControlBSEActive200Job;
 import rave.code.moneycontrol.bse.quartz.job.trading.MoneyControlBSEActive500Job;
 import rave.code.moneycontrol.bse.quartz.job.trading.MoneyControlPriceShockersJob;
+import rave.code.stockmarket.bse.entity.MoneyControlBSEActive200HistoryEntity;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -97,9 +102,85 @@ public class QuartzMainScheduler {
         }
     }
 
+    public void scheduleMoveToHistoryJobs(){
+        SchedulerFactory schedulerFactory = new StdSchedulerFactory();
+        Scheduler scheduler = null;
+        try {
+            scheduler = schedulerFactory.getScheduler();
+        } catch (SchedulerException se) {
+            LOGGER.log(Level.SEVERE, se.getMessage(), se);
+        }
+
+        if (null != scheduler) {
+            try {
+                scheduler.start();
+            } catch (SchedulerException se) {
+                LOGGER.log(Level.SEVERE, se.getMessage(), se);
+            }
+
+            JobDetail active100HistoryJobDetail = newJob(MoneyControlBSEActive100HistoryJob.class)
+                    .withIdentity("Active100HistoryJob", "History")
+                    .build();
+            JobDetail active200HistoryJobDetail = newJob(MoneyControlBSEActive200HistoryJob.class)
+                    .withIdentity("Active200HistoryJob", "History")
+                    .build();
+            JobDetail active500HistoryJobDetail = newJob(MoneyControlBSEActive500HistoryJob.class)
+                    .withIdentity("Active500HistoryJob", "History")
+                    .build();
+            JobDetail priceShockersHistoryJobDetail = newJob(MoneyControlBSEPriceShockersHistoryJob.class)
+                    .withIdentity("PriceShockersHistoryJob", "History")
+                    .build();
+
+            Trigger active100HistoryJobTrigger = newTrigger()
+                    .withIdentity("Active100HistoryJobTrigger", "History")
+                    .startNow()
+                    .withSchedule(simpleSchedule()
+                            .withIntervalInMinutes(5)
+                            .repeatForever())
+                    .build();
+            Trigger active200HistoryJobTrigger = newTrigger()
+                    .withIdentity("Active200HistoryJobTrigger", "History")
+                    .startNow()
+                    .withSchedule(simpleSchedule()
+                            .withIntervalInMinutes(5)
+                            .repeatForever())
+                    .build();
+            Trigger active500HistoryJobTrigger = newTrigger()
+                    .withIdentity("Active500HistoryJobTrigger", "History")
+                    .startNow()
+                    .withSchedule(simpleSchedule()
+                            .withIntervalInMinutes(5)
+                            .repeatForever())
+                    .build();
+            Trigger priceShockersHistoryJobTrigger = newTrigger()
+                    .withIdentity("PriceShockersHistoryJobTrigger", "History")
+                    .startNow()
+                    .withSchedule(simpleSchedule()
+                            .withIntervalInMinutes(5)
+                            .repeatForever())
+                    .build();
+
+            try {
+                scheduler.scheduleJob(active100HistoryJobDetail, active100HistoryJobTrigger);
+                scheduler.scheduleJob(active200HistoryJobDetail, active200HistoryJobTrigger);
+                scheduler.scheduleJob(active500HistoryJobDetail, active500HistoryJobTrigger);
+                scheduler.scheduleJob(priceShockersHistoryJobDetail, priceShockersHistoryJobTrigger);
+            } catch (SchedulerException se) {
+                LOGGER.log(Level.SEVERE, se.getMessage(), se);
+            }
+
+            /*try {
+                scheduler.shutdown();
+            } catch (SchedulerException se) {
+                LOGGER.log(Level.SEVERE, se.getMessage(), se);
+            }*/
+        }
+    }
+
     public static void main(String[] args) {
         QuartzMainScheduler quartzMainScheduler = new QuartzMainScheduler();
 
+        quartzMainScheduler.scheduleMoveToHistoryJobs();
         quartzMainScheduler.scheduleTradingJobs();
     }
 }
