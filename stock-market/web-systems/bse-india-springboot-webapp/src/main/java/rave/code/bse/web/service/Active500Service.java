@@ -2,10 +2,12 @@ package rave.code.bse.web.service;
 
 import rave.code.bse.web.model.page.WebPage;
 import rave.code.bse.web.model.stock.ActiveStock;
+import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
 import rave.code.stockmarket.bse.dataaccess.MoneyControlBSEActive500DataAccess;
 import rave.code.stockmarket.bse.entity.MoneyControlBSEActive500Entity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -57,6 +59,17 @@ public class Active500Service extends AbstractService<MoneyControlBSEActive500En
             } catch (NumberFormatException nfe) {
                 LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
                 stock.setLow(0.0);
+            }
+            try {
+                String lastPrice = entity.getLastPrice();
+                if (null != lastPrice) {
+                    stock.setLastPrice(Double.parseDouble(lastPrice));
+                } else {
+                    stock.setLastPrice(0.0);
+                }
+            } catch (NumberFormatException nfe) {
+                LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
+                stock.setLastPrice(0.0);
             }
             try {
                 String upperCircuit = entity.getUpperCircuit();
@@ -214,6 +227,8 @@ public class Active500Service extends AbstractService<MoneyControlBSEActive500En
             }
             stocks.add(stock);
         }
+        Collections.sort(stocks, new LastPriceComparator());
+
         return stocks;
     }
 

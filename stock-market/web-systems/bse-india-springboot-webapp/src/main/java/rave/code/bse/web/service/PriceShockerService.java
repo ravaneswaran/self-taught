@@ -2,10 +2,13 @@ package rave.code.bse.web.service;
 
 import rave.code.bse.web.model.page.PriceShockerWebPage;
 import rave.code.bse.web.model.stock.PriceShockerStock;
+import rave.code.bse.web.service.algorithms.sort.CurrentPriceComparator;
+import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
 import rave.code.stockmarket.bse.dataaccess.MoneyControlBSEPriceShockerDataAccess;
 import rave.code.stockmarket.bse.entity.MoneyControlBSEPriceShockerEntity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -212,6 +215,9 @@ public class PriceShockerService extends AbstractService<MoneyControlBSEPriceSho
             }
             priceShockerStocks.add(stock);
         }
+
+        Collections.sort(priceShockerStocks, new CurrentPriceComparator());
+
         return priceShockerStocks;
     }
 
