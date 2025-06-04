@@ -65,11 +65,23 @@ public class StockMarketDataAccess<T> {
         return entity;
     }
 
-    // method introduced specially to moving the data to the history tables...
+    // method introduced specially to move the data to the history tables...
     public List findAll() {
         EntityManager entityManager = this.getEntityManager();
         String queryString = "from ? entity".replace("?", type.getName());
         Query query = entityManager.createQuery(queryString, type);
         return query.getResultList();
+    }
+
+    public T upsert(T entity) {
+        this.entityManager.getTransaction().begin();
+        Object retVal = this.entityManager.find(this.type, entity);
+        if (null != retVal) {
+            this.entityManager.merge(entity);
+        } else {
+            this.entityManager.persist(entity);
+        }
+        this.entityManager.getTransaction().commit();
+        return entity;
     }
 }
