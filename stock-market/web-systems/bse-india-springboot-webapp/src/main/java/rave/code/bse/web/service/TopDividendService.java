@@ -2,10 +2,12 @@ package rave.code.bse.web.service;
 
 import rave.code.bse.web.model.page.WebPage;
 import rave.code.bse.web.model.stock.TopDividendStock;
+import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
 import rave.code.stockmarket.bse.dataaccess.MoneyControlBSETopDividendDataAccess;
 import rave.code.stockmarket.bse.entity.MoneyControlBSETopDividendEntity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -84,6 +86,8 @@ public class TopDividendService extends AbstractService<MoneyControlBSETopDivide
 
             stocks.add(stock);
         }
+
+        Collections.sort(stocks, new LastPriceComparator());
         return stocks;
     }
 }

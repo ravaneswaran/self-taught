@@ -2,10 +2,12 @@ package rave.code.bse.web.service;
 
 import rave.code.bse.web.model.page.WebPage;
 import rave.code.bse.web.model.stock.CapitalGainerStock;
+import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
 import rave.code.stockmarket.bse.dataaccess.MoneyControlBSESmallCapGainerDataAccess;
 import rave.code.stockmarket.bse.entity.MoneyControlBSESmallCapGainerEntity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -104,6 +106,7 @@ public class SmallCapGainerService extends AbstractService<MoneyControlBSESmallC
             }
             stocks.add(stock);
         }
+        Collections.sort(stocks, new LastPriceComparator());
         return stocks;
     }
 

@@ -1,4 +1,4 @@
-package rave.code;
+package rave.code.moneycontrol.bse.quartz;
 
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
@@ -10,7 +10,6 @@ import rave.code.moneycontrol.bse.quartz.job.trading.MoneyControlBSEActive100Job
 import rave.code.moneycontrol.bse.quartz.job.trading.MoneyControlBSEActive200Job;
 import rave.code.moneycontrol.bse.quartz.job.trading.MoneyControlBSEActive500Job;
 import rave.code.moneycontrol.bse.quartz.job.trading.MoneyControlPriceShockersJob;
-import rave.code.stockmarket.bse.entity.MoneyControlBSEActive200HistoryEntity;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,9 +21,9 @@ import static org.quartz.TriggerBuilder.newTrigger;
 /**
  * Hello world!
  */
-public class QuartzMainScheduler {
+public class TraderScheduler {
 
-    public static final Logger LOGGER = Logger.getLogger(QuartzMainScheduler.class.toString());
+    public static final Logger LOGGER = Logger.getLogger(TraderScheduler.class.toString());
 
     public void scheduleTradingJobs(){
 
@@ -118,41 +117,41 @@ public class QuartzMainScheduler {
                 LOGGER.log(Level.SEVERE, se.getMessage(), se);
             }
 
-            JobDetail active100HistoryJobDetail = newJob(MoneyControlBSEActive100HistoryJob.class)
+            JobDetail bseActive100HistoryJobDetail = newJob(MoneyControlBSEActive100HistoryJob.class)
                     .withIdentity("Active100HistoryJob", "History")
                     .build();
-            JobDetail active200HistoryJobDetail = newJob(MoneyControlBSEActive200HistoryJob.class)
+            JobDetail bseActive200HistoryJobDetail = newJob(MoneyControlBSEActive200HistoryJob.class)
                     .withIdentity("Active200HistoryJob", "History")
                     .build();
-            JobDetail active500HistoryJobDetail = newJob(MoneyControlBSEActive500HistoryJob.class)
+            JobDetail bseActive500HistoryJobDetail = newJob(MoneyControlBSEActive500HistoryJob.class)
                     .withIdentity("Active500HistoryJob", "History")
                     .build();
-            JobDetail priceShockersHistoryJobDetail = newJob(MoneyControlBSEPriceShockersHistoryJob.class)
+            JobDetail bsePriceShockersHistoryJobDetail = newJob(MoneyControlBSEPriceShockersHistoryJob.class)
                     .withIdentity("PriceShockersHistoryJob", "History")
                     .build();
 
-            Trigger active100HistoryJobTrigger = newTrigger()
+            Trigger bseActive100HistoryJobTrigger = newTrigger()
                     .withIdentity("Active100HistoryJobTrigger", "History")
                     .startNow()
                     .withSchedule(simpleSchedule()
                             .withIntervalInMinutes(5)
                             .repeatForever())
                     .build();
-            Trigger active200HistoryJobTrigger = newTrigger()
+            Trigger bseActive200HistoryJobTrigger = newTrigger()
                     .withIdentity("Active200HistoryJobTrigger", "History")
                     .startNow()
                     .withSchedule(simpleSchedule()
                             .withIntervalInMinutes(5)
                             .repeatForever())
                     .build();
-            Trigger active500HistoryJobTrigger = newTrigger()
+            Trigger bseActive500HistoryJobTrigger = newTrigger()
                     .withIdentity("Active500HistoryJobTrigger", "History")
                     .startNow()
                     .withSchedule(simpleSchedule()
                             .withIntervalInMinutes(5)
                             .repeatForever())
                     .build();
-            Trigger priceShockersHistoryJobTrigger = newTrigger()
+            Trigger bsePriceShockersHistoryJobTrigger = newTrigger()
                     .withIdentity("PriceShockersHistoryJobTrigger", "History")
                     .startNow()
                     .withSchedule(simpleSchedule()
@@ -161,10 +160,10 @@ public class QuartzMainScheduler {
                     .build();
 
             try {
-                scheduler.scheduleJob(active100HistoryJobDetail, active100HistoryJobTrigger);
-                scheduler.scheduleJob(active200HistoryJobDetail, active200HistoryJobTrigger);
-                scheduler.scheduleJob(active500HistoryJobDetail, active500HistoryJobTrigger);
-                scheduler.scheduleJob(priceShockersHistoryJobDetail, priceShockersHistoryJobTrigger);
+                scheduler.scheduleJob(bseActive100HistoryJobDetail, bseActive100HistoryJobTrigger);
+                scheduler.scheduleJob(bseActive200HistoryJobDetail, bseActive200HistoryJobTrigger);
+                scheduler.scheduleJob(bseActive500HistoryJobDetail, bseActive500HistoryJobTrigger);
+                scheduler.scheduleJob(bsePriceShockersHistoryJobDetail, bsePriceShockersHistoryJobTrigger);
             } catch (SchedulerException se) {
                 LOGGER.log(Level.SEVERE, se.getMessage(), se);
             }
@@ -178,9 +177,8 @@ public class QuartzMainScheduler {
     }
 
     public static void main(String[] args) {
-        QuartzMainScheduler quartzMainScheduler = new QuartzMainScheduler();
-
-        quartzMainScheduler.scheduleMoveToHistoryJobs();
-        quartzMainScheduler.scheduleTradingJobs();
+        TraderScheduler traderScheduler = new TraderScheduler();
+        traderScheduler.scheduleMoveToHistoryJobs();
+        traderScheduler.scheduleTradingJobs();
     }
 }
