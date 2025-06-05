@@ -12,8 +12,8 @@
 
     <modules>
         <module>data-access-system</module>
-        <module>data-model-system</module>
-        <module>data-parser-system</module>
+        <module>source-data-model-system</module>
+        <module>source-data-parser-system</module>
         <module>database-table-generation-system</module>
         <module>quartz-scheduler-system</module>
     </modules>

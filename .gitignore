@@ -10,16 +10,16 @@ utilities/.mvn/
 utilities/target/
 
 stock-market/sub-systems/data-access-system/target/
-stock-market/sub-systems/data-model-system/target/
-stock-market/sub-systems/data-parser-system/target/
+stock-market/sub-systems/source-data-model-system/target/
+stock-market/sub-systems/source-data-parser-system/target/
 stock-market/sub-systems/database-table-generation-system/target/
 stock-market/sub-systems/quartz-scheduler-system/target/
 stock-market/stock-market.iml
 stock-market/stock-market.ipr
 stock-market/stock-market.iws
 stock-market/sub-systems/data-access-system/data-access-system.iml
-stock-market/sub-systems/data-model-system/data-model-system.iml
-stock-market/sub-systems/data-parser-system/data-parser-system.iml
+stock-market/sub-systems/source-data-model-system/source-data-model-system.iml
+stock-market/sub-systems/source-data-parser-system/source-data-parser-system.iml
 stock-market/sub-systems/database-table-generation-system/database-table-generation-system.iml
 stock-market/sub-systems/quartz-scheduler-system/quartz-scheduler-system.iml
 stock-market/sub-systems/sub-systems.iml
