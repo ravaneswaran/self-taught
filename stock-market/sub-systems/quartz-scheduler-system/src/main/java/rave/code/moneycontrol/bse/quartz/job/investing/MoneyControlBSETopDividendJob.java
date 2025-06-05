@@ -32,57 +32,59 @@ public class MoneyControlBSETopDividendJob extends AbstractMoneyControlTradingJo
         for (MoneyControlDividendModel moneyControlDividendModel : sourceData) {
             MoneyControlBSETopDividendEntity moneyControlBSETopDividendEntity = new MoneyControlBSETopDividendEntity();
 
-            moneyControlBSETopDividendEntity.setId(UUID.randomUUID().toString());
-            moneyControlBSETopDividendEntity.setCompanyName(moneyControlDividendModel.getCompanyName());
+            String companyName = moneyControlDividendModel.getCompanyName();
+            if (null != companyName && !"".equals(companyName)) {
+                moneyControlBSETopDividendEntity.setCompanyName(companyName);
 
-            Number value = null;
-            try {
-                value = format.parse(moneyControlDividendModel.getLastPrice());
-                moneyControlBSETopDividendEntity.setLastPrice(String.valueOf(value.doubleValue()));
-            } catch (ParseException parseException) {
-                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSETopDividendEntity.setLastPrice(String.valueOf(0.00));
+                Number value = null;
+                try {
+                    value = format.parse(moneyControlDividendModel.getLastPrice());
+                    moneyControlBSETopDividendEntity.setLastPrice(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSETopDividendEntity.setLastPrice(String.valueOf(0.00));
+                }
+
+                try {
+                    value = format.parse(moneyControlDividendModel.getLatestDividendPercentage());
+                    moneyControlBSETopDividendEntity.setLatestDividendPercentage(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSETopDividendEntity.setLatestDividendPercentage(String.valueOf(0.00));
+                }
+
+                try {
+                    value = format.parse(moneyControlDividendModel.getDividendYieldPercentAt52High());
+                    moneyControlBSETopDividendEntity.setDividendYieldPercentage52High(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSETopDividendEntity.setDividendYieldPercentage52High(String.valueOf(0.00));
+                }
+
+                try {
+                    value = format.parse(moneyControlDividendModel.getDividendYieldPercentAt52Low());
+                    moneyControlBSETopDividendEntity.setDividendYieldPercentage52Low(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSETopDividendEntity.setDividendYieldPercentage52Low(String.valueOf(0.00));
+                }
+
+                try {
+                    value = format.parse(moneyControlDividendModel.getDividendYieldPercentAtCurrent());
+                    moneyControlBSETopDividendEntity.setDividendYieldPercentageAtCurrent(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSETopDividendEntity.setDividendYieldPercentageAtCurrent(String.valueOf(0.00));
+                }
+
+                Date toDate = new Date();
+                moneyControlBSETopDividendEntity.setCreatedDate(toDate);
+                moneyControlBSETopDividendEntity.setModifiedDate(toDate);
+                moneyControlBSETopDividendEntity.setCreatedBy("SYSTEM");
+                moneyControlBSETopDividendEntity.setModifiedBy("SYSTEM");
+
+                entities.add(moneyControlBSETopDividendEntity);
             }
-
-            try {
-                value = format.parse(moneyControlDividendModel.getLatestDividendPercentage());
-                moneyControlBSETopDividendEntity.setLatestDividendPercentage(String.valueOf(value.doubleValue()));
-            } catch (ParseException parseException) {
-                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSETopDividendEntity.setLatestDividendPercentage(String.valueOf(0.00));
-            }
-
-            try {
-                value = format.parse(moneyControlDividendModel.getDividendYieldPercentAt52High());
-                moneyControlBSETopDividendEntity.setDividendYieldPercentage52High(String.valueOf(value.doubleValue()));
-            } catch (ParseException parseException) {
-                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSETopDividendEntity.setDividendYieldPercentage52High(String.valueOf(0.00));
-            }
-
-            try {
-                value = format.parse(moneyControlDividendModel.getDividendYieldPercentAt52Low());
-                moneyControlBSETopDividendEntity.setDividendYieldPercentage52Low(String.valueOf(value.doubleValue()));
-            } catch (ParseException parseException) {
-                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSETopDividendEntity.setDividendYieldPercentage52Low(String.valueOf(0.00));
-            }
-
-            try {
-                value = format.parse(moneyControlDividendModel.getDividendYieldPercentAtCurrent());
-                moneyControlBSETopDividendEntity.setDividendYieldPercentageAtCurrent(String.valueOf(value.doubleValue()));
-            } catch (ParseException parseException) {
-                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSETopDividendEntity.setDividendYieldPercentageAtCurrent(String.valueOf(0.00));
-            }
-
-            Date toDate = new Date();
-            moneyControlBSETopDividendEntity.setCreatedDate(toDate);
-            moneyControlBSETopDividendEntity.setModifiedDate(toDate);
-            moneyControlBSETopDividendEntity.setCreatedBy("SYSTEM");
-            moneyControlBSETopDividendEntity.setModifiedBy("SYSTEM");
-
-            entities.add(moneyControlBSETopDividendEntity);
         }
         return entities;
     }

@@ -10,7 +10,7 @@ public class TestMoneyControlBSETopDividendDataAccess extends TestCase {
     public void testSaveMethod(){
         MoneyControlBSETopDividendEntity moneyControlBSETopDividendEntity = new MoneyControlBSETopDividendEntity();
 
-        moneyControlBSETopDividendEntity.setCompanyName("test-company");
+        moneyControlBSETopDividendEntity.setCompanyName("test-company-"+new Date().getTime());
         moneyControlBSETopDividendEntity.setLastPrice("some-price");
 
         moneyControlBSETopDividendEntity.setLatestDividendPercentage("some-percentage");
@@ -26,7 +26,7 @@ public class TestMoneyControlBSETopDividendDataAccess extends TestCase {
 
         MoneyControlBSETopDividendDataAccess moneyControlBSETopDividendataAccess = new MoneyControlBSETopDividendDataAccess(MoneyControlBSETopDividendEntity.class);
 
-        System.out.println("------------------------>>>>>>> "+moneyControlBSETopDividendEntity.getId());
+
         System.out.println("------------------------>>>>>>> "+moneyControlBSETopDividendEntity.getCompanyName());
         System.out.println("------------------------>>>>>>> "+moneyControlBSETopDividendEntity.getLastPrice());
         System.out.println("------------------------>>>>>>> "+moneyControlBSETopDividendEntity.getLatestDividendPercentage());
@@ -39,7 +39,7 @@ public class TestMoneyControlBSETopDividendDataAccess extends TestCase {
         System.out.println("------------------------>>>>>>> "+moneyControlBSETopDividendEntity.getModifiedBy());
 
         moneyControlBSETopDividendataAccess.save(moneyControlBSETopDividendEntity);
-        MoneyControlBSETopDividendEntity returnElement = moneyControlBSETopDividendataAccess.findBy(moneyControlBSETopDividendEntity.getId());
+        MoneyControlBSETopDividendEntity returnElement = moneyControlBSETopDividendataAccess.findBy(moneyControlBSETopDividendEntity.getCompanyName());
         assertNotNull(returnElement);
     }
 

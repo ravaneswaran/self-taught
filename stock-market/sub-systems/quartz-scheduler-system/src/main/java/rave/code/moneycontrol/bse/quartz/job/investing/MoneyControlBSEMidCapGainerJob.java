@@ -33,65 +33,67 @@ public class MoneyControlBSEMidCapGainerJob extends AbstractMoneyControlTradingJ
         for (MoneyControlGenericModel moneyControlGenericModel : sourceData) {
             MoneyControlBSEMidCapGainerEntity moneyControlBSEMidCapGainerEntity = new MoneyControlBSEMidCapGainerEntity();
 
-            moneyControlBSEMidCapGainerEntity.setCompanyName(moneyControlGenericModel.getCompanyName());
+            String companyName = moneyControlGenericModel.getCompanyName();
+            if (null != companyName && !"".equals(companyName)) {
+                moneyControlBSEMidCapGainerEntity.setCompanyName(companyName);
 
-            Number value = null;
-            try {
-                value = format.parse(moneyControlGenericModel.getHigh());
-                moneyControlBSEMidCapGainerEntity.setHigh(String.valueOf(value.doubleValue()));
-            } catch (ParseException parseException) {
-                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSEMidCapGainerEntity.setHigh(String.valueOf(0.00));
+                Number value = null;
+                try {
+                    value = format.parse(moneyControlGenericModel.getHigh());
+                    moneyControlBSEMidCapGainerEntity.setHigh(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSEMidCapGainerEntity.setHigh(String.valueOf(0.00));
+                }
+
+                try {
+                    value = format.parse(moneyControlGenericModel.getLow());
+                    moneyControlBSEMidCapGainerEntity.setLow(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSEMidCapGainerEntity.setLow(String.valueOf(0.00));
+                }
+
+                try {
+                    value = format.parse(moneyControlGenericModel.getLastPrice());
+                    moneyControlBSEMidCapGainerEntity.setLastPrice(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSEMidCapGainerEntity.setLastPrice(String.valueOf(0.00));
+                }
+
+                try {
+                    value = format.parse(moneyControlGenericModel.getPreviousClose());
+                    moneyControlBSEMidCapGainerEntity.setPreviousClose(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSEMidCapGainerEntity.setPreviousClose(String.valueOf(0.00));
+                }
+
+                try {
+                    value = format.parse(moneyControlGenericModel.getChange());
+                    moneyControlBSEMidCapGainerEntity.setVariation(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSEMidCapGainerEntity.setVariation(String.valueOf(0.00));
+                }
+
+                try {
+                    value = format.parse(moneyControlGenericModel.getPercentageGain());
+                    moneyControlBSEMidCapGainerEntity.setPercentageGain(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSEMidCapGainerEntity.setPercentageGain(String.valueOf(0.00));
+                }
+
+                Date toDate = new Date();
+                moneyControlBSEMidCapGainerEntity.setCreatedDate(toDate);
+                moneyControlBSEMidCapGainerEntity.setModifiedDate(toDate);
+                moneyControlBSEMidCapGainerEntity.setCreatedBy("SYSTEM");
+                moneyControlBSEMidCapGainerEntity.setModifiedBy("SYSTEM");
+
+                entities.add(moneyControlBSEMidCapGainerEntity);
             }
-
-            try {
-                value = format.parse(moneyControlGenericModel.getLow());
-                moneyControlBSEMidCapGainerEntity.setLow(String.valueOf(value.doubleValue()));
-            } catch (ParseException parseException) {
-                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSEMidCapGainerEntity.setLow(String.valueOf(0.00));
-            }
-
-            try {
-                value = format.parse(moneyControlGenericModel.getLastPrice());
-                moneyControlBSEMidCapGainerEntity.setLastPrice(String.valueOf(value.doubleValue()));
-            } catch (ParseException parseException) {
-                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSEMidCapGainerEntity.setLastPrice(String.valueOf(0.00));
-            }
-
-            try {
-                value = format.parse(moneyControlGenericModel.getPreviousClose());
-                moneyControlBSEMidCapGainerEntity.setPreviousClose(String.valueOf(value.doubleValue()));
-            } catch (ParseException parseException) {
-                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSEMidCapGainerEntity.setPreviousClose(String.valueOf(0.00));
-            }
-
-            try {
-                value = format.parse(moneyControlGenericModel.getChange());
-                moneyControlBSEMidCapGainerEntity.setVariation(String.valueOf(value.doubleValue()));
-            } catch (ParseException parseException) {
-                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSEMidCapGainerEntity.setVariation(String.valueOf(0.00));
-            }
-
-            try {
-                value = format.parse(moneyControlGenericModel.getPercentageGain());
-                moneyControlBSEMidCapGainerEntity.setPercentageGain(String.valueOf(value.doubleValue()));
-            } catch (ParseException parseException) {
-                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSEMidCapGainerEntity.setPercentageGain(String.valueOf(0.00));
-            }
-
-            Date toDate = new Date();
-            moneyControlBSEMidCapGainerEntity.setCreatedDate(toDate);
-            moneyControlBSEMidCapGainerEntity.setModifiedDate(toDate);
-            moneyControlBSEMidCapGainerEntity.setCreatedBy("SYSTEM");
-            moneyControlBSEMidCapGainerEntity.setModifiedBy("SYSTEM");
-
-            entities.add(moneyControlBSEMidCapGainerEntity);
-
         }
         return entities;
     }
