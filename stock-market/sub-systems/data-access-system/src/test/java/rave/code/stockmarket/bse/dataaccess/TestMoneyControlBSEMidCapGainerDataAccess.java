@@ -10,7 +10,7 @@ public class TestMoneyControlBSEMidCapGainerDataAccess extends TestCase {
     public void testSaveMethod(){
         MoneyControlBSEMidCapGainerEntity moneyControlBSEMidCapGainerEntity = new MoneyControlBSEMidCapGainerEntity();
 
-        moneyControlBSEMidCapGainerEntity.setCompanyName("test-company");
+        moneyControlBSEMidCapGainerEntity.setCompanyName("test-company-"+new Date().getTime());
         moneyControlBSEMidCapGainerEntity.setHigh("some-high");
         moneyControlBSEMidCapGainerEntity.setLow("some-low");
         moneyControlBSEMidCapGainerEntity.setVariation("some-change");
@@ -25,7 +25,6 @@ public class TestMoneyControlBSEMidCapGainerDataAccess extends TestCase {
 
         MoneyControlBSEMidCapGainerDataAccess moneyControlBSEMidCapGainerDataAccess = new MoneyControlBSEMidCapGainerDataAccess(MoneyControlBSEMidCapGainerEntity.class);
 
-        System.out.println("------------------------>>>>>>> "+moneyControlBSEMidCapGainerEntity.getId());
         System.out.println("------------------------>>>>>>> "+moneyControlBSEMidCapGainerEntity.getVariation());
         System.out.println("------------------------>>>>>>> "+moneyControlBSEMidCapGainerEntity.getCompanyName());
         System.out.println("------------------------>>>>>>> "+moneyControlBSEMidCapGainerEntity.getHigh());
@@ -39,7 +38,7 @@ public class TestMoneyControlBSEMidCapGainerDataAccess extends TestCase {
         System.out.println("------------------------>>>>>>> "+moneyControlBSEMidCapGainerEntity.getModifiedBy());
 
         moneyControlBSEMidCapGainerDataAccess.save(moneyControlBSEMidCapGainerEntity);
-        MoneyControlBSEMidCapGainerEntity returnElement = moneyControlBSEMidCapGainerDataAccess.findBy(moneyControlBSEMidCapGainerEntity.getId());
+        MoneyControlBSEMidCapGainerEntity returnElement = moneyControlBSEMidCapGainerDataAccess.findBy(moneyControlBSEMidCapGainerEntity.getCompanyName());
         assertNotNull(returnElement);
     }
 

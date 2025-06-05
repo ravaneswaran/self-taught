@@ -33,7 +33,6 @@ public class MoneyControlBSEMidCapGainerJob extends AbstractMoneyControlTradingJ
         for (MoneyControlGenericModel moneyControlGenericModel : sourceData) {
             MoneyControlBSEMidCapGainerEntity moneyControlBSEMidCapGainerEntity = new MoneyControlBSEMidCapGainerEntity();
 
-            moneyControlBSEMidCapGainerEntity.setId(UUID.randomUUID().toString());
             moneyControlBSEMidCapGainerEntity.setCompanyName(moneyControlGenericModel.getCompanyName());
 
             Number value = null;

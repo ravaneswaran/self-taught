@@ -34,7 +34,6 @@ public class MidCapGainerService extends AbstractService<MoneyControlBSEMidCapGa
         for (MoneyControlBSEMidCapGainerEntity entity : entities) {
             CapitalGainerStock stock = new CapitalGainerStock();
 
-            stock.setId(entity.getId());
             stock.setCompanyName(entity.getCompanyName());
 
             try {
