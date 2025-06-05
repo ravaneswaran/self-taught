@@ -3,6 +3,7 @@ package rave.code.stockmarket.bse.dataaccess;
 import junit.framework.TestCase;
 import rave.code.stockmarket.bse.entity.MoneyControlBSESmallCapGainerEntity;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 public class TestMoneyControlBSESmallCapGainerDataAccess extends TestCase {
@@ -10,7 +11,7 @@ public class TestMoneyControlBSESmallCapGainerDataAccess extends TestCase {
     public void testSaveMethod(){
         MoneyControlBSESmallCapGainerEntity moneyControlBSESmallCapGainerEntity = new MoneyControlBSESmallCapGainerEntity();
 
-        moneyControlBSESmallCapGainerEntity.setCompanyName("test-company");
+        moneyControlBSESmallCapGainerEntity.setCompanyName("test-"+new Date().getTime());
         moneyControlBSESmallCapGainerEntity.setHigh("some-high");
         moneyControlBSESmallCapGainerEntity.setLow("some-low");
         moneyControlBSESmallCapGainerEntity.setVariation("some-change");
@@ -25,7 +26,6 @@ public class TestMoneyControlBSESmallCapGainerDataAccess extends TestCase {
 
         MoneyControlBSESmallCapGainerDataAccess moneyControlBSESmallCapGainerDataAccess = new MoneyControlBSESmallCapGainerDataAccess(MoneyControlBSESmallCapGainerEntity.class);
 
-        System.out.println("------------------------>>>>>>> "+moneyControlBSESmallCapGainerEntity.getId());
         System.out.println("------------------------>>>>>>> "+moneyControlBSESmallCapGainerEntity.getVariation());
         System.out.println("------------------------>>>>>>> "+moneyControlBSESmallCapGainerEntity.getCompanyName());
         System.out.println("------------------------>>>>>>> "+moneyControlBSESmallCapGainerEntity.getHigh());
@@ -39,7 +39,7 @@ public class TestMoneyControlBSESmallCapGainerDataAccess extends TestCase {
         System.out.println("------------------------>>>>>>> "+moneyControlBSESmallCapGainerEntity.getModifiedBy());
 
         moneyControlBSESmallCapGainerDataAccess.save(moneyControlBSESmallCapGainerEntity);
-        MoneyControlBSESmallCapGainerEntity returnElement = moneyControlBSESmallCapGainerDataAccess.findBy(moneyControlBSESmallCapGainerEntity.getId());
+        MoneyControlBSESmallCapGainerEntity returnElement = moneyControlBSESmallCapGainerDataAccess.findBy(moneyControlBSESmallCapGainerEntity.getCompanyName());
         assertNotNull(returnElement);
     }
 

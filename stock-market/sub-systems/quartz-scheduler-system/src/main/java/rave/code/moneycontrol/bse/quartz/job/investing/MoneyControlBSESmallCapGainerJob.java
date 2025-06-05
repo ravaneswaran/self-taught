@@ -11,7 +11,6 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,66 +32,67 @@ public class MoneyControlBSESmallCapGainerJob extends AbstractMoneyControlTradin
         for (MoneyControlGenericModel moneyControlGenericModel : sourceData) {
             MoneyControlBSESmallCapGainerEntity moneyControlBSESmallCapGainerEntity = new MoneyControlBSESmallCapGainerEntity();
 
-            moneyControlBSESmallCapGainerEntity.setId(UUID.randomUUID().toString());
-            moneyControlBSESmallCapGainerEntity.setCompanyName(moneyControlGenericModel.getCompanyName());
-            Number value = null;
+            String companyName = moneyControlGenericModel.getCompanyName();
+            if (null != companyName && !"".equals(companyName)) {
+                moneyControlBSESmallCapGainerEntity.setCompanyName(moneyControlGenericModel.getCompanyName());
+                Number value = null;
 
-            try {
-                value = format.parse(moneyControlGenericModel.getHigh());
-                moneyControlBSESmallCapGainerEntity.setHigh(String.valueOf(value.doubleValue()));
-            } catch (ParseException parseException) {
-                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSESmallCapGainerEntity.setHigh(String.valueOf(0.00));
+                try {
+                    value = format.parse(moneyControlGenericModel.getHigh());
+                    moneyControlBSESmallCapGainerEntity.setHigh(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSESmallCapGainerEntity.setHigh(String.valueOf(0.00));
+                }
+
+                try {
+                    value = format.parse(moneyControlGenericModel.getLow());
+                    moneyControlBSESmallCapGainerEntity.setLow(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSESmallCapGainerEntity.setLow(String.valueOf(0.00));
+                }
+
+                try {
+                    value = format.parse(moneyControlGenericModel.getLastPrice());
+                    moneyControlBSESmallCapGainerEntity.setLastPrice(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSESmallCapGainerEntity.setLastPrice(String.valueOf(0.00));
+                }
+
+                try {
+                    value = format.parse(moneyControlGenericModel.getPreviousClose());
+                    moneyControlBSESmallCapGainerEntity.setPreviousClose(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSESmallCapGainerEntity.setPreviousClose(String.valueOf(0.00));
+                }
+
+                try {
+                    value = format.parse(moneyControlGenericModel.getChange());
+                    moneyControlBSESmallCapGainerEntity.setVariation(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSESmallCapGainerEntity.setVariation(String.valueOf(0.00));
+                }
+
+                try {
+                    value = format.parse(moneyControlGenericModel.getPercentageGain());
+                    moneyControlBSESmallCapGainerEntity.setPercentageGain(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSESmallCapGainerEntity.setPercentageGain(String.valueOf(0.00));
+                }
+
+                Date toDate = new Date();
+                moneyControlBSESmallCapGainerEntity.setCreatedDate(toDate);
+                moneyControlBSESmallCapGainerEntity.setModifiedDate(toDate);
+                moneyControlBSESmallCapGainerEntity.setCreatedBy("SYSTEM");
+                moneyControlBSESmallCapGainerEntity.setModifiedBy("SYSTEM");
+
+                entities.add(moneyControlBSESmallCapGainerEntity);
             }
-
-            try {
-                value = format.parse(moneyControlGenericModel.getLow());
-                moneyControlBSESmallCapGainerEntity.setLow(String.valueOf(value.doubleValue()));
-            } catch (ParseException parseException) {
-                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSESmallCapGainerEntity.setLow(String.valueOf(0.00));
-            }
-
-            try {
-                value = format.parse(moneyControlGenericModel.getLastPrice());
-                moneyControlBSESmallCapGainerEntity.setLastPrice(String.valueOf(value.doubleValue()));
-            } catch (ParseException parseException) {
-                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSESmallCapGainerEntity.setLastPrice(String.valueOf(0.00));
-            }
-
-            try {
-                value = format.parse(moneyControlGenericModel.getPreviousClose());
-                moneyControlBSESmallCapGainerEntity.setPreviousClose(String.valueOf(value.doubleValue()));
-            } catch (ParseException parseException) {
-                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSESmallCapGainerEntity.setPreviousClose(String.valueOf(0.00));
-            }
-
-            try {
-                value = format.parse(moneyControlGenericModel.getChange());
-                moneyControlBSESmallCapGainerEntity.setVariation(String.valueOf(value.doubleValue()));
-            } catch (ParseException parseException) {
-                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSESmallCapGainerEntity.setVariation(String.valueOf(0.00));
-            }
-
-            try {
-                value = format.parse(moneyControlGenericModel.getPercentageGain());
-                moneyControlBSESmallCapGainerEntity.setPercentageGain(String.valueOf(value.doubleValue()));
-            } catch (ParseException parseException) {
-                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSESmallCapGainerEntity.setPercentageGain(String.valueOf(0.00));
-            }
-
-            Date toDate = new Date();
-            moneyControlBSESmallCapGainerEntity.setCreatedDate(toDate);
-            moneyControlBSESmallCapGainerEntity.setModifiedDate(toDate);
-            moneyControlBSESmallCapGainerEntity.setCreatedBy("SYSTEM");
-            moneyControlBSESmallCapGainerEntity.setModifiedBy("SYSTEM");
-
-            entities.add(moneyControlBSESmallCapGainerEntity);
-
         }
         return entities;
     }
@@ -101,7 +101,7 @@ public class MoneyControlBSESmallCapGainerJob extends AbstractMoneyControlTradin
     public void saveTransformedData(List<MoneyControlBSESmallCapGainerEntity> transformedData) {
         MoneyControlBSESmallCapGainerDataAccess moneyControlBSESmallCapGainerDataAccess = new MoneyControlBSESmallCapGainerDataAccess(MoneyControlBSESmallCapGainerEntity.class);
         for (MoneyControlBSESmallCapGainerEntity moneyControlBSESmallCapGainerEntity : transformedData) {
-            moneyControlBSESmallCapGainerDataAccess.save(moneyControlBSESmallCapGainerEntity);
+            moneyControlBSESmallCapGainerDataAccess.upsert(moneyControlBSESmallCapGainerEntity);
         }
     }
 }

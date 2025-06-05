@@ -30,4 +30,18 @@
         </createTable>
     </changeSet>
 
+    <changeSet author="Ravaneswaran Chinnasamy" id="002">
+        <dropPrimaryKey dropIndex="true" tableName="moneycontrol_bse_small_cap_gainer"/>
+    </changeSet>
+
+    <changeSet  author="Ravaneswaran Chinnasamy"  id="003">
+        <addPrimaryKey columnNames="company_name" constraintName="pk_company_name" tableName="moneycontrol_bse_small_cap_gainer" validate="true"/>
+    </changeSet>
+
+    <changeSet  author="Ravaneswaran Chinnasamy"  id="004">
+        <dropColumn columnName="id" tableName="moneycontrol_bse_small_cap_gainer">
+            <column name="id"/>
+        </dropColumn>
+    </changeSet>
+
 </databaseChangeLog>

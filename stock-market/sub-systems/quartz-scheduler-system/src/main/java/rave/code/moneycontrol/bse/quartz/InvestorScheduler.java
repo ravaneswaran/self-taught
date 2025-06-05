@@ -69,9 +69,9 @@ public class InvestorScheduler {
 
 
             try {
-                scheduler.scheduleJob(bseMidCapGainerJob, bseMidCapGainerJobTrigger);
                 scheduler.scheduleJob(bseSmallCapGainerJob, bseSmallCapGainerJobTrigger);
-                scheduler.scheduleJob(bseTopDividendJob, bseTopDividendJobTrigger);
+                //scheduler.scheduleJob(bseMidCapGainerJob, bseMidCapGainerJobTrigger);
+                //scheduler.scheduleJob(bseTopDividendJob, bseTopDividendJobTrigger);
             } catch (SchedulerException se) {
                 LOGGER.log(Level.SEVERE, se.getMessage(), se);
             }

@@ -15,9 +15,6 @@ import java.util.UUID;
 public class MoneyControlBSESmallCapGainerEntity extends AbstractEntity {
 
     @Id
-    @Column(name = "id")
-    protected String id;
-
     @Column(name = "company_name")
     private String companyName;
 
@@ -55,15 +52,6 @@ public class MoneyControlBSESmallCapGainerEntity extends AbstractEntity {
 
     public MoneyControlBSESmallCapGainerEntity(){
         super();
-        this.setId(UUID.randomUUID().toString());
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getCompanyName() {
