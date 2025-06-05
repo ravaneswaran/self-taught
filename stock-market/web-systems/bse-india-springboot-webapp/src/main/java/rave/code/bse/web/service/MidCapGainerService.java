@@ -35,22 +35,22 @@ public class MidCapGainerService extends AbstractService<MoneyControlBSEMidCapGa
             CapitalGainerStock stock = new CapitalGainerStock();
 
             stock.setCompanyName(entity.getCompanyName());
-
+            String value = "";
             try {
-                String high = entity.getHigh();
-                if (null != high) {
-                    stock.setHigh(Double.parseDouble(high));
+                value = entity.getHigh();
+                if (null != value) {
+                    stock.setHigh(Double.parseDouble(value));
                 } else {
                     stock.setHigh(0.0);
-                }
+                };
             } catch (NumberFormatException nfe) {
                 LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
                 stock.setHigh(0.0);
             }
             try {
-                String low = entity.getLow();
-                if (null != low) {
-                    stock.setLow(Double.parseDouble(low));
+                value = entity.getLow();
+                if (null != value) {
+                    stock.setLow(Double.parseDouble(value));
                 } else {
                     stock.setLow(0.0);
                 }
@@ -59,9 +59,9 @@ public class MidCapGainerService extends AbstractService<MoneyControlBSEMidCapGa
                 stock.setLow(0.0);
             }
             try {
-                String lastPrice = entity.getLastPrice();
-                if (null != lastPrice) {
-                    stock.setLastPrice(Double.parseDouble(lastPrice));
+                value = entity.getLastPrice();
+                if (null != value) {
+                    stock.setLastPrice(Double.parseDouble(value));
                 } else {
                     stock.setLastPrice(0.0);
                 }
@@ -70,9 +70,9 @@ public class MidCapGainerService extends AbstractService<MoneyControlBSEMidCapGa
                 stock.setLastPrice(0.0);
             }
             try {
-                String previousClose = entity.getPreviousClose();
-                if (null != previousClose) {
-                    stock.setPreviousClose(Double.parseDouble(previousClose));
+                value = entity.getPreviousClose();
+                if (null != value) {
+                    stock.setPreviousClose(Double.parseDouble(value));
                 } else {
                     stock.setPreviousClose(0.0);
                 }
@@ -81,9 +81,9 @@ public class MidCapGainerService extends AbstractService<MoneyControlBSEMidCapGa
                 stock.setPreviousClose(0.0);
             }
             try {
-                String variation = entity.getVariation();
-                if (null != variation) {
-                    stock.setVariation(Double.parseDouble(variation));
+                value = entity.getVariation();
+                if (null != value) {
+                    stock.setVariation(Double.parseDouble(value));
                 } else {
                     stock.setVariation(0.0);
                 }
@@ -92,9 +92,9 @@ public class MidCapGainerService extends AbstractService<MoneyControlBSEMidCapGa
                 stock.setVariation(0.0);
             }
             try {
-                String percentageGain = entity.getPercentageGain();
-                if (null != percentageGain) {
-                    stock.setPercentageGain(Double.parseDouble(percentageGain));
+                value = entity.getPercentageGain();
+                if (null != value) {
+                    stock.setPercentageGain(Double.parseDouble(value));
                 } else {
                     stock.setPercentageGain(0.0);
                 }
@@ -102,6 +102,140 @@ public class MidCapGainerService extends AbstractService<MoneyControlBSEMidCapGa
                 LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
                 stock.setPercentageGain(0.0);
             }
+            //---------------------------------------
+            try {
+                value = entity.getAverageVolume5Days();
+                if (null != value) {
+                    stock.setAverageVolume5Days(Double.parseDouble(value));
+                } else {
+                    stock.setAverageVolume5Days(0.0);
+                }
+            } catch (NumberFormatException nfe) {
+                LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
+                stock.setAverageVolume5Days(0.0);
+            }
+            try {
+                value = entity.getAverageVolume10Days();
+                if (null != value) {
+                    stock.setAverageVolume10Days(Double.parseDouble(value));
+                } else {
+                    stock.setAverageVolume10Days(0.0);
+                }
+            } catch (NumberFormatException nfe) {
+                LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
+                stock.setAverageVolume10Days(0.0);
+            }
+            try {
+                value = entity.getAverageVolume30Days();
+                if (null != value) {
+                    stock.setAverageVolume30Days(Double.parseDouble(value));
+                } else {
+                    stock.setAverageVolume30Days(0.0);
+                }
+            } catch (NumberFormatException nfe) {
+                LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
+                stock.setAverageVolume30Days(0.0);
+            }
+            try {
+                value = entity.getPriceToEarningRatio();
+                if (null != value) {
+                    stock.setPriceToEarningRatio(Double.parseDouble(value));
+                } else {
+                    stock.setPriceToEarningRatio(0.0);
+                }
+            } catch (NumberFormatException nfe) {
+                LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
+                stock.setPriceToEarningRatio(0.0);
+            }
+            try {
+                value = entity.getPriceToBookRatio();
+                if (null != value) {
+                    stock.setPriceToBookRatio(Double.parseDouble(value));
+                } else {
+                    stock.setPriceToBookRatio(0.0);
+                }
+            } catch (NumberFormatException nfe) {
+                LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
+                stock.setPriceToBookRatio(0.0);
+            }
+            try {
+                value = entity.getLowerCircuit();
+                if (null != value) {
+                    stock.setLowerCircuit(Double.parseDouble(value));
+                } else {
+                    stock.setLowerCircuit(0.0);
+                }
+            } catch (NumberFormatException nfe) {
+                LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
+                stock.setLowerCircuit(0.0);
+            }
+            try {
+                value = entity.getUpperCircuit();
+                if (null != value) {
+                    stock.setUpperCircuit(Double.parseDouble(value));
+                } else {
+                    stock.setUpperCircuit(0.0);
+                }
+            } catch (NumberFormatException nfe) {
+                LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
+                stock.setUpperCircuit(0.0);
+            }
+            try {
+                value = entity.getVolumeWeightedAveragePrice();
+                if (null != value) {
+                    stock.setVolumeWeightedAveragePrice(Double.parseDouble(value));
+                } else {
+                    stock.setVolumeWeightedAveragePrice(0.0);
+                }
+            } catch (NumberFormatException nfe) {
+                LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
+                stock.setVolumeWeightedAveragePrice(0.0);
+            }
+            try {
+                value = entity.getDisplacedMovingAverage30Days();
+                if (null != value) {
+                    stock.setDisplacedMovingAverage30Days(Double.parseDouble(value));
+                } else {
+                    stock.setDisplacedMovingAverage30Days(0.0);
+                }
+            } catch (NumberFormatException nfe) {
+                LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
+                stock.setDisplacedMovingAverage30Days(0.0);
+            }
+            try {
+                value = entity.getDisplacedMovingAverage50Days();
+                if (null != value) {
+                    stock.setDisplacedMovingAverage50Days(Double.parseDouble(value));
+                } else {
+                    stock.setDisplacedMovingAverage50Days(0.0);
+                }
+            } catch (NumberFormatException nfe) {
+                LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
+                stock.setDisplacedMovingAverage50Days(0.0);
+            }
+            try {
+                value = entity.getDisplacedMovingAverage150Days();
+                if (null != value) {
+                    stock.setDisplacedMovingAverage150Days(Double.parseDouble(value));
+                } else {
+                    stock.setDisplacedMovingAverage150Days(0.0);
+                }
+            } catch (NumberFormatException nfe) {
+                LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
+                stock.setDisplacedMovingAverage150Days(0.0);
+            }
+            try {
+                value = entity.getDisplacedMovingAverage200Days();
+                if (null != value) {
+                    stock.setDisplacedMovingAverage150Days(Double.parseDouble(value));
+                } else {
+                    stock.setDisplacedMovingAverage150Days(0.0);
+                }
+            } catch (NumberFormatException nfe) {
+                LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
+                stock.setDisplacedMovingAverage150Days(0.0);
+            }
+
             stocks.add(stock);
         }
         Collections.sort(stocks, new LastPriceComparator());

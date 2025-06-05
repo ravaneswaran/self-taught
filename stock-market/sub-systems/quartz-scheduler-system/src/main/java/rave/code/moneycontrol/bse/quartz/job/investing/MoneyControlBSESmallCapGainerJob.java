@@ -30,16 +30,16 @@ public class MoneyControlBSESmallCapGainerJob extends AbstractMoneyControlTradin
         List<MoneyControlBSESmallCapGainerEntity> entities = new ArrayList<>();
 
         NumberFormat format = NumberFormat.getInstance();
-        for (MoneyControlGenericModel moneyControlGenericModel : sourceData) {
+        for (MoneyControlCapGainerModel moneyControlCapGainerModel : sourceData) {
             MoneyControlBSESmallCapGainerEntity moneyControlBSESmallCapGainerEntity = new MoneyControlBSESmallCapGainerEntity();
 
-            String companyName = moneyControlGenericModel.getCompanyName();
+            String companyName = moneyControlCapGainerModel.getCompanyName();
             if (null != companyName && !"".equals(companyName)) {
-                moneyControlBSESmallCapGainerEntity.setCompanyName(moneyControlGenericModel.getCompanyName());
+                moneyControlBSESmallCapGainerEntity.setCompanyName(moneyControlCapGainerModel.getCompanyName());
                 Number value = null;
 
                 try {
-                    value = format.parse(moneyControlGenericModel.getHigh());
+                    value = format.parse(moneyControlCapGainerModel.getHigh());
                     moneyControlBSESmallCapGainerEntity.setHigh(String.valueOf(value.doubleValue()));
                 } catch (ParseException parseException) {
                     LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
@@ -47,7 +47,7 @@ public class MoneyControlBSESmallCapGainerJob extends AbstractMoneyControlTradin
                 }
 
                 try {
-                    value = format.parse(moneyControlGenericModel.getLow());
+                    value = format.parse(moneyControlCapGainerModel.getLow());
                     moneyControlBSESmallCapGainerEntity.setLow(String.valueOf(value.doubleValue()));
                 } catch (ParseException parseException) {
                     LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
@@ -55,7 +55,7 @@ public class MoneyControlBSESmallCapGainerJob extends AbstractMoneyControlTradin
                 }
 
                 try {
-                    value = format.parse(moneyControlGenericModel.getLastPrice());
+                    value = format.parse(moneyControlCapGainerModel.getLastPrice());
                     moneyControlBSESmallCapGainerEntity.setLastPrice(String.valueOf(value.doubleValue()));
                 } catch (ParseException parseException) {
                     LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
@@ -63,7 +63,7 @@ public class MoneyControlBSESmallCapGainerJob extends AbstractMoneyControlTradin
                 }
 
                 try {
-                    value = format.parse(moneyControlGenericModel.getPreviousClose());
+                    value = format.parse(moneyControlCapGainerModel.getPreviousClose());
                     moneyControlBSESmallCapGainerEntity.setPreviousClose(String.valueOf(value.doubleValue()));
                 } catch (ParseException parseException) {
                     LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
@@ -71,7 +71,7 @@ public class MoneyControlBSESmallCapGainerJob extends AbstractMoneyControlTradin
                 }
 
                 try {
-                    value = format.parse(moneyControlGenericModel.getChange());
+                    value = format.parse(moneyControlCapGainerModel.getChange());
                     moneyControlBSESmallCapGainerEntity.setVariation(String.valueOf(value.doubleValue()));
                 } catch (ParseException parseException) {
                     LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
@@ -79,11 +79,110 @@ public class MoneyControlBSESmallCapGainerJob extends AbstractMoneyControlTradin
                 }
 
                 try {
-                    value = format.parse(moneyControlGenericModel.getPercentageGain());
+                    value = format.parse(moneyControlCapGainerModel.getPercentageGain());
                     moneyControlBSESmallCapGainerEntity.setPercentageGain(String.valueOf(value.doubleValue()));
                 } catch (ParseException parseException) {
                     LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
                     moneyControlBSESmallCapGainerEntity.setPercentageGain(String.valueOf(0.00));
+                }
+
+                //-----------------------------------
+
+                try {
+                    value = format.parse(moneyControlCapGainerModel.getAverageVolume5Days());
+                    moneyControlBSESmallCapGainerEntity.setAverageVolume5Days(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSESmallCapGainerEntity.setAverageVolume5Days(String.valueOf(0.00));
+                }
+
+                try {
+                    value = format.parse(moneyControlCapGainerModel.getAverageVolume10Days());
+                    moneyControlBSESmallCapGainerEntity.setAverageVolume10Days(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSESmallCapGainerEntity.setAverageVolume10Days(String.valueOf(0.00));
+                }
+
+                try {
+                    value = format.parse(moneyControlCapGainerModel.getAverageVolume30Days());
+                    moneyControlBSESmallCapGainerEntity.setAverageVolume30Days(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSESmallCapGainerEntity.setAverageVolume30Days(String.valueOf(0.00));
+                }
+
+
+                try {
+                    value = format.parse(moneyControlCapGainerModel.getDisplacedMovingAverage30D());
+                    moneyControlBSESmallCapGainerEntity.setDisplacedMovingAverage30Days(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSESmallCapGainerEntity.setDisplacedMovingAverage30Days(String.valueOf(0.00));
+                }
+
+                try {
+                    value = format.parse(moneyControlCapGainerModel.getDisplacedMovingAverage50D());
+                    moneyControlBSESmallCapGainerEntity.setDisplacedMovingAverage50Days(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSESmallCapGainerEntity.setDisplacedMovingAverage50Days(String.valueOf(0.00));
+                }
+
+                try {
+                    value = format.parse(moneyControlCapGainerModel.getDisplacedMovingAverage150D());
+                    moneyControlBSESmallCapGainerEntity.setDisplacedMovingAverage150Days(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSESmallCapGainerEntity.setDisplacedMovingAverage150Days(String.valueOf(0.00));
+                }
+
+                try {
+                    value = format.parse(moneyControlCapGainerModel.getDisplacedMovingAverage200D());
+                    moneyControlBSESmallCapGainerEntity.setDisplacedMovingAverage200Days(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSESmallCapGainerEntity.setDisplacedMovingAverage200Days(String.valueOf(0.00));
+                }
+
+                try {
+                    value = format.parse(moneyControlCapGainerModel.getPriceToEarningRatio());
+                    moneyControlBSESmallCapGainerEntity.setPriceToEarningRatio(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSESmallCapGainerEntity.setPriceToEarningRatio(String.valueOf(0.00));
+                }
+
+                try {
+                    value = format.parse(moneyControlCapGainerModel.getPriceToBookRatio());
+                    moneyControlBSESmallCapGainerEntity.setPriceToBookRatio(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSESmallCapGainerEntity.setPriceToBookRatio(String.valueOf(0.00));
+                }
+
+                try {
+                    value = format.parse(moneyControlCapGainerModel.getUpperCircuit());
+                    moneyControlBSESmallCapGainerEntity.setUpperCircuit(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSESmallCapGainerEntity.setUpperCircuit(String.valueOf(0.00));
+                }
+
+                try {
+                    value = format.parse(moneyControlCapGainerModel.getLowerCircuit());
+                    moneyControlBSESmallCapGainerEntity.setLowerCircuit(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSESmallCapGainerEntity.setLowerCircuit(String.valueOf(0.00));
+                }
+
+                try {
+                    value = format.parse(moneyControlCapGainerModel.getVolumeWeightedAveragePrice());
+                    moneyControlBSESmallCapGainerEntity.setVolumeWeightedAveragePrice(String.valueOf(value.doubleValue()));
+                } catch (ParseException parseException) {
+                    LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                    moneyControlBSESmallCapGainerEntity.setVolumeWeightedAveragePrice(String.valueOf(0.00));
                 }
 
                 Date toDate = new Date();

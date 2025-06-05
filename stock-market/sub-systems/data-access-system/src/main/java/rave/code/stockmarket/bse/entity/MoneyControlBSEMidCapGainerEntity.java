@@ -36,6 +36,42 @@ public class MoneyControlBSEMidCapGainerEntity extends AbstractEntity {
     @Column(name = "percentage_gain")
     private String percentageGain;
 
+    @Column(name = "average_volume_5d")
+    private String averageVolume5Days;
+
+    @Column(name = "average_volume_10d")
+    private String averageVolume10Days;
+
+    @Column(name = "average_volume_30d")
+    private String averageVolume30Days;
+
+    @Column(name = "displaced_moving_average_30d")
+    private String displacedMovingAverage30Days;
+
+    @Column(name = "displaced_moving_average_50d")
+    private String displacedMovingAverage50Days;
+
+    @Column(name = "displaced_moving_average_150d")
+    private String displacedMovingAverage150Days;
+
+    @Column(name = "displaced_moving_average_200d")
+    private String displacedMovingAverage200Days;
+
+    @Column(name = "price_to_earning_ratio")
+    private String priceToEarningRatio;
+
+    @Column(name = "price_to_book_ratio")
+    private String priceToBookRatio;
+
+    @Column(name = "lower_circuit")
+    private String lowerCircuit;
+
+    @Column(name = "upper_circuit")
+    private String upperCircuit;
+
+    @Column(name = "volume_weighted_average_price")
+    private String volumeWeightedAveragePrice;
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_date")
     protected Date createdDate;
