@@ -1,24 +1,11 @@
 .gradle/
 .idea/
-bse-trade-forecast-web-platform/.mvn/
-bse-trade-forecast-web-platform/bse-trade-forecast-web-platform.iml
-candle-stick-patterns/.mvn/
-candle-stick-patterns/target/
-java-design-patterns/.mvn/
-java-design-patterns/target/
-money-control-webs/.mvn/
-money-control-webs/target/
-nse-trade-forecast-web-platform/.mvn/
-nse-trade-forecast-web-platform/nse-trade-forecast-web-platform.iml
+
 razorpay-payment-gateway-web-integration/.mvn/
 razorpay-payment-gateway-web-integration/razorpay-payment-gateway-web-integration.iml
 razorpay-payment-gateway-web-integration/target/
 razorpay-payment-gateway-web-integration/tmp/
-software-testing-quick-start-guide/.mvn/
-software-testing-quick-start-guide/software-testing-quick-start-guide.iml
-software-testing-quick-start-guide/target/
-stock-market/bse-india/moneycontrol-website-bse-data-parser/target/
-stock-market/moneycontrol-website-data-models/target/
+
 utilities/.mvn/
 utilities/target/
 
@@ -27,6 +14,18 @@ stock-market/sub-systems/data-model-system/target/
 stock-market/sub-systems/data-parser-system/target/
 stock-market/sub-systems/database-table-generation-system/target/
 stock-market/sub-systems/quartz-scheduler-system/target/
+stock-market/stock-market.iml
+stock-market/stock-market.ipr
+stock-market/stock-market.iws
+stock-market/sub-systems/data-access-system/data-access-system.iml
+stock-market/sub-systems/data-model-system/data-model-system.iml
+stock-market/sub-systems/data-parser-system/data-parser-system.iml
+stock-market/sub-systems/database-table-generation-system/database-table-generation-system.iml
+stock-market/sub-systems/quartz-scheduler-system/quartz-scheduler-system.iml
+stock-market/sub-systems/sub-systems.iml
+stock-market/web-systems/web-systems.iml
+
+
 
 
 

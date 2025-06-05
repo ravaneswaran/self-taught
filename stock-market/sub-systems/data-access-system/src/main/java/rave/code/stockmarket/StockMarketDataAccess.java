@@ -40,8 +40,8 @@ public class StockMarketDataAccess<T> {
         }
     }
 
-    public T findBy(String id) {
-        return this.entityManager.find(this.type, id);
+    public T findBy(String primaryKey) {
+        return this.entityManager.find(this.type, primaryKey);
     }
 
     public T save(T entity) {
