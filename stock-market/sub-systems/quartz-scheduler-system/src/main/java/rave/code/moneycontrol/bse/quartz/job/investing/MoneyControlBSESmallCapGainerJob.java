@@ -2,6 +2,7 @@ package rave.code.moneycontrol.bse.quartz.job.investing;
 
 import rave.code.moneycontrol.bse.data.parser.html.MoneyControlBSESmallCapGainersParser;
 import rave.code.moneycontrol.bse.quartz.job.AbstractMoneyControlTradingJob;
+import rave.code.moneycontrol.website.data.model.MoneyControlCapGainerModel;
 import rave.code.moneycontrol.website.data.model.MoneyControlGenericModel;
 import rave.code.stockmarket.bse.dataaccess.MoneyControlBSESmallCapGainerDataAccess;
 import rave.code.stockmarket.bse.entity.MoneyControlBSESmallCapGainerEntity;
@@ -14,18 +15,18 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MoneyControlBSESmallCapGainerJob extends AbstractMoneyControlTradingJob<MoneyControlGenericModel, MoneyControlBSESmallCapGainerEntity> {
+public class MoneyControlBSESmallCapGainerJob extends AbstractMoneyControlTradingJob<MoneyControlCapGainerModel, MoneyControlBSESmallCapGainerEntity> {
 
     private static final Logger LOGGER = Logger.getLogger(MoneyControlBSESmallCapGainerJob.class.getName());
 
     @Override
-    public List<MoneyControlGenericModel> getDataFromSource() {
+    public List<MoneyControlCapGainerModel> getDataFromSource() {
         MoneyControlBSESmallCapGainersParser moneyControlBSESmallCapGainersParser = new MoneyControlBSESmallCapGainersParser();
         return moneyControlBSESmallCapGainersParser.parse();
     }
 
     @Override
-    public List<MoneyControlBSESmallCapGainerEntity> transformSourceData(List<MoneyControlGenericModel> sourceData) {
+    public List<MoneyControlBSESmallCapGainerEntity> transformSourceData(List<MoneyControlCapGainerModel> sourceData) {
         List<MoneyControlBSESmallCapGainerEntity> entities = new ArrayList<>();
 
         NumberFormat format = NumberFormat.getInstance();

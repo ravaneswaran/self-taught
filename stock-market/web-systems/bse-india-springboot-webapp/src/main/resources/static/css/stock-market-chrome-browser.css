@@ -198,6 +198,13 @@ td{
     overflow:auto;
 }
 
+.right-container-cap-gainer-company-table-div{
+    width: 100%;
+    height:85%;
+    border: 0px solid red;
+    overflow:auto;
+}
+
 .right-container-company-trading-stats-div{
     width: 100%;
     height:15%;

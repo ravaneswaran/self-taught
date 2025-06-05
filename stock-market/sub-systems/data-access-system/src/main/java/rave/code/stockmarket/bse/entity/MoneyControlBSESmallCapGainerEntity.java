@@ -6,7 +6,6 @@ import rave.code.stockmarket.AbstractEntity;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
-import java.util.UUID;
 
 @XmlRootElement(name = "moneycontrol_bse_small_cap_gainer")
 @Entity
@@ -36,6 +35,42 @@ public class MoneyControlBSESmallCapGainerEntity extends AbstractEntity {
     @Column(name = "percentage_gain")
     private String percentageGain;
 
+    @Column(name = "average_volume_5d")
+    private String averageVolume5Days;
+
+    @Column(name = "average_volume_10d")
+    private String averageVolume10Days;
+
+    @Column(name = "average_volume_30d")
+    private String averageVolume30Days;
+
+    @Column(name = "displaced_moving_average_30d")
+    private String displacedMovingAverage30Days;
+
+    @Column(name = "displaced_moving_average_50d")
+    private String displacedMovingAverage50Days;
+
+    @Column(name = "displaced_moving_average_150d")
+    private String displacedMovingAverage150Days;
+
+    @Column(name = "displaced_moving_average_200d")
+    private String displacedMovingAverage200Days;
+
+    @Column(name = "price_to_earning_ratio")
+    private String priceToEarningRatio;
+
+    @Column(name = "price_to_book_ratio")
+    private String priceToBookRatio;
+
+    @Column(name = "lower_circuit")
+    private String lowerCircuit;
+
+    @Column(name = "upper_circuit")
+    private String upperCircuit;
+
+    @Column(name = "volume_weighted_average_price")
+    private String volumeWeightedAveragePrice;
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_date")
     protected Date createdDate;
@@ -50,7 +85,7 @@ public class MoneyControlBSESmallCapGainerEntity extends AbstractEntity {
     @Column(name = "modified_by")
     protected String modifiedBy;
 
-    public MoneyControlBSESmallCapGainerEntity(){
+    public MoneyControlBSESmallCapGainerEntity() {
         super();
     }
 
@@ -108,6 +143,102 @@ public class MoneyControlBSESmallCapGainerEntity extends AbstractEntity {
 
     public void setPercentageGain(String percentageGain) {
         this.percentageGain = percentageGain;
+    }
+
+    public String getAverageVolume5Days() {
+        return averageVolume5Days;
+    }
+
+    public void setAverageVolume5Days(String averageVolume5Days) {
+        this.averageVolume5Days = averageVolume5Days;
+    }
+
+    public String getAverageVolume10Days() {
+        return averageVolume10Days;
+    }
+
+    public void setAverageVolume10Days(String averageVolume10Days) {
+        this.averageVolume10Days = averageVolume10Days;
+    }
+
+    public String getAverageVolume30Days() {
+        return averageVolume30Days;
+    }
+
+    public void setAverageVolume30Days(String averageVolume30Days) {
+        this.averageVolume30Days = averageVolume30Days;
+    }
+
+    public String getDisplacedMovingAverage30Days() {
+        return displacedMovingAverage30Days;
+    }
+
+    public void setDisplacedMovingAverage30Days(String displacedMovingAverage30Days) {
+        this.displacedMovingAverage30Days = displacedMovingAverage30Days;
+    }
+
+    public String getDisplacedMovingAverage50Days() {
+        return displacedMovingAverage50Days;
+    }
+
+    public void setDisplacedMovingAverage50Days(String displacedMovingAverage50Days) {
+        this.displacedMovingAverage50Days = displacedMovingAverage50Days;
+    }
+
+    public String getDisplacedMovingAverage150Days() {
+        return displacedMovingAverage150Days;
+    }
+
+    public void setDisplacedMovingAverage150Days(String displacedMovingAverage150Days) {
+        this.displacedMovingAverage150Days = displacedMovingAverage150Days;
+    }
+
+    public String getDisplacedMovingAverage200Days() {
+        return displacedMovingAverage200Days;
+    }
+
+    public void setDisplacedMovingAverage200Days(String displacedMovingAverage200Days) {
+        this.displacedMovingAverage200Days = displacedMovingAverage200Days;
+    }
+
+    public String getPriceToEarningRatio() {
+        return priceToEarningRatio;
+    }
+
+    public void setPriceToEarningRatio(String priceToEarningRatio) {
+        this.priceToEarningRatio = priceToEarningRatio;
+    }
+
+    public String getPriceToBookRatio() {
+        return priceToBookRatio;
+    }
+
+    public void setPriceToBookRatio(String priceToBookRatio) {
+        this.priceToBookRatio = priceToBookRatio;
+    }
+
+    public String getLowerCircuit() {
+        return lowerCircuit;
+    }
+
+    public void setLowerCircuit(String lowerCircuit) {
+        this.lowerCircuit = lowerCircuit;
+    }
+
+    public String getUpperCircuit() {
+        return upperCircuit;
+    }
+
+    public void setUpperCircuit(String upperCircuit) {
+        this.upperCircuit = upperCircuit;
+    }
+
+    public String getVolumeWeightedAveragePrice() {
+        return volumeWeightedAveragePrice;
+    }
+
+    public void setVolumeWeightedAveragePrice(String volumeWeightedAveragePrice) {
+        this.volumeWeightedAveragePrice = volumeWeightedAveragePrice;
     }
 
     public Date getCreatedDate() {
