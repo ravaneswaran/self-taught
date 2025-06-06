@@ -3,7 +3,6 @@ package rave.code.moneycontrol.bse.quartz.job.investing;
 import rave.code.moneycontrol.bse.data.parser.html.MoneyControlBSESmallCapGainersParser;
 import rave.code.moneycontrol.bse.quartz.job.AbstractMoneyControlTradingJob;
 import rave.code.moneycontrol.website.data.model.MoneyControlCapGainerModel;
-import rave.code.moneycontrol.website.data.model.MoneyControlGenericModel;
 import rave.code.stockmarket.bse.dataaccess.MoneyControlBSESmallCapGainerDataAccess;
 import rave.code.stockmarket.bse.entity.MoneyControlBSESmallCapGainerEntity;
 
@@ -85,8 +84,6 @@ public class MoneyControlBSESmallCapGainerJob extends AbstractMoneyControlTradin
                     LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
                     moneyControlBSESmallCapGainerEntity.setPercentageGain(String.valueOf(0.00));
                 }
-
-                //-----------------------------------
 
                 try {
                     value = format.parse(moneyControlCapGainerModel.getAverageVolume5Days());
@@ -200,8 +197,6 @@ public class MoneyControlBSESmallCapGainerJob extends AbstractMoneyControlTradin
     @Override
     public void saveTransformedData(List<MoneyControlBSESmallCapGainerEntity> transformedData) {
         MoneyControlBSESmallCapGainerDataAccess moneyControlBSESmallCapGainerDataAccess = new MoneyControlBSESmallCapGainerDataAccess(MoneyControlBSESmallCapGainerEntity.class);
-        for (MoneyControlBSESmallCapGainerEntity moneyControlBSESmallCapGainerEntity : transformedData) {
-            moneyControlBSESmallCapGainerDataAccess.upsert(moneyControlBSESmallCapGainerEntity);
-        }
+        moneyControlBSESmallCapGainerDataAccess.bulkUpsert(transformedData);
     }
 }

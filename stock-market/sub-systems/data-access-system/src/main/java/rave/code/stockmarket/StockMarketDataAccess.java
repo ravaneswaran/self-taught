@@ -1,12 +1,14 @@
 package rave.code.stockmarket;
 
+import rave.code.stockmarket.bse.entity.MoneyControlBSESmallCapGainerEntity;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.List;
 
-public class StockMarketDataAccess<T> {
+public abstract class StockMarketDataAccess<T> {
 
     private static final String PERSISTENCE_UNIT_NAME = "stock_market";
     private static EntityManagerFactory factory;
@@ -73,15 +75,6 @@ public class StockMarketDataAccess<T> {
         return query.getResultList();
     }
 
-    public T upsert(T entity) {
-        this.entityManager.getTransaction().begin();
-        Object retVal = this.entityManager.find(this.type, entity);
-        if (null != retVal) {
-            this.entityManager.merge(entity);
-        } else {
-            this.entityManager.persist(entity);
-        }
-        this.entityManager.getTransaction().commit();
-        return entity;
-    }
+    public abstract void bulkUpsert(List<T> entities);
+
 }

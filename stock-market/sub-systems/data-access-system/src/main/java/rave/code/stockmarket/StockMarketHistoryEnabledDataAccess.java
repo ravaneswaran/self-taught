@@ -2,11 +2,17 @@ package rave.code.stockmarket;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.util.List;
 
 public class StockMarketHistoryEnabledDataAccess<T> extends StockMarketDataAccess<T>{
 
     public StockMarketHistoryEnabledDataAccess(Class<T> type) {
         super(type);
+    }
+
+    @Override
+    public void bulkUpsert(List<T> entities) {
+        throw new RuntimeException("Yet to implement....");
     }
 
     public  void moveToHistoryAndDeleteSource(final String MOVE_TO_HISTORY_QUERY, final String DELETE_SOURCE_QUERY){

@@ -197,8 +197,6 @@ public class MoneyControlBSEMidCapGainerJob extends AbstractMoneyControlTradingJ
     @Override
     public void saveTransformedData(List<MoneyControlBSEMidCapGainerEntity> transformedData) {
         MoneyControlBSEMidCapGainerDataAccess moneyControlBSEMidCapGainerDataAccess = new MoneyControlBSEMidCapGainerDataAccess(MoneyControlBSEMidCapGainerEntity.class);
-        for (MoneyControlBSEMidCapGainerEntity moneyControlBSEMidCapGainerEntity : transformedData) {
-            moneyControlBSEMidCapGainerDataAccess.save(moneyControlBSEMidCapGainerEntity);
-        }
+        moneyControlBSEMidCapGainerDataAccess.bulkUpsert(transformedData);
     }
 }
