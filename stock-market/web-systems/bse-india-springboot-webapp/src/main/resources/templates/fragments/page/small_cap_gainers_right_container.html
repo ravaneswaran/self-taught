@@ -15,8 +15,8 @@
                         <td class="td-right" th:text="${stock.low}"></td>
                     </tr>
                     <tr>
-                        <td class="td-left">Last Price</td>
-                        <td class="td-right"th:text="${stock.lastPrice}"></td>
+                        <td class="td-left" th:style="${stock.lastPriceCssStyle}" >Last Price</td>
+                        <td class="td-right" th:style="${stock.lastPriceCssStyle}" th:text="${stock.lastPrice}"></td>
                     </tr>
                     <tr>
                         <td class="td-left">Previous Close</td>
@@ -27,8 +27,8 @@
                         <td class="td-right" th:text="${stock.variation}"></td>
                     </tr>
                     <tr>
-                        <td class="td-left">Percentage Gain</td>
-                        <td class="td-right" th:text="${stock.percentageGain}"></td>
+                        <td class="td-left" th:style="${stock.percentageGainCssStyle}">Percentage Gain</td>
+                        <td class="td-right" th:style="${stock.percentageGainCssStyle}" th:text="${stock.percentageGain}"></td>
                     </tr>
                     <tr>
                         <td class="td-left">Upper Circuit</td>

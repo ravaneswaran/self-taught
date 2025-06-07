@@ -15,12 +15,12 @@
                         <td class="td-right" th:text="${stock.low}"></td>
                     </tr>
                     <tr>
-                        <td class="td-left">Last Price</td>
-                        <td class="td-right"th:text="${stock.lastPrice}"></td>
+                        <td class="td-left" th:style="${stock.lastPriceCssStyle}">Last Price</td>
+                        <td class="td-right" th:style="${stock.lastPriceCssStyle}" th:text="${stock.lastPrice}"></td>
                     </tr>
                     <tr>
-                        <td class="td-left">% Change</td>
-                        <td class="td-right" th:text="${stock.percentageChange}"></td>
+                        <td class="td-left" th:style="${stock.percentageGainCssStyle}">% Change</td>
+                        <td class="td-right" th:style="${stock.percentageGainCssStyle}" th:text="${stock.percentageChange}"></td>
                     </tr>
                     <tr>
                         <td class="td-left">Upper Circuit</td>

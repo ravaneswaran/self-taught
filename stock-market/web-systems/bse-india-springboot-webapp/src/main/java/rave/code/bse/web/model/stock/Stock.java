@@ -8,6 +8,9 @@ public class Stock {
     private String category;
 
     private String titleCssStyle = "right-container-company-title-div";
+    private String lastPriceCssStyle = "color: black; background: #0BDA51; font-weight:bold;";
+    private String percentageGainCssStyle = "color: black; background:#FA5053; font-weight:bold;";
+
 
     public String getId() {
         return id;
@@ -47,5 +50,21 @@ public class Stock {
 
     public void setTitleCssStyle(String titleCssStyle) {
         this.titleCssStyle = titleCssStyle;
+    }
+
+    public String getLastPriceCssStyle() {
+        return lastPriceCssStyle;
+    }
+
+    public void setLastPriceCssStyle(String lastPriceCssStyle) {
+        this.lastPriceCssStyle = lastPriceCssStyle;
+    }
+
+    public String getPercentageGainCssStyle() {
+        return percentageGainCssStyle;
+    }
+
+    public void setPercentageGainCssStyle(String percentageGainCssStyle) {
+        this.percentageGainCssStyle = percentageGainCssStyle;
     }
 }
