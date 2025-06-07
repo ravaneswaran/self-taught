@@ -11,8 +11,12 @@ import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MoneyControlBSETopDividendParser extends HTMLSourceParser<MoneyControlDividendModel> {
+
+    private static final Logger LOGGER = Logger.getLogger(MoneyControlBSETopDividendParser.class.getName());
 
     public MoneyControlBSETopDividendParser() {
         super("https://www.moneycontrol.com/stocks/marketstats/bsetopdiv/");
@@ -26,9 +30,11 @@ public class MoneyControlBSETopDividendParser extends HTMLSourceParser<MoneyCont
             Element tableBody = table.select("tbody").get(0);
             Elements tableRows = tableBody.select("tr");
             List<MoneyControlDividendModel> moneyControlDividendModels = new ArrayList<>();
+
             for (Element tr : tableRows) {
-                try {
-                    Elements tableData = tr.select("td");
+                Elements tableData = tr.select("td");
+                if (tableData.size() >= 5) {
+
                     Element companyNameElement = tableData.get(0).select("a").get(0);
                     String companyName = companyNameElement.text();
                     String lastPrice = tableData.get(1).text();
@@ -47,15 +53,14 @@ public class MoneyControlBSETopDividendParser extends HTMLSourceParser<MoneyCont
                     moneyControlDividendModel.setDividendYieldPercentAtCurrent(dividendYieldPercentAtCurrent);
 
                     moneyControlDividendModels.add(moneyControlDividendModel);
-                }catch (IndexOutOfBoundsException e) {
-                    //do nothing
                 }
             }
             return moneyControlDividendModels;
-        } catch (SocketTimeoutException e) {
+        } catch (SocketTimeoutException ste) {
+            LOGGER.log(Level.SEVERE, ste.getMessage(), ste);
             return this.parse();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ste) {
+            LOGGER.log(Level.SEVERE, ste.getMessage(), ste);
             return new ArrayList<>();
         }
     }

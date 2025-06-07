@@ -11,7 +11,6 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -92,8 +91,6 @@ public class MoneyControlBSETopDividendJob extends AbstractMoneyControlTradingJo
     @Override
     public void saveTransformedData(List<MoneyControlBSETopDividendEntity> transformedData) {
         MoneyControlBSETopDividendDataAccess moneyControlBSETopDividendDataAccess = new MoneyControlBSETopDividendDataAccess();
-        for (MoneyControlBSETopDividendEntity moneyControlBSETopDividendEntity : transformedData) {
-            moneyControlBSETopDividendDataAccess.save(moneyControlBSETopDividendEntity);
-        }
+        moneyControlBSETopDividendDataAccess.bulkUpsert(transformedData);
     }
 }
