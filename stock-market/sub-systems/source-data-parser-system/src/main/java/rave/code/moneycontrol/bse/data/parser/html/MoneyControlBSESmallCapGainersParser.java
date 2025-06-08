@@ -5,7 +5,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import rave.code.moneycontrol.bse.data.parser.HTMLSourceParser;
+import rave.code.HTMLSourceParser;
 import rave.code.moneycontrol.website.data.model.MoneyControlCapGainerModel;
 
 import java.io.IOException;

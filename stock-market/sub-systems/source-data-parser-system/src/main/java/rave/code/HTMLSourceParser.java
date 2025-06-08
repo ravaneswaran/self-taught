@@ -1,4 +1,4 @@
-package rave.code.moneycontrol.bse.data.parser;
+package rave.code;
 
 import java.util.List;
 
