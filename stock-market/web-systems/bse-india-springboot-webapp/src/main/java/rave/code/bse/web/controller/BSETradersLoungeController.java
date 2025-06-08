@@ -65,4 +65,16 @@ public class BSETradersLoungeController {
 
         return indexModelAndView;
     }
+
+    @GetMapping("/bse/intraday-large-deals")
+    public ModelAndView bseIntradayLargeDeals() {
+        PriceShockerService priceShockerService = new PriceShockerService();
+        PriceShockerWebPage priceShockersWebPage = priceShockerService.getPageModel();
+
+        ModelAndView indexModelAndView = new ModelAndView();
+        indexModelAndView.addObject("page", priceShockersWebPage);
+        indexModelAndView.setViewName("intraday_large_deals");
+
+        return indexModelAndView;
+    }
 }
