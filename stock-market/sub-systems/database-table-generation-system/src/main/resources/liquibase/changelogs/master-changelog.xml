@@ -22,5 +22,6 @@
     <include relativeToChangelogFile="true" file="moneycontrol-bse-mid-cap-gainer-changelog.xml"/>
     <include relativeToChangelogFile="true" file="moneycontrol-bse-price-shockers-changelog.xml"/>
     <include relativeToChangelogFile="true" file="moneycontrol-bse-price-shockers-history-changelog.xml"/>
+    <include relativeToChangelogFile="true" file="stock-market-holidays-changelog.xml"/>
 
 </databaseChangeLog>

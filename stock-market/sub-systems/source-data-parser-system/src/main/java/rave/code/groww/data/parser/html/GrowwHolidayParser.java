@@ -4,6 +4,7 @@ import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import rave.code.HTMLSourceParser;
 import rave.code.groww.website.data.model.GrowwHolidayModel;
 
@@ -25,13 +26,24 @@ public class GrowwHolidayParser extends HTMLSourceParser<GrowwHolidayModel> {
 
     @Override
     public List<GrowwHolidayModel> parse() {
+        List<GrowwHolidayModel> growwHolidayModels = new ArrayList<>();
         try {
             Document document = null;
             try {
                 document = Jsoup.connect(this.getSourceUrl()).get();
                 if (null != document) {
                     Element table = document.select("table").get(0);
-                    System.out.println(table);
+                    Elements tableRows = table.select("tbody").get(0).select("tr");
+
+                    for (int index = 1; index < tableRows.size(); index++) {
+                        Element tableRow = tableRows.get(index);
+                        Elements tableData = tableRow.select("td");
+                        GrowwHolidayModel growwHolidayModel = new GrowwHolidayModel();
+                        growwHolidayModel.setDate(tableData.get(0).text());
+                        growwHolidayModel.setDay(tableData.get(1).text());
+                        growwHolidayModel.setDescription(tableData.get(2).text());
+                        growwHolidayModels.add(growwHolidayModel);
+                    }
                 }
             } catch (HttpStatusException httpStatusException) {
                 LOGGER.log(Level.SEVERE, httpStatusException.getMessage(), httpStatusException);
@@ -47,7 +59,7 @@ public class GrowwHolidayParser extends HTMLSourceParser<GrowwHolidayModel> {
             return new ArrayList<>();
         }
 
-        return null;
+        return growwHolidayModels;
     }
 
     public static void main(String[] args) {
