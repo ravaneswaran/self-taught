@@ -1,6 +1,6 @@
-package rave.code.moneycontrol.website.data.model;
+package rave.code.website.data.model.moneycontrol;
 
-public class MoneyControlDividendModel {
+public class DividendModel {
 
     private String companyName;
     private String lastPrice;

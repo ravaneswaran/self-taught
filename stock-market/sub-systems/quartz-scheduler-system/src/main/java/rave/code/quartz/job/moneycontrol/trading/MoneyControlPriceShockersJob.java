@@ -1,7 +1,7 @@
 package rave.code.quartz.job.moneycontrol.trading;
 
-import rave.code.moneycontrol.bse.data.parser.html.MoneyControlBSEPriceShockersParser;
-import rave.code.moneycontrol.website.data.model.MoneyControlPriceShockerModel;
+import rave.code.data.parser.html.moneycontrol.BSEPriceShockersParser;
+import rave.code.website.data.model.moneycontrol.PriceShockerModel;
 import rave.code.quartz.job.moneycontrol.AbstractTradingJob;
 import rave.code.stockmarket.bse.dataaccess.BSEPriceShockerDataAccess;
 import rave.code.stockmarket.bse.entity.BSEPriceShockerEntity;
@@ -14,23 +14,23 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MoneyControlPriceShockersJob extends AbstractTradingJob<MoneyControlPriceShockerModel, BSEPriceShockerEntity> {
+public class MoneyControlPriceShockersJob extends AbstractTradingJob<PriceShockerModel, BSEPriceShockerEntity> {
 
     private static final Logger LOGGER = Logger.getLogger(MoneyControlPriceShockersJob.class.getName());
 
     @Override
-    public List<MoneyControlPriceShockerModel> getDataFromSource() {
-        MoneyControlBSEPriceShockersParser moneyControlBSEPriceShockersParser = new MoneyControlBSEPriceShockersParser();
-        List<MoneyControlPriceShockerModel> moneyControlPriceShockerModels = moneyControlBSEPriceShockersParser.parse();
+    public List<PriceShockerModel> getDataFromSource() {
+        BSEPriceShockersParser moneyControlBSEPriceShockersParser = new BSEPriceShockersParser();
+        List<PriceShockerModel> moneyControlPriceShockerModels = moneyControlBSEPriceShockersParser.parse();
         return moneyControlPriceShockerModels;
     }
 
     @Override
-    public List<BSEPriceShockerEntity> transformSourceData(List<MoneyControlPriceShockerModel> sourceData) {
+    public List<BSEPriceShockerEntity> transformSourceData(List<PriceShockerModel> sourceData) {
         List<BSEPriceShockerEntity> moneyControlBSEPriceShockerEntities = new ArrayList<>();
 
         NumberFormat format = NumberFormat.getInstance();
-        for (MoneyControlPriceShockerModel moneyControlPriceShockerModel : sourceData) {
+        for (PriceShockerModel moneyControlPriceShockerModel : sourceData) {
             BSEPriceShockerEntity moneyControlBSEPriceShockerEntity = new BSEPriceShockerEntity();
 
             moneyControlBSEPriceShockerEntity.setCompanyName(moneyControlPriceShockerModel.getCompanyName());

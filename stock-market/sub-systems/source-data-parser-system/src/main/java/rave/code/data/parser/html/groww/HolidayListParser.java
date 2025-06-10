@@ -1,12 +1,12 @@
-package rave.code.groww.data.parser.html;
+package rave.code.data.parser.html.groww;
 
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import rave.code.HTMLSourceParser;
-import rave.code.groww.website.data.model.GrowwHolidayModel;
+import rave.code.data.parser.html.HTMLSourceParser;
+import rave.code.website.data.model.groww.HolidayModel;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;
@@ -15,18 +15,18 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class GrowwHolidayParser extends HTMLSourceParser<GrowwHolidayModel> {
+public class HolidayListParser extends HTMLSourceParser<HolidayModel> {
 
-    private static final Logger LOGGER = Logger.getLogger(GrowwHolidayParser.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(HolidayListParser.class.getName());
 
-    public GrowwHolidayParser() {
+    public HolidayListParser() {
         //https://groww.in/p/nse-holidays
         super("https://groww.in/p/nse-holidays");
     }
 
     @Override
-    public List<GrowwHolidayModel> parse() {
-        List<GrowwHolidayModel> growwHolidayModels = new ArrayList<>();
+    public List<HolidayModel> parse() {
+        List<HolidayModel> growwHolidayModels = new ArrayList<>();
         try {
             Document document = null;
             try {
@@ -38,7 +38,7 @@ public class GrowwHolidayParser extends HTMLSourceParser<GrowwHolidayModel> {
                     for (int index = 1; index < tableRows.size(); index++) {
                         Element tableRow = tableRows.get(index);
                         Elements tableData = tableRow.select("td");
-                        GrowwHolidayModel growwHolidayModel = new GrowwHolidayModel();
+                        HolidayModel growwHolidayModel = new HolidayModel();
                         growwHolidayModel.setDate(tableData.get(0).text());
                         growwHolidayModel.setDay(tableData.get(1).text());
                         growwHolidayModel.setDescription(tableData.get(2).text());
@@ -63,7 +63,7 @@ public class GrowwHolidayParser extends HTMLSourceParser<GrowwHolidayModel> {
     }
 
     public static void main(String[] args) {
-        GrowwHolidayParser growwHolidayParser = new GrowwHolidayParser();
+        HolidayListParser growwHolidayParser = new HolidayListParser();
         growwHolidayParser.parse();
     }
 }

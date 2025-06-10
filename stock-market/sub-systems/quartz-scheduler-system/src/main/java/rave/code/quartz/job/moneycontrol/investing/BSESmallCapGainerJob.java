@@ -1,7 +1,7 @@
 package rave.code.quartz.job.moneycontrol.investing;
 
-import rave.code.moneycontrol.bse.data.parser.html.MoneyControlBSESmallCapGainersParser;
-import rave.code.moneycontrol.website.data.model.MoneyControlCapGainerModel;
+import rave.code.data.parser.html.moneycontrol.BSESmallCapGainersParser;
+import rave.code.website.data.model.moneycontrol.CapitalGainerModel;
 import rave.code.quartz.job.moneycontrol.AbstractTradingJob;
 import rave.code.stockmarket.bse.dataaccess.BSESmallCapGainerDataAccess;
 import rave.code.stockmarket.bse.entity.BSESmallCapGainerEntity;
@@ -14,22 +14,22 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class BSESmallCapGainerJob extends AbstractTradingJob<MoneyControlCapGainerModel, BSESmallCapGainerEntity> {
+public class BSESmallCapGainerJob extends AbstractTradingJob<CapitalGainerModel, BSESmallCapGainerEntity> {
 
     private static final Logger LOGGER = Logger.getLogger(BSESmallCapGainerJob.class.getName());
 
     @Override
-    public List<MoneyControlCapGainerModel> getDataFromSource() {
-        MoneyControlBSESmallCapGainersParser moneyControlBSESmallCapGainersParser = new MoneyControlBSESmallCapGainersParser();
+    public List<CapitalGainerModel> getDataFromSource() {
+        BSESmallCapGainersParser moneyControlBSESmallCapGainersParser = new BSESmallCapGainersParser();
         return moneyControlBSESmallCapGainersParser.parse();
     }
 
     @Override
-    public List<BSESmallCapGainerEntity> transformSourceData(List<MoneyControlCapGainerModel> sourceData) {
+    public List<BSESmallCapGainerEntity> transformSourceData(List<CapitalGainerModel> sourceData) {
         List<BSESmallCapGainerEntity> entities = new ArrayList<>();
 
         NumberFormat format = NumberFormat.getInstance();
-        for (MoneyControlCapGainerModel moneyControlCapGainerModel : sourceData) {
+        for (CapitalGainerModel moneyControlCapGainerModel : sourceData) {
             BSESmallCapGainerEntity moneyControlBSESmallCapGainerEntity = new BSESmallCapGainerEntity();
 
             String companyName = moneyControlCapGainerModel.getCompanyName();

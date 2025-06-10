@@ -1,7 +1,7 @@
 package rave.code.quartz.job.moneycontrol.investing;
 
-import rave.code.moneycontrol.bse.data.parser.html.MoneyControlBSEMidCapGainersParser;
-import rave.code.moneycontrol.website.data.model.MoneyControlCapGainerModel;
+import rave.code.data.parser.html.moneycontrol.BSEMidCapGainersParser;
+import rave.code.website.data.model.moneycontrol.CapitalGainerModel;
 import rave.code.quartz.job.moneycontrol.AbstractTradingJob;
 import rave.code.stockmarket.bse.dataaccess.BSEMidCapGainerDataAccess;
 import rave.code.stockmarket.bse.entity.BSEMidCapGainerEntity;
@@ -14,22 +14,22 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class BSEMidCapGainerJob extends AbstractTradingJob<MoneyControlCapGainerModel, BSEMidCapGainerEntity> {
+public class BSEMidCapGainerJob extends AbstractTradingJob<CapitalGainerModel, BSEMidCapGainerEntity> {
 
     private static final Logger LOGGER = Logger.getLogger(BSEMidCapGainerJob.class.getName());
 
     @Override
-    public List<MoneyControlCapGainerModel> getDataFromSource() {
-        MoneyControlBSEMidCapGainersParser moneyControlBSEMidCapGainersParser = new MoneyControlBSEMidCapGainersParser();
+    public List<CapitalGainerModel> getDataFromSource() {
+        BSEMidCapGainersParser moneyControlBSEMidCapGainersParser = new BSEMidCapGainersParser();
         return moneyControlBSEMidCapGainersParser.parse();
     }
 
     @Override
-    public List<BSEMidCapGainerEntity> transformSourceData(List<MoneyControlCapGainerModel> sourceData) {
+    public List<BSEMidCapGainerEntity> transformSourceData(List<CapitalGainerModel> sourceData) {
         List<BSEMidCapGainerEntity> entities = new ArrayList<>();
 
         NumberFormat format = NumberFormat.getInstance();
-        for (MoneyControlCapGainerModel moneyControlCapGainerModel : sourceData) {
+        for (CapitalGainerModel moneyControlCapGainerModel : sourceData) {
             BSEMidCapGainerEntity moneyControlBSEMidCapGainerEntity = new BSEMidCapGainerEntity();
 
             String companyName = moneyControlCapGainerModel.getCompanyName();

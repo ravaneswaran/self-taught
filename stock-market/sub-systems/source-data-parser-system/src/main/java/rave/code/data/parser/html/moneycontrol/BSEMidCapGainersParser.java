@@ -1,12 +1,12 @@
-package rave.code.moneycontrol.bse.data.parser.html;
+package rave.code.data.parser.html.moneycontrol;
 
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import rave.code.HTMLSourceParser;
-import rave.code.moneycontrol.website.data.model.MoneyControlCapGainerModel;
+import rave.code.data.parser.html.HTMLSourceParser;
+import rave.code.website.data.model.moneycontrol.CapitalGainerModel;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;
@@ -15,16 +15,16 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MoneyControlBSEMidCapGainersParser extends HTMLSourceParser<MoneyControlCapGainerModel> {
+public class BSEMidCapGainersParser extends HTMLSourceParser<CapitalGainerModel> {
 
-    private static final Logger LOGGER = Logger.getLogger(MoneyControlBSEMidCapGainersParser.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(BSEMidCapGainersParser.class.getName());
 
-    public MoneyControlBSEMidCapGainersParser() {
+    public BSEMidCapGainersParser() {
         super("https://www.moneycontrol.com/stocks/marketstats/bse-gainer/bse-midcap_25/");
     }
 
     @Override
-    public List<MoneyControlCapGainerModel> parse() {
+    public List<CapitalGainerModel> parse() {
         try {
             Document document = null;
             try {
@@ -35,7 +35,7 @@ public class MoneyControlBSEMidCapGainersParser extends HTMLSourceParser<MoneyCo
                 this.parse();
             }
 
-            List<MoneyControlCapGainerModel> moneyControlCapGainerModels = new ArrayList<>();
+            List<CapitalGainerModel> moneyControlCapGainerModels = new ArrayList<>();
 
             if (document != null) {
                 Element table = document.select("table").get(1);
@@ -101,7 +101,7 @@ public class MoneyControlBSEMidCapGainersParser extends HTMLSourceParser<MoneyCo
                         String lowerCircuit = tableData.get(23).text();
                         String volumeWeightedAveragePrice = tableData.get(24).text();
 
-                        MoneyControlCapGainerModel moneyControlCapGainerModel = new MoneyControlCapGainerModel();
+                        CapitalGainerModel moneyControlCapGainerModel = new CapitalGainerModel();
 
                         moneyControlCapGainerModel.setCompanyName(companyName);
                         moneyControlCapGainerModel.setHigh(high);
@@ -139,7 +139,7 @@ public class MoneyControlBSEMidCapGainersParser extends HTMLSourceParser<MoneyCo
     }
 
     public static void main(String[] args) {
-        MoneyControlBSEMidCapGainersParser moneyControlBSEMidCapGainersParser = new MoneyControlBSEMidCapGainersParser();
+        BSEMidCapGainersParser moneyControlBSEMidCapGainersParser = new BSEMidCapGainersParser();
         moneyControlBSEMidCapGainersParser.parse();
     }
 }

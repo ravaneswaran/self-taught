@@ -1,8 +1,8 @@
 package rave.code.quartz.job.groww;
 
 import org.quartz.JobExecutionException;
-import rave.code.groww.data.parser.html.GrowwHolidayParser;
-import rave.code.groww.website.data.model.GrowwHolidayModel;
+import rave.code.data.parser.html.groww.HolidayListParser;
+import rave.code.website.data.model.groww.HolidayModel;
 import rave.code.quartz.job.moneycontrol.AbstractTradingJob;
 import rave.code.stockmarket.bse.dataaccess.StockMarketHolidayDataAccess;
 import rave.code.stockmarket.bse.entity.StockMarketHolidayEntity;
@@ -12,18 +12,18 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-public class StockMarketHolidayJob extends AbstractTradingJob<GrowwHolidayModel, StockMarketHolidayEntity> {
+public class StockMarketHolidayJob extends AbstractTradingJob<HolidayModel, StockMarketHolidayEntity> {
 
     @Override
-    public List<GrowwHolidayModel> getDataFromSource() {
-        return new GrowwHolidayParser().parse();
+    public List<HolidayModel> getDataFromSource() {
+        return new HolidayListParser().parse();
     }
 
     @Override
-    public List<StockMarketHolidayEntity> transformSourceData(List<GrowwHolidayModel> sourceData) {
+    public List<StockMarketHolidayEntity> transformSourceData(List<HolidayModel> sourceData) {
         List<StockMarketHolidayEntity> entities = new ArrayList<>();
 
-        for (GrowwHolidayModel growwHolidayModel : sourceData) {
+        for (HolidayModel growwHolidayModel : sourceData) {
             StockMarketHolidayEntity entity = new StockMarketHolidayEntity();
             entity.setId(UUID.randomUUID().toString());
             entity.setHolidate(growwHolidayModel.getDate());

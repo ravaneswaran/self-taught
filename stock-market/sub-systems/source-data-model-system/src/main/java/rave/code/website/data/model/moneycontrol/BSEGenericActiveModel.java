@@ -1,6 +1,6 @@
-package rave.code.moneycontrol.website.data.model;
+package rave.code.website.data.model.moneycontrol;
 
-public class MoneyControlGenericBSEActiveModel extends MoneyControlGenericModel {
+public class BSEGenericActiveModel extends GenericModel {
 
     private String group;
     private String percentageChange;

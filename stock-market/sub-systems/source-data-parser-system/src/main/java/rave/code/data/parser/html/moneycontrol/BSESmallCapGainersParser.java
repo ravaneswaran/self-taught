@@ -1,12 +1,12 @@
-package rave.code.moneycontrol.bse.data.parser.html;
+package rave.code.data.parser.html.moneycontrol;
 
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import rave.code.HTMLSourceParser;
-import rave.code.moneycontrol.website.data.model.MoneyControlGenericBSEActiveModel;
+import rave.code.data.parser.html.HTMLSourceParser;
+import rave.code.website.data.model.moneycontrol.CapitalGainerModel;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;
@@ -15,16 +15,16 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MoneyControlBSEActiveParser extends HTMLSourceParser<MoneyControlGenericBSEActiveModel> {
+public class BSESmallCapGainersParser extends HTMLSourceParser<CapitalGainerModel> {
 
-    private static final Logger LOGGER = Logger.getLogger(MoneyControlBSEActiveParser.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(BSESmallCapGainersParser.class.getName());
 
-    public MoneyControlBSEActiveParser(String sourceUrl) {
-        super(sourceUrl);
+    public BSESmallCapGainersParser() {
+        super("https://www.moneycontrol.com/stocks/marketstats/bse-gainer/bse-smallcap_26/");
     }
 
     @Override
-    public List<MoneyControlGenericBSEActiveModel> parse() {
+    public List<CapitalGainerModel> parse() {
         try {
             Document document = null;
             try {
@@ -35,7 +35,7 @@ public class MoneyControlBSEActiveParser extends HTMLSourceParser<MoneyControlGe
                 this.parse();
             }
 
-            List<MoneyControlGenericBSEActiveModel> moneyControlBSEActiveModels = new ArrayList<>();
+            List<CapitalGainerModel> moneyControlCapGainerModels = new ArrayList<>();
 
             if (document != null) {
                 Element table = document.select("table").get(1);
@@ -46,32 +46,31 @@ public class MoneyControlBSEActiveParser extends HTMLSourceParser<MoneyControlGe
 
                     Elements tableData = tr.select("td");
 
-                    /*for (int i = 0; i < tableData.size() - 1; i++) {
+                   /* for (int i = 0; i < tableData.size() - 1; i++) {
                         String element = tableData.get(i).toString();
                         System.out.println(i + " ================>>>>>>> " + element);
                         Elements companyNameAnchorElements = tableData.get(0).select("a");
                         String companyName = "COMPANY-NAME : SOURCE DATA ERROR";
                         if (companyNameAnchorElements.size() > 0) {
                             companyName = companyNameAnchorElements.get(0).text();
-                            //System.out.println(companyName);
+                            System.out.println(companyName);
                         }
                     }*/
 
                     // the reason why we check this condition is to make sure that we have more or equal to 24 <td>s for the data to be parsed for our need.
-                    if (tableData.size() >= 24) {
+                    if (tableData.size() >= 23) {
                         Elements companyNameAnchorElements = tableData.get(0).select("a");
 
                         String companyName = "COMPANY-NAME : SOURCE DATA ERROR";
                         if (companyNameAnchorElements.size() > 0) {
                             companyName = companyNameAnchorElements.get(0).text();
                         }
-
-                        String group = tableData.get(1).text();
-                        String high = tableData.get(2).text();
-                        String low = tableData.get(3).text();
-                        String lastPrice = tableData.get(4).text();
-                        String percentageChange = tableData.get(5).text();
-                        String valueInCrores = tableData.get(6).text();
+                        String high = tableData.get(1).text();
+                        String low = tableData.get(2).text();
+                        String lastPrice = tableData.get(3).text();
+                        String previousClose = tableData.get(4).text();
+                        String change = tableData.get(5).text();
+                        String percentageGain = tableData.get(6).text();
 
                         Elements averageVolumeTables = tableData.get(7).select("table");
                         String averageVolume5Days = "0.00";
@@ -102,32 +101,33 @@ public class MoneyControlBSEActiveParser extends HTMLSourceParser<MoneyControlGe
                         String lowerCircuit = tableData.get(23).text();
                         String volumeWeightedAveragePrice = tableData.get(24).text();
 
-                        MoneyControlGenericBSEActiveModel moneyControlGenericBSEActiveModel = new MoneyControlGenericBSEActiveModel();
-                        moneyControlGenericBSEActiveModel.setCompanyName(companyName);
-                        moneyControlGenericBSEActiveModel.setGroup(group);
-                        moneyControlGenericBSEActiveModel.setHigh(high);
-                        moneyControlGenericBSEActiveModel.setLow(low);
-                        moneyControlGenericBSEActiveModel.setLastPrice(lastPrice);
-                        moneyControlGenericBSEActiveModel.setPercentageChange(percentageChange);
-                        moneyControlGenericBSEActiveModel.setValueInCrores(valueInCrores);
-                        moneyControlGenericBSEActiveModel.setAverageVolume5Days(averageVolume5Days);
-                        moneyControlGenericBSEActiveModel.setAverageVolume10Days(averageVolume10Days);
-                        moneyControlGenericBSEActiveModel.setAverageVolume30Days(averageVolume30Days);
-                        moneyControlGenericBSEActiveModel.setPriceToEarningRatio(priceToEarningRatio);
-                        moneyControlGenericBSEActiveModel.setPriceToBookRatio(priceToBookRatio);
-                        moneyControlGenericBSEActiveModel.setUpperCircuit(upperCircuit);
-                        moneyControlGenericBSEActiveModel.setLowerCircuit(lowerCircuit);
-                        moneyControlGenericBSEActiveModel.setVolumeWeightedAveragePrice(volumeWeightedAveragePrice);
-                        moneyControlGenericBSEActiveModel.setDisplacedMovingAverage30D(displacedMovingAverage30Days);
-                        moneyControlGenericBSEActiveModel.setDisplacedMovingAverage50D(displacedMovingAverage50Days);
-                        moneyControlGenericBSEActiveModel.setDisplacedMovingAverage150D(displacedMovingAverage150Days);
-                        moneyControlGenericBSEActiveModel.setDisplacedMovingAverage200D(displacedMovingAverage200Days);
+                        CapitalGainerModel moneyControlCapGainerModel = new CapitalGainerModel();
 
-                        moneyControlBSEActiveModels.add(moneyControlGenericBSEActiveModel);
+                        moneyControlCapGainerModel.setCompanyName(companyName);
+                        moneyControlCapGainerModel.setHigh(high);
+                        moneyControlCapGainerModel.setLow(low);
+                        moneyControlCapGainerModel.setLastPrice(lastPrice);
+                        moneyControlCapGainerModel.setPreviousClose(previousClose);
+                        moneyControlCapGainerModel.setChange(change);
+                        moneyControlCapGainerModel.setPercentageGain(percentageGain);
+                        moneyControlCapGainerModel.setAverageVolume5Days(averageVolume5Days);
+                        moneyControlCapGainerModel.setAverageVolume10Days(averageVolume10Days);
+                        moneyControlCapGainerModel.setAverageVolume30Days(averageVolume30Days);
+                        moneyControlCapGainerModel.setPriceToEarningRatio(priceToEarningRatio);
+                        moneyControlCapGainerModel.setPriceToBookRatio(priceToBookRatio);
+                        moneyControlCapGainerModel.setUpperCircuit(upperCircuit);
+                        moneyControlCapGainerModel.setLowerCircuit(lowerCircuit);
+                        moneyControlCapGainerModel.setVolumeWeightedAveragePrice(volumeWeightedAveragePrice);
+                        moneyControlCapGainerModel.setDisplacedMovingAverage30D(displacedMovingAverage30Days);
+                        moneyControlCapGainerModel.setDisplacedMovingAverage50D(displacedMovingAverage50Days);
+                        moneyControlCapGainerModel.setDisplacedMovingAverage150D(displacedMovingAverage150Days);
+                        moneyControlCapGainerModel.setDisplacedMovingAverage200D(displacedMovingAverage200Days);
+
+                        moneyControlCapGainerModels.add(moneyControlCapGainerModel);
                     }
                 }
             }
-            return moneyControlBSEActiveModels;
+            return moneyControlCapGainerModels;
         } catch (SocketTimeoutException socketTimeoutException) {
             LOGGER.log(Level.SEVERE, socketTimeoutException.getMessage(), socketTimeoutException);
             LOGGER.log(Level.INFO, "trying again to connect to the site(https://www.moneycontrol.com) for the data.....");
@@ -136,5 +136,10 @@ public class MoneyControlBSEActiveParser extends HTMLSourceParser<MoneyControlGe
             LOGGER.log(Level.SEVERE, ioException.getMessage(), ioException);
             return new ArrayList<>();
         }
+    }
+
+    public static void main(String[] args) {
+        BSESmallCapGainersParser moneyControlBSESmallCapGainersParser = new BSESmallCapGainersParser();
+        moneyControlBSESmallCapGainersParser.parse();
     }
 }

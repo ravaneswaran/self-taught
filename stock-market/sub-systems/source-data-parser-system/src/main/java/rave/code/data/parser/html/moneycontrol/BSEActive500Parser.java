@@ -1,11 +1,11 @@
-package rave.code.moneycontrol.bse.data.parser.html;
+package rave.code.data.parser.html.moneycontrol;
 
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import rave.code.moneycontrol.website.data.model.MoneyControlGenericBSEActiveModel;
+import rave.code.website.data.model.moneycontrol.BSEGenericActiveModel;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;
@@ -14,17 +14,17 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MoneyControlBSEActive500Parser extends MoneyControlBSEActiveParser {
+public class BSEActive500Parser extends BSEActiveParser {
 
-    private static final Logger LOGGER = Logger.getLogger(MoneyControlBSEActive500Parser.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(BSEActive500Parser.class.getName());
 
-    public MoneyControlBSEActive500Parser() {
+    public BSEActive500Parser() {
         //https://www.moneycontrol.com/stocks/marketstats/bse-gainer/bse-500_12/
         super("https://www.moneycontrol.com/stocks/marketstats/bse-mostactive-stocks/bse-500-12/");
     }
 
     @Override
-    public List<MoneyControlGenericBSEActiveModel> parse() {
+    public List<BSEGenericActiveModel> parse() {
         try {
             Document document = null;
             try {
@@ -35,7 +35,7 @@ public class MoneyControlBSEActive500Parser extends MoneyControlBSEActiveParser 
                 this.parse();
             }
 
-            List<MoneyControlGenericBSEActiveModel> moneyControlBSEActiveModels = new ArrayList<>();
+            List<BSEGenericActiveModel> moneyControlBSEActiveModels = new ArrayList<>();
 
             if (document != null) {
                 Element table = document.select("table").get(1);
@@ -89,7 +89,7 @@ public class MoneyControlBSEActive500Parser extends MoneyControlBSEActiveParser 
                         String lowerCircuit = tableData.get(23).text();
                         //String volumeWeightedAveragePrice = tableData.get(24).text();
 
-                        MoneyControlGenericBSEActiveModel moneyControlGenericBSEActiveModel = new MoneyControlGenericBSEActiveModel();
+                        BSEGenericActiveModel moneyControlGenericBSEActiveModel = new BSEGenericActiveModel();
                         moneyControlGenericBSEActiveModel.setCompanyName(companyName);
                         moneyControlGenericBSEActiveModel.setGroup(group);
                         moneyControlGenericBSEActiveModel.setHigh(high);
@@ -126,7 +126,7 @@ public class MoneyControlBSEActive500Parser extends MoneyControlBSEActiveParser 
     }
 
     public static void main(String[] args) {
-        MoneyControlBSEActive500Parser moneyControlBSEActive500Parser = new MoneyControlBSEActive500Parser();
+        BSEActive500Parser moneyControlBSEActive500Parser = new BSEActive500Parser();
         moneyControlBSEActive500Parser.parse();
     }
 }

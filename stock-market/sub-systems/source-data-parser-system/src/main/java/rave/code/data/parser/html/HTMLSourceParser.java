@@ -1,4 +1,4 @@
-package rave.code;
+package rave.code.data.parser.html;
 
 import java.util.List;
 

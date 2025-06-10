@@ -1,6 +1,6 @@
-package rave.code.moneycontrol.website.data.model;
+package rave.code.website.data.model.moneycontrol;
 
-public class MoneyControlPriceShockerModel extends MoneyControlGenericBSEActiveModel{
+public class PriceShockerModel extends BSEGenericActiveModel {
 
     private String sector;
     private String currentPrice;

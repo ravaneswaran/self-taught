@@ -1,6 +1,6 @@
-package rave.code.groww.website.data.model;
+package rave.code.website.data.model.groww;
 
-public class GrowwHolidayModel {
+public class HolidayModel {
 
     private String date;
     private String day;

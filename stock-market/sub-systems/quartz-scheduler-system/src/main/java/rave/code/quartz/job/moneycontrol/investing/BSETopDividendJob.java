@@ -1,7 +1,7 @@
 package rave.code.quartz.job.moneycontrol.investing;
 
-import rave.code.moneycontrol.bse.data.parser.html.MoneyControlBSETopDividendParser;
-import rave.code.moneycontrol.website.data.model.MoneyControlDividendModel;
+import rave.code.data.parser.html.moneycontrol.BSETopDividendParser;
+import rave.code.website.data.model.moneycontrol.DividendModel;
 import rave.code.quartz.job.moneycontrol.AbstractTradingJob;
 import rave.code.stockmarket.bse.dataaccess.BSETopDividendDataAccess;
 import rave.code.stockmarket.bse.entity.BSETopDividendEntity;
@@ -14,21 +14,21 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class BSETopDividendJob extends AbstractTradingJob<MoneyControlDividendModel, BSETopDividendEntity> {
+public class BSETopDividendJob extends AbstractTradingJob<DividendModel, BSETopDividendEntity> {
 
     private static final Logger LOGGER = Logger.getLogger(BSETopDividendJob.class.getName());
 
     @Override
-    public List<MoneyControlDividendModel> getDataFromSource() {
-        return new MoneyControlBSETopDividendParser().parse();
+    public List<DividendModel> getDataFromSource() {
+        return new BSETopDividendParser().parse();
     }
 
     @Override
-    public List<BSETopDividendEntity> transformSourceData(List<MoneyControlDividendModel> sourceData) {
+    public List<BSETopDividendEntity> transformSourceData(List<DividendModel> sourceData) {
         List<BSETopDividendEntity> entities = new ArrayList<>();
 
         NumberFormat format = NumberFormat.getInstance();
-        for (MoneyControlDividendModel moneyControlDividendModel : sourceData) {
+        for (DividendModel moneyControlDividendModel : sourceData) {
             BSETopDividendEntity moneyControlBSETopDividendEntity = new BSETopDividendEntity();
 
             String companyName = moneyControlDividendModel.getCompanyName();

@@ -1,11 +1,11 @@
-package rave.code.moneycontrol.bse.data.parser.html;
+package rave.code.data.parser.html.moneycontrol;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import rave.code.HTMLSourceParser;
-import rave.code.moneycontrol.website.data.model.MoneyControlDividendModel;
+import rave.code.data.parser.html.HTMLSourceParser;
+import rave.code.website.data.model.moneycontrol.DividendModel;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;
@@ -14,22 +14,22 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MoneyControlBSETopDividendParser extends HTMLSourceParser<MoneyControlDividendModel> {
+public class BSETopDividendParser extends HTMLSourceParser<DividendModel> {
 
-    private static final Logger LOGGER = Logger.getLogger(MoneyControlBSETopDividendParser.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(BSETopDividendParser.class.getName());
 
-    public MoneyControlBSETopDividendParser() {
+    public BSETopDividendParser() {
         super("https://www.moneycontrol.com/stocks/marketstats/bsetopdiv/");
     }
 
     @Override
-    public List<MoneyControlDividendModel> parse() {
+    public List<DividendModel> parse() {
         try {
             Document doc = Jsoup.connect(this.getSourceUrl()).get();
             Element table = doc.select("table").get(1);
             Element tableBody = table.select("tbody").get(0);
             Elements tableRows = tableBody.select("tr");
-            List<MoneyControlDividendModel> moneyControlDividendModels = new ArrayList<>();
+            List<DividendModel> moneyControlDividendModels = new ArrayList<>();
 
             for (Element tr : tableRows) {
                 Elements tableData = tr.select("td");
@@ -43,7 +43,7 @@ public class MoneyControlBSETopDividendParser extends HTMLSourceParser<MoneyCont
                     String dividendYieldPercentAt52Low = tableData.get(4).text();
                     String dividendYieldPercentAtCurrent = tableData.get(5).text();
 
-                    MoneyControlDividendModel moneyControlDividendModel = new MoneyControlDividendModel();
+                    DividendModel moneyControlDividendModel = new DividendModel();
                     moneyControlDividendModel.setCompanyName(companyName);
                     moneyControlDividendModel.setLastPrice(lastPrice);
                     moneyControlDividendModel.setLatestDividendPercentage(latestDividendPercentage);
@@ -66,7 +66,7 @@ public class MoneyControlBSETopDividendParser extends HTMLSourceParser<MoneyCont
     }
 
     public static void main(String[] args) {
-        MoneyControlBSETopDividendParser moneyControlBSETopDividendParser = new MoneyControlBSETopDividendParser();
+        BSETopDividendParser moneyControlBSETopDividendParser = new BSETopDividendParser();
         moneyControlBSETopDividendParser.parse();
     }
 }

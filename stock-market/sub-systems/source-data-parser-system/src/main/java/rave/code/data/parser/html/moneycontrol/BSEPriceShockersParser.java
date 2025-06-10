@@ -1,12 +1,12 @@
-package rave.code.moneycontrol.bse.data.parser.html;
+package rave.code.data.parser.html.moneycontrol;
 
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import rave.code.HTMLSourceParser;
-import rave.code.moneycontrol.website.data.model.MoneyControlPriceShockerModel;
+import rave.code.data.parser.html.HTMLSourceParser;
+import rave.code.website.data.model.moneycontrol.PriceShockerModel;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;
@@ -15,17 +15,17 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MoneyControlBSEPriceShockersParser extends HTMLSourceParser<MoneyControlPriceShockerModel> {
+public class BSEPriceShockersParser extends HTMLSourceParser<PriceShockerModel> {
 
-    private static final Logger LOGGER = Logger.getLogger(MoneyControlBSEPriceShockersParser.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(BSEPriceShockersParser.class.getName());
 
-    public MoneyControlBSEPriceShockersParser() {
+    public BSEPriceShockersParser() {
         //https://www.moneycontrol.com/stocks/marketstats/bse_pshockers/index.php
         super("https://www.moneycontrol.com/stocks/marketstats/bse_pshockers/index.php");
     }
 
     @Override
-    public List<MoneyControlPriceShockerModel> parse() {
+    public List<PriceShockerModel> parse() {
         try {
             Document document = null;
             try {
@@ -36,7 +36,7 @@ public class MoneyControlBSEPriceShockersParser extends HTMLSourceParser<MoneyCo
                 this.parse();
             }
 
-            List<MoneyControlPriceShockerModel> moneyControlPriceShockerModels = new ArrayList<>();
+            List<PriceShockerModel> moneyControlPriceShockerModels = new ArrayList<>();
 
             if (document != null) {
                 Element table = document.select("table").get(1);
@@ -90,7 +90,7 @@ public class MoneyControlBSEPriceShockersParser extends HTMLSourceParser<MoneyCo
                         String lowerCircuit = tableData.get(22).text();
                         String volumeWeightedAveragePrice = "NO_DATA";
 
-                        MoneyControlPriceShockerModel moneyControlPriceShockerModel = new MoneyControlPriceShockerModel();
+                        PriceShockerModel moneyControlPriceShockerModel = new PriceShockerModel();
                         moneyControlPriceShockerModel.setCompanyName(companyName);
                         moneyControlPriceShockerModel.setGroup(group);
                         moneyControlPriceShockerModel.setSector(sector);
@@ -126,7 +126,7 @@ public class MoneyControlBSEPriceShockersParser extends HTMLSourceParser<MoneyCo
     }
 
     public static void main(String[] args) {
-        MoneyControlBSEPriceShockersParser moneyControlPriceShockersParser = new MoneyControlBSEPriceShockersParser();
+        BSEPriceShockersParser moneyControlPriceShockersParser = new BSEPriceShockersParser();
         moneyControlPriceShockersParser.parse();
     }
 }

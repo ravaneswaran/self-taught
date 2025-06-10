@@ -1,7 +1,7 @@
 package rave.code.quartz.job.moneycontrol.trading;
 
-import rave.code.moneycontrol.bse.data.parser.html.MoneyControlBSEActive200Parser;
-import rave.code.moneycontrol.website.data.model.MoneyControlGenericBSEActiveModel;
+import rave.code.data.parser.html.moneycontrol.BSEActive200Parser;
+import rave.code.website.data.model.moneycontrol.BSEGenericActiveModel;
 import rave.code.quartz.job.moneycontrol.AbstractTradingJob;
 import rave.code.stockmarket.bse.dataaccess.BSEActive200DataAccess;
 import rave.code.stockmarket.bse.entity.BSEActive200Entity;
@@ -14,23 +14,23 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MoneyControlBSEActive200Job extends AbstractTradingJob<MoneyControlGenericBSEActiveModel, BSEActive200Entity> {
+public class MoneyControlBSEActive200Job extends AbstractTradingJob<BSEGenericActiveModel, BSEActive200Entity> {
 
     private static final Logger LOGGER = Logger.getLogger(MoneyControlBSEActive200Job.class.getName());
 
     @Override
-    public List<MoneyControlGenericBSEActiveModel> getDataFromSource() {
-        MoneyControlBSEActive200Parser moneyControlBSEActive200Parser = new MoneyControlBSEActive200Parser();
-        List<MoneyControlGenericBSEActiveModel> moneyControlBSEActive200Models = moneyControlBSEActive200Parser.parse();
+    public List<BSEGenericActiveModel> getDataFromSource() {
+        BSEActive200Parser moneyControlBSEActive200Parser = new BSEActive200Parser();
+        List<BSEGenericActiveModel> moneyControlBSEActive200Models = moneyControlBSEActive200Parser.parse();
         return moneyControlBSEActive200Models;
     }
 
     @Override
-    public List<BSEActive200Entity> transformSourceData(List<MoneyControlGenericBSEActiveModel> sourceData) {
+    public List<BSEActive200Entity> transformSourceData(List<BSEGenericActiveModel> sourceData) {
         List<BSEActive200Entity> moneyControlBSEActive200Entities = new ArrayList<>();
         NumberFormat format = NumberFormat.getInstance();
 
-        for (MoneyControlGenericBSEActiveModel moneyControlBSEActive200Model : sourceData) {
+        for (BSEGenericActiveModel moneyControlBSEActive200Model : sourceData) {
             BSEActive200Entity moneyControlBSEActive200Entity = new BSEActive200Entity();
             moneyControlBSEActive200Entity.setCompanyName(moneyControlBSEActive200Model.getCompanyName());
             moneyControlBSEActive200Entity.setCategory(moneyControlBSEActive200Model.getGroup());

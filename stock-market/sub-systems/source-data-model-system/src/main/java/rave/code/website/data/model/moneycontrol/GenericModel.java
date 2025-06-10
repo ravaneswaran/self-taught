@@ -1,6 +1,6 @@
-package rave.code.moneycontrol.website.data.model;
+package rave.code.website.data.model.moneycontrol;
 
-public class MoneyControlGenericModel {
+public class GenericModel {
 
     protected String companyName;
     protected String high;
