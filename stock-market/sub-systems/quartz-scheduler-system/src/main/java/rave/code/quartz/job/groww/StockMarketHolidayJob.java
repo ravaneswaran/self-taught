@@ -3,7 +3,7 @@ package rave.code.quartz.job.groww;
 import org.quartz.JobExecutionException;
 import rave.code.data.parser.html.groww.HolidayListParser;
 import rave.code.website.data.model.groww.HolidayModel;
-import rave.code.quartz.job.moneycontrol.AbstractTradingJob;
+import rave.code.quartz.job.moneycontrol.AbstractJob;
 import rave.code.stockmarket.bse.dataaccess.StockMarketHolidayDataAccess;
 import rave.code.stockmarket.bse.entity.StockMarketHolidayEntity;
 
@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-public class StockMarketHolidayJob extends AbstractTradingJob<HolidayModel, StockMarketHolidayEntity> {
+public class StockMarketHolidayJob extends AbstractJob<HolidayModel, StockMarketHolidayEntity> {
 
     @Override
     public List<HolidayModel> getDataFromSource() {

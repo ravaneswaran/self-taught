@@ -6,7 +6,7 @@ import org.quartz.JobExecutionException;
 
 import java.util.List;
 
-public abstract class AbstractTradingJob<S, T> implements Job {
+public abstract class AbstractJob<S, T> implements Job {
 
     public abstract List<S> getDataFromSource();
 

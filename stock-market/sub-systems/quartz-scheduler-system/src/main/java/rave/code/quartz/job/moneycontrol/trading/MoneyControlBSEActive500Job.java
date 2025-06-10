@@ -2,7 +2,7 @@ package rave.code.quartz.job.moneycontrol.trading;
 
 import rave.code.data.parser.html.moneycontrol.BSEActive500Parser;
 import rave.code.website.data.model.moneycontrol.BSEGenericActiveModel;
-import rave.code.quartz.job.moneycontrol.AbstractTradingJob;
+import rave.code.quartz.job.moneycontrol.AbstractJob;
 import rave.code.stockmarket.bse.dataaccess.BSEActive500DataAccess;
 import rave.code.stockmarket.bse.entity.BSEActive500Entity;
 
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MoneyControlBSEActive500Job extends AbstractTradingJob<BSEGenericActiveModel, BSEActive500Entity> {
+public class MoneyControlBSEActive500Job extends AbstractJob<BSEGenericActiveModel, BSEActive500Entity> {
 
     private static final Logger LOGGER = Logger.getLogger(MoneyControlBSEActive500Job.class.getName());
 
