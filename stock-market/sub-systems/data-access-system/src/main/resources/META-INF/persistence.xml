@@ -4,11 +4,11 @@
 
     <persistence-unit name="stock_market" transaction-type="RESOURCE_LOCAL">
 
-        <class>rave.code.stockmarket.bse.entity.MoneyControlBSEActive100Entity</class>
-        <class>rave.code.stockmarket.bse.entity.MoneyControlBSEActive100HistoryEntity</class>
-        <class>rave.code.stockmarket.bse.entity.MoneyControlBSEActive200Entity</class>
-        <class>rave.code.stockmarket.bse.entity.MoneyControlBSEActive500Entity</class>
-        <class>rave.code.stockmarket.bse.entity.MoneyControlBSEPriceShockerEntity</class>
+        <class>rave.code.stockmarket.bse.entity.BSEActive100Entity</class>
+        <class>rave.code.stockmarket.bse.entity.BSEActive100HistoryEntity</class>
+        <class>rave.code.stockmarket.bse.entity.BSEActive200Entity</class>
+        <class>rave.code.stockmarket.bse.entity.BSEActive500Entity</class>
+        <class>rave.code.stockmarket.bse.entity.BSEPriceShockerEntity</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>

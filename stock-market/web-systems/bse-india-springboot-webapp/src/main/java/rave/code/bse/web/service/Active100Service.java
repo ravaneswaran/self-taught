@@ -3,17 +3,16 @@ package rave.code.bse.web.service;
 import rave.code.bse.web.model.page.WebPage;
 import rave.code.bse.web.model.stock.ActiveStock;
 import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
-import rave.code.stockmarket.bse.dataaccess.MoneyControlBSEActive100DataAccess;
-import rave.code.stockmarket.bse.entity.MoneyControlBSEActive100Entity;
+import rave.code.stockmarket.bse.dataaccess.BSEActive100DataAccess;
+import rave.code.stockmarket.bse.entity.BSEActive100Entity;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Active100Service extends AbstractService<MoneyControlBSEActive100Entity, ActiveStock>{
+public class Active100Service extends AbstractService<BSEActive100Entity, ActiveStock>{
 
     private static final Logger LOGGER = Logger.getLogger(Active100Service.class.getName());
 
@@ -24,15 +23,15 @@ public class Active100Service extends AbstractService<MoneyControlBSEActive100En
         return webPage;
     }
 
-    public List<MoneyControlBSEActive100Entity> getEntities(){
-        MoneyControlBSEActive100DataAccess moneyControlBSEActive100DataAccess = new MoneyControlBSEActive100DataAccess();
+    public List<BSEActive100Entity> getEntities(){
+        BSEActive100DataAccess moneyControlBSEActive100DataAccess = new BSEActive100DataAccess();
         return moneyControlBSEActive100DataAccess.findAll();
     }
 
-    public List<ActiveStock> getStocks(List<MoneyControlBSEActive100Entity> moneyControlBSEActive100Entities) {
+    public List<ActiveStock> getStocks(List<BSEActive100Entity> moneyControlBSEActive100Entities) {
 
         List<ActiveStock> stocks = new ArrayList<>();
-        for (MoneyControlBSEActive100Entity moneyControlBSEActive100Entity : moneyControlBSEActive100Entities) {
+        for (BSEActive100Entity moneyControlBSEActive100Entity : moneyControlBSEActive100Entities) {
             ActiveStock stock = new ActiveStock();
 
             stock.setId(moneyControlBSEActive100Entity.getId());

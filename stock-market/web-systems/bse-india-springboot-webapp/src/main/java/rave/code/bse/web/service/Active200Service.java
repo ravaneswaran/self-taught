@@ -3,8 +3,8 @@ package rave.code.bse.web.service;
 import rave.code.bse.web.model.page.WebPage;
 import rave.code.bse.web.model.stock.ActiveStock;
 import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
-import rave.code.stockmarket.bse.dataaccess.MoneyControlBSEActive200DataAccess;
-import rave.code.stockmarket.bse.entity.MoneyControlBSEActive200Entity;
+import rave.code.stockmarket.bse.dataaccess.BSEActive200DataAccess;
+import rave.code.stockmarket.bse.entity.BSEActive200Entity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Active200Service extends AbstractService<MoneyControlBSEActive200Entity, ActiveStock> {
+public class Active200Service extends AbstractService<BSEActive200Entity, ActiveStock> {
 
     private static final Logger LOGGER = Logger.getLogger(Active100Service.class.getName());
 
@@ -23,15 +23,15 @@ public class Active200Service extends AbstractService<MoneyControlBSEActive200En
         return webPage;
     }
 
-    public List<MoneyControlBSEActive200Entity> getEntities() {
-        MoneyControlBSEActive200DataAccess moneyControlBSEActive200DataAccess = new MoneyControlBSEActive200DataAccess();
+    public List<BSEActive200Entity> getEntities() {
+        BSEActive200DataAccess moneyControlBSEActive200DataAccess = new BSEActive200DataAccess();
         return moneyControlBSEActive200DataAccess.findAll();
     }
 
-    public List<ActiveStock> getStocks(List<MoneyControlBSEActive200Entity> entities) {
+    public List<ActiveStock> getStocks(List<BSEActive200Entity> entities) {
 
         List<ActiveStock> stocks = new ArrayList<>();
-        for (MoneyControlBSEActive200Entity entity : entities) {
+        for (BSEActive200Entity entity : entities) {
             ActiveStock stock = new ActiveStock();
 
             stock.setId(entity.getId());

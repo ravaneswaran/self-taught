@@ -3,8 +3,8 @@ package rave.code.bse.web.service;
 import rave.code.bse.web.model.page.WebPage;
 import rave.code.bse.web.model.stock.CapitalGainerStock;
 import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
-import rave.code.stockmarket.bse.dataaccess.MoneyControlBSESmallCapGainerDataAccess;
-import rave.code.stockmarket.bse.entity.MoneyControlBSESmallCapGainerEntity;
+import rave.code.stockmarket.bse.dataaccess.BSESmallCapGainerDataAccess;
+import rave.code.stockmarket.bse.entity.BSESmallCapGainerEntity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class SmallCapGainerService extends AbstractService<MoneyControlBSESmallCapGainerEntity, CapitalGainerStock> {
+public class SmallCapGainerService extends AbstractService<BSESmallCapGainerEntity, CapitalGainerStock> {
 
     private static final Logger LOGGER = Logger.getLogger(SmallCapGainerService.class.getName());
 
@@ -24,15 +24,15 @@ public class SmallCapGainerService extends AbstractService<MoneyControlBSESmallC
     }
 
     @Override
-    public List<MoneyControlBSESmallCapGainerEntity> getEntities() {
-        return new MoneyControlBSESmallCapGainerDataAccess().findAll();
+    public List<BSESmallCapGainerEntity> getEntities() {
+        return new BSESmallCapGainerDataAccess().findAll();
     }
 
     @Override
-    public List<CapitalGainerStock> getStocks(List<MoneyControlBSESmallCapGainerEntity> entities) {
+    public List<CapitalGainerStock> getStocks(List<BSESmallCapGainerEntity> entities) {
 
         List<CapitalGainerStock> stocks = new ArrayList<>();
-        for (MoneyControlBSESmallCapGainerEntity entity : entities) {
+        for (BSESmallCapGainerEntity entity : entities) {
             CapitalGainerStock stock = new CapitalGainerStock();
 
             stock.setCompanyName(entity.getCompanyName());

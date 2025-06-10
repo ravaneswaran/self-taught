@@ -3,8 +3,8 @@ package rave.code.bse.web.service;
 import rave.code.bse.web.model.page.WebPage;
 import rave.code.bse.web.model.stock.TopDividendStock;
 import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
-import rave.code.stockmarket.bse.dataaccess.MoneyControlBSETopDividendDataAccess;
-import rave.code.stockmarket.bse.entity.MoneyControlBSETopDividendEntity;
+import rave.code.stockmarket.bse.dataaccess.BSETopDividendDataAccess;
+import rave.code.stockmarket.bse.entity.BSETopDividendEntity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class TopDividendService extends AbstractService<MoneyControlBSETopDividendEntity, TopDividendStock> {
+public class TopDividendService extends AbstractService<BSETopDividendEntity, TopDividendStock> {
 
     private static final Logger LOGGER = Logger.getLogger(TopDividendService.class.getName());
 
@@ -24,16 +24,16 @@ public class TopDividendService extends AbstractService<MoneyControlBSETopDivide
     }
 
     @Override
-    public List<MoneyControlBSETopDividendEntity> getEntities() {
-        MoneyControlBSETopDividendDataAccess moneyControlBSETopDividendDataAccess = new MoneyControlBSETopDividendDataAccess();
+    public List<BSETopDividendEntity> getEntities() {
+        BSETopDividendDataAccess moneyControlBSETopDividendDataAccess = new BSETopDividendDataAccess();
         return moneyControlBSETopDividendDataAccess.findAll();
     }
 
     @Override
-    public List<TopDividendStock> getStocks(List<MoneyControlBSETopDividendEntity> entities) {
+    public List<TopDividendStock> getStocks(List<BSETopDividendEntity> entities) {
 
         List<TopDividendStock> stocks = new ArrayList<>();
-        for (MoneyControlBSETopDividendEntity entity : entities) {
+        for (BSETopDividendEntity entity : entities) {
             TopDividendStock stock = new TopDividendStock();
 
             stock.setCompanyName(entity.getCompanyName());

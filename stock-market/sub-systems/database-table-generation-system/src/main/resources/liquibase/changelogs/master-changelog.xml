@@ -2,26 +2,20 @@
 <databaseChangeLog
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
-        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
-        http://www.liquibase.org/xml/ns/dbchangelog-ext
-        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
-        http://www.liquibase.org/xml/ns/pro
-        http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <include relativeToChangelogFile="true" file="moneycontrol-bse-active-100-changelog.xml"/>
-    <include relativeToChangelogFile="true" file="moneycontrol-bse-active-100-history-changelog.xml"/>
-    <include relativeToChangelogFile="true" file="moneycontrol-bse-active-200-changelog.xml"/>
-    <include relativeToChangelogFile="true" file="moneycontrol-bse-active-200-history-changelog.xml"/>
-    <include relativeToChangelogFile="true" file="moneycontrol-bse-active-500-changelog.xml"/>
-    <include relativeToChangelogFile="true" file="moneycontrol-bse-active-500-history-changelog.xml"/>
-    <include relativeToChangelogFile="true" file="moneycontrol-bse-top-dividend-changelog.xml"/>
-    <include relativeToChangelogFile="true" file="moneycontrol-bse-small-cap-gainer-changelog.xml"/>
-    <include relativeToChangelogFile="true" file="moneycontrol-bse-mid-cap-gainer-changelog.xml"/>
-    <include relativeToChangelogFile="true" file="moneycontrol-bse-price-shockers-changelog.xml"/>
-    <include relativeToChangelogFile="true" file="moneycontrol-bse-price-shockers-history-changelog.xml"/>
+    <include relativeToChangelogFile="true" file="bse-active-100-changelog.xml"/>
+    <include relativeToChangelogFile="true" file="bse-active-100-history-changelog.xml"/>
+    <include relativeToChangelogFile="true" file="bse-active-200-changelog.xml"/>
+    <include relativeToChangelogFile="true" file="bse-active-200-history-changelog.xml"/>
+    <include relativeToChangelogFile="true" file="bse-active-500-changelog.xml"/>
+    <include relativeToChangelogFile="true" file="bse-active-500-history-changelog.xml"/>
+    <include relativeToChangelogFile="true" file="bse-top-dividend-changelog.xml"/>
+    <include relativeToChangelogFile="true" file="bse-small-cap-gainer-changelog.xml"/>
+    <include relativeToChangelogFile="true" file="bse-mid-cap-gainer-changelog.xml"/>
+    <include relativeToChangelogFile="true" file="bse-price-shockers-changelog.xml"/>
+    <include relativeToChangelogFile="true" file="bse-price-shockers-history-changelog.xml"/>
     <include relativeToChangelogFile="true" file="stock-market-holidays-changelog.xml"/>
 
 </databaseChangeLog>
