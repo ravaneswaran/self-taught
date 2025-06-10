@@ -19,19 +19,19 @@
     <div>
         <div class="left-container-application-link-div">
             <img src="/images/icons/play-store-icon.png" class="left-container-application-link-icon">
-            <a href="/bse/active-100" class="left-container-application-link" th:style="${page.active100LinkStyle}">100 Active Stocks</a>
+            <a href="/bse/active-100" class="left-container-application-link" th:style="${page != null} ? ${page.active100LinkStyle} : '' ">100 Active Stocks</a>
         </div>
         <div class="left-container-application-link-div">
             <img src="/images/icons/play-store-icon.png" class="left-container-application-link-icon">
-            <a href="/bse/active-200" class="left-container-application-link" th:style="${page.active200LinkStyle}">200 Active Stocks</a>
+            <a href="/bse/active-200" class="left-container-application-link" th:style="${page != null} ? ${page.active200LinkStyle} : ''">200 Active Stocks</a>
         </div>
         <div class="left-container-application-link-div">
             <img src="/images/icons/play-store-icon.png" class="left-container-application-link-icon">
-            <a href="/bse/active-500" class="left-container-application-link" th:style="${page.active500LinkStyle}">500 Active Stocks</a>
+            <a href="/bse/active-500" class="left-container-application-link" th:style="${page != null} ? ${page.active500LinkStyle} : ''">500 Active Stocks</a>
         </div>
         <div class="left-container-application-link-div">
             <img src="/images/icons/play-store-icon.png" class="left-container-application-link-icon">
-            <a href="/bse/price-shockers" class="left-container-application-link" th:style="${page.priceShockersLinkStyle}">Price Shockers</a>
+            <a href="/bse/price-shockers" class="left-container-application-link" th:style="${page != null} ? ${page.priceShockersLinkStyle} : ''">Price Shockers</a>
         </div>
     </div>
     <div class="container-horizontal-separator"></div>
@@ -41,15 +41,15 @@
     <div>
         <div class="left-container-application-link-div">
             <img src="/images/icons/play-store-icon.png" class="left-container-application-link-icon">
-            <a href="/bse/small-cap-gainers" class="left-container-application-link" th:style="${page.smallCapGainerLinkStyle}">Small-Cap Gainer Stocks</a>
+            <a href="/bse/small-cap-gainers" class="left-container-application-link" th:style="${page != null} ? ${page.smallCapGainerLinkStyle} : ''">Small-Cap Gainer Stocks</a>
         </div>
         <div class="left-container-application-link-div">
             <img src="/images/icons/play-store-icon.png" class="left-container-application-link-icon">
-            <a href="/bse/mid-cap-gainers" class="left-container-application-link" th:style="${page.midCapGainerLinkStyle}">Mid-Cap Gainer Stocks</a>
+            <a href="/bse/mid-cap-gainers" class="left-container-application-link" th:style="${page != null} ? ${page.midCapGainerLinkStyle} : ''">Mid-Cap Gainer Stocks</a>
         </div>
         <div class="left-container-application-link-div">
             <img src="/images/icons/play-store-icon.png" class="left-container-application-link-icon">
-            <a href="/bse/top-dividend" class="left-container-application-link" th:style="${page.topDividendLinkStyle}">Top Dividend Stocks</a>
+            <a href="/bse/top-dividend" class="left-container-application-link" th:style="${page != null} ? ${page.topDividendLinkStyle} : ''">Top Dividend Stocks</a>
         </div>
     </div>
 </div>
