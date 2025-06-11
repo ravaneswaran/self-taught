@@ -6,10 +6,10 @@ import rave.code.quartz.job.moneycontrol.history.BSEActive100HistoryJob;
 import rave.code.quartz.job.moneycontrol.history.BSEActive200HistoryJob;
 import rave.code.quartz.job.moneycontrol.history.BSEActive500HistoryJob;
 import rave.code.quartz.job.moneycontrol.history.BSEPriceShockersHistoryJob;
-import rave.code.quartz.job.moneycontrol.trading.MoneyControlBSEActive100Job;
-import rave.code.quartz.job.moneycontrol.trading.MoneyControlBSEActive200Job;
-import rave.code.quartz.job.moneycontrol.trading.MoneyControlBSEActive500Job;
-import rave.code.quartz.job.moneycontrol.trading.MoneyControlPriceShockersJob;
+import rave.code.quartz.job.moneycontrol.trading.BSEActive100Job;
+import rave.code.quartz.job.moneycontrol.trading.BSEActive200Job;
+import rave.code.quartz.job.moneycontrol.trading.BSEActive500Job;
+import rave.code.quartz.job.moneycontrol.trading.PriceShockersJob;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,16 +48,16 @@ public class TraderScheduler {
                 LOGGER.log(Level.SEVERE, se.getMessage(), se);
             }
 
-            JobDetail active100JobDetail = newJob(MoneyControlBSEActive100Job.class)
+            JobDetail active100JobDetail = newJob(BSEActive100Job.class)
                     .withIdentity("Active100Job", "Trading")
                     .build();
-            JobDetail active200JobDetail = newJob(MoneyControlBSEActive200Job.class)
+            JobDetail active200JobDetail = newJob(BSEActive200Job.class)
                     .withIdentity("Active200Job", "Trading")
                     .build();
-            JobDetail active500JobDetail = newJob(MoneyControlBSEActive500Job.class)
+            JobDetail active500JobDetail = newJob(BSEActive500Job.class)
                     .withIdentity("Active500Job", "Trading")
                     .build();
-            JobDetail priceShockersJobDetail = newJob(MoneyControlPriceShockersJob.class)
+            JobDetail priceShockersJobDetail = newJob(PriceShockersJob.class)
                     .withIdentity("PriceShockersJob", "Trading")
                     .build();
 

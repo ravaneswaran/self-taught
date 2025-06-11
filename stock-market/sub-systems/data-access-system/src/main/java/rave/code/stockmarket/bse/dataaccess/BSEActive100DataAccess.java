@@ -20,4 +20,12 @@ public class BSEActive100DataAccess extends StockMarketHistoryEnabledDataAccess<
         throw new RuntimeException("Yet to implement....");
     }
 
+    @Override
+    public BSEActive100Entity findBy(String primaryKey) {
+        BSEActive100Entity bseActive100Entity = super.findBy(primaryKey);
+        if (null != bseActive100Entity) {
+            bseActive100Entity.setNewEntity(false);
+        }
+        return bseActive100Entity;
+    }
 }

@@ -14,9 +14,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MoneyControlBSEActive500Job extends AbstractJob<BSEGenericActiveModel, BSEActive500Entity> {
+public class BSEActive500Job extends AbstractJob<BSEGenericActiveModel, BSEActive500Entity> {
 
-    private static final Logger LOGGER = Logger.getLogger(MoneyControlBSEActive500Job.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(BSEActive500Job.class.getName());
 
     @Override
     public List<BSEGenericActiveModel> getDataFromSource() {

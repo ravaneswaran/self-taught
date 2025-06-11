@@ -33,6 +33,8 @@ public class BSEActive500HistoryEntity extends AbstractEntity {
     private String low;
     @Column(name = "last_price")
     private String lastPrice;
+    @Column(name = "last_price_movement")
+    private String lastPriceMovement;
     @Column(name = "percentage_change")
     private String percentageChange;
     @Column(name = "value_in_crores")
@@ -96,6 +98,14 @@ public class BSEActive500HistoryEntity extends AbstractEntity {
 
     public void setLastPrice(String lastPrice) {
         this.lastPrice = lastPrice;
+    }
+
+    public String getLastPriceMovement() {
+        return lastPriceMovement;
+    }
+
+    public void setLastPriceMovement(String lastPriceMovement) {
+        this.lastPriceMovement = lastPriceMovement;
     }
 
     public String getCategory() {
