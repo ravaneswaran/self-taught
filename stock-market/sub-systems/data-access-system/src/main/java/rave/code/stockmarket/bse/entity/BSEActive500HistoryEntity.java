@@ -6,100 +6,64 @@ import rave.code.stockmarket.AbstractEntity;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
-import java.util.UUID;
 
 @XmlRootElement(name = "bse-active-500-history")
-@Entity
+@Embeddable
 @Data
 @Table(name = "bse_active_500_history")
 public class BSEActive500HistoryEntity extends AbstractEntity {
 
-    @Id
-    @Column(name = "id")
-    private String id;
-
-    @Column(name = "company_name")
-    private String companyName;
-
-    @Column(name = "category")
-    private String category;
-
-    @Column(name = "high")
-    private String high;
-
-    @Column(name = "low")
-    private String low;
-
-    @Column(name = "last_price")
-    private String lastPrice;
-
-    @Column(name = "percentage_change")
-    private String percentageChange;
-
-    @Column(name = "value_in_crores")
-    private String valueInCrores;
-
-    @Column(name = "average_volume_5d")
-    private String averageVolume5Days;
-
-    @Column(name = "average_volume_10d")
-    private String averageVolume10Days;
-
-    @Column(name = "average_volume_30d")
-    private String averageVolume30Days;
-
-    @Column(name = "price_to_earning_ratio")
-    private String priceToEarningRatio;
-
-    @Column(name = "price_to_book_ratio")
-    private String priceToBookRatio;
-
-    @Column(name = "upper_circuit")
-    private String upperCircuit;
-
-    @Column(name = "lower_circuit")
-    private String lowerCircuit;
-
-    @Column(name = "volume_weighted_average_price")
-    private String volumeWeightedAveragePrice;
-
-    @Column(name = "displaced_moving_average_30d")
-    private String displacedMovingAverage30D;
-
-    @Column(name = "displaced_moving_average_50d")
-    private String displacedMovingAverage50D;
-
-    @Column(name = "displaced_moving_average_150d")
-    private String displacedMovingAverage150D;
-
-    @Column(name = "displaced_moving_average_200d")
-    private String displacedMovingAverage200D;
-
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_date")
     protected Date createdDate;
-
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modified_date")
     protected Date modifiedDate;
-
     @Column(name = "created_by")
     protected String createdBy;
-
     @Column(name = "modified_by")
     protected String modifiedBy;
+    @Column(name = "company_name")
+    private String companyName;
+    @Column(name = "category")
+    private String category;
+    @Column(name = "high")
+    private String high;
+    @Column(name = "low")
+    private String low;
+    @Column(name = "last_price")
+    private String lastPrice;
+    @Column(name = "percentage_change")
+    private String percentageChange;
+    @Column(name = "value_in_crores")
+    private String valueInCrores;
+    @Column(name = "average_volume_5d")
+    private String averageVolume5Days;
+    @Column(name = "average_volume_10d")
+    private String averageVolume10Days;
+    @Column(name = "average_volume_30d")
+    private String averageVolume30Days;
+    @Column(name = "price_to_earning_ratio")
+    private String priceToEarningRatio;
+    @Column(name = "price_to_book_ratio")
+    private String priceToBookRatio;
+    @Column(name = "upper_circuit")
+    private String upperCircuit;
+    @Column(name = "lower_circuit")
+    private String lowerCircuit;
+    @Column(name = "volume_weighted_average_price")
+    private String volumeWeightedAveragePrice;
+    @Column(name = "displaced_moving_average_30d")
+    private String displacedMovingAverage30D;
+    @Column(name = "displaced_moving_average_50d")
+    private String displacedMovingAverage50D;
+    @Column(name = "displaced_moving_average_150d")
+    private String displacedMovingAverage150D;
+    @Column(name = "displaced_moving_average_200d")
+    private String displacedMovingAverage200D;
 
     public BSEActive500HistoryEntity() {
         super();
-        this.setId(UUID.randomUUID().toString());
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getCompanyName() {

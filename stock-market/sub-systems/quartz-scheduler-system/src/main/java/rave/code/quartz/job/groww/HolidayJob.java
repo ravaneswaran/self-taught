@@ -14,6 +14,10 @@ import java.util.UUID;
 
 public class HolidayJob extends AbstractJob<HolidayModel, HolidayEntity> {
 
+    public static void main(String[] args) throws JobExecutionException {
+        new HolidayJob().execute(null);
+    }
+
     @Override
     public List<HolidayModel> getDataFromSource() {
         return new HolidayListParser().parse();
@@ -47,9 +51,5 @@ public class HolidayJob extends AbstractJob<HolidayModel, HolidayEntity> {
         for (HolidayEntity entity : transformedData) {
             stockMarketHolidayDataAccess.save(entity);
         }
-    }
-
-    public static void main(String[] args) throws JobExecutionException {
-        new HolidayJob().execute(null);
     }
 }

@@ -23,6 +23,11 @@ public class BSEMidCapGainersParser extends HTMLSourceParser<CapitalGainerModel>
         super("https://www.moneycontrol.com/stocks/marketstats/bse-gainer/bse-midcap_25/");
     }
 
+    public static void main(String[] args) {
+        BSEMidCapGainersParser moneyControlBSEMidCapGainersParser = new BSEMidCapGainersParser();
+        moneyControlBSEMidCapGainersParser.parse();
+    }
+
     @Override
     public List<CapitalGainerModel> parse() {
         try {
@@ -136,10 +141,5 @@ public class BSEMidCapGainersParser extends HTMLSourceParser<CapitalGainerModel>
             LOGGER.log(Level.SEVERE, ioException.getMessage(), ioException);
             return new ArrayList<>();
         }
-    }
-
-    public static void main(String[] args) {
-        BSEMidCapGainersParser moneyControlBSEMidCapGainersParser = new BSEMidCapGainersParser();
-        moneyControlBSEMidCapGainersParser.parse();
     }
 }

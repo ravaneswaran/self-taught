@@ -12,6 +12,11 @@ import java.util.List;
 
 public class HolidayMailerJob implements Job {
 
+    public static void main(String[] args) throws JobExecutionException {
+        HolidayMailerJob holidayMailerJob = new HolidayMailerJob();
+        holidayMailerJob.execute(null);
+    }
+
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         Date toDate = new Date();
@@ -26,11 +31,6 @@ public class HolidayMailerJob implements Job {
                 System.out.println("SENDING MAIL....");
             }
         }
-    }
-
-    public static void main(String[] args) throws JobExecutionException {
-        HolidayMailerJob holidayMailerJob = new HolidayMailerJob();
-        holidayMailerJob.execute(null);
     }
 
 }

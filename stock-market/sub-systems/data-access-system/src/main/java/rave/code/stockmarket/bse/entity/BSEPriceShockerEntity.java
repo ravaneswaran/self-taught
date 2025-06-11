@@ -13,74 +13,53 @@ import java.util.Date;
 @Table(name = "bse_price_shockers")
 public class BSEPriceShockerEntity extends AbstractEntity {
 
-    @Id
-    @Column(name = "company_name")
-    private String companyName;
-
-    @Column(name = "category")
-    private String category;
-
-    @Column(name = "sector")
-    private String sector;
-
-    @Column(name = "current_price")
-    private String currentPrice;
-
-    @Column(name = "previous_price")
-    private String previousPrice;
-
-    @Column(name = "percentage_change")
-    private String percentageChange;
-
-    @Column(name = "average_volume_5d")
-    private String averageVolume5Days;
-
-    @Column(name = "average_volume_10d")
-    private String averageVolume10Days;
-
-    @Column(name = "average_volume_30d")
-    private String averageVolume30Days;
-
-    @Column(name = "price_to_earning_ratio")
-    private String priceToEarningRatio;
-
-    @Column(name = "price_to_book_ratio")
-    private String priceToBookRatio;
-
-    @Column(name = "upper_circuit")
-    private String upperCircuit;
-
-    @Column(name = "lower_circuit")
-    private String lowerCircuit;
-
-    @Column(name = "volume_weighted_average_price")
-    private String volumeWeightedAveragePrice;
-
-    @Column(name = "displaced_moving_average_30d")
-    private String displacedMovingAverage30D;
-
-    @Column(name = "displaced_moving_average_50d")
-    private String displacedMovingAverage50D;
-
-    @Column(name = "displaced_moving_average_150d")
-    private String displacedMovingAverage150D;
-
-    @Column(name = "displaced_moving_average_200d")
-    private String displacedMovingAverage200D;
-
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_date")
     protected Date createdDate;
-
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modified_date")
     protected Date modifiedDate;
-
     @Column(name = "created_by")
     protected String createdBy;
-
     @Column(name = "modified_by")
     protected String modifiedBy;
+    @Id
+    @Column(name = "company_name")
+    private String companyName;
+    @Column(name = "category")
+    private String category;
+    @Column(name = "sector")
+    private String sector;
+    @Column(name = "current_price")
+    private String currentPrice;
+    @Column(name = "previous_price")
+    private String previousPrice;
+    @Column(name = "percentage_change")
+    private String percentageChange;
+    @Column(name = "average_volume_5d")
+    private String averageVolume5Days;
+    @Column(name = "average_volume_10d")
+    private String averageVolume10Days;
+    @Column(name = "average_volume_30d")
+    private String averageVolume30Days;
+    @Column(name = "price_to_earning_ratio")
+    private String priceToEarningRatio;
+    @Column(name = "price_to_book_ratio")
+    private String priceToBookRatio;
+    @Column(name = "upper_circuit")
+    private String upperCircuit;
+    @Column(name = "lower_circuit")
+    private String lowerCircuit;
+    @Column(name = "volume_weighted_average_price")
+    private String volumeWeightedAveragePrice;
+    @Column(name = "displaced_moving_average_30d")
+    private String displacedMovingAverage30D;
+    @Column(name = "displaced_moving_average_50d")
+    private String displacedMovingAverage50D;
+    @Column(name = "displaced_moving_average_150d")
+    private String displacedMovingAverage150D;
+    @Column(name = "displaced_moving_average_200d")
+    private String displacedMovingAverage200D;
 
     public BSEPriceShockerEntity() {
         super();

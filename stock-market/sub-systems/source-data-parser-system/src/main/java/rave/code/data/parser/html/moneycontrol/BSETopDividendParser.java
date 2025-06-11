@@ -22,6 +22,11 @@ public class BSETopDividendParser extends HTMLSourceParser<DividendModel> {
         super("https://www.moneycontrol.com/stocks/marketstats/bsetopdiv/");
     }
 
+    public static void main(String[] args) {
+        BSETopDividendParser moneyControlBSETopDividendParser = new BSETopDividendParser();
+        moneyControlBSETopDividendParser.parse();
+    }
+
     @Override
     public List<DividendModel> parse() {
         try {
@@ -63,10 +68,5 @@ public class BSETopDividendParser extends HTMLSourceParser<DividendModel> {
             LOGGER.log(Level.SEVERE, ste.getMessage(), ste);
             return new ArrayList<>();
         }
-    }
-
-    public static void main(String[] args) {
-        BSETopDividendParser moneyControlBSETopDividendParser = new BSETopDividendParser();
-        moneyControlBSETopDividendParser.parse();
     }
 }

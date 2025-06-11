@@ -24,6 +24,11 @@ public class BSEPriceShockersParser extends HTMLSourceParser<PriceShockerModel> 
         super("https://www.moneycontrol.com/stocks/marketstats/bse_pshockers/index.php");
     }
 
+    public static void main(String[] args) {
+        BSEPriceShockersParser moneyControlPriceShockersParser = new BSEPriceShockersParser();
+        moneyControlPriceShockersParser.parse();
+    }
+
     @Override
     public List<PriceShockerModel> parse() {
         try {
@@ -123,10 +128,5 @@ public class BSEPriceShockersParser extends HTMLSourceParser<PriceShockerModel> 
             LOGGER.log(Level.SEVERE, ioException.getMessage(), ioException);
             return new ArrayList<>();
         }
-    }
-
-    public static void main(String[] args) {
-        BSEPriceShockersParser moneyControlPriceShockersParser = new BSEPriceShockersParser();
-        moneyControlPriceShockersParser.parse();
     }
 }

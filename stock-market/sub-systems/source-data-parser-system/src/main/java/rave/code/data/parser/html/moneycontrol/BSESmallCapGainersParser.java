@@ -23,6 +23,11 @@ public class BSESmallCapGainersParser extends HTMLSourceParser<CapitalGainerMode
         super("https://www.moneycontrol.com/stocks/marketstats/bse-gainer/bse-smallcap_26/");
     }
 
+    public static void main(String[] args) {
+        BSESmallCapGainersParser moneyControlBSESmallCapGainersParser = new BSESmallCapGainersParser();
+        moneyControlBSESmallCapGainersParser.parse();
+    }
+
     @Override
     public List<CapitalGainerModel> parse() {
         try {
@@ -136,10 +141,5 @@ public class BSESmallCapGainersParser extends HTMLSourceParser<CapitalGainerMode
             LOGGER.log(Level.SEVERE, ioException.getMessage(), ioException);
             return new ArrayList<>();
         }
-    }
-
-    public static void main(String[] args) {
-        BSESmallCapGainersParser moneyControlBSESmallCapGainersParser = new BSESmallCapGainersParser();
-        moneyControlBSESmallCapGainersParser.parse();
     }
 }

@@ -23,6 +23,11 @@ public class BSEActive500Parser extends BSEActiveParser {
         super("https://www.moneycontrol.com/stocks/marketstats/bse-mostactive-stocks/bse-500-12/");
     }
 
+    public static void main(String[] args) {
+        BSEActive500Parser moneyControlBSEActive500Parser = new BSEActive500Parser();
+        moneyControlBSEActive500Parser.parse();
+    }
+
     @Override
     public List<BSEGenericActiveModel> parse() {
         try {
@@ -123,10 +128,5 @@ public class BSEActive500Parser extends BSEActiveParser {
             LOGGER.log(Level.SEVERE, ioException.getMessage(), ioException);
             return new ArrayList<>();
         }
-    }
-
-    public static void main(String[] args) {
-        BSEActive500Parser moneyControlBSEActive500Parser = new BSEActive500Parser();
-        moneyControlBSEActive500Parser.parse();
     }
 }

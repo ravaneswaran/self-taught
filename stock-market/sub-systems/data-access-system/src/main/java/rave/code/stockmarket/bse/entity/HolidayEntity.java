@@ -13,32 +13,25 @@ import java.util.Date;
 @Table(name = "stock_market_holidays")
 public class HolidayEntity extends AbstractEntity {
 
-    @Id
-    @Column(name = "id")
-    private String id;
-
-    @Column(name = "holidate")
-    private String holidate;
-
-    @Column(name = "holiday")
-    private String holiday;
-
-    @Column(name = "description")
-    private String description;
-
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_date")
     protected Date createdDate;
-
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modified_date")
     protected Date modifiedDate;
-
     @Column(name = "created_by")
     protected String createdBy;
-
     @Column(name = "modified_by")
     protected String modifiedBy;
+    @Id
+    @Column(name = "id")
+    private String id;
+    @Column(name = "holidate")
+    private String holidate;
+    @Column(name = "holiday")
+    private String holiday;
+    @Column(name = "description")
+    private String description;
 
     public String getId() {
         return id;

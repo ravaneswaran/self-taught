@@ -17,6 +17,11 @@ public class InvestorScheduler {
 
     public static final Logger LOGGER = Logger.getLogger(InvestorScheduler.class.toString());
 
+    public static void main(String[] args) {
+        InvestorScheduler investorScheduler = new InvestorScheduler();
+        investorScheduler.scheduleInvestingJobs();
+    }
+
     public void scheduleInvestingJobs() {
 
         SchedulerFactory schedulerFactory = new StdSchedulerFactory();
@@ -82,10 +87,5 @@ public class InvestorScheduler {
                 LOGGER.log(Level.SEVERE, se.getMessage(), se);
             }*/
         }
-    }
-
-    public static void main(String[] args) {
-        InvestorScheduler investorScheduler = new InvestorScheduler();
-        investorScheduler.scheduleInvestingJobs();
     }
 }

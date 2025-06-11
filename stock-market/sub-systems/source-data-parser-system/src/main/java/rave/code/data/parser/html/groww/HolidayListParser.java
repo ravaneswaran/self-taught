@@ -24,6 +24,11 @@ public class HolidayListParser extends HTMLSourceParser<HolidayModel> {
         super("https://groww.in/p/nse-holidays");
     }
 
+    public static void main(String[] args) {
+        HolidayListParser growwHolidayParser = new HolidayListParser();
+        growwHolidayParser.parse();
+    }
+
     @Override
     public List<HolidayModel> parse() {
         List<HolidayModel> growwHolidayModels = new ArrayList<>();
@@ -60,10 +65,5 @@ public class HolidayListParser extends HTMLSourceParser<HolidayModel> {
         }
 
         return growwHolidayModels;
-    }
-
-    public static void main(String[] args) {
-        HolidayListParser growwHolidayParser = new HolidayListParser();
-        growwHolidayParser.parse();
     }
 }

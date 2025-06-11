@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <databaseChangeLog
-        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <changeSet id="001" author="Ravaneswaran Chinnasamy">
         <createTable tableName="bse_price_shockers_history">
-            <column name="id" type="varchar2(100)">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
             <column name="company_name" type="varchar2(100)"/>
             <column name="category" type="varchar2(100)"/>
             <column name="sector" type="varchar2(100)"/>

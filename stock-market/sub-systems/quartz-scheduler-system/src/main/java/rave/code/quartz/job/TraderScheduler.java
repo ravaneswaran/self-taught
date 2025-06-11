@@ -25,6 +25,12 @@ public class TraderScheduler {
 
     public static final Logger LOGGER = Logger.getLogger(TraderScheduler.class.toString());
 
+    public static void main(String[] args) {
+        TraderScheduler traderScheduler = new TraderScheduler();
+        traderScheduler.scheduleMoveToHistoryJobs();
+        traderScheduler.scheduleTradingJobs();
+    }
+
     public void scheduleTradingJobs() {
 
         SchedulerFactory schedulerFactory = new StdSchedulerFactory();
@@ -174,11 +180,5 @@ public class TraderScheduler {
                 LOGGER.log(Level.SEVERE, se.getMessage(), se);
             }*/
         }
-    }
-
-    public static void main(String[] args) {
-        TraderScheduler traderScheduler = new TraderScheduler();
-        traderScheduler.scheduleMoveToHistoryJobs();
-        traderScheduler.scheduleTradingJobs();
     }
 }

@@ -13,38 +13,29 @@ import java.util.Date;
 @Table(name = "bse_top_dividend")
 public class BSETopDividendEntity extends AbstractEntity {
 
-    @Id
-    @Column(name = "company_name")
-    private String companyName;
-
-    @Column(name = "last_price")
-    private String lastPrice;
-
-    @Column(name = "latest_dividend_percentage")
-    private String latestDividendPercentage;
-
-    @Column(name = "dividend_yield_percentage_52_high")
-    private String dividendYieldPercentage52High;
-
-    @Column(name = "dividend_yield_percentage_52_low")
-    private String dividendYieldPercentage52Low;
-
-    @Column(name = "dividend_yield_percentage_at_current")
-    private String dividendYieldPercentageAtCurrent;
-
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_date")
     protected Date createdDate;
-
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modified_date")
     protected Date modifiedDate;
-
     @Column(name = "created_by")
     protected String createdBy;
-
     @Column(name = "modified_by")
     protected String modifiedBy;
+    @Id
+    @Column(name = "company_name")
+    private String companyName;
+    @Column(name = "last_price")
+    private String lastPrice;
+    @Column(name = "latest_dividend_percentage")
+    private String latestDividendPercentage;
+    @Column(name = "dividend_yield_percentage_52_high")
+    private String dividendYieldPercentage52High;
+    @Column(name = "dividend_yield_percentage_52_low")
+    private String dividendYieldPercentage52Low;
+    @Column(name = "dividend_yield_percentage_at_current")
+    private String dividendYieldPercentageAtCurrent;
 
     public BSETopDividendEntity() {
         super();
