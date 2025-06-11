@@ -11,12 +11,12 @@
     <name>sub-systems</name>
 
     <modules>
-        <module>data-access-system</module>
+        <module>database-table-generation-system</module>
+        <module>email-system</module>
         <module>source-data-model-system</module>
         <module>source-data-parser-system</module>
-        <module>database-table-generation-system</module>
+        <module>data-access-system</module>
         <module>quartz-scheduler-system</module>
-        <module>email-system</module>
     </modules>
 
 </project>

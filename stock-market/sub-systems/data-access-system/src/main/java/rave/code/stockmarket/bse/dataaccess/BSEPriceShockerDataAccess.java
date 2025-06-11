@@ -7,7 +7,7 @@ import java.util.List;
 
 public class BSEPriceShockerDataAccess extends StockMarketHistoryEnabledDataAccess<BSEPriceShockerEntity> {
 
-    public BSEPriceShockerDataAccess(){
+    public BSEPriceShockerDataAccess() {
         this(BSEPriceShockerEntity.class);
     }
 

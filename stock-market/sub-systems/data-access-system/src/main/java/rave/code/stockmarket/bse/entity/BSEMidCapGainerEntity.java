@@ -85,7 +85,7 @@ public class BSEMidCapGainerEntity extends AbstractEntity {
     @Column(name = "modified_by")
     protected String modifiedBy;
 
-    public BSEMidCapGainerEntity(){
+    public BSEMidCapGainerEntity() {
         super();
     }
 

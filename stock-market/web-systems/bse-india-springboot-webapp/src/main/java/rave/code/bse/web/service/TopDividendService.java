@@ -18,7 +18,7 @@ public class TopDividendService extends AbstractService<BSETopDividendEntity, To
 
     @Override
     public WebPage getPageModel() {
-        WebPage webPage =  super.getPageModel();
+        WebPage webPage = super.getPageModel();
         webPage.setTopDividendLinkStyle("font-weight: bold;");
         return webPage;
     }

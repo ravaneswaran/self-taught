@@ -8,7 +8,7 @@ import java.util.List;
 
 public class BSEMidCapGainerDataAccess extends StockMarketHistoryEnabledDataAccess<BSEMidCapGainerEntity> {
 
-    public BSEMidCapGainerDataAccess(){
+    public BSEMidCapGainerDataAccess() {
         this(BSEMidCapGainerEntity.class);
     }
 

@@ -1,6 +1,6 @@
 package rave.code.bse.web.model.stock;
 
-public class ActiveStock extends Stock{
+public class ActiveStock extends Stock {
 
 
     private double high;
@@ -19,7 +19,6 @@ public class ActiveStock extends Stock{
     private double displacedMovingAverage50D;
     private double displacedMovingAverage150D;
     private double displacedMovingAverage200D;
-
 
 
     public double getHigh() {

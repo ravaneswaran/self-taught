@@ -8,7 +8,7 @@ import java.util.List;
 
 public class BSETopDividendDataAccess extends StockMarketHistoryEnabledDataAccess<BSETopDividendEntity> {
 
-    public BSETopDividendDataAccess(){
+    public BSETopDividendDataAccess() {
         this(BSETopDividendEntity.class);
     }
 

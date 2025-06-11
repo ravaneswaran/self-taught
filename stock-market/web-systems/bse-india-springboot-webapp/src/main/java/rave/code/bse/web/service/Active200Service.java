@@ -18,7 +18,7 @@ public class Active200Service extends AbstractService<BSEActive200Entity, Active
 
     @Override
     public WebPage getPageModel() {
-        WebPage webPage =  super.getPageModel();
+        WebPage webPage = super.getPageModel();
         webPage.setActive200LinkStyle("font-weight: bold;");
         return webPage;
     }
@@ -34,7 +34,6 @@ public class Active200Service extends AbstractService<BSEActive200Entity, Active
         for (BSEActive200Entity entity : entities) {
             ActiveStock stock = new ActiveStock();
 
-            stock.setId(entity.getId());
             stock.setCompanyName(entity.getCompanyName());
             stock.setCategory(entity.getCategory());
 

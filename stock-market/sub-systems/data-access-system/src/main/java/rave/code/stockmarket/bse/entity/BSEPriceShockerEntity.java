@@ -6,7 +6,6 @@ import rave.code.stockmarket.AbstractEntity;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
-import java.util.UUID;
 
 @XmlRootElement(name = "bse-price-shocker")
 @Entity
@@ -15,9 +14,6 @@ import java.util.UUID;
 public class BSEPriceShockerEntity extends AbstractEntity {
 
     @Id
-    @Column(name = "id")
-    private String id;
-
     @Column(name = "company_name")
     private String companyName;
 
@@ -88,15 +84,6 @@ public class BSEPriceShockerEntity extends AbstractEntity {
 
     public BSEPriceShockerEntity() {
         super();
-        this.setId(UUID.randomUUID().toString());
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getCompanyName() {

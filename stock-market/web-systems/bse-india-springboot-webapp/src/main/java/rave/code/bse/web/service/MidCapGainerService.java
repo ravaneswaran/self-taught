@@ -42,7 +42,8 @@ public class MidCapGainerService extends AbstractService<BSEMidCapGainerEntity, 
                     stock.setHigh(Double.parseDouble(value));
                 } else {
                     stock.setHigh(0.0);
-                };
+                }
+                ;
             } catch (NumberFormatException nfe) {
                 LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
                 stock.setHigh(0.0);

@@ -37,12 +37,11 @@ public class PriceShockerService extends AbstractService<BSEPriceShockerEntity, 
         for (BSEPriceShockerEntity entity : entities) {
             PriceShockerStock stock = new PriceShockerStock();
 
-            stock.setId(entity.getId());
             stock.setCompanyName(entity.getCompanyName());
             stock.setCategory(entity.getCategory());
 
             String sector = entity.getSector();
-            if(null != sector && sector.length() > 6){
+            if (null != sector && sector.length() > 6) {
                 sector = sector.substring(0, 6) + "..";
             }
             stock.setSector(sector);

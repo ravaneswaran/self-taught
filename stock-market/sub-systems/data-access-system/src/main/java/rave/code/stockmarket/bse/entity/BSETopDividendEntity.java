@@ -46,7 +46,7 @@ public class BSETopDividendEntity extends AbstractEntity {
     @Column(name = "modified_by")
     protected String modifiedBy;
 
-    public BSETopDividendEntity(){
+    public BSETopDividendEntity() {
         super();
     }
 

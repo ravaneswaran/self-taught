@@ -7,10 +7,9 @@
 
     <changeSet id="001" author="Ravaneswaran Chinnasamy">
         <createTable tableName="bse_top_dividend">
-            <column name="id" type="varchar2(100)">
+            <column name="company_name" type="varchar2(100)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="company_name" type="varchar2(100)"/>
             <column name="last_price" type="varchar2(100)"/>
             <column name="latest_dividend_percentage" type="varchar2(100)"/>
             <column name="dividend_yield_percentage_52_high" type="varchar2(100)"/>
@@ -21,20 +20,6 @@
             <column name="created_by" type="varchar2(100)"/>
             <column name="modified_by" type="varchar2(100)"/>
         </createTable>
-    </changeSet>
-
-    <changeSet author="Ravaneswaran Chinnasamy" id="002">
-        <dropPrimaryKey dropIndex="true" tableName="bse_top_dividend"/>
-    </changeSet>
-
-    <changeSet  author="Ravaneswaran Chinnasamy"  id="003">
-        <addPrimaryKey columnNames="company_name" constraintName="pk_company_name" tableName="bse_top_dividend" validate="true"/>
-    </changeSet>
-
-    <changeSet  author="Ravaneswaran Chinnasamy"  id="004">
-        <dropColumn columnName="id" tableName="bse_top_dividend">
-            <column name="id"/>
-        </dropColumn>
     </changeSet>
 
 </databaseChangeLog>

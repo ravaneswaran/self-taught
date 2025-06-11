@@ -12,7 +12,7 @@
                     </tr>
                     <tr>
                         <td class="td-left">Low</td>
-                        <td class="td-right"  th:text="${stock.low}"></td>
+                        <td class="td-right" th:text="${stock.low}"></td>
                     </tr>
                     <tr>
                         <td class="td-left" th:style="${stock.lastPriceCssStyle}">Last Price</td>
@@ -20,11 +20,12 @@
                     </tr>
                     <tr>
                         <td class="td-left" th:style="${stock.percentageGainCssStyle}">% Gain</td>
-                        <td class="td-right" th:style="${stock.percentageGainCssStyle}" th:text="${stock.percentageGain}"></td>
+                        <td class="td-right" th:style="${stock.percentageGainCssStyle}"
+                            th:text="${stock.percentageGain}"></td>
                     </tr>
                     <tr>
                         <td class="td-left">Previous Close</td>
-                        <td class="td-right"th:text="${stock.previousClose}"></td>
+                        <td class="td-right" th:text="${stock.previousClose}"></td>
                     </tr>
                     <tr>
                         <td class="td-left">Variation</td>

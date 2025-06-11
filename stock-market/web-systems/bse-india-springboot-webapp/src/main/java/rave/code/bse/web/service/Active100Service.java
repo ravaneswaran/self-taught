@@ -12,18 +12,18 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Active100Service extends AbstractService<BSEActive100Entity, ActiveStock>{
+public class Active100Service extends AbstractService<BSEActive100Entity, ActiveStock> {
 
     private static final Logger LOGGER = Logger.getLogger(Active100Service.class.getName());
 
     @Override
     public WebPage getPageModel() {
-        WebPage webPage =  super.getPageModel();
+        WebPage webPage = super.getPageModel();
         webPage.setActive100LinkStyle("font-weight: bold;");
         return webPage;
     }
 
-    public List<BSEActive100Entity> getEntities(){
+    public List<BSEActive100Entity> getEntities() {
         BSEActive100DataAccess moneyControlBSEActive100DataAccess = new BSEActive100DataAccess();
         return moneyControlBSEActive100DataAccess.findAll();
     }
@@ -34,7 +34,6 @@ public class Active100Service extends AbstractService<BSEActive100Entity, Active
         for (BSEActive100Entity moneyControlBSEActive100Entity : moneyControlBSEActive100Entities) {
             ActiveStock stock = new ActiveStock();
 
-            stock.setId(moneyControlBSEActive100Entity.getId());
             stock.setCompanyName(moneyControlBSEActive100Entity.getCompanyName());
             stock.setCategory(moneyControlBSEActive100Entity.getCategory());
 

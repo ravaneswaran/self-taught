@@ -10,7 +10,7 @@ public class BSEActive200DataAccess extends StockMarketHistoryEnabledDataAccess<
 
     private static final Logger LOGGER = Logger.getLogger(BSEActive200DataAccess.class.getName());
 
-    public BSEActive200DataAccess(){
+    public BSEActive200DataAccess() {
         this(BSEActive200Entity.class);
     }
 

@@ -1,10 +1,10 @@
 package rave.code.quartz.job.moneycontrol.trading;
 
 import rave.code.data.parser.html.moneycontrol.BSEActive200Parser;
-import rave.code.website.data.model.moneycontrol.BSEGenericActiveModel;
 import rave.code.quartz.job.moneycontrol.AbstractJob;
 import rave.code.stockmarket.bse.dataaccess.BSEActive200DataAccess;
 import rave.code.stockmarket.bse.entity.BSEActive200Entity;
+import rave.code.website.data.model.moneycontrol.BSEGenericActiveModel;
 
 import java.text.NumberFormat;
 import java.text.ParseException;

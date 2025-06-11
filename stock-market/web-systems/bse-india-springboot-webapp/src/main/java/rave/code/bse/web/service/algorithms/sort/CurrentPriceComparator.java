@@ -1,6 +1,7 @@
 package rave.code.bse.web.service.algorithms.sort;
 
 import rave.code.bse.web.model.stock.PriceShockerStock;
+
 import java.util.Comparator;
 
 public class CurrentPriceComparator implements Comparator<PriceShockerStock> {

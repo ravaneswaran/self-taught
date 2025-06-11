@@ -1,10 +1,10 @@
 package rave.code.quartz.job.moneycontrol.investing;
 
 import rave.code.data.parser.html.moneycontrol.BSEMidCapGainersParser;
-import rave.code.website.data.model.moneycontrol.CapitalGainerModel;
 import rave.code.quartz.job.moneycontrol.AbstractJob;
 import rave.code.stockmarket.bse.dataaccess.BSEMidCapGainerDataAccess;
 import rave.code.stockmarket.bse.entity.BSEMidCapGainerEntity;
+import rave.code.website.data.model.moneycontrol.CapitalGainerModel;
 
 import java.text.NumberFormat;
 import java.text.ParseException;

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class BSEActive500DataAccess extends StockMarketHistoryEnabledDataAccess<BSEActive500Entity> {
 
-    public BSEActive500DataAccess(){
+    public BSEActive500DataAccess() {
         this(BSEActive500Entity.class);
     }
 

@@ -43,7 +43,8 @@ public class SmallCapGainerService extends AbstractService<BSESmallCapGainerEnti
                     stock.setHigh(Double.parseDouble(value));
                 } else {
                     stock.setHigh(0.0);
-                };
+                }
+                ;
             } catch (NumberFormatException nfe) {
                 LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
                 stock.setHigh(0.0);

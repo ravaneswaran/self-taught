@@ -25,7 +25,7 @@ public class TraderScheduler {
 
     public static final Logger LOGGER = Logger.getLogger(TraderScheduler.class.toString());
 
-    public void scheduleTradingJobs(){
+    public void scheduleTradingJobs() {
 
         SchedulerFactory schedulerFactory = new StdSchedulerFactory();
         Scheduler scheduler = null;
@@ -101,7 +101,7 @@ public class TraderScheduler {
         }
     }
 
-    public void scheduleMoveToHistoryJobs(){
+    public void scheduleMoveToHistoryJobs() {
         SchedulerFactory schedulerFactory = new StdSchedulerFactory();
         Scheduler scheduler = null;
         try {

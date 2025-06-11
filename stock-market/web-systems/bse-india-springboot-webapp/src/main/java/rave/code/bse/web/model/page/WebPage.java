@@ -46,7 +46,7 @@ public class WebPage {
     public void setPriceShockersLinkStyle(String priceShockersLinkStyle) {
         this.priceShockersLinkStyle = priceShockersLinkStyle;
     }
-    
+
     public String getTopDividendLinkStyle() {
         return topDividendLinkStyle;
     }

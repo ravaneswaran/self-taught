@@ -100,7 +100,6 @@ public interface Mail {
     public Message[] getUnReadMessages(String folderName, String protocol, boolean encrypted) throws MessagingException;
 
 
-
     /**
      * @param folderName
      * @param protocol
