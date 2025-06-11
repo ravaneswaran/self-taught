@@ -7,11 +7,11 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
-@XmlRootElement(name = "stock_market_holidays")
+@XmlRootElement(name = "holidays")
 @Entity
 @Data
 @Table(name = "stock_market_holidays")
-public class StockMarketHolidayEntity extends AbstractEntity {
+public class HolidayEntity extends AbstractEntity {
 
     @Id
     @Column(name = "id")

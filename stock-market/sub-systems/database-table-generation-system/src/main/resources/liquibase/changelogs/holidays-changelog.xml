@@ -6,7 +6,7 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <changeSet id="001" author="Ravaneswaran Chinnasamy">
-        <createTable tableName="stock_market_holidays">
+        <createTable tableName="holidays">
             <column name="id" type="varchar2(100)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>

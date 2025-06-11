@@ -4,15 +4,15 @@ import org.quartz.JobExecutionException;
 import rave.code.data.parser.html.groww.HolidayListParser;
 import rave.code.website.data.model.groww.HolidayModel;
 import rave.code.quartz.job.moneycontrol.AbstractJob;
-import rave.code.stockmarket.bse.dataaccess.StockMarketHolidayDataAccess;
-import rave.code.stockmarket.bse.entity.StockMarketHolidayEntity;
+import rave.code.stockmarket.bse.dataaccess.HolidayDataAccess;
+import rave.code.stockmarket.bse.entity.HolidayEntity;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-public class StockMarketHolidayJob extends AbstractJob<HolidayModel, StockMarketHolidayEntity> {
+public class HolidayJob extends AbstractJob<HolidayModel, HolidayEntity> {
 
     @Override
     public List<HolidayModel> getDataFromSource() {
@@ -20,11 +20,11 @@ public class StockMarketHolidayJob extends AbstractJob<HolidayModel, StockMarket
     }
 
     @Override
-    public List<StockMarketHolidayEntity> transformSourceData(List<HolidayModel> sourceData) {
-        List<StockMarketHolidayEntity> entities = new ArrayList<>();
+    public List<HolidayEntity> transformSourceData(List<HolidayModel> sourceData) {
+        List<HolidayEntity> entities = new ArrayList<>();
 
         for (HolidayModel growwHolidayModel : sourceData) {
-            StockMarketHolidayEntity entity = new StockMarketHolidayEntity();
+            HolidayEntity entity = new HolidayEntity();
             entity.setId(UUID.randomUUID().toString());
             entity.setHolidate(growwHolidayModel.getDate());
             entity.setHoliday(growwHolidayModel.getDay());
@@ -42,14 +42,14 @@ public class StockMarketHolidayJob extends AbstractJob<HolidayModel, StockMarket
     }
 
     @Override
-    public void saveTransformedData(List<StockMarketHolidayEntity> transformedData) {
-        StockMarketHolidayDataAccess stockMarketHolidayDataAccess = new StockMarketHolidayDataAccess();
-        for (StockMarketHolidayEntity entity : transformedData) {
+    public void saveTransformedData(List<HolidayEntity> transformedData) {
+        HolidayDataAccess stockMarketHolidayDataAccess = new HolidayDataAccess();
+        for (HolidayEntity entity : transformedData) {
             stockMarketHolidayDataAccess.save(entity);
         }
     }
 
     public static void main(String[] args) throws JobExecutionException {
-        new StockMarketHolidayJob().execute(null);
+        new HolidayJob().execute(null);
     }
 }
