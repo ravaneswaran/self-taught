@@ -27,12 +27,11 @@ public class TraderScheduler {
 
     public static void main(String[] args) {
         TraderScheduler traderScheduler = new TraderScheduler();
-        traderScheduler.scheduleMoveToHistoryJobs();
+        //traderScheduler.scheduleMoveToHistoryJobs();
         traderScheduler.scheduleTradingJobs();
     }
 
     public void scheduleTradingJobs() {
-
         SchedulerFactory schedulerFactory = new StdSchedulerFactory();
         Scheduler scheduler = null;
         try {
@@ -98,7 +97,6 @@ public class TraderScheduler {
             } catch (SchedulerException se) {
                 LOGGER.log(Level.SEVERE, se.getMessage(), se);
             }
-
             /*try {
                 scheduler.shutdown();
             } catch (SchedulerException se) {

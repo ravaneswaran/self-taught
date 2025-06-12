@@ -9,8 +9,8 @@ public class BSEPriceShockersHistoryJob extends AbstractHistoryJob<BSEActive500E
 
     @Override
     public void loadHistoryAndClearSource() {
-        final String MOVE_TO_HISTORY_QUERY = "INSERT INTO moneycontrol_bse_price_shockers_history(SELECT * FROM moneycontrol_bse_price_shockers)";
-        final String DELETE_FROM_SOURCE_QUERY = "DELETE FROM moneycontrol_bse_price_shockers";
+        final String MOVE_TO_HISTORY_QUERY = "INSERT INTO bse_price_shockers_history(SELECT * FROM bse_price_shockers)";
+        final String DELETE_FROM_SOURCE_QUERY = "DELETE FROM bse_price_shockers";
         StockMarketHistoryEnabledDataAccess stockMarketHistoryEnabledDataAccess = new StockMarketHistoryEnabledDataAccess(BSEActive500HistoryEntity.class);
 
         stockMarketHistoryEnabledDataAccess.moveToHistoryAndDeleteSource(MOVE_TO_HISTORY_QUERY, DELETE_FROM_SOURCE_QUERY);

@@ -28,12 +28,12 @@ public class PriceShockersJob extends AbstractJob<PriceShockerModel, BSEPriceSho
     @Override
     public List<BSEPriceShockerEntity> transformSourceData(List<PriceShockerModel> sourceData) {
         List<BSEPriceShockerEntity> moneyControlBSEPriceShockerEntities = new ArrayList<>();
-
         NumberFormat format = NumberFormat.getInstance();
+
         for (PriceShockerModel moneyControlPriceShockerModel : sourceData) {
             BSEPriceShockerEntity moneyControlBSEPriceShockerEntity = new BSEPriceShockerEntity();
-
             moneyControlBSEPriceShockerEntity.setCompanyName(moneyControlPriceShockerModel.getCompanyName());
+
             moneyControlBSEPriceShockerEntity.setCategory(moneyControlPriceShockerModel.getGroup());
             moneyControlBSEPriceShockerEntity.setSector(moneyControlPriceShockerModel.getSector());
 
