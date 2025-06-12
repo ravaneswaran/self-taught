@@ -66,7 +66,6 @@ public class BSEActive100Entity extends AbstractEntity {
     private String displacedMovingAverage200D;
 
 
-
     public BSEActive100Entity() {
         super();
     }

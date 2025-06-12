@@ -4,7 +4,7 @@ public abstract class AbstractEntity {
 
     private boolean newEntity;
 
-    public AbstractEntity(){
+    public AbstractEntity() {
         this.setNewEntity(true);
     }
 
