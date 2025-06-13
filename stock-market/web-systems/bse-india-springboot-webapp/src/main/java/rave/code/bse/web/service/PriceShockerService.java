@@ -2,6 +2,7 @@ package rave.code.bse.web.service;
 
 import rave.code.bse.web.model.page.PriceShockerWebPage;
 import rave.code.bse.web.model.stock.PriceShockerStock;
+import rave.code.bse.web.model.stock.Stock;
 import rave.code.bse.web.service.algorithms.sort.CurrentPriceComparator;
 import rave.code.stockmarket.bse.dataaccess.BSEPriceShockerDataAccess;
 import rave.code.stockmarket.bse.entity.BSEPriceShockerEntity;
@@ -90,7 +91,26 @@ public class PriceShockerService extends AbstractService<BSEPriceShockerEntity, 
                 LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
                 stock.setLowerCircuit(0.0);
             }
+
             try {
+                String percentageChange = entity.getPercentageChange();
+                if (null != percentageChange) {
+                    double value = Double.parseDouble(percentageChange);
+                    stock.setPercentageChange(value);
+                    if(value < 0){
+                        stock.setPercentageGainCssStyle(Stock.RED_BG_CSS_STYLE);
+                    } else {
+                        stock.setPercentageGainCssStyle(Stock.GREEN_BG_CSS_STYLE);
+                    }
+                } else {
+                    stock.setPercentageChange(0.0);
+                }
+            } catch (NumberFormatException nfe) {
+                LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
+                stock.setPercentageChange(0.0);
+            }
+
+            /*try {
                 String percentageChange = entity.getPercentageChange();
                 if (null != percentageChange) {
                     stock.setPercentageChange(Double.parseDouble(percentageChange));
@@ -100,7 +120,8 @@ public class PriceShockerService extends AbstractService<BSEPriceShockerEntity, 
             } catch (NumberFormatException nfe) {
                 LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
                 stock.setPercentageChange(0.0);
-            }
+            }*/
+
             try {
                 String averageVolume5D = entity.getAverageVolume5Days();
                 if (null != averageVolume5D) {

@@ -16,16 +16,16 @@
                         <td class="td-right" th:text="${stock.sector}"></td>
                     </tr>
                     <tr>
-                        <td class="td-left">Current Price</td>
-                        <td class="td-right" th:text="${stock.currentPrice}"></td>
-                    </tr>
-                    <tr>
                         <td class="td-left">Previous Price</td>
                         <td class="td-right" th:text="${stock.previousPrice}"></td>
                     </tr>
                     <tr>
-                        <td class="td-left">% Change</td>
-                        <td class="td-right" th:text="${stock.percentageChange}"></td>
+                        <td class="td-left" th:style="${stock.lastPriceCssStyle}">Current Price</td>
+                        <td class="td-right" th:style="${stock.lastPriceCssStyle}" th:text="${stock.currentPrice}"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-left" th:style="${stock.percentageGainCssStyle}">% Change</td>
+                        <td class="td-right" th:style="${stock.percentageGainCssStyle}" th:text="${stock.percentageChange}"></td>
                     </tr>
                     <tr>
                         <td class="td-left">Upper Circuit</td>

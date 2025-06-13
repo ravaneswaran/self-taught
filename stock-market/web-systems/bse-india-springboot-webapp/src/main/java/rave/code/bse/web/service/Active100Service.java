@@ -93,6 +93,7 @@ public class Active100Service extends AbstractService<BSEActive100Entity, Active
                 LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
                 stock.setLowerCircuit(0.0);
             }
+
             try {
                 String percentageChange = moneyControlBSEActive100Entity.getPercentageChange();
                 if (null != percentageChange) {
