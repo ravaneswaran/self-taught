@@ -2,6 +2,7 @@ package rave.code.bse.web.service;
 
 import rave.code.bse.web.model.page.WebPage;
 import rave.code.bse.web.model.stock.ActiveStock;
+import rave.code.bse.web.model.stock.Stock;
 import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
 import rave.code.stockmarket.bse.dataaccess.BSEActive100DataAccess;
 import rave.code.stockmarket.bse.entity.BSEActive100Entity;
@@ -95,7 +96,17 @@ public class Active100Service extends AbstractService<BSEActive100Entity, Active
             try {
                 String percentageChange = moneyControlBSEActive100Entity.getPercentageChange();
                 if (null != percentageChange) {
-                    stock.setPercentageChange(Double.parseDouble(percentageChange));
+                    double value = Double.parseDouble(percentageChange);
+                    stock.setPercentageChange(value);
+                    if(value < 0){
+                        stock.setPercentageGainCssStyle(Stock.RED_BG_CSS_STYLE);
+                    } else {
+                        stock.setPercentageGainCssStyle(Stock.GREEN_BG_CSS_STYLE);
+                    }
+                    String midRangePercentage = String.valueOf(value/2);
+                    String highRangePercentage = String.valueOf(value);
+                    //System.out.println("------------->>>>>>> "+String.format(Stock.RED_2_GREEN_GRADIANT_CSS_STYLE, midRangePercentage, highRangePercentage));
+                    //stock.setTradingStatisticsCssStyle(String.format(Stock.RED_2_GREEN_GRADIANT_CSS_STYLE, midRangePercentage, highRangePercentage));
                 } else {
                     stock.setPercentageChange(0.0);
                 }
