@@ -2,7 +2,7 @@ package rave.code.bse.web.model.stock;
 
 public class Stock {
 
-    public static final String TITLE_CSS_STYLE = "right-container-company-title-div";
+    public static final String TITLE_CSS_STYLE = "right-container-company-title-div a-group-stock";
     public static final String GREEN_BG_CSS_STYLE = "color: black; background: #0BDA51; font-weight:bold;";
     public static final String MAUVE_PINK_BG_CSS_STYLE = "color: black; background: #E0B0FF; font-weight:bold;";
     public static final String RED_BG_CSS_STYLE = "color: black; background:#FA5053; font-weight:bold;";

@@ -212,7 +212,7 @@ td{
     height:15%;
     background:#353839;
     border-radius: 5px;
-    border:0px solid blue;
+    border-bottom:1px solid #353839;
 }
 
 .right-container-company-title-div{
@@ -232,7 +232,7 @@ td{
 .right-container-company-add-to-favourite-div{
     width:17%;
     height:85%;
-    border:2px solid #353839;
+    border:0px solid #353839;
     float:left;
     background:white;
     border-radius:5px;
@@ -322,3 +322,32 @@ td{
     text-shadow: 0 0 0px white;
   }
 }
+
+/**************************** Stock Groups*******************************/
+
+.a-group-stock{
+    background: #0BDA51;
+    color:#353839;
+}
+
+.b-group-stock{
+    background: #45bdf7;
+    color:#353839;
+}
+
+.s-group-stock{
+    background: yellow;
+    color:#353839;
+}
+
+.t-group-stock{
+    background: #aba589; /*Tallow*/
+    color:#353839;
+}
+
+.z-group-stock{
+    background: #ff0c07;
+    color:#353839;
+}
+
+
