@@ -181,13 +181,46 @@ td{
 }
 
 /*****************************************/
+.right-container-stock-group-tip-container{
+    width:99%;
+    height:6%;
+    border:0px solid black;
+    padding-left:10px;
+}
+
+.right-container-stock-group-tip-div{
+    width:24%;
+    height:40%;
+    border:0px solid red;
+    float:left;
+}
+
+.right-container-stock-group-tip-box{
+    width:12px;
+    height:12px;
+    border:2px solid #353839;
+    border-radius: 5px;
+    float:left;
+}
+
+.right-container-stock-listing-container{
+    width:99.8%;
+    height:93.6%;
+    border:0px solid red;
+    overflow:auto;
+}
+
 .right-container-company-frame-div-0{
-    height:32%;
+    height:34.5%;
     width:12%;
     border:0px solid #353839;
     border-radius:5px;
     float:left;
     padding:0.25%;
+}
+
+.right-container-company-frame-div-0-1{
+    height:35.5%;
 }
 
 .right-container-company-frame-div-1{
@@ -343,6 +376,18 @@ td{
 .t-group-stock{
     background: #aba589; /*Tallow*/
     color:#353839;
+}
+
+.xc{
+
+}
+
+.xd{
+
+}
+
+.xt{
+
 }
 
 .z-group-stock{
