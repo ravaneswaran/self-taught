@@ -43,7 +43,7 @@ public class PriceShockerService extends AbstractService<BSEPriceShockerEntity, 
 
             String sector = entity.getSector();
             if (null != sector && sector.length() > 6) {
-                sector = sector.substring(0, 6) + "..";
+                sector = sector.substring(0, 4) + "..";
             }
             stock.setSector(sector);
 

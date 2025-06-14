@@ -185,7 +185,7 @@ td{
     width:99%;
     height:6%;
     border:0px solid black;
-    padding-left:10px;
+    padding-left:0.5%;
 }
 
 .right-container-stock-group-tip-div{
@@ -252,14 +252,16 @@ td{
     width:80%;
     height:97%;
     background: #353839;
-    font-size:18px;
-    text-indent:10px;
+    font-size:17px;
+    text-indent:0px;
     font-weight:bold;
     color:white;
     border: 0px solid red;
     border-top-left-radius:5px;
     border-top-right-radius:5px;
     float:left;
+    text-align: center;
+    align-items: center;
 }
 
 .right-container-company-add-to-favourite-div{
@@ -269,6 +271,8 @@ td{
     float:left;
     background:white;
     border-radius:5px;
+    margin-top: 1%;
+    margin-left:1%;
 }
 
 .right-container-company-add-to-favourite-img {
