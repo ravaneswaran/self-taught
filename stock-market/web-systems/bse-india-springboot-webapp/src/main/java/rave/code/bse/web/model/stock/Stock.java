@@ -10,6 +10,7 @@ public class Stock {
 
     private String id;
     private String companyName;
+    private String toolTip;
     private double lastPrice;
     private String category;
 
@@ -33,6 +34,9 @@ public class Stock {
 
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
+        if(null != companyName && companyName.length() > 15){
+            this.companyName = companyName.substring(0, 15);
+        }
     }
 
     public double getLastPrice() {
@@ -81,5 +85,13 @@ public class Stock {
 
     public void setTradingStatisticsCssStyle(String tradingStatisticsCssStyle) {
         this.tradingStatisticsCssStyle = tradingStatisticsCssStyle;
+    }
+
+    public String getToolTip() {
+        return toolTip;
+    }
+
+    public void setToolTip(String toolTip) {
+        this.toolTip = toolTip;
     }
 }

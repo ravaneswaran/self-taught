@@ -39,6 +39,7 @@ public class PriceShockerService extends AbstractService<BSEPriceShockerEntity, 
             PriceShockerStock stock = new PriceShockerStock();
 
             stock.setCompanyName(entity.getCompanyName());
+            stock.setToolTip(entity.getCompanyName());
             stock.setCategory(entity.getCategory());
 
             String sector = entity.getSector();

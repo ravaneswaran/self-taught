@@ -178,6 +178,7 @@ td{
     text-indent:10px;
     border-radius: 5px;
     border:2px solid white;
+    line-height: 150%;
 }
 
 /*****************************************/
@@ -249,19 +250,21 @@ td{
 }
 
 .right-container-company-title-div{
-    width:80%;
-    height:97%;
+    width:80%;    padding-top:5px;
+    height:88%;
     background: #353839;
     font-size:17px;
     text-indent:0px;
     font-weight:bold;
     color:white;
-    border: 0px solid red;
+    border: 0px solid white;
     border-top-left-radius:5px;
     border-top-right-radius:5px;
     float:left;
+
     text-align: center;
     align-items: center;
+    line-height: 150%;
 }
 
 .right-container-company-add-to-favourite-div{
@@ -303,10 +306,14 @@ td{
     text-align:left;
     font-weight:bold;
     color:white;
-    text-indent:10px;
+    text-indent:0px;
     border-bottom-left-radius:5px;
     border-bottom-right-radius:5px;
     cursor: pointer;
+
+    text-align: center;
+    align-items: center;
+    line-height: 200%;
 }
 
 /**************** Gradient background *************************/
@@ -396,7 +403,7 @@ td{
 
 .z-group-stock{
     background: #ff0c07;
-    color:#353839;
+    color:#ffffff;
 }
 
 
