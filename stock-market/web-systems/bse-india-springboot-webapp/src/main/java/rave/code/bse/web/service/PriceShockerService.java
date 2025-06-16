@@ -38,7 +38,7 @@ public class PriceShockerService extends AbstractService<BSEPriceShockerEntity, 
         for (BSEPriceShockerEntity entity : entities) {
             PriceShockerStock stock = new PriceShockerStock();
 
-            stock.setCompanyName(entity.getCompanyName());
+            stock.setDisplayName(entity.getCompanyName());
             stock.setToolTip(entity.getCompanyName());
             stock.setCategory(entity.getCategory());
 

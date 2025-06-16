@@ -34,7 +34,7 @@ public class Active500Service extends AbstractService<BSEActive500Entity, Active
         for (BSEActive500Entity entity : entities) {
             ActiveStock stock = new ActiveStock();
 
-            stock.setCompanyName(entity.getCompanyName());
+            stock.setDisplayName(entity.getCompanyName());
             stock.setToolTip(entity.getCompanyName());
             stock.setCategory(entity.getCategory());
 

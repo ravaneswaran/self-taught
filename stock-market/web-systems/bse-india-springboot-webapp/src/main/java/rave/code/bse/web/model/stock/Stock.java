@@ -9,7 +9,7 @@ public class Stock {
     public static final String RED_2_GREEN_GRADIANT_CSS_STYLE = "background: #e81c1f;background: linear-gradient(90deg,rgba(232, 28, 31, 1) 0%, rgba(245, 83, 94, 0.27) %s %, rgba(7, 140, 29, 0.98) %s %); color:#353839;";
 
     private String id;
-    private String companyName;
+    private String displayName;
     private String toolTip;
     private double lastPrice;
     private String category;
@@ -28,14 +28,14 @@ public class Stock {
         this.id = id;
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public String getDisplayName() {
+        return displayName;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-        if(null != companyName && companyName.length() > 15){
-            this.companyName = companyName.substring(0, 15);
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+        if(null != displayName && displayName.length() > 15){
+            this.displayName = displayName.substring(0, 15);
         }
     }
 

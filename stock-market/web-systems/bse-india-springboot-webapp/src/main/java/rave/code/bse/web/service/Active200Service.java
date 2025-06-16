@@ -34,7 +34,7 @@ public class Active200Service extends AbstractService<BSEActive200Entity, Active
         for (BSEActive200Entity entity : entities) {
             ActiveStock stock = new ActiveStock();
 
-            stock.setCompanyName(entity.getCompanyName());
+            stock.setDisplayName(entity.getCompanyName());
             stock.setToolTip(entity.getCompanyName());
             stock.setCategory(entity.getCategory());
 

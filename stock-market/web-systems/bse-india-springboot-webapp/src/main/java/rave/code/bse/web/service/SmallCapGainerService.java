@@ -35,7 +35,7 @@ public class SmallCapGainerService extends AbstractService<BSESmallCapGainerEnti
         for (BSESmallCapGainerEntity entity : entities) {
             CapitalGainerStock stock = new CapitalGainerStock();
 
-            stock.setCompanyName(entity.getCompanyName());
+            stock.setDisplayName(entity.getCompanyName());
             stock.setToolTip(entity.getCompanyName());
             String value = "";
             try {

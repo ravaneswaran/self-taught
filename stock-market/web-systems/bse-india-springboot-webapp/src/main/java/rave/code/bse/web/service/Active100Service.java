@@ -35,7 +35,7 @@ public class Active100Service extends AbstractService<BSEActive100Entity, Active
         for (BSEActive100Entity entity : moneyControlBSEActive100Entities) {
             ActiveStock stock = new ActiveStock();
 
-            stock.setCompanyName(entity.getCompanyName());
+            stock.setDisplayName(entity.getCompanyName());
             stock.setToolTip(entity.getCompanyName());
             stock.setCategory(entity.getCategory());
 

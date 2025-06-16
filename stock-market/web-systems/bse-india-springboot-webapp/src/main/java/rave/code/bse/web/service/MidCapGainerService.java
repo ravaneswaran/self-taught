@@ -34,7 +34,7 @@ public class MidCapGainerService extends AbstractService<BSEMidCapGainerEntity, 
         for (BSEMidCapGainerEntity entity : entities) {
             CapitalGainerStock stock = new CapitalGainerStock();
 
-            stock.setCompanyName(entity.getCompanyName());
+            stock.setDisplayName(entity.getCompanyName());
             stock.setToolTip(entity.getCompanyName());
             String value = "";
             try {
