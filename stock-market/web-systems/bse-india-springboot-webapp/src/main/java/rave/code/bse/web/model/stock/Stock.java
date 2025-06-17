@@ -2,7 +2,10 @@ package rave.code.bse.web.model.stock;
 
 public class Stock {
 
-    public static final String TITLE_CSS_STYLE = "right-container-company-title-div a-group-stock";
+    public static final String TITLE_CONTAINER_CSS_STYLE = "right-container-company-title-container %s";
+    public static final String TITLE_CSS_STYLE = "right-container-company-title-div %s";
+    public static final String ADD_TO_FAVOURITE_CSS_STYLE = "right-container-company-add-to-favourite-div %s";
+
     public static final String GREEN_BG_CSS_STYLE = "color: black; background: #0BDA51; font-weight:bold;";
     public static final String MAUVE_PINK_BG_CSS_STYLE = "color: black; background: #E0B0FF; font-weight:bold;";
     public static final String RED_BG_CSS_STYLE = "color: black; background:#FA5053; font-weight:bold;";
@@ -14,10 +17,14 @@ public class Stock {
     private double lastPrice;
     private String category;
 
-    private String titleCssStyle = TITLE_CSS_STYLE;
+    private String titleContainerCssStyle;
+    private String titleCssStyle;
+    private String addToFavouriteCssStyle;
+
+
     private String lastPriceCssStyle = MAUVE_PINK_BG_CSS_STYLE;
     private String percentageGainCssStyle = RED_BG_CSS_STYLE;
-    private String tradingStatisticsCssStyle  = "";
+    private String tradingStatisticsCssStyle = "";
 
     public String getId() {
         return id;
@@ -33,7 +40,7 @@ public class Stock {
 
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
-        if(null != displayName && displayName.length() > 15){
+        if (null != displayName && displayName.length() > 15) {
             this.displayName = displayName.substring(0, 15);
         }
     }
@@ -56,6 +63,14 @@ public class Stock {
 
     public String getTitleCssStyle() {
         return titleCssStyle;
+    }
+
+    public String getTitleContainerCssStyle() {
+        return titleContainerCssStyle;
+    }
+
+    public String getAddToFavouriteCssStyle() {
+        return addToFavouriteCssStyle;
     }
 
     public void setTitleCssStyle(String titleCssStyle) {
@@ -102,7 +117,39 @@ public class Stock {
         return String.format("%s-%s-%s", getToolTip().toLowerCase(), "stock-stat", "div").replaceAll(" ", "-");
     }
 
-    public String getJavaScriptFunction(){
+    public String getTradingStatisticsJSFunction() {
         return String.format("javascript: hideAndShow('%s', '%s');", this.getStockDivId(), this.getStockStatDivId());
+    }
+
+    public void applyCssStyleBasedOnGroup(String category) {
+        if (category.startsWith("A")) {
+            this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "a-group-stock");
+            this.titleCssStyle = String.format(TITLE_CSS_STYLE, "a-group-stock");
+            this.addToFavouriteCssStyle = String.format(ADD_TO_FAVOURITE_CSS_STYLE, "a-group-stock");
+        } else if (category.startsWith("B")) {
+            this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "b-group-stock");
+            this.titleCssStyle = String.format(TITLE_CSS_STYLE, "b-group-stock");
+            this.addToFavouriteCssStyle = String.format(ADD_TO_FAVOURITE_CSS_STYLE, "b-group-stock");
+        } else if (category.startsWith("F")) {
+            this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "f-group-stock");
+            this.titleCssStyle = String.format(TITLE_CSS_STYLE, "f-group-stock");
+            this.addToFavouriteCssStyle = String.format(ADD_TO_FAVOURITE_CSS_STYLE, "f-group-stock");
+        } else if (category.startsWith("S")) {
+            this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "s-group-stock");
+            this.titleCssStyle = String.format(TITLE_CSS_STYLE, "s-group-stock");
+            this.addToFavouriteCssStyle = String.format(ADD_TO_FAVOURITE_CSS_STYLE, "s-group-stock");
+        } else if (category.startsWith("T")) {
+            this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "t-group-stock");
+            this.titleCssStyle = String.format(TITLE_CSS_STYLE, "t-group-stock");
+            this.addToFavouriteCssStyle = String.format(ADD_TO_FAVOURITE_CSS_STYLE, "t-group-stock");
+        } else if (category.startsWith("X")) {
+            this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "x-group-stock");
+            this.titleCssStyle = String.format(TITLE_CSS_STYLE, "x-group-stock");
+            this.addToFavouriteCssStyle = String.format(ADD_TO_FAVOURITE_CSS_STYLE, "x-group-stock");
+        } else {
+            this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "z-group-stock");
+            this.titleCssStyle = String.format(TITLE_CSS_STYLE, "z-group-stock");
+            this.addToFavouriteCssStyle = String.format(ADD_TO_FAVOURITE_CSS_STYLE, "z-group-stock");
+        }
     }
 }

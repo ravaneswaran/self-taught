@@ -37,6 +37,7 @@ public class Active200Service extends AbstractService<BSEActive200Entity, Active
             stock.setDisplayName(entity.getCompanyName());
             stock.setToolTip(entity.getCompanyName());
             stock.setCategory(entity.getCategory());
+            stock.applyCssStyleBasedOnGroup(entity.getCategory());
 
             try {
                 String high = entity.getHigh();

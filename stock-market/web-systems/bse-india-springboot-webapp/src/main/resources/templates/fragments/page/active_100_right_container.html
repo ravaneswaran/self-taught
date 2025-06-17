@@ -3,9 +3,9 @@
     <div class="right-container-stock-listing-container">
         <div class="right-container-company-frame-div-0" th:each="stock : ${page.stocks}">
             <div class="right-container-company-div">
-                <div class="right-container-company-title-container a-group-stock">
+                <div th:class="${stock.titleContainerCssStyle}">
                     <div th:class="${stock.titleCssStyle}" th:text="${stock.displayName}" th:title="${stock.toolTip}"></div>
-                    <div class="right-container-company-add-to-favourite-div a-group-stock">
+                    <div th:class="${stock.addToFavouriteCssStyle}">
                         <img src="/images/icons/add-to-favourite.png" class="right-container-company-add-to-favourite-img"/>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                        this is the div
                     </div>
                 </div>
-                <div th:attr="onclick=${stock.javaScriptFunction}" class="right-container-company-trading-stats-div red-to-green-gradient">
+                <div th:attr="onclick=${stock.tradingStatisticsJSFunction}" class="right-container-company-trading-stats-div red-to-green-gradient">
                     Trading Statistics
                 </div>
             </div>
