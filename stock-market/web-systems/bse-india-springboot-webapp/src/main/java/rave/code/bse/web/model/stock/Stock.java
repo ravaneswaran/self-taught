@@ -19,7 +19,6 @@ public class Stock {
     private String percentageGainCssStyle = RED_BG_CSS_STYLE;
     private String tradingStatisticsCssStyle  = "";
 
-
     public String getId() {
         return id;
     }
@@ -93,5 +92,17 @@ public class Stock {
 
     public void setToolTip(String toolTip) {
         this.toolTip = toolTip;
+    }
+
+    public String getStockDivId() {
+        return String.format("%s-%s-%s", getToolTip().toLowerCase(), "stock", "div").replaceAll(" ", "-");
+    }
+
+    public String getStockStatDivId() {
+        return String.format("%s-%s-%s", getToolTip().toLowerCase(), "stock-stat", "div").replaceAll(" ", "-");
+    }
+
+    public String getJavaScriptFunction(){
+        return String.format("javascript: hideAndShow('%s', '%s');", this.getStockDivId(), this.getStockStatDivId());
     }
 }
