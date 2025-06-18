@@ -17,6 +17,7 @@
         <module>source-data-parser-system</module>
         <module>data-access-system</module>
         <module>quartz-scheduler-system</module>
+        <module>ai-system</module>
     </modules>
 
 </project>

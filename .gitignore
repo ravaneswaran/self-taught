@@ -15,6 +15,7 @@ stock-market/sub-systems/source-data-parser-system/target/
 stock-market/sub-systems/database-table-generation-system/target/
 stock-market/sub-systems/quartz-scheduler-system/target/
 stock-market/sub-systems/email-system/target/
+stock-market/sub-systems/ai-system/target/
 stock-market/stock-market.iml
 stock-market/stock-market.ipr
 stock-market/stock-market.iws
