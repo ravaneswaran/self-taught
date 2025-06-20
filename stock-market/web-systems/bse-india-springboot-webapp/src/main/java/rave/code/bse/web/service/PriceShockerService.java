@@ -2,10 +2,10 @@ package rave.code.bse.web.service;
 
 import rave.code.bse.web.model.page.PriceShockerWebPage;
 import rave.code.bse.web.model.stock.PriceShockerStock;
+import rave.code.bse.web.model.stock.Stock;
 import rave.code.bse.web.service.algorithms.sort.CurrentPriceComparator;
-import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
-import rave.code.stockmarket.bse.dataaccess.MoneyControlBSEPriceShockerDataAccess;
-import rave.code.stockmarket.bse.entity.MoneyControlBSEPriceShockerEntity;
+import rave.code.stockmarket.bse.dataaccess.BSEPriceShockerDataAccess;
+import rave.code.stockmarket.bse.entity.BSEPriceShockerEntity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class PriceShockerService extends AbstractService<MoneyControlBSEPriceShockerEntity, PriceShockerStock> {
+public class PriceShockerService extends AbstractService<BSEPriceShockerEntity, PriceShockerStock> {
 
     private static final Logger LOGGER = Logger.getLogger(Active100Service.class.getName());
 
@@ -21,30 +21,31 @@ public class PriceShockerService extends AbstractService<MoneyControlBSEPriceSho
         PriceShockerWebPage priceShockerWebPage = new PriceShockerWebPage();
         priceShockerWebPage.setPriceShockersLinkStyle("font-weight: bold;");
 
-        List<MoneyControlBSEPriceShockerEntity> entities = this.getEntities();
+        List<BSEPriceShockerEntity> entities = this.getEntities();
         priceShockerWebPage.setPriceShockerStocks(this.getStocks(entities));
 
         return priceShockerWebPage;
     }
 
-    public List<MoneyControlBSEPriceShockerEntity> getEntities() {
-        MoneyControlBSEPriceShockerDataAccess moneyControlBSEPriceShockerDataAccess = new MoneyControlBSEPriceShockerDataAccess();
+    public List<BSEPriceShockerEntity> getEntities() {
+        BSEPriceShockerDataAccess moneyControlBSEPriceShockerDataAccess = new BSEPriceShockerDataAccess();
         return moneyControlBSEPriceShockerDataAccess.findAll();
     }
 
-    public List<PriceShockerStock> getStocks(List<MoneyControlBSEPriceShockerEntity> entities) {
+    public List<PriceShockerStock> getStocks(List<BSEPriceShockerEntity> entities) {
 
         List<PriceShockerStock> priceShockerStocks = new ArrayList<>();
-        for (MoneyControlBSEPriceShockerEntity entity : entities) {
+        for (BSEPriceShockerEntity entity : entities) {
             PriceShockerStock stock = new PriceShockerStock();
 
-            stock.setId(entity.getId());
-            stock.setCompanyName(entity.getCompanyName());
+            stock.setDisplayName(entity.getCompanyName());
+            stock.setToolTip(entity.getCompanyName());
             stock.setCategory(entity.getCategory());
+            stock.applyCssStyleBasedOnGroup(entity.getCategory());
 
             String sector = entity.getSector();
-            if(null != sector && sector.length() > 6){
-                sector = sector.substring(0, 6) + "..";
+            if (null != sector && sector.length() > 6) {
+                sector = sector.substring(0, 4) + "..";
             }
             stock.setSector(sector);
 
@@ -92,7 +93,26 @@ public class PriceShockerService extends AbstractService<MoneyControlBSEPriceSho
                 LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
                 stock.setLowerCircuit(0.0);
             }
+
             try {
+                String percentageChange = entity.getPercentageChange();
+                if (null != percentageChange) {
+                    double value = Double.parseDouble(percentageChange);
+                    stock.setPercentageChange(value);
+                    if(value < 0){
+                        stock.setPercentageGainCssStyle(Stock.RED_BG_CSS_STYLE);
+                    } else {
+                        stock.setPercentageGainCssStyle(Stock.GREEN_BG_CSS_STYLE);
+                    }
+                } else {
+                    stock.setPercentageChange(0.0);
+                }
+            } catch (NumberFormatException nfe) {
+                LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
+                stock.setPercentageChange(0.0);
+            }
+
+            /*try {
                 String percentageChange = entity.getPercentageChange();
                 if (null != percentageChange) {
                     stock.setPercentageChange(Double.parseDouble(percentageChange));
@@ -102,7 +122,8 @@ public class PriceShockerService extends AbstractService<MoneyControlBSEPriceSho
             } catch (NumberFormatException nfe) {
                 LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
                 stock.setPercentageChange(0.0);
-            }
+            }*/
+
             try {
                 String averageVolume5D = entity.getAverageVolume5Days();
                 if (null != averageVolume5D) {

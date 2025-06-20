@@ -1,38 +1,44 @@
 <div class="right-container">
-
-    <div class="right-container-company-frame-div" th:each="stock : ${page.stocks}">
-        <div class="right-container-company-div">
-            <div th:class="${stock.titleCssStyle}" th:text="${stock.companyName}"></div>
-            <div class="right-container-company-table-div">
-                <table>
-                    <tbody>
-                    <tr>
-                        <td class="td-left" th:style="${stock.lastPriceCssStyle}">Last Price</td>
-                        <td class="td-right" th:style="${stock.lastPriceCssStyle}" th:text="${stock.lastPrice}"></td>
-                    </tr>
-                    <tr>
-                        <td class="td-left">Latest Div %</td>
-                        <td class="td-right" th:text="${stock.latestDividendPercentage}"></td>
-                    </tr>
-                    <tr>
-                        <td class="td-left">DYP_52_High</td>
-                        <td class="td-right"th:text="${stock.dividendYieldPercentage52High}"></td>
-                    </tr>
-                    <tr>
-                        <td class="td-left">DYP_52_High</td>
-                        <td class="td-right" th:text="${stock.dividendYieldPercentage52Low}"></td>
-                    </tr>
-                    <tr>
-                        <td class="td-left">DYP_At_Current</td>
-                        <td class="td-right" th:text="${stock.dividendYieldPercentageAtCurrent}"></td>
-                    </tr>
-                    </tbody>
-                </table>
+    <div th:replace="fragments/common/stock_group_tip_container"></div>
+    <div class="right-container-stock-listing-container">
+        <div class="right-container-company-frame-div-0" th:each="stock : ${page.stocks}">
+            <div class="right-container-company-div">
+                <div class="right-container-company-title-container a-group-stock">
+                    <div th:class="${stock.titleCssStyle}" th:text="${stock.displayName}" th:title="${stock.toolTip}"></div>
+                    <div class="right-container-company-add-to-favourite-div a-group-stock">
+                        <img src="/images/icons/add-to-favourite.png" class="right-container-company-add-to-favourite-img"/>
+                    </div>
+                </div>
+                <div class="right-container-company-table-div">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td class="td-left" th:style="${stock.lastPriceCssStyle}">Last Price</td>
+                            <td class="td-right" th:style="${stock.lastPriceCssStyle}" th:text="${stock.lastPrice}"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-left">Latest Div %</td>
+                            <td class="td-right" th:text="${stock.latestDividendPercentage}"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-left">DYP_52_High</td>
+                            <td class="td-right" th:text="${stock.dividendYieldPercentage52High}"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-left">DYP_52_High</td>
+                            <td class="td-right" th:text="${stock.dividendYieldPercentage52Low}"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-left">DYP_At_Current</td>
+                            <td class="td-right" th:text="${stock.dividendYieldPercentageAtCurrent}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!--<div class="right-container-company-trading-stats-div red-to-dark-red">
+                    Trading Statistics
+                </div>-->
             </div>
-            <!--<div class="right-container-company-trading-stats-div red-to-dark-red">
-                Trading Statistics
-            </div>-->
         </div>
     </div>
-
 </div>

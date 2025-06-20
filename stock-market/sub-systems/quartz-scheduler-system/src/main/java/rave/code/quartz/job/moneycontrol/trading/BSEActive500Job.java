@@ -1,0 +1,208 @@
+package rave.code.quartz.job.moneycontrol.trading;
+
+import rave.code.data.parser.html.moneycontrol.BSEActive500Parser;
+import rave.code.quartz.job.moneycontrol.AbstractJob;
+import rave.code.stockmarket.bse.dataaccess.BSEActive500DataAccess;
+import rave.code.stockmarket.bse.entity.BSEActive500Entity;
+import rave.code.website.data.model.moneycontrol.BSEGenericActiveModel;
+
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class BSEActive500Job extends AbstractJob<BSEGenericActiveModel, BSEActive500Entity> {
+
+    private static final Logger LOGGER = Logger.getLogger(BSEActive500Job.class.getName());
+
+    private BSEActive500DataAccess bseActive500DataAccess = new BSEActive500DataAccess(BSEActive500Entity.class);
+
+    @Override
+    public List<BSEGenericActiveModel> getDataFromSource() {
+        BSEActive500Parser moneyControlBSEActive500Parser = new BSEActive500Parser();
+        List<BSEGenericActiveModel> moneyControlBSEActive500Models = moneyControlBSEActive500Parser.parse();
+        return moneyControlBSEActive500Models;
+    }
+
+    @Override
+    public List<BSEActive500Entity> transformSourceData(List<BSEGenericActiveModel> sourceData) {
+
+        List<BSEActive500Entity> moneyControlBSEActive500Entities = new ArrayList<>();
+        NumberFormat format = NumberFormat.getInstance();
+
+        for (BSEGenericActiveModel bseActive500Model : sourceData) {
+            BSEActive500Entity bseActive500Entity = this.bseActive500DataAccess.findBy(bseActive500Model.getCompanyName());
+            if (null == bseActive500Entity) {
+                bseActive500Entity = new BSEActive500Entity();
+                bseActive500Entity.setCompanyName(bseActive500Model.getCompanyName());
+            }
+            bseActive500Entity.setCategory(bseActive500Model.getGroup());
+            Number value = null;
+
+            try {
+                value = format.parse(bseActive500Model.getHigh());
+                bseActive500Entity.setHigh(String.valueOf(value.doubleValue()));
+            } catch (ParseException parseException) {
+                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                bseActive500Entity.setHigh(String.valueOf(0.00));
+            }
+
+            try {
+                value = format.parse(bseActive500Model.getLow());
+                bseActive500Entity.setLow(String.valueOf(value.doubleValue()));
+            } catch (ParseException parseException) {
+                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                bseActive500Entity.setLow(String.valueOf(0.00));
+            }
+
+            try {
+                value = format.parse(bseActive500Entity.getLastPrice());
+                String lastPrice = String.valueOf(value.doubleValue());
+                bseActive500Entity.setLastPrice(lastPrice);
+                if (bseActive500Entity.isNewEntity()) {
+                    bseActive500Entity.setLastPriceMovement(lastPrice);
+                } else {
+                    bseActive500Entity.setLastPriceMovement(String.format("%s -> %s", bseActive500Entity.getLastPriceMovement(), lastPrice));
+                }
+            } catch (ParseException parseException) {
+                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                bseActive500Entity.setLastPrice(String.valueOf(0.00));
+            }
+
+            try {
+                value = format.parse(bseActive500Model.getPercentageChange());
+                bseActive500Entity.setPercentageChange(String.valueOf(value.doubleValue()));
+            } catch (ParseException parseException) {
+                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                bseActive500Entity.setPercentageChange(String.valueOf(0.00));
+            }
+
+            try {
+                value = format.parse(bseActive500Model.getValueInCrores());
+                bseActive500Entity.setValueInCrores(String.valueOf(value.doubleValue()));
+            } catch (ParseException parseException) {
+                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                bseActive500Entity.setValueInCrores(String.valueOf(0.00));
+            }
+
+            try {
+                value = format.parse(bseActive500Model.getAverageVolume5Days());
+                bseActive500Entity.setAverageVolume5Days(String.valueOf(value.doubleValue()));
+            } catch (ParseException parseException) {
+                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                bseActive500Entity.setAverageVolume5Days(String.valueOf(0.00));
+            }
+
+            try {
+                value = format.parse(bseActive500Model.getAverageVolume10Days());
+                bseActive500Entity.setAverageVolume10Days(String.valueOf(value.doubleValue()));
+            } catch (ParseException parseException) {
+                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                bseActive500Entity.setAverageVolume10Days(String.valueOf(0.00));
+            }
+
+            try {
+                value = format.parse(bseActive500Model.getAverageVolume30Days());
+                bseActive500Entity.setAverageVolume30Days(String.valueOf(value.doubleValue()));
+            } catch (ParseException parseException) {
+                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                bseActive500Entity.setAverageVolume30Days(String.valueOf(0.00));
+            }
+
+            try {
+                value = format.parse(bseActive500Model.getPriceToEarningRatio());
+                bseActive500Entity.setPriceToEarningRatio(String.valueOf(value.doubleValue()));
+            } catch (ParseException parseException) {
+                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                bseActive500Entity.setPriceToEarningRatio(String.valueOf(0.00));
+            }
+
+            try {
+                value = format.parse(bseActive500Model.getPriceToBookRatio());
+                bseActive500Entity.setPriceToBookRatio(String.valueOf(value.doubleValue()));
+            } catch (ParseException parseException) {
+                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                bseActive500Entity.setPriceToBookRatio(String.valueOf(0.00));
+            }
+
+            try {
+                value = format.parse(bseActive500Model.getUpperCircuit());
+                bseActive500Entity.setUpperCircuit(String.valueOf(value.doubleValue()));
+            } catch (ParseException parseException) {
+                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                bseActive500Entity.setUpperCircuit(String.valueOf(0.00));
+            }
+
+            try {
+                value = format.parse(bseActive500Model.getLowerCircuit());
+                bseActive500Entity.setLowerCircuit(String.valueOf(value.doubleValue()));
+            } catch (ParseException parseException) {
+                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                bseActive500Entity.setLowerCircuit(String.valueOf(0.00));
+            }
+
+            try {
+                value = format.parse(bseActive500Model.getVolumeWeightedAveragePrice());
+                bseActive500Entity.setVolumeWeightedAveragePrice(String.valueOf(value.doubleValue()));
+            } catch (ParseException parseException) {
+                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                bseActive500Entity.setVolumeWeightedAveragePrice(String.valueOf(0.00));
+            }
+
+            try {
+                value = format.parse(bseActive500Model.getDisplacedMovingAverage30D());
+                bseActive500Entity.setDisplacedMovingAverage30D(String.valueOf(value.doubleValue()));
+            } catch (ParseException parseException) {
+                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                bseActive500Entity.setDisplacedMovingAverage30D(String.valueOf(0.00));
+            }
+
+            try {
+                value = format.parse(bseActive500Model.getDisplacedMovingAverage50D());
+                bseActive500Entity.setDisplacedMovingAverage50D(String.valueOf(value.doubleValue()));
+            } catch (ParseException parseException) {
+                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                bseActive500Entity.setDisplacedMovingAverage50D(String.valueOf(0.00));
+            }
+
+            try {
+                value = format.parse(bseActive500Model.getDisplacedMovingAverage150D());
+                bseActive500Entity.setDisplacedMovingAverage150D(String.valueOf(value.doubleValue()));
+            } catch (ParseException parseException) {
+                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                bseActive500Entity.setDisplacedMovingAverage150D(String.valueOf(0.00));
+            }
+
+            try {
+                value = format.parse(bseActive500Model.getDisplacedMovingAverage200D());
+                bseActive500Entity.setDisplacedMovingAverage200D(String.valueOf(value.doubleValue()));
+            } catch (ParseException parseException) {
+                LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
+                bseActive500Entity.setDisplacedMovingAverage200D(String.valueOf(0.00));
+            }
+
+            Date toDate = new Date();
+            bseActive500Entity.setCreatedDate(toDate);
+            bseActive500Entity.setModifiedDate(toDate);
+            bseActive500Entity.setCreatedBy("SYSTEM");
+            bseActive500Entity.setModifiedBy("SYSTEM");
+
+            moneyControlBSEActive500Entities.add(bseActive500Entity);
+        }
+        return moneyControlBSEActive500Entities;
+    }
+
+    @Override
+    public void saveTransformedData(List<BSEActive500Entity> transformedData) {
+        for (BSEActive500Entity bseActive500Entity : transformedData) {
+            if (bseActive500Entity.isNewEntity()) {
+                this.bseActive500DataAccess.save(bseActive500Entity);
+            } else {
+                this.bseActive500DataAccess.update(bseActive500Entity);
+            }
+        }
+    }
+}

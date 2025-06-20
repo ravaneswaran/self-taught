@@ -3,8 +3,8 @@ package rave.code.bse.web.service;
 import rave.code.bse.web.model.page.WebPage;
 import rave.code.bse.web.model.stock.CapitalGainerStock;
 import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
-import rave.code.stockmarket.bse.dataaccess.MoneyControlBSEMidCapGainerDataAccess;
-import rave.code.stockmarket.bse.entity.MoneyControlBSEMidCapGainerEntity;
+import rave.code.stockmarket.bse.dataaccess.BSEMidCapGainerDataAccess;
+import rave.code.stockmarket.bse.entity.BSEMidCapGainerEntity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MidCapGainerService extends AbstractService<MoneyControlBSEMidCapGainerEntity, CapitalGainerStock> {
+public class MidCapGainerService extends AbstractService<BSEMidCapGainerEntity, CapitalGainerStock> {
 
     private static final Logger LOGGER = Logger.getLogger(MidCapGainerService.class.getName());
 
@@ -24,17 +24,18 @@ public class MidCapGainerService extends AbstractService<MoneyControlBSEMidCapGa
     }
 
     @Override
-    public List<MoneyControlBSEMidCapGainerEntity> getEntities() {
-        return new MoneyControlBSEMidCapGainerDataAccess().findAll();
+    public List<BSEMidCapGainerEntity> getEntities() {
+        return new BSEMidCapGainerDataAccess().findAll();
     }
 
     @Override
-    public List<CapitalGainerStock> getStocks(List<MoneyControlBSEMidCapGainerEntity> entities) {
+    public List<CapitalGainerStock> getStocks(List<BSEMidCapGainerEntity> entities) {
         List<CapitalGainerStock> stocks = new ArrayList<>();
-        for (MoneyControlBSEMidCapGainerEntity entity : entities) {
+        for (BSEMidCapGainerEntity entity : entities) {
             CapitalGainerStock stock = new CapitalGainerStock();
 
-            stock.setCompanyName(entity.getCompanyName());
+            stock.setDisplayName(entity.getCompanyName());
+            stock.setToolTip(entity.getCompanyName());
             String value = "";
             try {
                 value = entity.getHigh();
@@ -42,7 +43,8 @@ public class MidCapGainerService extends AbstractService<MoneyControlBSEMidCapGa
                     stock.setHigh(Double.parseDouble(value));
                 } else {
                     stock.setHigh(0.0);
-                };
+                }
+                ;
             } catch (NumberFormatException nfe) {
                 LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
                 stock.setHigh(0.0);
