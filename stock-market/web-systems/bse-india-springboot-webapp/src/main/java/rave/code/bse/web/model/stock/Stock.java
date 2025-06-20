@@ -11,6 +11,9 @@ public class Stock {
     public static final String RED_BG_CSS_STYLE = "color: black; background:#FA5053; font-weight:bold;";
     public static final String RED_2_GREEN_GRADIANT_CSS_STYLE = "background: #e81c1f;background: linear-gradient(90deg,rgba(232, 28, 31, 1) 0%, rgba(245, 83, 94, 0.27) %s %, rgba(7, 140, 29, 0.98) %s %); color:#353839;";
 
+    public static final String ADD_TO_FAVOURITE_BLACK_IMAGE_SOURCE = "/images/icons/add-to-favourite.png";
+    public static final String ADD_TO_FAVOURITE_WHITE_IMAGE_SOURCE = "/images/icons/add-to-favourite-white.png";
+
     private String id;
     private String displayName;
     private String toolTip;
@@ -21,10 +24,11 @@ public class Stock {
     private String titleCssStyle;
     private String addToFavouriteCssStyle;
 
-
     private String lastPriceCssStyle = MAUVE_PINK_BG_CSS_STYLE;
     private String percentageGainCssStyle = RED_BG_CSS_STYLE;
     private String tradingStatisticsCssStyle = "";
+
+    private String addToFavouriteImageSrc = ADD_TO_FAVOURITE_BLACK_IMAGE_SOURCE;
 
     public String getId() {
         return id;
@@ -32,7 +36,7 @@ public class Stock {
 
     public void setId(String id) {
         this.id = id;
-    }
+    };
 
     public String getDisplayName() {
         return displayName;
@@ -121,6 +125,10 @@ public class Stock {
         return String.format("javascript: hideAndShow('%s', '%s');", this.getStockDivId(), this.getStockStatDivId());
     }
 
+    public String getAddToFavouriteImageSrc(){
+        return this.addToFavouriteImageSrc;
+    }
+
     public void applyCssStyleBasedOnGroup(String category) {
         if (category.startsWith("A")) {
             this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "a-group-stock");
@@ -146,6 +154,7 @@ public class Stock {
             this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "x-group-stock");
             this.titleCssStyle = String.format(TITLE_CSS_STYLE, "x-group-stock");
             this.addToFavouriteCssStyle = String.format(ADD_TO_FAVOURITE_CSS_STYLE, "x-group-stock");
+            this.addToFavouriteImageSrc = ADD_TO_FAVOURITE_WHITE_IMAGE_SOURCE;
         } else {
             this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "z-group-stock");
             this.titleCssStyle = String.format(TITLE_CSS_STYLE, "z-group-stock");

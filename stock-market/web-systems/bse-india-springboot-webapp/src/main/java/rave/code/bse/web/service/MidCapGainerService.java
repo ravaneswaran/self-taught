@@ -36,6 +36,8 @@ public class MidCapGainerService extends AbstractService<BSEMidCapGainerEntity, 
 
             stock.setDisplayName(entity.getCompanyName());
             stock.setToolTip(entity.getCompanyName());
+            stock.applyCssStyleBasedOnGroup("A");
+
             String value = "";
             try {
                 value = entity.getHigh();

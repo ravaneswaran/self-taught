@@ -8,7 +8,7 @@
                     <div th:class="${stock.titleCssStyle}" th:text="${stock.displayName}" th:title="${stock.toolTip}"></div>
                     <!--<div class="right-container-company-add-to-favourite-div a-group-stock">-->
                     <div th:class="${stock.addToFavouriteCssStyle}">
-                        <img src="/images/icons/add-to-favourite.png" class="right-container-company-add-to-favourite-img"/>
+                        <img th:src="${stock.addToFavouriteImageSrc}" class="right-container-company-add-to-favourite-img"/>
                     </div>
                 </div>
                 <div>
