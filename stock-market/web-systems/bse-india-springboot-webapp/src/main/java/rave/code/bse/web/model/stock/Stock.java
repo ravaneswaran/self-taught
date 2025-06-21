@@ -4,15 +4,14 @@ public class Stock {
 
     public static final String TITLE_CONTAINER_CSS_STYLE = "right-container-company-title-container %s";
     public static final String TITLE_CSS_STYLE = "right-container-company-title-div %s";
-    public static final String ADD_TO_FAVOURITE_CSS_STYLE = "right-container-company-add-to-favourite-div %s";
+    public static final String STOCK_MARKET_IMAGE_DIV_CSS_STYLE = "right-container-company-stock-market-chart-div %s";
 
     public static final String GREEN_BG_CSS_STYLE = "color: black; background: #0BDA51; font-weight:bold;";
     public static final String MAUVE_PINK_BG_CSS_STYLE = "color: black; background: #E0B0FF; font-weight:bold;";
     public static final String RED_BG_CSS_STYLE = "color: black; background:#FA5053; font-weight:bold;";
     public static final String RED_2_GREEN_GRADIANT_CSS_STYLE = "background: #e81c1f;background: linear-gradient(90deg,rgba(232, 28, 31, 1) 0%, rgba(245, 83, 94, 0.27) %s %, rgba(7, 140, 29, 0.98) %s %); color:#353839;";
 
-    public static final String ADD_TO_FAVOURITE_BLACK_IMAGE_SOURCE = "/images/icons/add-to-favourite.png";
-    public static final String ADD_TO_FAVOURITE_WHITE_IMAGE_SOURCE = "/images/icons/add-to-favourite-white.png";
+    public static final String STOCK_MARKET_CHART_IMAGE_SOURCE = "/images/icons/stock-market-chart.png";
 
     private String id;
     private String displayName;
@@ -22,13 +21,13 @@ public class Stock {
 
     private String titleContainerCssStyle;
     private String titleCssStyle;
-    private String addToFavouriteCssStyle;
+    private String stockMarketChartImageDivCssStyle;
 
     private String lastPriceCssStyle = MAUVE_PINK_BG_CSS_STYLE;
     private String percentageGainCssStyle = RED_BG_CSS_STYLE;
     private String tradingStatisticsCssStyle = "";
 
-    private String addToFavouriteImageSrc = ADD_TO_FAVOURITE_BLACK_IMAGE_SOURCE;
+    private String stockMarketChartImageSrc = STOCK_MARKET_CHART_IMAGE_SOURCE;
 
     public String getId() {
         return id;
@@ -73,8 +72,8 @@ public class Stock {
         return titleContainerCssStyle;
     }
 
-    public String getAddToFavouriteCssStyle() {
-        return addToFavouriteCssStyle;
+    public String getStockMarketChartImageDivCssStyle() {
+        return stockMarketChartImageDivCssStyle;
     }
 
     public void setTitleCssStyle(String titleCssStyle) {
@@ -125,40 +124,39 @@ public class Stock {
         return String.format("javascript: hideAndShow('%s', '%s');", this.getStockDivId(), this.getStockStatDivId());
     }
 
-    public String getAddToFavouriteImageSrc(){
-        return this.addToFavouriteImageSrc;
+    public String getStockMarketChartImageSrc(){
+        return this.stockMarketChartImageSrc;
     }
 
     public void applyCssStyleBasedOnGroup(String category) {
         if (category.startsWith("A")) {
             this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "a-group-stock");
             this.titleCssStyle = String.format(TITLE_CSS_STYLE, "a-group-stock");
-            this.addToFavouriteCssStyle = String.format(ADD_TO_FAVOURITE_CSS_STYLE, "a-group-stock");
+            this.stockMarketChartImageDivCssStyle = String.format(STOCK_MARKET_IMAGE_DIV_CSS_STYLE, "a-group-stock");
         } else if (category.startsWith("B")) {
             this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "b-group-stock");
             this.titleCssStyle = String.format(TITLE_CSS_STYLE, "b-group-stock");
-            this.addToFavouriteCssStyle = String.format(ADD_TO_FAVOURITE_CSS_STYLE, "b-group-stock");
+            this.stockMarketChartImageDivCssStyle = String.format(STOCK_MARKET_IMAGE_DIV_CSS_STYLE, "b-group-stock");
         } else if (category.startsWith("F")) {
             this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "f-group-stock");
             this.titleCssStyle = String.format(TITLE_CSS_STYLE, "f-group-stock");
-            this.addToFavouriteCssStyle = String.format(ADD_TO_FAVOURITE_CSS_STYLE, "f-group-stock");
+            this.stockMarketChartImageDivCssStyle = String.format(STOCK_MARKET_IMAGE_DIV_CSS_STYLE, "f-group-stock");
         } else if (category.startsWith("S")) {
             this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "s-group-stock");
             this.titleCssStyle = String.format(TITLE_CSS_STYLE, "s-group-stock");
-            this.addToFavouriteCssStyle = String.format(ADD_TO_FAVOURITE_CSS_STYLE, "s-group-stock");
+            this.stockMarketChartImageDivCssStyle = String.format(STOCK_MARKET_IMAGE_DIV_CSS_STYLE, "s-group-stock");
         } else if (category.startsWith("T")) {
             this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "t-group-stock");
             this.titleCssStyle = String.format(TITLE_CSS_STYLE, "t-group-stock");
-            this.addToFavouriteCssStyle = String.format(ADD_TO_FAVOURITE_CSS_STYLE, "t-group-stock");
+            this.stockMarketChartImageDivCssStyle = String.format(STOCK_MARKET_IMAGE_DIV_CSS_STYLE, "t-group-stock");
         } else if (category.startsWith("X")) {
             this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "x-group-stock");
             this.titleCssStyle = String.format(TITLE_CSS_STYLE, "x-group-stock");
-            this.addToFavouriteCssStyle = String.format(ADD_TO_FAVOURITE_CSS_STYLE, "x-group-stock");
-            this.addToFavouriteImageSrc = ADD_TO_FAVOURITE_WHITE_IMAGE_SOURCE;
+            this.stockMarketChartImageDivCssStyle = String.format(STOCK_MARKET_IMAGE_DIV_CSS_STYLE, "x-group-stock");
         } else {
             this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "z-group-stock");
             this.titleCssStyle = String.format(TITLE_CSS_STYLE, "z-group-stock");
-            this.addToFavouriteCssStyle = String.format(ADD_TO_FAVOURITE_CSS_STYLE, "z-group-stock");
+            this.stockMarketChartImageDivCssStyle = String.format(STOCK_MARKET_IMAGE_DIV_CSS_STYLE, "z-group-stock");
         }
     }
 }

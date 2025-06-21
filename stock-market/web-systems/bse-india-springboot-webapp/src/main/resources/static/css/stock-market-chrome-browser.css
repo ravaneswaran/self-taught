@@ -267,7 +267,7 @@ td{
     line-height: 150%;
 }
 
-.right-container-company-add-to-favourite-div{
+.right-container-company-stock-market-chart-div{
     width:17%;
     height:85%;
     border:0px solid #353839;
@@ -278,7 +278,7 @@ td{
     margin-left:1%;
 }
 
-.right-container-company-add-to-favourite-img {
+.right-container-company-stock-market-chart-img {
     width:99%;
     height:99%;
     cursor:pointer;
@@ -370,23 +370,28 @@ td{
 /**************************** Stock Groups*******************************/
 
 .a-group-stock{
-    background: #0BDA51;
-    color:#353839;
+    background: #353839;
+    color:#0BDA51;
 }
 
 .b-group-stock{
-    background: #45bdf7;
-    color:#353839;
+   background: #353839;
+   color:#45bdf7;
+}
+
+.f-group-stock{
+   background: #353839;
+   color:#45bdf7;
 }
 
 .s-group-stock{
-    background: yellow;
-    color:#353839;
+    background: #353839;
+    color:#FFEF00;
 }
 
 .t-group-stock{
-    background: #aba589; /*Tallow*/
-    color:#353839;
+    background: #353839;
+    color:#f2b949;
 }
 
 .x-group-stock {
@@ -395,8 +400,8 @@ td{
 }
 
 .z-group-stock{
-    background: #ff0c07;
-    color:#ffffff;
+   background: #353839;
+   color:#FA5053;
 }
 
 
