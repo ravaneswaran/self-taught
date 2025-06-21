@@ -8,38 +8,38 @@ import java.util.Date;
 public class TestBSETopDividendDataAccess extends TestCase {
 
     public void testSaveMethod() {
-        BSETopDividendEntity moneyControlBSETopDividendEntity = new BSETopDividendEntity();
+        BSETopDividendEntity bseTopDividendEntity = new BSETopDividendEntity();
 
-        moneyControlBSETopDividendEntity.setCompanyName("test-company-" + new Date().getTime());
-        moneyControlBSETopDividendEntity.setLastPrice("some-price");
+        bseTopDividendEntity.setCompanyName("test-company-" + new Date().getTime());
+        bseTopDividendEntity.setLastPrice("23");
 
-        moneyControlBSETopDividendEntity.setLatestDividendPercentage("some-percentage");
-        moneyControlBSETopDividendEntity.setDividendYieldPercentage52High("some-high");
-        moneyControlBSETopDividendEntity.setDividendYieldPercentage52Low("some-low");
-        moneyControlBSETopDividendEntity.setDividendYieldPercentageAtCurrent("some-current-percentage");
+        bseTopDividendEntity.setLatestDividendPercentage("4");
+        bseTopDividendEntity.setDividendYieldPercentage52High("23");
+        bseTopDividendEntity.setDividendYieldPercentage52Low("32");
+        bseTopDividendEntity.setDividendYieldPercentageAtCurrent("23");
 
         Date toDate = new Date();
-        moneyControlBSETopDividendEntity.setCreatedDate(toDate);
-        moneyControlBSETopDividendEntity.setModifiedDate(toDate);
-        moneyControlBSETopDividendEntity.setCreatedBy("SYSTEM");
-        moneyControlBSETopDividendEntity.setModifiedBy("SYSTEM");
+        bseTopDividendEntity.setCreatedDate(toDate);
+        bseTopDividendEntity.setModifiedDate(toDate);
+        bseTopDividendEntity.setCreatedBy("SYSTEM");
+        bseTopDividendEntity.setModifiedBy("SYSTEM");
 
         BSETopDividendDataAccess bseTopDividendDataAccess = new BSETopDividendDataAccess(BSETopDividendEntity.class);
 
 
-        System.out.println("------------------------>>>>>>> " + moneyControlBSETopDividendEntity.getCompanyName());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSETopDividendEntity.getLastPrice());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSETopDividendEntity.getLatestDividendPercentage());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSETopDividendEntity.getDividendYieldPercentage52High());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSETopDividendEntity.getDividendYieldPercentage52Low());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSETopDividendEntity.getDividendYieldPercentageAtCurrent());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSETopDividendEntity.getCreatedDate());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSETopDividendEntity.getCreatedBy());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSETopDividendEntity.getModifiedDate());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSETopDividendEntity.getModifiedBy());
+        System.out.println("------------------------>>>>>>> " + bseTopDividendEntity.getCompanyName());
+        System.out.println("------------------------>>>>>>> " + bseTopDividendEntity.getLastPrice());
+        System.out.println("------------------------>>>>>>> " + bseTopDividendEntity.getLatestDividendPercentage());
+        System.out.println("------------------------>>>>>>> " + bseTopDividendEntity.getDividendYieldPercentage52High());
+        System.out.println("------------------------>>>>>>> " + bseTopDividendEntity.getDividendYieldPercentage52Low());
+        System.out.println("------------------------>>>>>>> " + bseTopDividendEntity.getDividendYieldPercentageAtCurrent());
+        System.out.println("------------------------>>>>>>> " + bseTopDividendEntity.getCreatedDate());
+        System.out.println("------------------------>>>>>>> " + bseTopDividendEntity.getCreatedBy());
+        System.out.println("------------------------>>>>>>> " + bseTopDividendEntity.getModifiedDate());
+        System.out.println("------------------------>>>>>>> " + bseTopDividendEntity.getModifiedBy());
 
-        bseTopDividendDataAccess.save(moneyControlBSETopDividendEntity);
-        BSETopDividendEntity returnElement = bseTopDividendDataAccess.findBy(moneyControlBSETopDividendEntity.getCompanyName());
+        bseTopDividendDataAccess.save(bseTopDividendEntity);
+        BSETopDividendEntity returnElement = bseTopDividendDataAccess.findBy(bseTopDividendEntity.getCompanyName());
         assertNotNull(returnElement);
     }
 

@@ -8,37 +8,37 @@ import java.util.Date;
 public class TestBSESmallCapGainerDataAccess extends TestCase {
 
     public void testSaveMethod() {
-        BSESmallCapGainerEntity moneyControlBSESmallCapGainerEntity = new BSESmallCapGainerEntity();
+        BSESmallCapGainerEntity bseSmallCapGainerEntity = new BSESmallCapGainerEntity();
 
-        moneyControlBSESmallCapGainerEntity.setCompanyName("test-" + new Date().getTime());
-        moneyControlBSESmallCapGainerEntity.setHigh("some-high");
-        moneyControlBSESmallCapGainerEntity.setLow("some-low");
-        moneyControlBSESmallCapGainerEntity.setVariation("some-change");
-        moneyControlBSESmallCapGainerEntity.setLastPrice("some-price");
-        moneyControlBSESmallCapGainerEntity.setPercentageGain("some-percentage-gain");
-        moneyControlBSESmallCapGainerEntity.setPreviousClose("some-previous-close");
+        bseSmallCapGainerEntity.setCompanyName("test-" + new Date().getTime());
+        bseSmallCapGainerEntity.setHigh("20");
+        bseSmallCapGainerEntity.setLow("10");
+        bseSmallCapGainerEntity.setVariation("s");
+        bseSmallCapGainerEntity.setLastPrice("34");
+        bseSmallCapGainerEntity.setPercentageGain("4");
+        bseSmallCapGainerEntity.setPreviousClose("21");
         Date toDate = new Date();
-        moneyControlBSESmallCapGainerEntity.setCreatedDate(toDate);
-        moneyControlBSESmallCapGainerEntity.setModifiedDate(toDate);
-        moneyControlBSESmallCapGainerEntity.setCreatedBy("SYSTEM");
-        moneyControlBSESmallCapGainerEntity.setModifiedBy("SYSTEM");
+        bseSmallCapGainerEntity.setCreatedDate(toDate);
+        bseSmallCapGainerEntity.setModifiedDate(toDate);
+        bseSmallCapGainerEntity.setCreatedBy("SYSTEM");
+        bseSmallCapGainerEntity.setModifiedBy("SYSTEM");
 
         BSESmallCapGainerDataAccess moneyControlBSESmallCapGainerDataAccess = new BSESmallCapGainerDataAccess(BSESmallCapGainerEntity.class);
 
-        System.out.println("------------------------>>>>>>> " + moneyControlBSESmallCapGainerEntity.getVariation());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSESmallCapGainerEntity.getCompanyName());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSESmallCapGainerEntity.getHigh());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSESmallCapGainerEntity.getLastPrice());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSESmallCapGainerEntity.getPercentageGain());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSESmallCapGainerEntity.getPreviousClose());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSESmallCapGainerEntity.getLow());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSESmallCapGainerEntity.getCreatedDate());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSESmallCapGainerEntity.getCreatedBy());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSESmallCapGainerEntity.getModifiedDate());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSESmallCapGainerEntity.getModifiedBy());
+        System.out.println("------------------------>>>>>>> " + bseSmallCapGainerEntity.getVariation());
+        System.out.println("------------------------>>>>>>> " + bseSmallCapGainerEntity.getCompanyName());
+        System.out.println("------------------------>>>>>>> " + bseSmallCapGainerEntity.getHigh());
+        System.out.println("------------------------>>>>>>> " + bseSmallCapGainerEntity.getLastPrice());
+        System.out.println("------------------------>>>>>>> " + bseSmallCapGainerEntity.getPercentageGain());
+        System.out.println("------------------------>>>>>>> " + bseSmallCapGainerEntity.getPreviousClose());
+        System.out.println("------------------------>>>>>>> " + bseSmallCapGainerEntity.getLow());
+        System.out.println("------------------------>>>>>>> " + bseSmallCapGainerEntity.getCreatedDate());
+        System.out.println("------------------------>>>>>>> " + bseSmallCapGainerEntity.getCreatedBy());
+        System.out.println("------------------------>>>>>>> " + bseSmallCapGainerEntity.getModifiedDate());
+        System.out.println("------------------------>>>>>>> " + bseSmallCapGainerEntity.getModifiedBy());
 
-        moneyControlBSESmallCapGainerDataAccess.save(moneyControlBSESmallCapGainerEntity);
-        BSESmallCapGainerEntity returnElement = moneyControlBSESmallCapGainerDataAccess.findBy(moneyControlBSESmallCapGainerEntity.getCompanyName());
+        moneyControlBSESmallCapGainerDataAccess.save(bseSmallCapGainerEntity);
+        BSESmallCapGainerEntity returnElement = moneyControlBSESmallCapGainerDataAccess.findBy(bseSmallCapGainerEntity.getCompanyName());
         assertNotNull(returnElement);
     }
 

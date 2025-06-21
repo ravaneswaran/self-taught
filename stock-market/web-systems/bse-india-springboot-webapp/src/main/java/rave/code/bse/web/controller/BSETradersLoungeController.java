@@ -4,11 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 import rave.code.bse.web.model.page.PriceShockerWebPage;
+import rave.code.bse.web.model.page.VolumeShockerWebPage;
 import rave.code.bse.web.model.page.WebPage;
-import rave.code.bse.web.service.Active100Service;
-import rave.code.bse.web.service.Active200Service;
-import rave.code.bse.web.service.Active500Service;
-import rave.code.bse.web.service.PriceShockerService;
+import rave.code.bse.web.service.*;
 
 @Controller
 public class BSETradersLoungeController {
@@ -62,6 +60,18 @@ public class BSETradersLoungeController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("page", priceShockersWebPage);
         modelAndView.setViewName("price_shockers");
+
+        return modelAndView;
+    }
+
+    @GetMapping("/bse/volume-shockers")
+    public ModelAndView bseVolumeShockers() {
+        VolumeShockerService volumeShockerService = new VolumeShockerService();
+        VolumeShockerWebPage volumeShockerWebPage = volumeShockerService.getPageModel();
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("page", volumeShockerWebPage);
+        modelAndView.setViewName("volume_shockers");
 
         return modelAndView;
     }

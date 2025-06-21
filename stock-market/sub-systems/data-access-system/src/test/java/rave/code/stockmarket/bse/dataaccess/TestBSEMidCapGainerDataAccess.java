@@ -8,37 +8,37 @@ import java.util.Date;
 public class TestBSEMidCapGainerDataAccess extends TestCase {
 
     public void testSaveMethod() {
-        BSEMidCapGainerEntity moneyControlBSEMidCapGainerEntity = new BSEMidCapGainerEntity();
+        BSEMidCapGainerEntity bseMidCapGainerEntity = new BSEMidCapGainerEntity();
 
-        moneyControlBSEMidCapGainerEntity.setCompanyName("test-company-" + new Date().getTime());
-        moneyControlBSEMidCapGainerEntity.setHigh("some-high");
-        moneyControlBSEMidCapGainerEntity.setLow("some-low");
-        moneyControlBSEMidCapGainerEntity.setVariation("some-change");
-        moneyControlBSEMidCapGainerEntity.setLastPrice("some-price");
-        moneyControlBSEMidCapGainerEntity.setPercentageGain("some-percentage-gain");
-        moneyControlBSEMidCapGainerEntity.setPreviousClose("some-previous-close");
+        bseMidCapGainerEntity.setCompanyName("test-company-" + new Date().getTime());
+        bseMidCapGainerEntity.setHigh("20");
+        bseMidCapGainerEntity.setLow("10");
+        bseMidCapGainerEntity.setVariation("34");
+        bseMidCapGainerEntity.setLastPrice("s45");
+        bseMidCapGainerEntity.setPercentageGain("s2.1");
+        bseMidCapGainerEntity.setPreviousClose("23e");
         Date toDate = new Date();
-        moneyControlBSEMidCapGainerEntity.setCreatedDate(toDate);
-        moneyControlBSEMidCapGainerEntity.setModifiedDate(toDate);
-        moneyControlBSEMidCapGainerEntity.setCreatedBy("SYSTEM");
-        moneyControlBSEMidCapGainerEntity.setModifiedBy("SYSTEM");
+        bseMidCapGainerEntity.setCreatedDate(toDate);
+        bseMidCapGainerEntity.setModifiedDate(toDate);
+        bseMidCapGainerEntity.setCreatedBy("SYSTEM");
+        bseMidCapGainerEntity.setModifiedBy("SYSTEM");
 
         BSEMidCapGainerDataAccess moneyControlBSEMidCapGainerDataAccess = new BSEMidCapGainerDataAccess(BSEMidCapGainerEntity.class);
 
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEMidCapGainerEntity.getVariation());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEMidCapGainerEntity.getCompanyName());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEMidCapGainerEntity.getHigh());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEMidCapGainerEntity.getLastPrice());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEMidCapGainerEntity.getPercentageGain());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEMidCapGainerEntity.getPreviousClose());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEMidCapGainerEntity.getLow());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEMidCapGainerEntity.getCreatedDate());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEMidCapGainerEntity.getCreatedBy());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEMidCapGainerEntity.getModifiedDate());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEMidCapGainerEntity.getModifiedBy());
+        System.out.println("------------------------>>>>>>> " + bseMidCapGainerEntity.getVariation());
+        System.out.println("------------------------>>>>>>> " + bseMidCapGainerEntity.getCompanyName());
+        System.out.println("------------------------>>>>>>> " + bseMidCapGainerEntity.getHigh());
+        System.out.println("------------------------>>>>>>> " + bseMidCapGainerEntity.getLastPrice());
+        System.out.println("------------------------>>>>>>> " + bseMidCapGainerEntity.getPercentageGain());
+        System.out.println("------------------------>>>>>>> " + bseMidCapGainerEntity.getPreviousClose());
+        System.out.println("------------------------>>>>>>> " + bseMidCapGainerEntity.getLow());
+        System.out.println("------------------------>>>>>>> " + bseMidCapGainerEntity.getCreatedDate());
+        System.out.println("------------------------>>>>>>> " + bseMidCapGainerEntity.getCreatedBy());
+        System.out.println("------------------------>>>>>>> " + bseMidCapGainerEntity.getModifiedDate());
+        System.out.println("------------------------>>>>>>> " + bseMidCapGainerEntity.getModifiedBy());
 
-        moneyControlBSEMidCapGainerDataAccess.save(moneyControlBSEMidCapGainerEntity);
-        BSEMidCapGainerEntity returnElement = moneyControlBSEMidCapGainerDataAccess.findBy(moneyControlBSEMidCapGainerEntity.getCompanyName());
+        moneyControlBSEMidCapGainerDataAccess.save(bseMidCapGainerEntity);
+        BSEMidCapGainerEntity returnElement = moneyControlBSEMidCapGainerDataAccess.findBy(bseMidCapGainerEntity.getCompanyName());
         assertNotNull(returnElement);
     }
 

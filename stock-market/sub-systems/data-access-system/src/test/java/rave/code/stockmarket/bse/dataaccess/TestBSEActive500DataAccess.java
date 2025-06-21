@@ -8,37 +8,37 @@ import java.util.Date;
 public class TestBSEActive500DataAccess extends TestCase {
 
     public void testSaveMethod() {
-        BSEActive500Entity moneyControlBSEActive500Entity = new BSEActive500Entity();
+        BSEActive500Entity bseActive500Entity = new BSEActive500Entity();
 
-        moneyControlBSEActive500Entity.setCompanyName("test-company" + new Date().getTime());
-        moneyControlBSEActive500Entity.setHigh("some-high");
-        moneyControlBSEActive500Entity.setLow("some-low");
-        moneyControlBSEActive500Entity.setCategory("some-category");
-        moneyControlBSEActive500Entity.setLastPrice("some-price");
-        moneyControlBSEActive500Entity.setPercentageChange("some-percentage-change");
-        moneyControlBSEActive500Entity.setValueInCrores("some-value-in-crores");
+        bseActive500Entity.setCompanyName("test-company" + new Date().getTime());
+        bseActive500Entity.setHigh("20");
+        bseActive500Entity.setLow("10");
+        bseActive500Entity.setCategory("some-category");
+        bseActive500Entity.setLastPrice("34.5");
+        bseActive500Entity.setPercentageChange("2.1");
+        bseActive500Entity.setValueInCrores("23");
         Date toDate = new Date();
-        moneyControlBSEActive500Entity.setCreatedDate(toDate);
-        moneyControlBSEActive500Entity.setModifiedDate(toDate);
-        moneyControlBSEActive500Entity.setCreatedBy("SYSTEM");
-        moneyControlBSEActive500Entity.setModifiedBy("SYSTEM");
+        bseActive500Entity.setCreatedDate(toDate);
+        bseActive500Entity.setModifiedDate(toDate);
+        bseActive500Entity.setCreatedBy("SYSTEM");
+        bseActive500Entity.setModifiedBy("SYSTEM");
 
         BSEActive500DataAccess moneyControlBSEActive500DataAccess = new BSEActive500DataAccess(BSEActive500Entity.class);
 
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEActive500Entity.getCompanyName());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEActive500Entity.getCategory());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEActive500Entity.getHigh());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEActive500Entity.getLastPrice());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEActive500Entity.getPercentageChange());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEActive500Entity.getValueInCrores());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEActive500Entity.getLow());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEActive500Entity.getCreatedDate());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEActive500Entity.getCreatedBy());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEActive500Entity.getModifiedDate());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEActive500Entity.getModifiedBy());
+        System.out.println("------------------------>>>>>>> " + bseActive500Entity.getCompanyName());
+        System.out.println("------------------------>>>>>>> " + bseActive500Entity.getCategory());
+        System.out.println("------------------------>>>>>>> " + bseActive500Entity.getHigh());
+        System.out.println("------------------------>>>>>>> " + bseActive500Entity.getLastPrice());
+        System.out.println("------------------------>>>>>>> " + bseActive500Entity.getPercentageChange());
+        System.out.println("------------------------>>>>>>> " + bseActive500Entity.getValueInCrores());
+        System.out.println("------------------------>>>>>>> " + bseActive500Entity.getLow());
+        System.out.println("------------------------>>>>>>> " + bseActive500Entity.getCreatedDate());
+        System.out.println("------------------------>>>>>>> " + bseActive500Entity.getCreatedBy());
+        System.out.println("------------------------>>>>>>> " + bseActive500Entity.getModifiedDate());
+        System.out.println("------------------------>>>>>>> " + bseActive500Entity.getModifiedBy());
 
-        moneyControlBSEActive500DataAccess.save(moneyControlBSEActive500Entity);
-        BSEActive500Entity returnElement = moneyControlBSEActive500DataAccess.findBy(moneyControlBSEActive500Entity.getCompanyName());
+        moneyControlBSEActive500DataAccess.save(bseActive500Entity);
+        BSEActive500Entity returnElement = moneyControlBSEActive500DataAccess.findBy(bseActive500Entity.getCompanyName());
         assertNotNull(returnElement);
     }
 

@@ -8,58 +8,58 @@ import java.util.Date;
 public class TestBSEPriceShockerDataAccess extends TestCase {
 
     public void testSaveMethod() {
-        BSEPriceShockerEntity moneyControlBSEPriceShockerEntity = new BSEPriceShockerEntity();
+        BSEPriceShockerEntity bsePriceShockerEntity = new BSEPriceShockerEntity();
 
-        moneyControlBSEPriceShockerEntity.setCompanyName("test-company" + new Date().getTime());
-        moneyControlBSEPriceShockerEntity.setCategory("some-high");
-        moneyControlBSEPriceShockerEntity.setSector("some-sector");
-        moneyControlBSEPriceShockerEntity.setCategory("some-category");
-        moneyControlBSEPriceShockerEntity.setCurrentPrice("some-current-price");
-        moneyControlBSEPriceShockerEntity.setPreviousPrice("some-previous-price");
-        moneyControlBSEPriceShockerEntity.setPercentageChange("some-percentage-change");
-        moneyControlBSEPriceShockerEntity.setAverageVolume5Days("5d-averrage-volume");
-        moneyControlBSEPriceShockerEntity.setAverageVolume10Days("10d-average-volume");
-        moneyControlBSEPriceShockerEntity.setAverageVolume30Days("30d-average-volume");
-        moneyControlBSEPriceShockerEntity.setDisplacedMovingAverage30D("30d-dma");
-        moneyControlBSEPriceShockerEntity.setDisplacedMovingAverage50D("50d-dma");
-        moneyControlBSEPriceShockerEntity.setDisplacedMovingAverage150D("150d-dma");
-        moneyControlBSEPriceShockerEntity.setDisplacedMovingAverage200D("200-dma");
-        moneyControlBSEPriceShockerEntity.setPriceToEarningRatio("some-pe-ratio");
-        moneyControlBSEPriceShockerEntity.setPriceToBookRatio("some-pb-ratio");
-        moneyControlBSEPriceShockerEntity.setUpperCircuit("some-upper-circuit");
-        moneyControlBSEPriceShockerEntity.setLowerCircuit("some-lower-circuit");
-        moneyControlBSEPriceShockerEntity.setVolumeWeightedAveragePrice("some-vwap");
+        bsePriceShockerEntity.setCompanyName("test-company" + new Date().getTime());
+        bsePriceShockerEntity.setCategory("20");
+        bsePriceShockerEntity.setSector("s10");
+        bsePriceShockerEntity.setCategory("some-category");
+        bsePriceShockerEntity.setCurrentPrice("123");
+        bsePriceShockerEntity.setPreviousPrice("s102");
+        bsePriceShockerEntity.setPercentageChange("s3");
+        bsePriceShockerEntity.setAverageVolume5Days("20");
+        bsePriceShockerEntity.setAverageVolume10Days("30");
+        bsePriceShockerEntity.setAverageVolume30Days("40");
+        bsePriceShockerEntity.setDisplacedMovingAverage30D("200");
+        bsePriceShockerEntity.setDisplacedMovingAverage50D("5300");
+        bsePriceShockerEntity.setDisplacedMovingAverage150D("400");
+        bsePriceShockerEntity.setDisplacedMovingAverage200D("500");
+        bsePriceShockerEntity.setPriceToEarningRatio("4.5");
+        bsePriceShockerEntity.setPriceToBookRatio("5.4");
+        bsePriceShockerEntity.setUpperCircuit("23");
+        bsePriceShockerEntity.setLowerCircuit("45");
+        bsePriceShockerEntity.setVolumeWeightedAveragePrice("45");
 
         Date toDate = new Date();
-        moneyControlBSEPriceShockerEntity.setCreatedDate(toDate);
-        moneyControlBSEPriceShockerEntity.setModifiedDate(toDate);
-        moneyControlBSEPriceShockerEntity.setCreatedBy("SYSTEM");
-        moneyControlBSEPriceShockerEntity.setModifiedBy("SYSTEM");
+        bsePriceShockerEntity.setCreatedDate(toDate);
+        bsePriceShockerEntity.setModifiedDate(toDate);
+        bsePriceShockerEntity.setCreatedBy("SYSTEM");
+        bsePriceShockerEntity.setModifiedBy("SYSTEM");
 
         BSEPriceShockerDataAccess moneyControlBSEPriceShockerDataAccess = new BSEPriceShockerDataAccess(BSEPriceShockerEntity.class);
 
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEPriceShockerEntity.getCompanyName());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEPriceShockerEntity.getCategory());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEPriceShockerEntity.getSector());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEPriceShockerEntity.getCurrentPrice());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEPriceShockerEntity.getPreviousPrice());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEPriceShockerEntity.getPercentageChange());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEPriceShockerEntity.getAverageVolume5Days());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEPriceShockerEntity.getAverageVolume10Days());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEPriceShockerEntity.getAverageVolume30Days());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEPriceShockerEntity.getDisplacedMovingAverage30D());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEPriceShockerEntity.getDisplacedMovingAverage50D());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEPriceShockerEntity.getDisplacedMovingAverage150D());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEPriceShockerEntity.getDisplacedMovingAverage200D());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEPriceShockerEntity.getPriceToEarningRatio());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEPriceShockerEntity.getPriceToBookRatio());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEPriceShockerEntity.getLowerCircuit());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEPriceShockerEntity.getUpperCircuit());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEPriceShockerEntity.getModifiedDate());
-        System.out.println("------------------------>>>>>>> " + moneyControlBSEPriceShockerEntity.getModifiedBy());
+        System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getCompanyName());
+        System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getCategory());
+        System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getSector());
+        System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getCurrentPrice());
+        System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getPreviousPrice());
+        System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getPercentageChange());
+        System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getAverageVolume5Days());
+        System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getAverageVolume10Days());
+        System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getAverageVolume30Days());
+        System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getDisplacedMovingAverage30D());
+        System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getDisplacedMovingAverage50D());
+        System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getDisplacedMovingAverage150D());
+        System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getDisplacedMovingAverage200D());
+        System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getPriceToEarningRatio());
+        System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getPriceToBookRatio());
+        System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getLowerCircuit());
+        System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getUpperCircuit());
+        System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getModifiedDate());
+        System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getModifiedBy());
 
-        moneyControlBSEPriceShockerDataAccess.save(moneyControlBSEPriceShockerEntity);
-        BSEPriceShockerEntity returnElement = moneyControlBSEPriceShockerDataAccess.findBy(moneyControlBSEPriceShockerEntity.getCompanyName());
+        moneyControlBSEPriceShockerDataAccess.save(bsePriceShockerEntity);
+        BSEPriceShockerEntity returnElement = moneyControlBSEPriceShockerDataAccess.findBy(bsePriceShockerEntity.getCompanyName());
         assertNotNull(returnElement);
     }
 

@@ -16,6 +16,7 @@
     <include relativeToChangelogFile="true" file="bse-mid-cap-gainer-changelog.xml"/>
     <include relativeToChangelogFile="true" file="bse-price-shockers-changelog.xml"/>
     <include relativeToChangelogFile="true" file="bse-price-shockers-history-changelog.xml"/>
+    <include relativeToChangelogFile="true" file="bse-volume-shockers-changelog.xml"/>
     <include relativeToChangelogFile="true" file="holidays-changelog.xml"/>
 
 </databaseChangeLog>

@@ -6,10 +6,7 @@ import rave.code.quartz.job.moneycontrol.history.BSEActive100HistoryJob;
 import rave.code.quartz.job.moneycontrol.history.BSEActive200HistoryJob;
 import rave.code.quartz.job.moneycontrol.history.BSEActive500HistoryJob;
 import rave.code.quartz.job.moneycontrol.history.BSEPriceShockersHistoryJob;
-import rave.code.quartz.job.moneycontrol.trading.BSEActive100Job;
-import rave.code.quartz.job.moneycontrol.trading.BSEActive200Job;
-import rave.code.quartz.job.moneycontrol.trading.BSEActive500Job;
-import rave.code.quartz.job.moneycontrol.trading.PriceShockersJob;
+import rave.code.quartz.job.moneycontrol.trading.*;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -59,6 +56,9 @@ public class TraderScheduler {
             JobDetail priceShockersJobDetail = newJob(PriceShockersJob.class)
                     .withIdentity("PriceShockersJob", "Trading")
                     .build();
+            JobDetail volumeShockersJobDetail = newJob(VolumeShockersJob.class)
+                    .withIdentity("VolumeShockersJob", "Trading")
+                    .build();
 
             Trigger active100JobTrigger = newTrigger()
                     .withIdentity("Active100JobTrigger", "Trading")
@@ -88,12 +88,20 @@ public class TraderScheduler {
                             .withIntervalInMinutes(5)
                             .repeatForever())
                     .build();
+            Trigger volumeShockersJobTrigger = newTrigger()
+                    .withIdentity("VolumeShockersJobTrigger", "Trading")
+                    .startNow()
+                    .withSchedule(simpleSchedule()
+                            .withIntervalInMinutes(5)
+                            .repeatForever())
+                    .build();
 
             try {
-                scheduler.scheduleJob(active100JobDetail, active100JobTrigger);
+               /* scheduler.scheduleJob(active100JobDetail, active100JobTrigger);
                 scheduler.scheduleJob(active200JobDetail, active200JobTrigger);
                 scheduler.scheduleJob(active500JobDetail, active500JobTrigger);
-                scheduler.scheduleJob(priceShockersJobDetail, priceShockersJobTrigger);
+                scheduler.scheduleJob(priceShockersJobDetail, priceShockersJobTrigger);*/
+                scheduler.scheduleJob(volumeShockersJobDetail, volumeShockersJobTrigger);
             } catch (SchedulerException se) {
                 LOGGER.log(Level.SEVERE, se.getMessage(), se);
             }
@@ -167,7 +175,6 @@ public class TraderScheduler {
                 scheduler.scheduleJob(bseActive100HistoryJobDetail, bseActive100HistoryJobTrigger);
                 scheduler.scheduleJob(bseActive200HistoryJobDetail, bseActive200HistoryJobTrigger);
                 scheduler.scheduleJob(bseActive500HistoryJobDetail, bseActive500HistoryJobTrigger);
-                scheduler.scheduleJob(bsePriceShockersHistoryJobDetail, bsePriceShockersHistoryJobTrigger);
             } catch (SchedulerException se) {
                 LOGGER.log(Level.SEVERE, se.getMessage(), se);
             }

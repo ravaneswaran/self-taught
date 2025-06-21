@@ -10,6 +10,7 @@ public class WebPage {
     private String active200LinkStyle = "";
     private String active500LinkStyle = "";
     private String priceShockersLinkStyle = "";
+    private String volumeShockersLinkStyle = "";
     private String topDividendLinkStyle = "";
     private String smallCapGainerLinkStyle = "";
     private String midCapGainerLinkStyle = "";
@@ -69,6 +70,14 @@ public class WebPage {
 
     public void setMidCapGainerLinkStyle(String midCapGainerLinkStyle) {
         this.midCapGainerLinkStyle = midCapGainerLinkStyle;
+    }
+
+    public String getVolumeShockersLinkStyle() {
+        return volumeShockersLinkStyle;
+    }
+
+    public void setVolumeShockersLinkStyle(String volumeShockersLinkStyle) {
+        this.volumeShockersLinkStyle = volumeShockersLinkStyle;
     }
 
     public List<Stock> getStocks() {
