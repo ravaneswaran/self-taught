@@ -37,7 +37,8 @@ public class TopDividendService extends AbstractService<BSETopDividendEntity, To
             TopDividendStock stock = new TopDividendStock();
 
             stock.setDisplayName(entity.getCompanyName());
-            stock.setToolTip(entity.getCompanyName());
+            String toolTip = String.format("%s", entity.getCompanyName());
+            stock.setToolTip(toolTip);
             stock.applyCssStyleBasedOnGroup("A");
 
             try {

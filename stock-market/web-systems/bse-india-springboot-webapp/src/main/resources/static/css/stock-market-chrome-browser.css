@@ -250,7 +250,8 @@ td{
 }
 
 .right-container-company-title-div{
-    width:80%;    padding-top:5px;
+    width:80%;
+    padding-top:5px;
     height:88%;
     background: #353839;
     font-size:17px;
@@ -381,27 +382,27 @@ td{
 
 .f-group-stock{
    background: #353839;
-   color:#45bdf7;
+   color:#D473D4;
 }
 
 .s-group-stock{
     background: #353839;
-    color:#FFEF00;
+    color:yellow;
 }
 
 .t-group-stock{
     background: #353839;
-    color:#f2b949;
+    color:#FF878D;
 }
 
 .x-group-stock {
     background: #353839;
-    color:white;
+    color:#F1B42F;
 }
 
 .z-group-stock{
    background: #353839;
-   color:#FA5053;
+   color:#ff0c07;
 }
 
 
