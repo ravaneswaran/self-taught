@@ -14,6 +14,15 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>17</maven.compiler.release>
+
+        <liquibase.property.file>src/main/resources/liquibase/liquibase.properties</liquibase.property.file>
+        <liquibase.master.changelog.file>src/main/resources/liquibase/changelogs/stock-market-changelog.xml
+        </liquibase.master.changelog.file>
+        <database.dev.connection.url>jdbc:mysql://localhost:3306/stock_market_dev</database.dev.connection.url>
+        <database.prod.connection.url>jdbc:mysql://localhost:3306/stock_market</database.prod.connection.url>
+        <database.driver>com.mysql.cj.jdbc.Driver</database.driver>
+        <database.username>admin</database.username>
+        <database.password>admin</database.password>
     </properties>
 
     <dependencyManagement>
@@ -59,18 +68,21 @@
     <build>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
+                <!-- mvn liquibase:update -->
                 <plugin>
                     <groupId>org.liquibase</groupId>
                     <artifactId>liquibase-maven-plugin</artifactId>
                     <version>4.31.1</version>
                     <configuration>
-                        <propertyFile>src/main/resources/liquibase/liquibase.properties</propertyFile>
-                        <changeLogFile>src/main/resources/liquibase/changelogs/master-changelog.xml</changeLogFile>
-                        <url>jdbc:mysql://localhost:3306/stock_market</url>
-                        <username>admin</username>
-                        <password>admin</password>
+                        <propertyFile>${liquibase.property.file}</propertyFile>
+                        <changeLogFile>${liquibase.master.changelog.file}</changeLogFile>
+                        <driver>${database.driver}</driver>
+                        <url>${database.prod.connection.url}</url>
+                        <username>${database.username}</username>
+                        <password>${database.password}</password>
                     </configuration>
                 </plugin>
+
                 <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
                 <plugin>
                     <artifactId>maven-clean-plugin</artifactId>
@@ -113,4 +125,32 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <profiles>
+        <!-- mvn -Pdev liquibase:update -->
+        <profile>
+            <id>dev</id>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.liquibase</groupId>
+                            <artifactId>liquibase-maven-plugin</artifactId>
+                            <version>4.31.1</version>
+                            <configuration>
+                                <propertyFile>${liquibase.property.file}</propertyFile>
+                                <changeLogFile>${liquibase.master.changelog.file}</changeLogFile>
+                                <driver>${database.driver}</driver>
+                                <url>${database.dev.connection.url}</url>
+                                <username>${database.username}</username>
+                                <password>${database.password}</password>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+
+    </profiles>
+
 </project>
