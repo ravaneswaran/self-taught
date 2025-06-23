@@ -35,7 +35,9 @@ public class Stock {
 
     public void setId(String id) {
         this.id = id;
-    };
+    }
+
+    ;
 
     public String getDisplayName() {
         return displayName;
@@ -124,7 +126,7 @@ public class Stock {
         return String.format("javascript: hideAndShow('%s', '%s');", this.getStockDivId(), this.getStockStatDivId());
     }
 
-    public String getStockMarketChartImageSrc(){
+    public String getStockMarketChartImageSrc() {
         return this.stockMarketChartImageSrc;
     }
 
@@ -153,10 +155,14 @@ public class Stock {
             this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "x-group-stock");
             this.titleCssStyle = String.format(TITLE_CSS_STYLE, "x-group-stock");
             this.stockMarketChartImageDivCssStyle = String.format(STOCK_MARKET_IMAGE_DIV_CSS_STYLE, "x-group-stock");
-        } else {
+        } else if (category.startsWith("Z")) {
             this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "z-group-stock");
             this.titleCssStyle = String.format(TITLE_CSS_STYLE, "z-group-stock");
             this.stockMarketChartImageDivCssStyle = String.format(STOCK_MARKET_IMAGE_DIV_CSS_STYLE, "z-group-stock");
+        } else {
+            this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "no-group-stock");
+            this.titleCssStyle = String.format(TITLE_CSS_STYLE, "no-group-stock");
+            this.stockMarketChartImageDivCssStyle = String.format(STOCK_MARKET_IMAGE_DIV_CSS_STYLE, "no-group-stock");
         }
     }
 }
