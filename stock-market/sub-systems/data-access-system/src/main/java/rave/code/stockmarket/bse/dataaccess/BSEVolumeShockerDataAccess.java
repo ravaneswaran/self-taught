@@ -24,8 +24,8 @@ public class BSEVolumeShockerDataAccess extends StockMarketHistoryEnabledDataAcc
     @Override
     public BSEVolumeShockerEntity save(BSEVolumeShockerEntity entity) {
         BSEVolumeShockerEntity fromDB = this.findBy(entity.getCompanyName());
+        EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
         if (null == fromDB) {
-            EntityTransaction entityTransaction = this.getEntityManager().getTransaction();
             entityTransaction.begin();
             this.getEntityManager().persist(entity);
             entityTransaction.commit();
