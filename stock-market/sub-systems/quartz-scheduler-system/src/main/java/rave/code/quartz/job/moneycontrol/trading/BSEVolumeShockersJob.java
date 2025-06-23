@@ -173,8 +173,6 @@ public class BSEVolumeShockersJob extends AbstractJob<VolumeShockerModel, BSEVol
     @Override
     public void saveTransformedData(List<BSEVolumeShockerEntity> transformedData) {
         BSEVolumeShockerDataAccess bseVolumeShockerDataAccess = new BSEVolumeShockerDataAccess(BSEVolumeShockerEntity.class);
-        for (BSEVolumeShockerEntity bseVolumeShockerEntity : transformedData) {
-            bseVolumeShockerDataAccess.save(bseVolumeShockerEntity);
-        }
+        bseVolumeShockerDataAccess.bulkUpsert(transformedData);
     }
 }
