@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class BSEPriceShockersParser extends HTMLSourceParser<PriceShockerModel> {
 
@@ -119,7 +120,9 @@ public class BSEPriceShockersParser extends HTMLSourceParser<PriceShockerModel> 
                     }
                 }
             }
-            return priceShockerModels;
+
+            return priceShockerModels.stream().distinct().collect(Collectors.toList());
+
         } catch (SocketTimeoutException socketTimeoutException) {
             LOGGER.log(Level.SEVERE, socketTimeoutException.getMessage(), socketTimeoutException);
             LOGGER.log(Level.INFO, "trying again to connect to the site(https://www.moneycontrol.com) for the data.....");

@@ -1,5 +1,7 @@
 package rave.code.website.data.model.moneycontrol;
 
+import java.util.Objects;
+
 public class DividendModel {
 
     private String companyName;
@@ -55,5 +57,18 @@ public class DividendModel {
 
     public void setDividendYieldPercentAtCurrent(String dividendYieldPercentAtCurrent) {
         this.dividendYieldPercentAtCurrent = dividendYieldPercentAtCurrent;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || this.getClass() != obj.getClass()) return false;
+        GenericModel that = (GenericModel) obj;
+        return this.companyName.equals(that.getCompanyName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.companyName);
     }
 }

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class BSEMidCapGainersParser extends HTMLSourceParser<CapitalGainerModel> {
 
@@ -132,7 +133,9 @@ public class BSEMidCapGainersParser extends HTMLSourceParser<CapitalGainerModel>
                     }
                 }
             }
-            return capitalGainerModels;
+
+            return capitalGainerModels.stream().distinct().collect(Collectors.toList());
+
         } catch (SocketTimeoutException socketTimeoutException) {
             LOGGER.log(Level.SEVERE, socketTimeoutException.getMessage(), socketTimeoutException);
             LOGGER.log(Level.INFO, "trying again to connect to the site(https://www.moneycontrol.com) for the data.....");

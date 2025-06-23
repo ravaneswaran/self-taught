@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class BSEActive500Parser extends BSEActiveParser {
 
@@ -40,7 +41,7 @@ public class BSEActive500Parser extends BSEActiveParser {
                 this.parse();
             }
 
-            List<BSEGenericActiveModel> moneyControlBSEActiveModels = new ArrayList<>();
+            List<BSEGenericActiveModel> bseGenericActiveModels = new ArrayList<>();
 
             if (document != null) {
                 Element table = document.select("table").get(1);
@@ -115,11 +116,13 @@ public class BSEActive500Parser extends BSEActiveParser {
                         bseGenericActiveModel.setDisplacedMovingAverage150D(displacedMovingAverage150Days);
                         bseGenericActiveModel.setDisplacedMovingAverage200D(displacedMovingAverage200Days);
 
-                        moneyControlBSEActiveModels.add(bseGenericActiveModel);
+                        bseGenericActiveModels.add(bseGenericActiveModel);
                     }
                 }
             }
-            return moneyControlBSEActiveModels;
+
+            return bseGenericActiveModels.stream().distinct().collect(Collectors.toList());
+
         } catch (SocketTimeoutException socketTimeoutException) {
             LOGGER.log(Level.SEVERE, socketTimeoutException.getMessage(), socketTimeoutException);
             LOGGER.log(Level.INFO, "trying again to connect to the site(https://www.moneycontrol.com) for the data.....");

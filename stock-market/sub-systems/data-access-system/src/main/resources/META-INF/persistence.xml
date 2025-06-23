@@ -7,8 +7,14 @@
         <class>rave.code.stockmarket.bse.entity.BSEActive100Entity</class>
         <class>rave.code.stockmarket.bse.entity.BSEActive100HistoryEntity</class>
         <class>rave.code.stockmarket.bse.entity.BSEActive200Entity</class>
+        <class>rave.code.stockmarket.bse.entity.BSEActive200HistoryEntity</class>
         <class>rave.code.stockmarket.bse.entity.BSEActive500Entity</class>
+        <class>rave.code.stockmarket.bse.entity.BSEActive500HistoryEntity</class>
         <class>rave.code.stockmarket.bse.entity.BSEPriceShockerEntity</class>
+        <class>rave.code.stockmarket.bse.entity.BSEVolumeShockerEntity</class>
+        <class>rave.code.stockmarket.bse.entity.BSESmallCapGainerEntity</class>
+        <class>rave.code.stockmarket.bse.entity.BSEMidCapGainerEntity</class>
+        <class>rave.code.stockmarket.bse.entity.BSETopDividendEntity</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
@@ -21,8 +27,11 @@
             <!--<property name="eclipselink.logging.level.sql" value="FINEST" />-->
             <property name="eclipselink.logging.level.sql" value="FINE"/>
             <property name="eclipselink.logging.parameters" value="true"/>
+
+            <property name="eclipselink.connection-pool.default.initial" value="1"/>
+            <property name="eclipselink.connection-pool.default.min" value="100"/>
+            <property name="eclipselink.connection-pool.default.max" value="500"/>
+
         </properties>
-
     </persistence-unit>
-
 </persistence>

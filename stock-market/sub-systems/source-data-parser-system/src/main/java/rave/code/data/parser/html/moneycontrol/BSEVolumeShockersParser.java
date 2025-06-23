@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class BSEVolumeShockersParser extends HTMLSourceParser<VolumeShockerModel> {
 
@@ -52,8 +53,19 @@ public class BSEVolumeShockersParser extends HTMLSourceParser<VolumeShockerModel
                 for (Element tr : tableRows) {
                     Elements tableData = tr.select("td");
 
+                    /*for (int i = 0; i < tableData.size() - 1; i++) {
+                        String element = tableData.get(i).toString();
+                        System.out.println(i + " ================>>>>>>> " + element);
+                        Elements companyNameAnchorElements = tableData.get(0).select("a");
+                        String companyName = "COMPANY-NAME : SOURCE DATA ERROR";
+                        if (companyNameAnchorElements.size() > 0) {
+                            companyName = companyNameAnchorElements.get(0).text();
+                            System.out.println(companyName);
+                        }
+                    }*/
+
                     // the reason why we check this condition is to make sure that we have more or equal to 24 <td>s for the data to be parsed for our need.
-                    if (tableData.size() >= 22) {
+                    if (tableData.size() >= 23) {
                         Elements companyNameAnchorElements = tableData.get(0).select("a");
 
                         String companyName = "COMPANY-NAME : SOURCE DATA ERROR";
@@ -67,13 +79,13 @@ public class BSEVolumeShockersParser extends HTMLSourceParser<VolumeShockerModel
                         String percentageChange = tableData.get(4).text();
                         String averageVolume = tableData.get(5).text();
 
-                        Elements averageVolumeTables = tableData.get(6).select("table");
+                        Elements averageVolumeTables = tableData.get(7).select("table");
                         String averageVolume5Days = "0.00";
                         String averageVolume10Days = "0.00";
                         String averageVolume30Days = "0.00";
 
                         if (averageVolumeTables.size() > 0) {
-                            Element averageVolumeTable = tableData.get(6).select("table").get(0);
+                            Element averageVolumeTable = tableData.get(7).select("table").get(0);
                             Element averageVolumeTableBody = averageVolumeTable.select("tbody").get(0);
 
                             Element averageVolume5DaysTableRow = averageVolumeTableBody.select("tr").get(0);
@@ -85,15 +97,15 @@ public class BSEVolumeShockersParser extends HTMLSourceParser<VolumeShockerModel
                             averageVolume30Days = averageVolume30DaysTableRow.select("td").get(1).select("strong").get(0).text();
                         }
 
-                        String displacedMovingAverage30Days = tableData.get(13).text();
-                        String displacedMovingAverage50Days = tableData.get(14).text();
-                        String displacedMovingAverage150Days = tableData.get(15).text();
-                        String displacedMovingAverage200Days = tableData.get(16).text();
+                        String displacedMovingAverage30Days = tableData.get(14).text();
+                        String displacedMovingAverage50Days = tableData.get(15).text();
+                        String displacedMovingAverage150Days = tableData.get(16).text();
+                        String displacedMovingAverage200Days = tableData.get(17).text();
 
-                        String priceToEarningRatio = tableData.get(17).text();
-                        String priceToBookRatio = tableData.get(18).text();
-                        String upperCircuit = tableData.get(21).text();
-                        String lowerCircuit = tableData.get(22).text();
+                        String priceToEarningRatio = tableData.get(18).text();
+                        String priceToBookRatio = tableData.get(19).text();
+                        String upperCircuit = tableData.get(22).text();
+                        String lowerCircuit = tableData.get(23).text();
                         String volumeWeightedAveragePrice = "NO_DATA";
 
                         VolumeShockerModel volumeShockerModel = new VolumeShockerModel();
@@ -120,7 +132,9 @@ public class BSEVolumeShockersParser extends HTMLSourceParser<VolumeShockerModel
                     }
                 }
             }
-            return volumeShockerModels;
+
+            return volumeShockerModels.stream().distinct().collect(Collectors.toList());
+
         } catch (SocketTimeoutException socketTimeoutException) {
             LOGGER.log(Level.SEVERE, socketTimeoutException.getMessage(), socketTimeoutException);
             LOGGER.log(Level.INFO, "trying again to connect to the site(https://www.moneycontrol.com) for the data.....");
@@ -130,4 +144,5 @@ public class BSEVolumeShockersParser extends HTMLSourceParser<VolumeShockerModel
             return new ArrayList<>();
         }
     }
+
 }

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class BSETopDividendParser extends HTMLSourceParser<DividendModel> {
 
@@ -60,7 +61,9 @@ public class BSETopDividendParser extends HTMLSourceParser<DividendModel> {
                     dividendModels.add(dividendModel);
                 }
             }
-            return dividendModels;
+
+            return dividendModels.stream().distinct().collect(Collectors.toList());
+
         } catch (SocketTimeoutException ste) {
             LOGGER.log(Level.SEVERE, ste.getMessage(), ste);
             return this.parse();

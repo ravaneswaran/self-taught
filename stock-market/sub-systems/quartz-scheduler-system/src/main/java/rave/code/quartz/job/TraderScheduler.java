@@ -44,51 +44,51 @@ public class TraderScheduler {
                 LOGGER.log(Level.SEVERE, se.getMessage(), se);
             }
 
-            JobDetail active100JobDetail = newJob(BSEActive100Job.class)
+            JobDetail bseActive100JobDetail = newJob(BSEActive100Job.class)
                     .withIdentity("Active100Job", "Trading")
                     .build();
-            JobDetail active200JobDetail = newJob(BSEActive200Job.class)
+            JobDetail bseActive200JobDetail = newJob(BSEActive200Job.class)
                     .withIdentity("Active200Job", "Trading")
                     .build();
-            JobDetail active500JobDetail = newJob(BSEActive500Job.class)
+            JobDetail bseActive500JobDetail = newJob(BSEActive500Job.class)
                     .withIdentity("Active500Job", "Trading")
                     .build();
-            JobDetail priceShockersJobDetail = newJob(PriceShockersJob.class)
+            JobDetail bsePriceShockersJobDetail = newJob(BSEPriceShockersJob.class)
                     .withIdentity("PriceShockersJob", "Trading")
                     .build();
-            JobDetail volumeShockersJobDetail = newJob(VolumeShockersJob.class)
+            JobDetail bseVolumeShockersJobDetail = newJob(BSEVolumeShockersJob.class)
                     .withIdentity("VolumeShockersJob", "Trading")
                     .build();
 
-            Trigger active100JobTrigger = newTrigger()
+            Trigger bseActive100JobTrigger = newTrigger()
                     .withIdentity("Active100JobTrigger", "Trading")
                     .startNow()
                     .withSchedule(simpleSchedule()
                             .withIntervalInMinutes(5)
                             .repeatForever())
                     .build();
-            Trigger active200JobTrigger = newTrigger()
+            Trigger bseActive200JobTrigger = newTrigger()
                     .withIdentity("Active200JobTrigger", "Trading")
                     .startNow()
                     .withSchedule(simpleSchedule()
                             .withIntervalInMinutes(5)
                             .repeatForever())
                     .build();
-            Trigger active500JobTrigger = newTrigger()
+            Trigger bseActive500JobTrigger = newTrigger()
                     .withIdentity("Active500JobTrigger", "Trading")
                     .startNow()
                     .withSchedule(simpleSchedule()
                             .withIntervalInMinutes(5)
                             .repeatForever())
                     .build();
-            Trigger priceShockersJobTrigger = newTrigger()
+            Trigger bsePriceShockersJobTrigger = newTrigger()
                     .withIdentity("PriceShockersJobTrigger", "Trading")
                     .startNow()
                     .withSchedule(simpleSchedule()
                             .withIntervalInMinutes(5)
                             .repeatForever())
                     .build();
-            Trigger volumeShockersJobTrigger = newTrigger()
+            Trigger bseVolumeShockersJobTrigger = newTrigger()
                     .withIdentity("VolumeShockersJobTrigger", "Trading")
                     .startNow()
                     .withSchedule(simpleSchedule()
@@ -97,11 +97,11 @@ public class TraderScheduler {
                     .build();
 
             try {
-               /* scheduler.scheduleJob(active100JobDetail, active100JobTrigger);
-                scheduler.scheduleJob(active200JobDetail, active200JobTrigger);
-                scheduler.scheduleJob(active500JobDetail, active500JobTrigger);
-                scheduler.scheduleJob(priceShockersJobDetail, priceShockersJobTrigger);*/
-                scheduler.scheduleJob(volumeShockersJobDetail, volumeShockersJobTrigger);
+               /* scheduler.scheduleJob(bseActive100JobDetail, bseActive100JobTrigger);
+                scheduler.scheduleJob(bseActive200JobDetail, bseActive200JobTrigger);
+                scheduler.scheduleJob(bseActive500JobDetail, bseActive500JobTrigger);
+                scheduler.scheduleJob(bsePriceShockersJobDetail, bsePriceShockersJobTrigger);*/
+                scheduler.scheduleJob(bseVolumeShockersJobDetail, bseVolumeShockersJobTrigger);
             } catch (SchedulerException se) {
                 LOGGER.log(Level.SEVERE, se.getMessage(), se);
             }

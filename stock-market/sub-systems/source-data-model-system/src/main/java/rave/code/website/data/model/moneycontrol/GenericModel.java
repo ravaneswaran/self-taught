@@ -1,5 +1,7 @@
 package rave.code.website.data.model.moneycontrol;
 
+import java.util.Objects;
+
 public class GenericModel {
 
     protected String companyName;
@@ -66,4 +68,16 @@ public class GenericModel {
         this.percentageGain = percentageGain;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || this.getClass() != obj.getClass()) return false;
+        GenericModel that = (GenericModel) obj;
+        return this.companyName.equals(that.getCompanyName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.companyName);
+    }
 }

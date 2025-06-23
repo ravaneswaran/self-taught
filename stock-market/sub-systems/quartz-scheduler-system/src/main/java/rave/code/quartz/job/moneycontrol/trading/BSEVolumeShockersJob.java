@@ -14,9 +14,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class VolumeShockersJob extends AbstractJob<VolumeShockerModel, BSEVolumeShockerEntity> {
+public class BSEVolumeShockersJob extends AbstractJob<VolumeShockerModel, BSEVolumeShockerEntity> {
 
-    private static final Logger LOGGER = Logger.getLogger(VolumeShockersJob.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(BSEVolumeShockersJob.class.getName());
 
     @Override
     public List<VolumeShockerModel> getDataFromSource() {

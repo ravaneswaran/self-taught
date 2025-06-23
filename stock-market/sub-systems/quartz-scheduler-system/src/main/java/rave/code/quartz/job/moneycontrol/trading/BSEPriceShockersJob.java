@@ -14,9 +14,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class PriceShockersJob extends AbstractJob<PriceShockerModel, BSEPriceShockerEntity> {
+public class BSEPriceShockersJob extends AbstractJob<PriceShockerModel, BSEPriceShockerEntity> {
 
-    private static final Logger LOGGER = Logger.getLogger(PriceShockersJob.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(BSEPriceShockersJob.class.getName());
 
     @Override
     public List<PriceShockerModel> getDataFromSource() {
