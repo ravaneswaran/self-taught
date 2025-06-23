@@ -19,6 +19,7 @@ public class ActiveStock extends Stock {
     private double displacedMovingAverage50D;
     private double displacedMovingAverage150D;
     private double displacedMovingAverage200D;
+    private String sectorToolTip;
 
 
     public double getHigh() {
@@ -147,5 +148,13 @@ public class ActiveStock extends Stock {
 
     public void setDisplacedMovingAverage200D(double displacedMovingAverage200D) {
         this.displacedMovingAverage200D = displacedMovingAverage200D;
+    }
+
+    public String getSectorToolTip() {
+        return sectorToolTip;
+    }
+
+    public void setSectorToolTip(String sectorToolTip) {
+        this.sectorToolTip = sectorToolTip;
     }
 }

@@ -46,6 +46,8 @@ public class VolumeShockerService extends AbstractService<BSEVolumeShockerEntity
             stock.applyCssStyleBasedOnGroup(entity.getCategory());
 
             String sector = entity.getSector();
+            stock.setSectorToolTip(sector);
+
             if (null != sector && sector.length() > 6) {
                 sector = sector.substring(0, 4) + "..";
             }

@@ -31,4 +31,5 @@ public class VolumeShockerStock extends ActiveStock {
     public void setAverageVolume(double averageVolume) {
         this.averageVolume = averageVolume;
     }
+
 }

@@ -45,11 +45,13 @@ public class PriceShockerService extends AbstractService<BSEPriceShockerEntity, 
             stock.applyCssStyleBasedOnGroup(entity.getCategory());
 
             String sector = entity.getSector();
+            stock.setSectorToolTip(sector);
+
             if (null != sector && sector.length() > 6) {
                 sector = sector.substring(0, 4) + "..";
             }
             stock.setSector(sector);
-
+            
             try {
                 String currentPrice = entity.getCurrentPrice();
                 if (null != currentPrice) {

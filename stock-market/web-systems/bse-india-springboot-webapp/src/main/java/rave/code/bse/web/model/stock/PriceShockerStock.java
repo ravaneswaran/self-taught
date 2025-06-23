@@ -29,4 +29,5 @@ public class PriceShockerStock extends ActiveStock {
     public void setPreviousPrice(double previousPrice) {
         this.previousPrice = previousPrice;
     }
+
 }
