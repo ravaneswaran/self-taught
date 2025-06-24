@@ -197,12 +197,6 @@ public class BSEActive500Job extends AbstractJob<BSEGenericActiveModel, BSEActiv
 
     @Override
     public void saveTransformedData(List<BSEActive500Entity> transformedData) {
-        for (BSEActive500Entity bseActive500Entity : transformedData) {
-            if (bseActive500Entity.isNewEntity()) {
-                this.bseActive500DataAccess.save(bseActive500Entity);
-            } else {
-                this.bseActive500DataAccess.update(bseActive500Entity);
-            }
-        }
+        this.bseActive500DataAccess.bulkUpsert(transformedData);
     }
 }

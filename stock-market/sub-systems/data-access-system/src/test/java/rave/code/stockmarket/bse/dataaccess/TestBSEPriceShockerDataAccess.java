@@ -11,12 +11,11 @@ public class TestBSEPriceShockerDataAccess extends TestCase {
         BSEPriceShockerEntity bsePriceShockerEntity = new BSEPriceShockerEntity();
 
         bsePriceShockerEntity.setCompanyName("test-company" + new Date().getTime());
-        bsePriceShockerEntity.setCategory("20");
-        bsePriceShockerEntity.setSector("s10");
+        bsePriceShockerEntity.setSector("some-sector");
         bsePriceShockerEntity.setCategory("some-category");
         bsePriceShockerEntity.setCurrentPrice("123");
-        bsePriceShockerEntity.setPreviousPrice("s102");
-        bsePriceShockerEntity.setPercentageChange("s3");
+        bsePriceShockerEntity.setPreviousPrice("102");
+        bsePriceShockerEntity.setPercentageChange("3");
         bsePriceShockerEntity.setAverageVolume5Days("20");
         bsePriceShockerEntity.setAverageVolume10Days("30");
         bsePriceShockerEntity.setAverageVolume30Days("40");

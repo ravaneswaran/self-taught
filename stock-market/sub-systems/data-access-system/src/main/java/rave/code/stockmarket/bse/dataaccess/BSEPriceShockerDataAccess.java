@@ -1,6 +1,7 @@
 package rave.code.stockmarket.bse.dataaccess;
 
 import rave.code.stockmarket.StockMarketHistoryEnabledDataAccess;
+import rave.code.stockmarket.bse.entity.BSEMidCapGainerEntity;
 import rave.code.stockmarket.bse.entity.BSEPriceShockerEntity;
 
 import javax.persistence.EntityManager;
@@ -22,16 +23,25 @@ public class BSEPriceShockerDataAccess extends StockMarketHistoryEnabledDataAcce
         EntityManager entityManager = this.getEntityManager();
         EntityTransaction entityTransaction = entityManager.getTransaction();
         entityTransaction.begin();
-        for (BSEPriceShockerEntity bseVolumeShockerEntity : entities) {
-            BSEPriceShockerEntity fromDB = this.findBy(bseVolumeShockerEntity.getCompanyName());
-            if (null != fromDB) {
-                String priceMovement = String.format("%s->%s", fromDB.getCurrentPrice(), bseVolumeShockerEntity.getCurrentPrice());
-                entityManager.merge(bseVolumeShockerEntity);
+        for (BSEPriceShockerEntity bsePriceShockerEntity : entities) {
+            //BSEPriceShockerEntity fromDB = this.findBy(bsePriceShockerEntity.getCompanyName());
+            if (bsePriceShockerEntity.isNewEntity()) {
+                //String priceMovement = String.format("%s->%s", fromDB.getCurrentPrice(), bsePriceShockerEntity.getCurrentPrice());
+                entityManager.persist(bsePriceShockerEntity);
             } else {
-                entityManager.persist(bseVolumeShockerEntity);
+                entityManager.merge(bsePriceShockerEntity);
             }
         }
         entityTransaction.commit();
+    }
+
+    @Override
+    public BSEPriceShockerEntity findBy(String primaryKey) {
+        BSEPriceShockerEntity bsePriceShockerEntity = super.findBy(primaryKey);
+        if (null != bsePriceShockerEntity) {
+            bsePriceShockerEntity.setNewEntity(false);
+        }
+        return bsePriceShockerEntity;
     }
 
 }

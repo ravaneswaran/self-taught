@@ -18,6 +18,8 @@ public class BSEPriceShockersJob extends AbstractJob<PriceShockerModel, BSEPrice
 
     private static final Logger LOGGER = Logger.getLogger(BSEPriceShockersJob.class.getName());
 
+    private BSEPriceShockerDataAccess bsePriceShockerDataAccess = new BSEPriceShockerDataAccess();
+
     @Override
     public List<PriceShockerModel> getDataFromSource() {
         BSEPriceShockersParser moneyControlBSEPriceShockersParser = new BSEPriceShockersParser();
@@ -172,9 +174,6 @@ public class BSEPriceShockersJob extends AbstractJob<PriceShockerModel, BSEPrice
 
     @Override
     public void saveTransformedData(List<BSEPriceShockerEntity> transformedData) {
-        BSEPriceShockerDataAccess moneyControlBSEPriceShockerDataAccess = new BSEPriceShockerDataAccess(BSEPriceShockerEntity.class);
-        for (BSEPriceShockerEntity moneyControlBSEPriceShockerEntity : transformedData) {
-            moneyControlBSEPriceShockerDataAccess.save(moneyControlBSEPriceShockerEntity);
-        }
+        this.bsePriceShockerDataAccess.bulkUpsert(transformedData);
     }
 }

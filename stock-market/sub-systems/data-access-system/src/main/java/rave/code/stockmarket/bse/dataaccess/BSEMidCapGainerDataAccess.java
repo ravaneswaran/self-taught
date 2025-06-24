@@ -1,9 +1,11 @@
 package rave.code.stockmarket.bse.dataaccess;
 
 import rave.code.stockmarket.StockMarketHistoryEnabledDataAccess;
+import rave.code.stockmarket.bse.entity.BSEActive500Entity;
 import rave.code.stockmarket.bse.entity.BSEMidCapGainerEntity;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import java.util.List;
 
 public class BSEMidCapGainerDataAccess extends StockMarketHistoryEnabledDataAccess<BSEMidCapGainerEntity> {
@@ -19,16 +21,27 @@ public class BSEMidCapGainerDataAccess extends StockMarketHistoryEnabledDataAcce
     @Override
     public void bulkUpsert(List<BSEMidCapGainerEntity> entities) {
         EntityManager entityManager = this.getEntityManager();
-        entityManager.getTransaction().begin();
-        for (BSEMidCapGainerEntity moneyControlBSEMidCapGainerEntity : entities) {
-            Object retVal = this.findBy(moneyControlBSEMidCapGainerEntity.getCompanyName());
-            if (null != retVal) {
-                entityManager.merge(moneyControlBSEMidCapGainerEntity);
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+        for (BSEMidCapGainerEntity bseMidCapGainerEntity : entities) {
+            //BSEMidCapGainerEntity fromDB = this.findBy(bseMidCapGainerEntity.getCompanyName());
+            if (bseMidCapGainerEntity.isNewEntity()) {
+                //String priceMovement = String.format("%s->%s", fromDB.getLastPrice(), bseMidCapGainerEntity.getLastPrice());
+                entityManager.persist(bseMidCapGainerEntity);
             } else {
-                entityManager.persist(moneyControlBSEMidCapGainerEntity);
+                entityManager.merge(bseMidCapGainerEntity);
             }
         }
-        entityManager.getTransaction().commit();
+        entityTransaction.commit();
+    }
+
+    @Override
+    public BSEMidCapGainerEntity findBy(String primaryKey) {
+        BSEMidCapGainerEntity bseMidCapGainerEntity = super.findBy(primaryKey);
+        if (null != bseMidCapGainerEntity) {
+            bseMidCapGainerEntity.setNewEntity(false);
+        }
+        return bseMidCapGainerEntity;
     }
 
 }

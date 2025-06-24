@@ -18,6 +18,8 @@ public class BSEVolumeShockersJob extends AbstractJob<VolumeShockerModel, BSEVol
 
     private static final Logger LOGGER = Logger.getLogger(BSEVolumeShockersJob.class.getName());
 
+    private BSEVolumeShockerDataAccess bseVolumeShockerDataAccess = new BSEVolumeShockerDataAccess();
+
     @Override
     public List<VolumeShockerModel> getDataFromSource() {
         BSEVolumeShockersParser bseVolumeShockersParser = new BSEVolumeShockersParser();
@@ -172,7 +174,6 @@ public class BSEVolumeShockersJob extends AbstractJob<VolumeShockerModel, BSEVol
 
     @Override
     public void saveTransformedData(List<BSEVolumeShockerEntity> transformedData) {
-        BSEVolumeShockerDataAccess bseVolumeShockerDataAccess = new BSEVolumeShockerDataAccess(BSEVolumeShockerEntity.class);
-        bseVolumeShockerDataAccess.bulkUpsert(transformedData);
+        this.bseVolumeShockerDataAccess.bulkUpsert(transformedData);
     }
 }

@@ -2,7 +2,10 @@ package rave.code.stockmarket.bse.dataaccess;
 
 import rave.code.stockmarket.StockMarketHistoryEnabledDataAccess;
 import rave.code.stockmarket.bse.entity.BSEActive100Entity;
+import rave.code.stockmarket.bse.entity.BSEVolumeShockerEntity;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import java.util.List;
 
 public class BSEActive100DataAccess extends StockMarketHistoryEnabledDataAccess<BSEActive100Entity> {
@@ -17,7 +20,18 @@ public class BSEActive100DataAccess extends StockMarketHistoryEnabledDataAccess<
 
     @Override
     public void bulkUpsert(List<BSEActive100Entity> entities) {
-        throw new RuntimeException("Yet to implement....");
+        EntityManager entityManager = this.getEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+        for (BSEActive100Entity bseActive100Entity : entities) {
+            //BSEActive100Entity fromDB = this.findBy(bseActive100Entity.getCompanyName());
+            if (bseActive100Entity.isNewEntity()) {
+                entityManager.persist(bseActive100Entity);
+            } else {
+                entityManager.merge(bseActive100Entity);
+            }
+        }
+        entityTransaction.commit();
     }
 
     @Override
