@@ -32,6 +32,8 @@ public class BSEPriceShockerEntity extends AbstractEntity {
     private String sector;
     @Column(name = "current_price")
     private String currentPrice;
+    @Column(name = "current_price_movement")
+    private String currentPriceMovement;
     @Column(name = "previous_price")
     private String previousPrice;
     @Column(name = "percentage_change")
@@ -95,6 +97,14 @@ public class BSEPriceShockerEntity extends AbstractEntity {
 
     public void setCurrentPrice(String currentPrice) {
         this.currentPrice = currentPrice;
+    }
+
+    public String getCurrentPriceMovement() {
+        return currentPriceMovement;
+    }
+
+    public void setCurrentPriceMovement(String currentPriceMovement) {
+        this.currentPriceMovement = currentPriceMovement;
     }
 
     public String getPreviousPrice() {

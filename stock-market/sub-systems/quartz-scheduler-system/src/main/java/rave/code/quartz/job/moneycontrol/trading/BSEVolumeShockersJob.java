@@ -3,6 +3,7 @@ package rave.code.quartz.job.moneycontrol.trading;
 import rave.code.data.parser.html.moneycontrol.BSEVolumeShockersParser;
 import rave.code.quartz.job.moneycontrol.AbstractJob;
 import rave.code.stockmarket.bse.dataaccess.BSEVolumeShockerDataAccess;
+import rave.code.stockmarket.bse.entity.BSEPriceShockerEntity;
 import rave.code.stockmarket.bse.entity.BSEVolumeShockerEntity;
 import rave.code.website.data.model.moneycontrol.VolumeShockerModel;
 
@@ -33,8 +34,12 @@ public class BSEVolumeShockersJob extends AbstractJob<VolumeShockerModel, BSEVol
         NumberFormat format = NumberFormat.getInstance();
 
         for (VolumeShockerModel volumeShockerModel : sourceData) {
-            BSEVolumeShockerEntity bseVolumeShockerEntity = new BSEVolumeShockerEntity();
-            bseVolumeShockerEntity.setCompanyName(volumeShockerModel.getCompanyName());
+
+            BSEVolumeShockerEntity bseVolumeShockerEntity = this.bseVolumeShockerDataAccess.findBy(volumeShockerModel.getCompanyName().trim());
+            if (null == bseVolumeShockerEntity) {
+                bseVolumeShockerEntity = new BSEVolumeShockerEntity();
+                bseVolumeShockerEntity.setCompanyName(volumeShockerModel.getCompanyName().trim());
+            }
 
             bseVolumeShockerEntity.setCategory(volumeShockerModel.getGroup());
             bseVolumeShockerEntity.setSector(volumeShockerModel.getSector());
@@ -42,7 +47,13 @@ public class BSEVolumeShockersJob extends AbstractJob<VolumeShockerModel, BSEVol
             Number value = null;
             try {
                 value = format.parse(volumeShockerModel.getLastPrice());
-                bseVolumeShockerEntity.setLastPrice(String.valueOf(value.doubleValue()));
+                String lastPrice = String.valueOf(value.doubleValue());
+                bseVolumeShockerEntity.setLastPrice(lastPrice);
+                if (bseVolumeShockerEntity.isNewEntity()) {
+                    bseVolumeShockerEntity.setLastPriceMovement(lastPrice);
+                } else {
+                    bseVolumeShockerEntity.setLastPriceMovement(String.format("%s -> %s", bseVolumeShockerEntity.getLastPriceMovement(), lastPrice));
+                }
             } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
                 bseVolumeShockerEntity.setLastPrice(String.valueOf(0.00));

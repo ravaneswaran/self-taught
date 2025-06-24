@@ -3,6 +3,7 @@ package rave.code.quartz.job.moneycontrol.trading;
 import rave.code.data.parser.html.moneycontrol.BSEPriceShockersParser;
 import rave.code.quartz.job.moneycontrol.AbstractJob;
 import rave.code.stockmarket.bse.dataaccess.BSEPriceShockerDataAccess;
+import rave.code.stockmarket.bse.entity.BSEActive100Entity;
 import rave.code.stockmarket.bse.entity.BSEPriceShockerEntity;
 import rave.code.website.data.model.moneycontrol.PriceShockerModel;
 
@@ -29,147 +30,157 @@ public class BSEPriceShockersJob extends AbstractJob<PriceShockerModel, BSEPrice
 
     @Override
     public List<BSEPriceShockerEntity> transformSourceData(List<PriceShockerModel> sourceData) {
-        List<BSEPriceShockerEntity> moneyControlBSEPriceShockerEntities = new ArrayList<>();
+        List<BSEPriceShockerEntity> bsePriceShockerEntities = new ArrayList<>();
         NumberFormat format = NumberFormat.getInstance();
 
-        for (PriceShockerModel moneyControlPriceShockerModel : sourceData) {
-            BSEPriceShockerEntity moneyControlBSEPriceShockerEntity = new BSEPriceShockerEntity();
-            moneyControlBSEPriceShockerEntity.setCompanyName(moneyControlPriceShockerModel.getCompanyName());
+        for (PriceShockerModel priceShockerModel : sourceData) {
 
-            moneyControlBSEPriceShockerEntity.setCategory(moneyControlPriceShockerModel.getGroup());
-            moneyControlBSEPriceShockerEntity.setSector(moneyControlPriceShockerModel.getSector());
+            BSEPriceShockerEntity bsePriceShockerEntity = this.bsePriceShockerDataAccess.findBy(priceShockerModel.getCompanyName().trim());
+            if (null == bsePriceShockerEntity) {
+                bsePriceShockerEntity = new BSEPriceShockerEntity();
+                bsePriceShockerEntity.setCompanyName(priceShockerModel.getCompanyName().trim());
+            }
+
+            bsePriceShockerEntity.setCategory(priceShockerModel.getGroup());
+            bsePriceShockerEntity.setSector(priceShockerModel.getSector());
 
             Number value = null;
             try {
-                value = format.parse(moneyControlPriceShockerModel.getCurrentPrice());
-                moneyControlBSEPriceShockerEntity.setCurrentPrice(String.valueOf(value.doubleValue()));
+                value = format.parse(priceShockerModel.getCurrentPrice());
+                String currentPrice = String.valueOf(value.doubleValue());
+                bsePriceShockerEntity.setCurrentPrice(currentPrice);
+                if (bsePriceShockerEntity.isNewEntity()) {
+                    bsePriceShockerEntity.setCurrentPriceMovement(currentPrice);
+                } else {
+                    bsePriceShockerEntity.setCurrentPriceMovement(String.format("%s -> %s", bsePriceShockerEntity.getCurrentPriceMovement(), currentPrice));
+                }
             } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSEPriceShockerEntity.setCurrentPrice(String.valueOf(0.00));
+                bsePriceShockerEntity.setCurrentPrice(String.valueOf(0.00));
             }
 
             try {
-                value = format.parse(moneyControlPriceShockerModel.getPreviousPrice());
-                moneyControlBSEPriceShockerEntity.setPreviousPrice(String.valueOf(value.doubleValue()));
+                value = format.parse(priceShockerModel.getPreviousPrice());
+                bsePriceShockerEntity.setPreviousPrice(String.valueOf(value.doubleValue()));
             } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSEPriceShockerEntity.setPreviousPrice(String.valueOf(0.00));
+                bsePriceShockerEntity.setPreviousPrice(String.valueOf(0.00));
             }
 
             try {
-                value = format.parse(moneyControlPriceShockerModel.getPercentageChange());
-                moneyControlBSEPriceShockerEntity.setPercentageChange(String.valueOf(value.doubleValue()));
+                value = format.parse(priceShockerModel.getPercentageChange());
+                bsePriceShockerEntity.setPercentageChange(String.valueOf(value.doubleValue()));
             } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSEPriceShockerEntity.setPercentageChange(String.valueOf(0.00));
+                bsePriceShockerEntity.setPercentageChange(String.valueOf(0.00));
             }
 
             try {
-                value = format.parse(moneyControlPriceShockerModel.getAverageVolume5Days());
-                moneyControlBSEPriceShockerEntity.setAverageVolume5Days(String.valueOf(value.doubleValue()));
+                value = format.parse(priceShockerModel.getAverageVolume5Days());
+                bsePriceShockerEntity.setAverageVolume5Days(String.valueOf(value.doubleValue()));
             } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSEPriceShockerEntity.setAverageVolume5Days(String.valueOf(0.00));
+                bsePriceShockerEntity.setAverageVolume5Days(String.valueOf(0.00));
             }
 
             try {
-                value = format.parse(moneyControlPriceShockerModel.getAverageVolume10Days());
-                moneyControlBSEPriceShockerEntity.setAverageVolume10Days(String.valueOf(value.doubleValue()));
+                value = format.parse(priceShockerModel.getAverageVolume10Days());
+                bsePriceShockerEntity.setAverageVolume10Days(String.valueOf(value.doubleValue()));
             } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSEPriceShockerEntity.setAverageVolume10Days(String.valueOf(0.00));
+                bsePriceShockerEntity.setAverageVolume10Days(String.valueOf(0.00));
             }
 
             try {
-                value = format.parse(moneyControlPriceShockerModel.getAverageVolume30Days());
-                moneyControlBSEPriceShockerEntity.setAverageVolume30Days(String.valueOf(value.doubleValue()));
+                value = format.parse(priceShockerModel.getAverageVolume30Days());
+                bsePriceShockerEntity.setAverageVolume30Days(String.valueOf(value.doubleValue()));
             } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSEPriceShockerEntity.setAverageVolume30Days(String.valueOf(0.00));
+                bsePriceShockerEntity.setAverageVolume30Days(String.valueOf(0.00));
             }
 
             try {
-                value = format.parse(moneyControlPriceShockerModel.getPriceToEarningRatio());
-                moneyControlBSEPriceShockerEntity.setPriceToEarningRatio(String.valueOf(value.doubleValue()));
+                value = format.parse(priceShockerModel.getPriceToEarningRatio());
+                bsePriceShockerEntity.setPriceToEarningRatio(String.valueOf(value.doubleValue()));
             } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSEPriceShockerEntity.setPriceToEarningRatio(String.valueOf(0.00));
+                bsePriceShockerEntity.setPriceToEarningRatio(String.valueOf(0.00));
             }
 
             try {
-                value = format.parse(moneyControlPriceShockerModel.getPriceToBookRatio());
-                moneyControlBSEPriceShockerEntity.setPriceToBookRatio(String.valueOf(value.doubleValue()));
+                value = format.parse(priceShockerModel.getPriceToBookRatio());
+                bsePriceShockerEntity.setPriceToBookRatio(String.valueOf(value.doubleValue()));
             } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSEPriceShockerEntity.setPriceToBookRatio(String.valueOf(0.00));
+                bsePriceShockerEntity.setPriceToBookRatio(String.valueOf(0.00));
             }
 
             try {
-                value = format.parse(moneyControlPriceShockerModel.getUpperCircuit());
-                moneyControlBSEPriceShockerEntity.setUpperCircuit(String.valueOf(value.doubleValue()));
+                value = format.parse(priceShockerModel.getUpperCircuit());
+                bsePriceShockerEntity.setUpperCircuit(String.valueOf(value.doubleValue()));
             } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSEPriceShockerEntity.setUpperCircuit(String.valueOf(0.00));
+                bsePriceShockerEntity.setUpperCircuit(String.valueOf(0.00));
             }
 
             try {
-                value = format.parse(moneyControlPriceShockerModel.getLowerCircuit());
-                moneyControlBSEPriceShockerEntity.setLowerCircuit(String.valueOf(value.doubleValue()));
+                value = format.parse(priceShockerModel.getLowerCircuit());
+                bsePriceShockerEntity.setLowerCircuit(String.valueOf(value.doubleValue()));
             } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSEPriceShockerEntity.setLowerCircuit(String.valueOf(0.00));
+                bsePriceShockerEntity.setLowerCircuit(String.valueOf(0.00));
             }
 
             try {
-                value = format.parse(moneyControlPriceShockerModel.getVolumeWeightedAveragePrice());
-                moneyControlBSEPriceShockerEntity.setVolumeWeightedAveragePrice(String.valueOf(value.doubleValue()));
+                value = format.parse(priceShockerModel.getVolumeWeightedAveragePrice());
+                bsePriceShockerEntity.setVolumeWeightedAveragePrice(String.valueOf(value.doubleValue()));
             } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSEPriceShockerEntity.setVolumeWeightedAveragePrice(String.valueOf(0.00));
+                bsePriceShockerEntity.setVolumeWeightedAveragePrice(String.valueOf(0.00));
             }
 
             try {
-                value = format.parse(moneyControlPriceShockerModel.getDisplacedMovingAverage30D());
-                moneyControlBSEPriceShockerEntity.setDisplacedMovingAverage30D(String.valueOf(value.doubleValue()));
+                value = format.parse(priceShockerModel.getDisplacedMovingAverage30D());
+                bsePriceShockerEntity.setDisplacedMovingAverage30D(String.valueOf(value.doubleValue()));
             } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSEPriceShockerEntity.setDisplacedMovingAverage30D(String.valueOf(0.00));
+                bsePriceShockerEntity.setDisplacedMovingAverage30D(String.valueOf(0.00));
             }
 
             try {
-                value = format.parse(moneyControlPriceShockerModel.getDisplacedMovingAverage50D());
-                moneyControlBSEPriceShockerEntity.setDisplacedMovingAverage50D(String.valueOf(value.doubleValue()));
+                value = format.parse(priceShockerModel.getDisplacedMovingAverage50D());
+                bsePriceShockerEntity.setDisplacedMovingAverage50D(String.valueOf(value.doubleValue()));
             } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSEPriceShockerEntity.setDisplacedMovingAverage50D(String.valueOf(0.00));
+                bsePriceShockerEntity.setDisplacedMovingAverage50D(String.valueOf(0.00));
             }
 
             try {
-                value = format.parse(moneyControlPriceShockerModel.getDisplacedMovingAverage150D());
-                moneyControlBSEPriceShockerEntity.setDisplacedMovingAverage150D(String.valueOf(value.doubleValue()));
+                value = format.parse(priceShockerModel.getDisplacedMovingAverage150D());
+                bsePriceShockerEntity.setDisplacedMovingAverage150D(String.valueOf(value.doubleValue()));
             } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSEPriceShockerEntity.setDisplacedMovingAverage150D(String.valueOf(0.00));
+                bsePriceShockerEntity.setDisplacedMovingAverage150D(String.valueOf(0.00));
             }
 
             try {
-                value = format.parse(moneyControlPriceShockerModel.getDisplacedMovingAverage200D());
-                moneyControlBSEPriceShockerEntity.setDisplacedMovingAverage200D(String.valueOf(value.doubleValue()));
+                value = format.parse(priceShockerModel.getDisplacedMovingAverage200D());
+                bsePriceShockerEntity.setDisplacedMovingAverage200D(String.valueOf(value.doubleValue()));
             } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                moneyControlBSEPriceShockerEntity.setDisplacedMovingAverage200D(String.valueOf(0.00));
+                bsePriceShockerEntity.setDisplacedMovingAverage200D(String.valueOf(0.00));
             }
 
             Date toDate = new Date();
-            moneyControlBSEPriceShockerEntity.setCreatedDate(toDate);
-            moneyControlBSEPriceShockerEntity.setModifiedDate(toDate);
-            moneyControlBSEPriceShockerEntity.setCreatedBy("SYSTEM");
-            moneyControlBSEPriceShockerEntity.setModifiedBy("SYSTEM");
+            bsePriceShockerEntity.setCreatedDate(toDate);
+            bsePriceShockerEntity.setModifiedDate(toDate);
+            bsePriceShockerEntity.setCreatedBy("SYSTEM");
+            bsePriceShockerEntity.setModifiedBy("SYSTEM");
 
-            moneyControlBSEPriceShockerEntities.add(moneyControlBSEPriceShockerEntity);
+            bsePriceShockerEntities.add(bsePriceShockerEntity);
         }
 
-        return moneyControlBSEPriceShockerEntities;
+        return bsePriceShockerEntities;
     }
 
     @Override

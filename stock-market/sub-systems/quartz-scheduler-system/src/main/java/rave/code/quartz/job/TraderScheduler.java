@@ -97,14 +97,15 @@ public class TraderScheduler {
                     .build();
 
             try {
-               /* scheduler.scheduleJob(bseActive100JobDetail, bseActive100JobTrigger);
+                scheduler.scheduleJob(bseActive100JobDetail, bseActive100JobTrigger);
                 scheduler.scheduleJob(bseActive200JobDetail, bseActive200JobTrigger);
                 scheduler.scheduleJob(bseActive500JobDetail, bseActive500JobTrigger);
-                scheduler.scheduleJob(bsePriceShockersJobDetail, bsePriceShockersJobTrigger);*/
+                scheduler.scheduleJob(bsePriceShockersJobDetail, bsePriceShockersJobTrigger);
                 scheduler.scheduleJob(bseVolumeShockersJobDetail, bseVolumeShockersJobTrigger);
             } catch (SchedulerException se) {
                 LOGGER.log(Level.SEVERE, se.getMessage(), se);
             }
+
             /*try {
                 scheduler.shutdown();
             } catch (SchedulerException se) {

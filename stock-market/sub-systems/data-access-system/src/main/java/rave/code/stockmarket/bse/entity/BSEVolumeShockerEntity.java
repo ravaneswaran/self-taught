@@ -32,6 +32,8 @@ public class BSEVolumeShockerEntity extends AbstractEntity {
     private String sector;
     @Column(name = "last_price")
     private String lastPrice;
+    @Column(name = "last_price_movement")
+    private String lastPriceMovement;
     @Column(name = "average_volume")
     private String averageVolume;
     @Column(name = "percentage_change")
@@ -95,6 +97,14 @@ public class BSEVolumeShockerEntity extends AbstractEntity {
 
     public void setLastPrice(String lastPrice) {
         this.lastPrice = lastPrice;
+    }
+
+    public String getLastPriceMovement() {
+        return lastPriceMovement;
+    }
+
+    public void setLastPriceMovement(String lastPriceMovement) {
+        this.lastPriceMovement = lastPriceMovement;
     }
 
     public String getAverageVolume() {

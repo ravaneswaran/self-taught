@@ -35,10 +35,10 @@ public class BSEActive100Job extends AbstractJob<BSEGenericActiveModel, BSEActiv
 
         for (BSEGenericActiveModel bseActive100Model : sourceData) {
 
-            BSEActive100Entity bseActive100Entity = this.bseActive100DataAccess.findBy(bseActive100Model.getCompanyName());
+            BSEActive100Entity bseActive100Entity = this.bseActive100DataAccess.findBy(bseActive100Model.getCompanyName().trim());
             if (null == bseActive100Entity) {
                 bseActive100Entity = new BSEActive100Entity();
-                bseActive100Entity.setCompanyName(bseActive100Model.getCompanyName());
+                bseActive100Entity.setCompanyName(bseActive100Model.getCompanyName().trim());
             }
 
             bseActive100Entity.setCategory(bseActive100Model.getGroup());
