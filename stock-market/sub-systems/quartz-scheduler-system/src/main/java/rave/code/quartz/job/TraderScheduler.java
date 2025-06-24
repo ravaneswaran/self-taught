@@ -66,20 +66,7 @@ public class TraderScheduler {
                     .withSchedule(simpleSchedule()
                             .withIntervalInMinutes(5)
                             .repeatForever())
-                    .build();
-            Trigger bseActive200JobTrigger = newTrigger()
-                    .withIdentity("Active200JobTrigger", "Trading")
-                    .startNow()
-                    .withSchedule(simpleSchedule()
-                            .withIntervalInMinutes(5)
-                            .repeatForever())
-                    .build();
-            Trigger bseActive500JobTrigger = newTrigger()
-                    .withIdentity("Active500JobTrigger", "Trading")
-                    .startNow()
-                    .withSchedule(simpleSchedule()
-                            .withIntervalInMinutes(5)
-                            .repeatForever())
+                    .withPriority(1)
                     .build();
             Trigger bsePriceShockersJobTrigger = newTrigger()
                     .withIdentity("PriceShockersJobTrigger", "Trading")
@@ -87,6 +74,7 @@ public class TraderScheduler {
                     .withSchedule(simpleSchedule()
                             .withIntervalInMinutes(5)
                             .repeatForever())
+                    .withPriority(2)
                     .build();
             Trigger bseVolumeShockersJobTrigger = newTrigger()
                     .withIdentity("VolumeShockersJobTrigger", "Trading")
@@ -94,6 +82,23 @@ public class TraderScheduler {
                     .withSchedule(simpleSchedule()
                             .withIntervalInMinutes(5)
                             .repeatForever())
+                    .withPriority(3)
+                    .build();
+            Trigger bseActive200JobTrigger = newTrigger()
+                    .withIdentity("Active200JobTrigger", "Trading")
+                    .startNow()
+                    .withSchedule(simpleSchedule()
+                            .withIntervalInMinutes(5)
+                            .repeatForever())
+                    .withPriority(4)
+                    .build();
+            Trigger bseActive500JobTrigger = newTrigger()
+                    .withIdentity("Active500JobTrigger", "Trading")
+                    .startNow()
+                    .withSchedule(simpleSchedule()
+                            .withIntervalInMinutes(5)
+                            .repeatForever())
+                    .withPriority(5)
                     .build();
 
             try {
