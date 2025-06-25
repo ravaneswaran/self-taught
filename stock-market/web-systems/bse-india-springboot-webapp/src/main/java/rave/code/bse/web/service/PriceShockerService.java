@@ -115,18 +115,6 @@ public class PriceShockerService extends AbstractService<BSEPriceShockerEntity, 
                 stock.setPercentageChange(0.0);
             }
 
-            /*try {
-                String percentageChange = entity.getPercentageChange();
-                if (null != percentageChange) {
-                    stock.setPercentageChange(Double.parseDouble(percentageChange));
-                } else {
-                    stock.setPercentageChange(0.0);
-                }
-            } catch (NumberFormatException nfe) {
-                LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
-                stock.setPercentageChange(0.0);
-            }*/
-
             try {
                 String averageVolume5D = entity.getAverageVolume5Days();
                 if (null != averageVolume5D) {

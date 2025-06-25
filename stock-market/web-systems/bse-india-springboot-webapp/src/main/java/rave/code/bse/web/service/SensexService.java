@@ -2,6 +2,7 @@ package rave.code.bse.web.service;
 
 import rave.code.bse.web.model.page.WebPage;
 import rave.code.bse.web.model.stock.ActiveStock;
+import rave.code.bse.web.model.stock.Stock;
 import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
 import rave.code.stockmarket.bse.dataaccess.BSESensexDataAccess;
 import rave.code.stockmarket.bse.entity.BSESensexEntity;
@@ -99,7 +100,13 @@ public class SensexService extends AbstractService<BSESensexEntity, ActiveStock>
             try {
                 String percentageChange = entity.getPercentageChange();
                 if (null != percentageChange) {
-                    stock.setPercentageChange(Double.parseDouble(percentageChange));
+                    double value = Double.parseDouble(percentageChange);
+                    stock.setPercentageChange(value);
+                    if(value < 0){
+                        stock.setPercentageGainCssStyle(Stock.RED_BG_CSS_STYLE);
+                    } else {
+                        stock.setPercentageGainCssStyle(Stock.GREEN_BG_CSS_STYLE);
+                    }
                 } else {
                     stock.setPercentageChange(0.0);
                 }

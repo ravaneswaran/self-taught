@@ -107,8 +107,9 @@ public class Active100Service extends AbstractService<BSEActive100Entity, Active
                     } else {
                         stock.setPercentageGainCssStyle(Stock.GREEN_BG_CSS_STYLE);
                     }
-                    String midRangePercentage = String.valueOf(value/2);
-                    String highRangePercentage = String.valueOf(value);
+
+                    /*String midRangePercentage = String.valueOf(value/2);
+                    String highRangePercentage = String.valueOf(value);*/
                     //System.out.println("------------->>>>>>> "+String.format(Stock.RED_2_GREEN_GRADIANT_CSS_STYLE, midRangePercentage, highRangePercentage));
                     //stock.setTradingStatisticsCssStyle(String.format(Stock.RED_2_GREEN_GRADIANT_CSS_STYLE, midRangePercentage, highRangePercentage));
                 } else {

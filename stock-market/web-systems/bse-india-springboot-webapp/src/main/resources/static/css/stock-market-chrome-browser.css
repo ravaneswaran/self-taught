@@ -319,20 +319,14 @@ td{
 
 /**************** Gradient background *************************/
 
-.red-to-dark-red-gradient{
+/*.red-to-dark-red-gradient{
     background: #f71302;
     background: linear-gradient(90deg,rgba(247, 19, 2, 1) 0%, rgba(143, 11, 4, 0.27) 50%, rgba(92, 5, 5, 0.98) 100%);
 }
 
-/*.red-to-green{
+.red-to-green{
     background: #e81c1f;
     background: linear-gradient(90deg,rgba(232, 28, 31, 1) 0%, rgba(245, 83, 94, 0.27) 50%, rgba(7, 140, 29, 0.98) 100%);
-    color:#353839;
-}*/
-
-.red-to-green-gradient{
-    background: #e81c1f;
-    background: linear-gradient(90deg,rgba(232, 28, 31, 1) 0%, rgba(245, 83, 94, 1) 76%, rgba(11, 218, 66, 1) 24%);
     color:#353839;
 }
 
@@ -340,9 +334,15 @@ td{
     background: #1efc05;
     background: linear-gradient(90deg,rgba(30, 252, 5, 1) 0%, rgba(7, 143, 4, 0.27) 50%, rgba(4, 89, 18, 0.98) 100%);
     color:#353839;
+}*/
+
+.turning-green{
+    background: #e81c1f;
+    background: linear-gradient(90deg,rgba(232, 28, 31, 1) 0%, rgba(245, 83, 94, 1) 76%, rgba(11, 218, 66, 1) 24%);
+    color:#353839;
 }
 
-.green-to-red-gradient{
+.turning-red{
    background: #0af702;
    background: linear-gradient(90deg,rgba(10, 247, 2, 1) 0%, rgba(6, 143, 4, 0.27) 50%, rgba(245, 5, 25, 0.98) 100%);
    color:#353839;
