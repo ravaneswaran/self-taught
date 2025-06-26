@@ -21,7 +21,8 @@ public class BSEActive500Parser extends BSEActiveParser {
 
     public BSEActive500Parser() {
         //https://www.moneycontrol.com/stocks/marketstats/bse-gainer/bse-500_12/
-        super("https://www.moneycontrol.com/stocks/marketstats/bse-mostactive-stocks/bse-500-12/");
+        //https://www.moneycontrol.com/stocks/marketstats/bse-mostactive-stocks/bse-500-12/
+        super("https://www.moneycontrol.com/stocks/marketstats/bse-gainer/bse-500_12/");
     }
 
     public static void main(String[] args) {

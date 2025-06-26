@@ -22,15 +22,15 @@ public class BSEActive200Job extends AbstractJob<BSEGenericActiveModel, BSEActiv
 
     @Override
     public List<BSEGenericActiveModel> getDataFromSource() {
-        BSEActive200Parser moneyControlBSEActive200Parser = new BSEActive200Parser();
-        List<BSEGenericActiveModel> moneyControlBSEActive200Models = moneyControlBSEActive200Parser.parse();
-        return moneyControlBSEActive200Models;
+        BSEActive200Parser bseActive200Parser = new BSEActive200Parser();
+        List<BSEGenericActiveModel> bseActive200Models = bseActive200Parser.parse();
+        return bseActive200Models;
     }
 
     @Override
     public List<BSEActive200Entity> transformSourceData(List<BSEGenericActiveModel> sourceData) {
 
-        List<BSEActive200Entity> moneyControlBSEActive200Entities = new ArrayList<>();
+        List<BSEActive200Entity> bseActive200Entities = new ArrayList<>();
         NumberFormat format = NumberFormat.getInstance();
 
         for (BSEGenericActiveModel bseActive200Model : sourceData) {
@@ -191,9 +191,9 @@ public class BSEActive200Job extends AbstractJob<BSEGenericActiveModel, BSEActiv
             bseActive200Entity.setCreatedBy("SYSTEM");
             bseActive200Entity.setModifiedBy("SYSTEM");
 
-            moneyControlBSEActive200Entities.add(bseActive200Entity);
+            bseActive200Entities.add(bseActive200Entity);
         }
-        return moneyControlBSEActive200Entities;
+        return bseActive200Entities;
     }
 
     @Override

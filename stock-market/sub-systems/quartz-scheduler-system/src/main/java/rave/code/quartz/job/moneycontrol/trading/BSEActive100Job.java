@@ -30,7 +30,7 @@ public class BSEActive100Job extends AbstractJob<BSEGenericActiveModel, BSEActiv
     @Override
     public List<BSEActive100Entity> transformSourceData(List<BSEGenericActiveModel> sourceData) {
 
-        List<BSEActive100Entity> moneyControlBSEActive100Entities = new ArrayList<>();
+        List<BSEActive100Entity> bseActive100Entities = new ArrayList<>();
         NumberFormat format = NumberFormat.getInstance();
 
         for (BSEGenericActiveModel bseActive100Model : sourceData) {
@@ -192,10 +192,10 @@ public class BSEActive100Job extends AbstractJob<BSEGenericActiveModel, BSEActiv
             bseActive100Entity.setCreatedBy("SYSTEM");
             bseActive100Entity.setModifiedBy("SYSTEM");
 
-            moneyControlBSEActive100Entities.add(bseActive100Entity);
+            bseActive100Entities.add(bseActive100Entity);
         }
 
-        return moneyControlBSEActive100Entities;
+        return bseActive100Entities;
     }
 
     @Override

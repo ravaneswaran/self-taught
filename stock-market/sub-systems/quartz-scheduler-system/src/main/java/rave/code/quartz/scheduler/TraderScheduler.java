@@ -1,4 +1,4 @@
-package rave.code.quartz.job;
+package rave.code.quartz.scheduler;
 
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
@@ -21,6 +21,8 @@ import static org.quartz.TriggerBuilder.newTrigger;
 public class TraderScheduler {
 
     public static final Logger LOGGER = Logger.getLogger(TraderScheduler.class.toString());
+
+    public static final int RUN_INTERVAL = 3;
 
     public static void main(String[] args) {
         TraderScheduler traderScheduler = new TraderScheduler();
@@ -64,49 +66,48 @@ public class TraderScheduler {
                     .withIdentity("Active100JobTrigger", "Trading")
                     .startNow()
                     .withSchedule(simpleSchedule()
-                            .withIntervalInMinutes(5)
+                            .withIntervalInMinutes(TraderScheduler.RUN_INTERVAL)
                             .repeatForever())
-                    .withPriority(1)
+                    .withPriority(3)
                     .build();
             Trigger bsePriceShockersJobTrigger = newTrigger()
                     .withIdentity("PriceShockersJobTrigger", "Trading")
                     .startNow()
                     .withSchedule(simpleSchedule()
-                            .withIntervalInMinutes(5)
+                            .withIntervalInMinutes(TraderScheduler.RUN_INTERVAL)
                             .repeatForever())
-                    .withPriority(2)
+                    .withPriority(5)
                     .build();
             Trigger bseVolumeShockersJobTrigger = newTrigger()
                     .withIdentity("VolumeShockersJobTrigger", "Trading")
                     .startNow()
                     .withSchedule(simpleSchedule()
-                            .withIntervalInMinutes(5)
+                            .withIntervalInMinutes(TraderScheduler.RUN_INTERVAL)
                             .repeatForever())
-                    .withPriority(3)
+                    .withPriority(5)
                     .build();
             Trigger bseActive200JobTrigger = newTrigger()
                     .withIdentity("Active200JobTrigger", "Trading")
                     .startNow()
                     .withSchedule(simpleSchedule()
-                            .withIntervalInMinutes(5)
+                            .withIntervalInMinutes(TraderScheduler.RUN_INTERVAL)
                             .repeatForever())
-                    .withPriority(4)
+                    .withPriority(2)
                     .build();
             Trigger bseActive500JobTrigger = newTrigger()
                     .withIdentity("Active500JobTrigger", "Trading")
                     .startNow()
                     .withSchedule(simpleSchedule()
-                            .withIntervalInMinutes(5)
+                            .withIntervalInMinutes(TraderScheduler.RUN_INTERVAL)
                             .repeatForever())
-                    .withPriority(5)
+                    .withPriority(1)
                     .build();
-
             try {
-                //scheduler.scheduleJob(bseActive100JobDetail, bseActive100JobTrigger);
+                scheduler.scheduleJob(bseActive100JobDetail, bseActive100JobTrigger);
                 scheduler.scheduleJob(bseActive200JobDetail, bseActive200JobTrigger);
-               // scheduler.scheduleJob(bseActive500JobDetail, bseActive500JobTrigger);
-                //scheduler.scheduleJob(bsePriceShockersJobDetail, bsePriceShockersJobTrigger);
-                //scheduler.scheduleJob(bseVolumeShockersJobDetail, bseVolumeShockersJobTrigger);
+                scheduler.scheduleJob(bseActive500JobDetail, bseActive500JobTrigger);
+                scheduler.scheduleJob(bsePriceShockersJobDetail, bsePriceShockersJobTrigger);
+                scheduler.scheduleJob(bseVolumeShockersJobDetail, bseVolumeShockersJobTrigger);
             } catch (SchedulerException se) {
                 LOGGER.log(Level.SEVERE, se.getMessage(), se);
             }
@@ -151,30 +152,18 @@ public class TraderScheduler {
             Trigger bseActive100HistoryJobTrigger = newTrigger()
                     .withIdentity("Active100HistoryJobTrigger", "History")
                     .startNow()
-                    .withSchedule(simpleSchedule()
-                            .withIntervalInMinutes(5)
-                            .repeatForever())
                     .build();
             Trigger bseActive200HistoryJobTrigger = newTrigger()
                     .withIdentity("Active200HistoryJobTrigger", "History")
                     .startNow()
-                    .withSchedule(simpleSchedule()
-                            .withIntervalInMinutes(5)
-                            .repeatForever())
                     .build();
             Trigger bseActive500HistoryJobTrigger = newTrigger()
                     .withIdentity("Active500HistoryJobTrigger", "History")
                     .startNow()
-                    .withSchedule(simpleSchedule()
-                            .withIntervalInMinutes(5)
-                            .repeatForever())
                     .build();
             Trigger bsePriceShockersHistoryJobTrigger = newTrigger()
                     .withIdentity("PriceShockersHistoryJobTrigger", "History")
                     .startNow()
-                    .withSchedule(simpleSchedule()
-                            .withIntervalInMinutes(5)
-                            .repeatForever())
                     .build();
 
             try {

@@ -1,4 +1,4 @@
-package rave.code.quartz.job;
+package rave.code.quartz.scheduler;
 
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;

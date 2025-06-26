@@ -23,9 +23,9 @@ public class BSEPriceShockersJob extends AbstractJob<PriceShockerModel, BSEPrice
 
     @Override
     public List<PriceShockerModel> getDataFromSource() {
-        BSEPriceShockersParser moneyControlBSEPriceShockersParser = new BSEPriceShockersParser();
-        List<PriceShockerModel> moneyControlPriceShockerModels = moneyControlBSEPriceShockersParser.parse();
-        return moneyControlPriceShockerModels;
+        BSEPriceShockersParser bsePriceShockersParser = new BSEPriceShockersParser();
+        List<PriceShockerModel> priceShockerModels = bsePriceShockersParser.parse();
+        return priceShockerModels;
     }
 
     @Override

@@ -22,15 +22,15 @@ public class BSEActive500Job extends AbstractJob<BSEGenericActiveModel, BSEActiv
 
     @Override
     public List<BSEGenericActiveModel> getDataFromSource() {
-        BSEActive500Parser moneyControlBSEActive500Parser = new BSEActive500Parser();
-        List<BSEGenericActiveModel> moneyControlBSEActive500Models = moneyControlBSEActive500Parser.parse();
-        return moneyControlBSEActive500Models;
+        BSEActive500Parser bseActive500Parser = new BSEActive500Parser();
+        List<BSEGenericActiveModel> bseActive500Models = bseActive500Parser.parse();
+        return bseActive500Models;
     }
 
     @Override
     public List<BSEActive500Entity> transformSourceData(List<BSEGenericActiveModel> sourceData) {
 
-        List<BSEActive500Entity> moneyControlBSEActive500Entities = new ArrayList<>();
+        List<BSEActive500Entity> bseActive500Entities = new ArrayList<>();
         NumberFormat format = NumberFormat.getInstance();
 
         for (BSEGenericActiveModel bseActive500Model : sourceData) {
@@ -190,9 +190,9 @@ public class BSEActive500Job extends AbstractJob<BSEGenericActiveModel, BSEActiv
             bseActive500Entity.setCreatedBy("SYSTEM");
             bseActive500Entity.setModifiedBy("SYSTEM");
 
-            moneyControlBSEActive500Entities.add(bseActive500Entity);
+            bseActive500Entities.add(bseActive500Entity);
         }
-        return moneyControlBSEActive500Entities;
+        return bseActive500Entities;
     }
 
     @Override
