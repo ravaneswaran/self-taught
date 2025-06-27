@@ -10,7 +10,7 @@ public class TestBSEPriceShockerDataAccess extends TestCase {
     public void testSaveMethod() {
         BSEPriceShockerEntity bsePriceShockerEntity = new BSEPriceShockerEntity();
 
-        bsePriceShockerEntity.setCompanyName("test-company" + new Date().getTime());
+        bsePriceShockerEntity.setStockName("test-company" + new Date().getTime());
         bsePriceShockerEntity.setSector("some-sector");
         bsePriceShockerEntity.setCategory("some-category");
         bsePriceShockerEntity.setCurrentPrice("123");
@@ -37,7 +37,7 @@ public class TestBSEPriceShockerDataAccess extends TestCase {
 
         BSEPriceShockerDataAccess moneyControlBSEPriceShockerDataAccess = new BSEPriceShockerDataAccess(BSEPriceShockerEntity.class);
 
-        System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getCompanyName());
+        System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getStockName());
         System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getCategory());
         System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getSector());
         System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getCurrentPrice());
@@ -58,7 +58,7 @@ public class TestBSEPriceShockerDataAccess extends TestCase {
         System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getModifiedBy());
 
         moneyControlBSEPriceShockerDataAccess.save(bsePriceShockerEntity);
-        BSEPriceShockerEntity returnElement = moneyControlBSEPriceShockerDataAccess.findBy(bsePriceShockerEntity.getCompanyName());
+        BSEPriceShockerEntity returnElement = moneyControlBSEPriceShockerDataAccess.findBy(bsePriceShockerEntity.getStockName());
         assertNotNull(returnElement);
     }
 

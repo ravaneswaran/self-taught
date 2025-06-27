@@ -7,7 +7,7 @@
 
     <changeSet id="001" author="Ravaneswaran Chinnasamy">
         <createTable tableName="bse_active_100">
-            <column name="company_name" type="varchar2(100)">
+            <column name="stock_name" type="varchar2(100)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="category" type="varchar2(100)"/>

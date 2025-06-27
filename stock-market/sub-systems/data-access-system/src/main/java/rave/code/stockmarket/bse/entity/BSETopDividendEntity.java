@@ -24,8 +24,8 @@ public class BSETopDividendEntity extends AbstractEntity {
     @Column(name = "modified_by")
     protected String modifiedBy;
     @Id
-    @Column(name = "company_name")
-    private String companyName;
+    @Column(name = "stock_name")
+    private String stockName;
     @Column(name = "last_price")
     private String lastPrice;
     @Column(name = "latest_dividend_percentage")
@@ -41,12 +41,12 @@ public class BSETopDividendEntity extends AbstractEntity {
         super();
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public String getStockName() {
+        return stockName;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setStockName(String stockName) {
+        this.stockName = stockName;
     }
 
     public String getLastPrice() {

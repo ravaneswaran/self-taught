@@ -4,19 +4,19 @@ import java.util.Objects;
 
 public class DividendModel {
 
-    private String companyName;
+    private String stockName;
     private String lastPrice;
     private String latestDividendPercentage;
     private String dividendYieldPercentAt52High;
     private String dividendYieldPercentAt52Low;
     private String dividendYieldPercentAtCurrent;
 
-    public String getCompanyName() {
-        return this.companyName;
+    public String getStockName() {
+        return this.stockName;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setStockName(String companyName) {
+        this.stockName = companyName;
     }
 
     public String getLastPrice() {
@@ -64,11 +64,11 @@ public class DividendModel {
         if (this == obj) return true;
         if (obj == null || this.getClass() != obj.getClass()) return false;
         GenericModel that = (GenericModel) obj;
-        return this.companyName.equals(that.getCompanyName());
+        return this.stockName.equals(that.getStockName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.companyName);
+        return Objects.hash(this.stockName);
     }
 }

@@ -10,7 +10,7 @@ public class TestBSEActive200DataAccess extends TestCase {
     public void testSaveMethod() {
         BSEActive200Entity bseActive200Entity = new BSEActive200Entity();
 
-        bseActive200Entity.setCompanyName("test-company" + new Date().getTime());
+        bseActive200Entity.setStockName("test-company" + new Date().getTime());
         bseActive200Entity.setHigh("20");
         bseActive200Entity.setLow("10");
         bseActive200Entity.setCategory("some-category");
@@ -25,7 +25,7 @@ public class TestBSEActive200DataAccess extends TestCase {
 
         BSEActive200DataAccess moneyControlBSEActive200DataAccess = new BSEActive200DataAccess(BSEActive200Entity.class);
 
-        System.out.println("------------------------>>>>>>> " + bseActive200Entity.getCompanyName());
+        System.out.println("------------------------>>>>>>> " + bseActive200Entity.getStockName());
         System.out.println("------------------------>>>>>>> " + bseActive200Entity.getCategory());
         System.out.println("------------------------>>>>>>> " + bseActive200Entity.getHigh());
         System.out.println("------------------------>>>>>>> " + bseActive200Entity.getLastPrice());
@@ -38,7 +38,7 @@ public class TestBSEActive200DataAccess extends TestCase {
         System.out.println("------------------------>>>>>>> " + bseActive200Entity.getModifiedBy());
 
         moneyControlBSEActive200DataAccess.save(bseActive200Entity);
-        BSEActive200Entity returnElement = moneyControlBSEActive200DataAccess.findBy(bseActive200Entity.getCompanyName());
+        BSEActive200Entity returnElement = moneyControlBSEActive200DataAccess.findBy(bseActive200Entity.getStockName());
         assertNotNull(returnElement);
     }
 

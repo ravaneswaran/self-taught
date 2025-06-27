@@ -54,11 +54,11 @@ public class BSEActive500Parser extends BSEActiveParser {
 
                     // the reason why we check this condition is to make sure that we have more or equal to 23 <td>s for the data to be parsed for our need.
                     if (tableData.size() >= 23) {
-                        Elements companyNameAnchorElements = tableData.get(0).select("a");
+                        Elements stockNameAnchorElements = tableData.get(0).select("a");
 
-                        String companyName = "COMPANY-NAME : SOURCE DATA ERROR";
-                        if (companyNameAnchorElements.size() > 0) {
-                            companyName = companyNameAnchorElements.get(0).text();
+                        String stockName = "COMPANY-NAME : SOURCE DATA ERROR";
+                        if (stockNameAnchorElements.size() > 0) {
+                            stockName = stockNameAnchorElements.get(0).text();
                         }
                         String group = tableData.get(1).text();
                         String high = tableData.get(2).text();
@@ -90,14 +90,14 @@ public class BSEActive500Parser extends BSEActiveParser {
                         String displacedMovingAverage150Days = tableData.get(16).text();
                         String displacedMovingAverage200Days = tableData.get(17).text();
 
-                        String priceToEarningRatio = tableData.get(18).text();
+                        String priceToEarningRatio = tableData.get(18).text(); Elements companyNameAnchorElements = tableData.get(0).select("a");
                         String priceToBookRatio = tableData.get(19).text();
                         String upperCircuit = tableData.get(22).text();
                         String lowerCircuit = tableData.get(23).text();
                         //String volumeWeightedAveragePrice = tableData.get(24).text();
 
                         BSEGenericActiveModel bseGenericActiveModel = new BSEGenericActiveModel();
-                        bseGenericActiveModel.setCompanyName(companyName);
+                        bseGenericActiveModel.setStockName(stockName);
                         bseGenericActiveModel.setGroup(group);
                         bseGenericActiveModel.setHigh(high);
                         bseGenericActiveModel.setLow(low);

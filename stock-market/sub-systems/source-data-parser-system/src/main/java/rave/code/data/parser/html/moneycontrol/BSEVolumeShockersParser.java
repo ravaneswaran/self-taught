@@ -6,7 +6,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import rave.code.data.parser.html.HTMLSourceParser;
-import rave.code.website.data.model.moneycontrol.PriceShockerModel;
 import rave.code.website.data.model.moneycontrol.VolumeShockerModel;
 
 import java.io.IOException;
@@ -66,11 +65,11 @@ public class BSEVolumeShockersParser extends HTMLSourceParser<VolumeShockerModel
 
                     // the reason why we check this condition is to make sure that we have more or equal to 24 <td>s for the data to be parsed for our need.
                     if (tableData.size() >= 23) {
-                        Elements companyNameAnchorElements = tableData.get(0).select("a");
+                        Elements stockNameAnchorElements = tableData.get(0).select("a");
 
-                        String companyName = "COMPANY-NAME : SOURCE DATA ERROR";
-                        if (companyNameAnchorElements.size() > 0) {
-                            companyName = companyNameAnchorElements.get(0).text();
+                        String stockName = "COMPANY-NAME : SOURCE DATA ERROR";
+                        if (stockNameAnchorElements.size() > 0) {
+                            stockName = stockNameAnchorElements.get(0).text();
                         }
 
                         String group = tableData.get(1).text();
@@ -109,7 +108,7 @@ public class BSEVolumeShockersParser extends HTMLSourceParser<VolumeShockerModel
                         String volumeWeightedAveragePrice = "NO_DATA";
 
                         VolumeShockerModel volumeShockerModel = new VolumeShockerModel();
-                        volumeShockerModel.setCompanyName(companyName);
+                        volumeShockerModel.setStockName(stockName);
                         volumeShockerModel.setGroup(group);
                         volumeShockerModel.setSector(sector);
                         volumeShockerModel.setLastPrice(lastPrice);

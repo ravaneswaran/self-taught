@@ -2,19 +2,19 @@ package rave.code.website.data.model.moneycontrol;
 
 public class IntradayLargeDealModel {
 
-    private String companyName;
+    private String stockName;
     private String sector;
     private String quantity;
     private String tradedPrice;
     private String dealValueInCrores;
     private String exchange;
 
-    public String getCompanyName() {
-        return companyName;
+    public String getStockName() {
+        return stockName;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setStockName(String stockName) {
+        this.stockName = stockName;
     }
 
     public String getSector() {

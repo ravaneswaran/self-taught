@@ -34,10 +34,10 @@ public class BSESensexJob extends AbstractJob<BSEGenericActiveModel, BSESensexEn
 
         for (BSEGenericActiveModel bseSensexModel : sourceData) {
 
-            BSESensexEntity bseSensexEntity = this.bseSensexDataAccess.findBy(bseSensexModel.getCompanyName().trim());
+            BSESensexEntity bseSensexEntity = this.bseSensexDataAccess.findBy(bseSensexModel.getStockName().trim());
             if (null == bseSensexEntity) {
                 bseSensexEntity = new BSESensexEntity();
-                bseSensexEntity.setCompanyName(bseSensexModel.getCompanyName().trim());
+                bseSensexEntity.setStockName(bseSensexModel.getStockName().trim());
             }
 
             bseSensexEntity.setCategory(bseSensexModel.getGroup());

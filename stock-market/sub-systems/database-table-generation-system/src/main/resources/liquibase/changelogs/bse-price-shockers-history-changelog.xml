@@ -7,7 +7,7 @@
 
     <changeSet id="001" author="Ravaneswaran Chinnasamy">
         <createTable tableName="bse_price_shockers_history">
-            <column name="company_name" type="varchar2(100)"/>
+            <column name="stock_name" type="varchar2(100)"/>
             <column name="category" type="varchar2(100)"/>
             <column name="sector" type="varchar2(100)"/>
             <column name="current_price" type="varchar2(100)"/>

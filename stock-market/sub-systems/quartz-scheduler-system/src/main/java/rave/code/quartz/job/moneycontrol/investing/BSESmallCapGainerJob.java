@@ -32,9 +32,9 @@ public class BSESmallCapGainerJob extends AbstractJob<CapitalGainerModel, BSESma
         for (CapitalGainerModel moneyControlCapGainerModel : sourceData) {
             BSESmallCapGainerEntity moneyControlBSESmallCapGainerEntity = new BSESmallCapGainerEntity();
 
-            String companyName = moneyControlCapGainerModel.getCompanyName();
+            String companyName = moneyControlCapGainerModel.getStockName();
             if (null != companyName && !"".equals(companyName)) {
-                moneyControlBSESmallCapGainerEntity.setCompanyName(moneyControlCapGainerModel.getCompanyName());
+                moneyControlBSESmallCapGainerEntity.setStockName(moneyControlCapGainerModel.getStockName());
                 Number value = null;
 
                 try {

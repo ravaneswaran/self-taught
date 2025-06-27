@@ -3,7 +3,6 @@ package rave.code.quartz.job.moneycontrol.trading;
 import rave.code.data.parser.html.moneycontrol.BSEVolumeShockersParser;
 import rave.code.quartz.job.moneycontrol.AbstractJob;
 import rave.code.stockmarket.bse.dataaccess.BSEVolumeShockerDataAccess;
-import rave.code.stockmarket.bse.entity.BSEPriceShockerEntity;
 import rave.code.stockmarket.bse.entity.BSEVolumeShockerEntity;
 import rave.code.website.data.model.moneycontrol.VolumeShockerModel;
 
@@ -35,10 +34,10 @@ public class BSEVolumeShockersJob extends AbstractJob<VolumeShockerModel, BSEVol
 
         for (VolumeShockerModel volumeShockerModel : sourceData) {
 
-            BSEVolumeShockerEntity bseVolumeShockerEntity = this.bseVolumeShockerDataAccess.findBy(volumeShockerModel.getCompanyName().trim());
+            BSEVolumeShockerEntity bseVolumeShockerEntity = this.bseVolumeShockerDataAccess.findBy(volumeShockerModel.getStockName().trim());
             if (null == bseVolumeShockerEntity) {
                 bseVolumeShockerEntity = new BSEVolumeShockerEntity();
-                bseVolumeShockerEntity.setCompanyName(volumeShockerModel.getCompanyName().trim());
+                bseVolumeShockerEntity.setStockName(volumeShockerModel.getStockName().trim());
             }
 
             bseVolumeShockerEntity.setCategory(volumeShockerModel.getGroup());

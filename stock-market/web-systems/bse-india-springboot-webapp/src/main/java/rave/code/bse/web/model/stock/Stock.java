@@ -38,9 +38,7 @@ public class Stock {
     public void setId(String id) {
         this.id = id;
     }
-
-    ;
-
+    
     public String getDisplayName() {
         return displayName;
     }

@@ -34,10 +34,10 @@ public class BSEActive500Job extends AbstractJob<BSEGenericActiveModel, BSEActiv
         NumberFormat format = NumberFormat.getInstance();
 
         for (BSEGenericActiveModel bseActive500Model : sourceData) {
-            BSEActive500Entity bseActive500Entity = this.bseActive500DataAccess.findBy(bseActive500Model.getCompanyName().trim());
+            BSEActive500Entity bseActive500Entity = this.bseActive500DataAccess.findBy(bseActive500Model.getStockName().trim());
             if (null == bseActive500Entity) {
                 bseActive500Entity = new BSEActive500Entity();
-                bseActive500Entity.setCompanyName(bseActive500Model.getCompanyName().trim());
+                bseActive500Entity.setStockName(bseActive500Model.getStockName().trim());
             }
             bseActive500Entity.setCategory(bseActive500Model.getGroup());
             Number value = null;

@@ -32,9 +32,9 @@ public class BSEMidCapGainerJob extends AbstractJob<CapitalGainerModel, BSEMidCa
         for (CapitalGainerModel moneyControlCapGainerModel : sourceData) {
             BSEMidCapGainerEntity moneyControlBSEMidCapGainerEntity = new BSEMidCapGainerEntity();
 
-            String companyName = moneyControlCapGainerModel.getCompanyName();
+            String companyName = moneyControlCapGainerModel.getStockName();
             if (null != companyName && !"".equals(companyName)) {
-                moneyControlBSEMidCapGainerEntity.setCompanyName(companyName);
+                moneyControlBSEMidCapGainerEntity.setStockName(companyName);
 
                 Number value = null;
                 try {

@@ -31,9 +31,9 @@ public class BSETopDividendJob extends AbstractJob<DividendModel, BSETopDividend
         for (DividendModel moneyControlDividendModel : sourceData) {
             BSETopDividendEntity moneyControlBSETopDividendEntity = new BSETopDividendEntity();
 
-            String companyName = moneyControlDividendModel.getCompanyName();
+            String companyName = moneyControlDividendModel.getStockName();
             if (null != companyName && !"".equals(companyName)) {
-                moneyControlBSETopDividendEntity.setCompanyName(companyName);
+                moneyControlBSETopDividendEntity.setStockName(companyName);
 
                 Number value = null;
                 try {

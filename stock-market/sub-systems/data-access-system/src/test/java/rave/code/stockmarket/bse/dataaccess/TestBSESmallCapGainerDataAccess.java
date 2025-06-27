@@ -10,7 +10,7 @@ public class TestBSESmallCapGainerDataAccess extends TestCase {
     public void testSaveMethod() {
         BSESmallCapGainerEntity bseSmallCapGainerEntity = new BSESmallCapGainerEntity();
 
-        bseSmallCapGainerEntity.setCompanyName("test-" + new Date().getTime());
+        bseSmallCapGainerEntity.setStockName("test-" + new Date().getTime());
         bseSmallCapGainerEntity.setHigh("20");
         bseSmallCapGainerEntity.setLow("10");
         bseSmallCapGainerEntity.setVariation("s");
@@ -26,7 +26,7 @@ public class TestBSESmallCapGainerDataAccess extends TestCase {
         BSESmallCapGainerDataAccess moneyControlBSESmallCapGainerDataAccess = new BSESmallCapGainerDataAccess(BSESmallCapGainerEntity.class);
 
         System.out.println("------------------------>>>>>>> " + bseSmallCapGainerEntity.getVariation());
-        System.out.println("------------------------>>>>>>> " + bseSmallCapGainerEntity.getCompanyName());
+        System.out.println("------------------------>>>>>>> " + bseSmallCapGainerEntity.getStockName());
         System.out.println("------------------------>>>>>>> " + bseSmallCapGainerEntity.getHigh());
         System.out.println("------------------------>>>>>>> " + bseSmallCapGainerEntity.getLastPrice());
         System.out.println("------------------------>>>>>>> " + bseSmallCapGainerEntity.getPercentageGain());
@@ -38,7 +38,7 @@ public class TestBSESmallCapGainerDataAccess extends TestCase {
         System.out.println("------------------------>>>>>>> " + bseSmallCapGainerEntity.getModifiedBy());
 
         moneyControlBSESmallCapGainerDataAccess.save(bseSmallCapGainerEntity);
-        BSESmallCapGainerEntity returnElement = moneyControlBSESmallCapGainerDataAccess.findBy(bseSmallCapGainerEntity.getCompanyName());
+        BSESmallCapGainerEntity returnElement = moneyControlBSESmallCapGainerDataAccess.findBy(bseSmallCapGainerEntity.getStockName());
         assertNotNull(returnElement);
     }
 

@@ -65,11 +65,11 @@ public class BSEMidCapGainersParser extends HTMLSourceParser<CapitalGainerModel>
 
                     // the reason why we check this condition is to make sure that we have more or equal to 24 <td>s for the data to be parsed for our need.
                     if (tableData.size() >= 23) {
-                        Elements companyNameAnchorElements = tableData.get(0).select("a");
+                        Elements stockNameAnchorElements = tableData.get(0).select("a");
 
-                        String companyName = "COMPANY-NAME : SOURCE DATA ERROR";
-                        if (companyNameAnchorElements.size() > 0) {
-                            companyName = companyNameAnchorElements.get(0).text();
+                        String stockName = "COMPANY-NAME : SOURCE DATA ERROR";
+                        if (stockNameAnchorElements.size() > 0) {
+                            stockName = stockNameAnchorElements.get(0).text();
                         }
                         String high = tableData.get(1).text();
                         String low = tableData.get(2).text();
@@ -109,7 +109,7 @@ public class BSEMidCapGainersParser extends HTMLSourceParser<CapitalGainerModel>
 
                         CapitalGainerModel capitalGainerModel = new CapitalGainerModel();
 
-                        capitalGainerModel.setCompanyName(companyName);
+                        capitalGainerModel.setStockName(stockName);
                         capitalGainerModel.setHigh(high);
                         capitalGainerModel.setLow(low);
                         capitalGainerModel.setLastPrice(lastPrice);

@@ -10,7 +10,7 @@ public class TestBSETopDividendDataAccess extends TestCase {
     public void testSaveMethod() {
         BSETopDividendEntity bseTopDividendEntity = new BSETopDividendEntity();
 
-        bseTopDividendEntity.setCompanyName("test-company-" + new Date().getTime());
+        bseTopDividendEntity.setStockName("test-company-" + new Date().getTime());
         bseTopDividendEntity.setLastPrice("23");
 
         bseTopDividendEntity.setLatestDividendPercentage("4");
@@ -27,7 +27,7 @@ public class TestBSETopDividendDataAccess extends TestCase {
         BSETopDividendDataAccess bseTopDividendDataAccess = new BSETopDividendDataAccess(BSETopDividendEntity.class);
 
 
-        System.out.println("------------------------>>>>>>> " + bseTopDividendEntity.getCompanyName());
+        System.out.println("------------------------>>>>>>> " + bseTopDividendEntity.getStockName());
         System.out.println("------------------------>>>>>>> " + bseTopDividendEntity.getLastPrice());
         System.out.println("------------------------>>>>>>> " + bseTopDividendEntity.getLatestDividendPercentage());
         System.out.println("------------------------>>>>>>> " + bseTopDividendEntity.getDividendYieldPercentage52High());
@@ -39,7 +39,7 @@ public class TestBSETopDividendDataAccess extends TestCase {
         System.out.println("------------------------>>>>>>> " + bseTopDividendEntity.getModifiedBy());
 
         bseTopDividendDataAccess.save(bseTopDividendEntity);
-        BSETopDividendEntity returnElement = bseTopDividendDataAccess.findBy(bseTopDividendEntity.getCompanyName());
+        BSETopDividendEntity returnElement = bseTopDividendDataAccess.findBy(bseTopDividendEntity.getStockName());
         assertNotNull(returnElement);
     }
 

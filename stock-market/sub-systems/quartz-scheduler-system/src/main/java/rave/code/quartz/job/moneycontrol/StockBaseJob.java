@@ -48,12 +48,12 @@ public class StockBaseJob extends AbstractJob<Object, Object> {
         List<StockBaseEntity> stockBaseEntities = new ArrayList<>();
 
         for (BSEActive100Entity bseActive100Entity : bseActive100Entities) {
-            StockBaseEntity stockBaseEntity = this.stockBaseDataAccess.findBy(bseActive100Entity.getCompanyName());
+            StockBaseEntity stockBaseEntity = this.stockBaseDataAccess.findBy(bseActive100Entity.getStockName());
             if (null == stockBaseEntity) {
                 stockBaseEntity = new StockBaseEntity();
                 stockBaseEntity.setBSEBasePrice(bseActive100Entity.getLastPrice());
             }
-            stockBaseEntity.setStockName(bseActive100Entity.getCompanyName());
+            stockBaseEntity.setStockName(bseActive100Entity.getStockName());
             stockBaseEntity.setBSE(1);
 
             Date toDate = new Date();
@@ -66,12 +66,12 @@ public class StockBaseJob extends AbstractJob<Object, Object> {
         }
 
         for (BSEActive200Entity bseActive200Entity : bseActive200Entities) {
-            StockBaseEntity stockBaseEntity = this.stockBaseDataAccess.findBy(bseActive200Entity.getCompanyName());
+            StockBaseEntity stockBaseEntity = this.stockBaseDataAccess.findBy(bseActive200Entity.getStockName());
             if (null == stockBaseEntity) {
                 stockBaseEntity = new StockBaseEntity();
                 stockBaseEntity.setBSEBasePrice(bseActive200Entity.getLastPrice());
             }
-            stockBaseEntity.setStockName(bseActive200Entity.getCompanyName());
+            stockBaseEntity.setStockName(bseActive200Entity.getStockName());
             stockBaseEntity.setBSE(1);
 
             Date toDate = new Date();
@@ -84,12 +84,12 @@ public class StockBaseJob extends AbstractJob<Object, Object> {
         }
 
         for (BSEActive500Entity bseActive500Entity : bseActive500Entities) {
-            StockBaseEntity stockBaseEntity = this.stockBaseDataAccess.findBy(bseActive500Entity.getCompanyName());
+            StockBaseEntity stockBaseEntity = this.stockBaseDataAccess.findBy(bseActive500Entity.getStockName());
             if (null == stockBaseEntity) {
                 stockBaseEntity = new StockBaseEntity();
                 stockBaseEntity.setBSEBasePrice(bseActive500Entity.getLastPrice());
             }
-            stockBaseEntity.setStockName(bseActive500Entity.getCompanyName());
+            stockBaseEntity.setStockName(bseActive500Entity.getStockName());
             stockBaseEntity.setBSE(1);
 
             Date toDate = new Date();
@@ -102,12 +102,12 @@ public class StockBaseJob extends AbstractJob<Object, Object> {
         }
 
         for (BSEPriceShockerEntity bsePriceShockerEntity : bsePriceShockerEntities) {
-            StockBaseEntity stockBaseEntity = this.stockBaseDataAccess.findBy(bsePriceShockerEntity.getCompanyName());
+            StockBaseEntity stockBaseEntity = this.stockBaseDataAccess.findBy(bsePriceShockerEntity.getStockName());
             if (null == stockBaseEntity) {
                 stockBaseEntity = new StockBaseEntity();
                 stockBaseEntity.setBSEBasePrice(bsePriceShockerEntity.getCurrentPrice());
             }
-            stockBaseEntity.setStockName(bsePriceShockerEntity.getCompanyName());
+            stockBaseEntity.setStockName(bsePriceShockerEntity.getStockName());
             stockBaseEntity.setBSE(1);
 
             Date toDate = new Date();
@@ -120,12 +120,12 @@ public class StockBaseJob extends AbstractJob<Object, Object> {
         }
 
         for (BSEVolumeShockerEntity bseVolumeShockerEntity : bseVolumeShockerEntities) {
-            StockBaseEntity stockBaseEntity = this.stockBaseDataAccess.findBy(bseVolumeShockerEntity.getCompanyName());
+            StockBaseEntity stockBaseEntity = this.stockBaseDataAccess.findBy(bseVolumeShockerEntity.getStockName());
             if (null == stockBaseEntity) {
                 stockBaseEntity = new StockBaseEntity();
                 stockBaseEntity.setBSEBasePrice(bseVolumeShockerEntity.getLastPrice());
             }
-            stockBaseEntity.setStockName(bseVolumeShockerEntity.getCompanyName());
+            stockBaseEntity.setStockName(bseVolumeShockerEntity.getStockName());
             stockBaseEntity.setBSE(1);
 
             Date toDate = new Date();
@@ -138,12 +138,12 @@ public class StockBaseJob extends AbstractJob<Object, Object> {
         }
 
         for (BSESensexEntity bseSensexEntity : bseSensexEntities) {
-            StockBaseEntity stockBaseEntity = this.stockBaseDataAccess.findBy(bseSensexEntity.getCompanyName());
+            StockBaseEntity stockBaseEntity = this.stockBaseDataAccess.findBy(bseSensexEntity.getStockName());
             if (null == stockBaseEntity) {
                 stockBaseEntity = new StockBaseEntity();
                 stockBaseEntity.setBSEBasePrice(bseSensexEntity.getLastPrice());
             }
-            stockBaseEntity.setStockName(bseSensexEntity.getCompanyName());
+            stockBaseEntity.setStockName(bseSensexEntity.getStockName());
             stockBaseEntity.setBSE(1);
 
             Date toDate = new Date();

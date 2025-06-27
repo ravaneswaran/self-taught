@@ -24,8 +24,8 @@ public class BSEActive100Entity extends AbstractEntity {
     @Column(name = "modified_by")
     protected String modifiedBy;
     @Id
-    @Column(name = "company_name")
-    private String companyName;
+    @Column(name = "stock_name")
+    private String stockName;
     @Column(name = "category")
     private String category;
     @Column(name = "high")
@@ -70,12 +70,12 @@ public class BSEActive100Entity extends AbstractEntity {
         super();
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public String getStockName() {
+        return stockName;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setStockName(String companyName) {
+        this.stockName = companyName;
     }
 
     public String getHigh() {

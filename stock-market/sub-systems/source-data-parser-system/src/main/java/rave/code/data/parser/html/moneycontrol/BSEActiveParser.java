@@ -60,11 +60,11 @@ public class BSEActiveParser extends HTMLSourceParser<BSEGenericActiveModel> {
 
                     // the reason why we check this condition is to make sure that we have more or equal to 24 <td>s for the data to be parsed for our need.
                     if (tableData.size() >= 24) {
-                        Elements companyNameAnchorElements = tableData.get(0).select("a");
+                        Elements stockNameAnchorElements = tableData.get(0).select("a");
 
-                        String companyName = "COMPANY-NAME : SOURCE DATA ERROR";
-                        if (companyNameAnchorElements.size() > 0) {
-                            companyName = companyNameAnchorElements.get(0).text();
+                        String stockName = "COMPANY-NAME : SOURCE DATA ERROR";
+                        if (stockNameAnchorElements.size() > 0) {
+                            stockName = stockNameAnchorElements.get(0).text();
                         }
 
                         String group = tableData.get(1).text();
@@ -104,7 +104,7 @@ public class BSEActiveParser extends HTMLSourceParser<BSEGenericActiveModel> {
                         String volumeWeightedAveragePrice = tableData.get(24).text();
 
                         BSEGenericActiveModel bseGenericActiveModel = new BSEGenericActiveModel();
-                        bseGenericActiveModel.setCompanyName(companyName);
+                        bseGenericActiveModel.setStockName(stockName);
                         bseGenericActiveModel.setGroup(group);
                         bseGenericActiveModel.setHigh(high);
                         bseGenericActiveModel.setLow(low);

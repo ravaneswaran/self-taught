@@ -54,11 +54,11 @@ public class BSEPriceShockersParser extends HTMLSourceParser<PriceShockerModel> 
 
                     // the reason why we check this condition is to make sure that we have more or equal to 24 <td>s for the data to be parsed for our need.
                     if (tableData.size() >= 22) {
-                        Elements companyNameAnchorElements = tableData.get(0).select("a");
+                        Elements stockNameAnchorElements = tableData.get(0).select("a");
 
-                        String companyName = "COMPANY-NAME : SOURCE DATA ERROR";
-                        if (companyNameAnchorElements.size() > 0) {
-                            companyName = companyNameAnchorElements.get(0).text();
+                        String stockName = "COMPANY-NAME : SOURCE DATA ERROR";
+                        if (stockNameAnchorElements.size() > 0) {
+                            stockName = stockNameAnchorElements.get(0).text();
                         }
 
                         String group = tableData.get(1).text();
@@ -97,7 +97,7 @@ public class BSEPriceShockersParser extends HTMLSourceParser<PriceShockerModel> 
                         String volumeWeightedAveragePrice = "NO_DATA";
 
                         PriceShockerModel priceShockerModel = new PriceShockerModel();
-                        priceShockerModel.setCompanyName(companyName);
+                        priceShockerModel.setStockName(stockName);
                         priceShockerModel.setGroup(group);
                         priceShockerModel.setSector(sector);
                         priceShockerModel.setCurrentPrice(currentPrice);

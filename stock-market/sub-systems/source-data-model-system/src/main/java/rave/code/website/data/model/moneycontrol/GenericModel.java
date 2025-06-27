@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class GenericModel {
 
-    protected String companyName;
+    protected String stockName;
     protected String high;
     protected String low;
     protected String lastPrice;
@@ -12,12 +12,12 @@ public class GenericModel {
     private String change;
     private String percentageGain;
 
-    public String getCompanyName() {
-        return companyName;
+    public String getStockName() {
+        return stockName;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setStockName(String stockName) {
+        this.stockName = stockName;
     }
 
     public String getHigh() {
@@ -73,11 +73,11 @@ public class GenericModel {
         if (this == obj) return true;
         if (obj == null || this.getClass() != obj.getClass()) return false;
         GenericModel that = (GenericModel) obj;
-        return this.companyName.equals(that.getCompanyName());
+        return this.stockName.equals(that.getStockName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.companyName);
+        return Objects.hash(this.stockName);
     }
 }

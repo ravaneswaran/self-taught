@@ -3,7 +3,6 @@ package rave.code.quartz.job.moneycontrol.trading;
 import rave.code.data.parser.html.moneycontrol.BSEPriceShockersParser;
 import rave.code.quartz.job.moneycontrol.AbstractJob;
 import rave.code.stockmarket.bse.dataaccess.BSEPriceShockerDataAccess;
-import rave.code.stockmarket.bse.entity.BSEActive100Entity;
 import rave.code.stockmarket.bse.entity.BSEPriceShockerEntity;
 import rave.code.website.data.model.moneycontrol.PriceShockerModel;
 
@@ -35,10 +34,10 @@ public class BSEPriceShockersJob extends AbstractJob<PriceShockerModel, BSEPrice
 
         for (PriceShockerModel priceShockerModel : sourceData) {
 
-            BSEPriceShockerEntity bsePriceShockerEntity = this.bsePriceShockerDataAccess.findBy(priceShockerModel.getCompanyName().trim());
+            BSEPriceShockerEntity bsePriceShockerEntity = this.bsePriceShockerDataAccess.findBy(priceShockerModel.getStockName().trim());
             if (null == bsePriceShockerEntity) {
                 bsePriceShockerEntity = new BSEPriceShockerEntity();
-                bsePriceShockerEntity.setCompanyName(priceShockerModel.getCompanyName().trim());
+                bsePriceShockerEntity.setStockName(priceShockerModel.getStockName().trim());
             }
 
             bsePriceShockerEntity.setCategory(priceShockerModel.getGroup());

@@ -41,8 +41,8 @@ public class BSETopDividendParser extends HTMLSourceParser<DividendModel> {
                 Elements tableData = tr.select("td");
                 if (tableData.size() >= 5) {
 
-                    Element companyNameElement = tableData.get(0).select("a").get(0);
-                    String companyName = companyNameElement.text();
+                    Element stockNameElement = tableData.get(0).select("a").get(0);
+                    String stockName = stockNameElement.text();
                     String lastPrice = tableData.get(1).text();
                     String latestDividendPercentage = tableData.get(2).text();
                     String dividendYieldPercentAt52High = tableData.get(3).text();
@@ -50,7 +50,7 @@ public class BSETopDividendParser extends HTMLSourceParser<DividendModel> {
                     String dividendYieldPercentAtCurrent = tableData.get(5).text();
 
                     DividendModel dividendModel = new DividendModel();
-                    dividendModel.setCompanyName(companyName);
+                    dividendModel.setStockName(stockName);
                     dividendModel.setLastPrice(lastPrice);
                     dividendModel.setLatestDividendPercentage(latestDividendPercentage);
                     dividendModel.setDividendYieldPercentAtCurrent(dividendYieldPercentAtCurrent);

@@ -23,8 +23,8 @@ public class BSEActive200HistoryEntity extends AbstractEntity {
     protected String createdBy;
     @Column(name = "modified_by")
     protected String modifiedBy;
-    @Column(name = "company_name")
-    private String companyName;
+    @Column(name = "stock_name")
+    private String stockName;
     @Column(name = "category")
     private String category;
     @Column(name = "high")
@@ -68,12 +68,12 @@ public class BSEActive200HistoryEntity extends AbstractEntity {
         super();
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public String getStockName() {
+        return stockName;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setStockName(String stockName) {
+        this.stockName = stockName;
     }
 
     public String getHigh() {
