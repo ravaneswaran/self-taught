@@ -12,6 +12,8 @@
             </column>
             <column name="category" type="varchar2(100)"/>
             <column name="sector" type="varchar2(100)"/>
+            <!--<column name="high" type="varchar2(100)"/>
+            <column name="low" type="varchar2(100)"/>-->
             <column name="current_price" type="varchar2(100)"/>
             <column name="current_price_movement" type="varchar2(1000)"/>
             <column name="previous_price" type="varchar2(100)"/>

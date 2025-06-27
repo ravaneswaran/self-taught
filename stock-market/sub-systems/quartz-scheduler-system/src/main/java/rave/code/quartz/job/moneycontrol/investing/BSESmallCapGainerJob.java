@@ -109,37 +109,36 @@ public class BSESmallCapGainerJob extends AbstractJob<CapitalGainerModel, BSESma
                     moneyControlBSESmallCapGainerEntity.setAverageVolume30Days(String.valueOf(0.00));
                 }
 
-
                 try {
                     value = format.parse(moneyControlCapGainerModel.getDisplacedMovingAverage30D());
-                    moneyControlBSESmallCapGainerEntity.setDisplacedMovingAverage30Days(String.valueOf(value.doubleValue()));
+                    moneyControlBSESmallCapGainerEntity.setDisplacedMovingAverage30D(String.valueOf(value.doubleValue()));
                 } catch (ParseException parseException) {
                     LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                    moneyControlBSESmallCapGainerEntity.setDisplacedMovingAverage30Days(String.valueOf(0.00));
+                    moneyControlBSESmallCapGainerEntity.setDisplacedMovingAverage30D(String.valueOf(0.00));
                 }
 
                 try {
                     value = format.parse(moneyControlCapGainerModel.getDisplacedMovingAverage50D());
-                    moneyControlBSESmallCapGainerEntity.setDisplacedMovingAverage50Days(String.valueOf(value.doubleValue()));
+                    moneyControlBSESmallCapGainerEntity.setDisplacedMovingAverage50D(String.valueOf(value.doubleValue()));
                 } catch (ParseException parseException) {
                     LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                    moneyControlBSESmallCapGainerEntity.setDisplacedMovingAverage50Days(String.valueOf(0.00));
+                    moneyControlBSESmallCapGainerEntity.setDisplacedMovingAverage50D(String.valueOf(0.00));
                 }
 
                 try {
                     value = format.parse(moneyControlCapGainerModel.getDisplacedMovingAverage150D());
-                    moneyControlBSESmallCapGainerEntity.setDisplacedMovingAverage150Days(String.valueOf(value.doubleValue()));
+                    moneyControlBSESmallCapGainerEntity.setDisplacedMovingAverage150D(String.valueOf(value.doubleValue()));
                 } catch (ParseException parseException) {
                     LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                    moneyControlBSESmallCapGainerEntity.setDisplacedMovingAverage150Days(String.valueOf(0.00));
+                    moneyControlBSESmallCapGainerEntity.setDisplacedMovingAverage150D(String.valueOf(0.00));
                 }
 
                 try {
                     value = format.parse(moneyControlCapGainerModel.getDisplacedMovingAverage200D());
-                    moneyControlBSESmallCapGainerEntity.setDisplacedMovingAverage200Days(String.valueOf(value.doubleValue()));
+                    moneyControlBSESmallCapGainerEntity.setDisplacedMovingAverage200D(String.valueOf(value.doubleValue()));
                 } catch (ParseException parseException) {
                     LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
-                    moneyControlBSESmallCapGainerEntity.setDisplacedMovingAverage200Days(String.valueOf(0.00));
+                    moneyControlBSESmallCapGainerEntity.setDisplacedMovingAverage200D(String.valueOf(0.00));
                 }
 
                 try {

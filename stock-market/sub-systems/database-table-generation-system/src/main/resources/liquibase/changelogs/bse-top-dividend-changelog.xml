@@ -11,6 +11,7 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="last_price" type="varchar2(100)"/>
+            <!--<column name="category" type="varchar2(100)"/>-->
             <column name="latest_dividend_percentage" type="varchar2(100)"/>
             <column name="dividend_yield_percentage_52_high" type="varchar2(100)"/>
             <column name="dividend_yield_percentage_52_low" type="varchar2(100)"/>

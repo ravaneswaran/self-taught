@@ -197,7 +197,7 @@ public class MidCapGainerService extends AbstractService<BSEMidCapGainerEntity, 
                 stock.setVolumeWeightedAveragePrice(0.0);
             }
             try {
-                value = entity.getDisplacedMovingAverage30Days();
+                value = entity.getDisplacedMovingAverage30D();
                 if (null != value) {
                     stock.setDisplacedMovingAverage30Days(Double.parseDouble(value));
                 } else {
@@ -208,7 +208,7 @@ public class MidCapGainerService extends AbstractService<BSEMidCapGainerEntity, 
                 stock.setDisplacedMovingAverage30Days(0.0);
             }
             try {
-                value = entity.getDisplacedMovingAverage50Days();
+                value = entity.getDisplacedMovingAverage50D();
                 if (null != value) {
                     stock.setDisplacedMovingAverage50Days(Double.parseDouble(value));
                 } else {
@@ -219,7 +219,7 @@ public class MidCapGainerService extends AbstractService<BSEMidCapGainerEntity, 
                 stock.setDisplacedMovingAverage50Days(0.0);
             }
             try {
-                value = entity.getDisplacedMovingAverage150Days();
+                value = entity.getDisplacedMovingAverage150D();
                 if (null != value) {
                     stock.setDisplacedMovingAverage150Days(Double.parseDouble(value));
                 } else {
@@ -230,7 +230,7 @@ public class MidCapGainerService extends AbstractService<BSEMidCapGainerEntity, 
                 stock.setDisplacedMovingAverage150Days(0.0);
             }
             try {
-                value = entity.getDisplacedMovingAverage200Days();
+                value = entity.getDisplacedMovingAverage200D();
                 if (null != value) {
                     stock.setDisplacedMovingAverage150Days(Double.parseDouble(value));
                 } else {
