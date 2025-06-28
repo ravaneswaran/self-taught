@@ -1,10 +1,10 @@
-package rave.code.quartz.scheduler;
+package rave.code.quartz.scheduler.investing;
 
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 import rave.code.quartz.job.moneycontrol.investing.BSEMidCapGainerJob;
 import rave.code.quartz.job.moneycontrol.investing.BSESmallCapGainerJob;
-import rave.code.quartz.job.moneycontrol.investing.BSETopDividendJob;
+import rave.code.quartz.scheduler.AbstractQuartzScheduler;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,16 +13,17 @@ import static org.quartz.JobBuilder.newJob;
 import static org.quartz.SimpleScheduleBuilder.simpleSchedule;
 import static org.quartz.TriggerBuilder.newTrigger;
 
-public class InvestorScheduler {
+public class XXXCapGainerScheduler extends AbstractQuartzScheduler {
 
-    public static final Logger LOGGER = Logger.getLogger(InvestorScheduler.class.toString());
+    public static final Logger LOGGER = Logger.getLogger(XXXCapGainerScheduler.class.toString());
 
     public static void main(String[] args) {
-        InvestorScheduler investorScheduler = new InvestorScheduler();
-        investorScheduler.scheduleInvestingJobs();
+        XXXCapGainerScheduler xxxCapGainerScheduler = new XXXCapGainerScheduler();
+        xxxCapGainerScheduler.scheduleJob();
     }
 
-    public void scheduleInvestingJobs() {
+    @Override
+    public void scheduleJob() {
 
         SchedulerFactory schedulerFactory = new StdSchedulerFactory();
         Scheduler scheduler = null;
@@ -40,52 +41,42 @@ public class InvestorScheduler {
             }
 
             JobDetail bseMidCapGainerJob = newJob(BSEMidCapGainerJob.class)
-                    .withIdentity("BSEMidCapGainer", "Investing")
+                    .withIdentity("BSEMidCapGainer", AbstractQuartzScheduler.INVESTING_GROUP)
                     .build();
             JobDetail bseSmallCapGainerJob = newJob(BSESmallCapGainerJob.class)
-                    .withIdentity("BSESmallCapGainer", "Investing")
+                    .withIdentity("BSESmallCapGainer", AbstractQuartzScheduler.INVESTING_GROUP)
                     .build();
-            JobDetail bseTopDividendJob = newJob(BSETopDividendJob.class)
-                    .withIdentity("BSETopDividend", "Investing")
-                    .build();
-
 
             Trigger bseMidCapGainerJobTrigger = newTrigger()
-                    .withIdentity("BSEMidCapGainer", "Investing")
+                    .withIdentity("BSEMidCapGainer", AbstractQuartzScheduler.INVESTING_GROUP)
                     .startNow()
                     .withSchedule(simpleSchedule()
-                            .withIntervalInMinutes(5)
+                            .withIntervalInMinutes(AbstractQuartzScheduler.MID_PRIORITY)
                             .repeatForever())
+                    .withPriority(AbstractQuartzScheduler.MID_PRIORITY)
                     .build();
             Trigger bseSmallCapGainerJobTrigger = newTrigger()
-                    .withIdentity("BSESmallCapGainer", "Investing")
+                    .withIdentity("BSESmallCapGainer", AbstractQuartzScheduler.INVESTING_GROUP)
                     .startNow()
                     .withSchedule(simpleSchedule()
-                            .withIntervalInMinutes(5)
+                            .withIntervalInMinutes(AbstractQuartzScheduler.TOP_PRIORITY)
                             .repeatForever())
-                    .build();
-            Trigger bseTopDividendJobTrigger = newTrigger()
-                    .withIdentity("BSETopDividend", "Investing")
-                    .startNow()
-                    .withSchedule(simpleSchedule()
-                            .withIntervalInMinutes(5)
-                            .repeatForever())
+                    .withPriority(AbstractQuartzScheduler.TOP_PRIORITY)
                     .build();
 
 
             try {
                 scheduler.scheduleJob(bseSmallCapGainerJob, bseSmallCapGainerJobTrigger);
                 scheduler.scheduleJob(bseMidCapGainerJob, bseMidCapGainerJobTrigger);
-                scheduler.scheduleJob(bseTopDividendJob, bseTopDividendJobTrigger);
             } catch (SchedulerException se) {
                 LOGGER.log(Level.SEVERE, se.getMessage(), se);
             }
 
-            /*try {
-                scheduler.shutdown();
+            try {
+                scheduler.shutdown(true);
             } catch (SchedulerException se) {
                 LOGGER.log(Level.SEVERE, se.getMessage(), se);
-            }*/
+            }
         }
     }
 }

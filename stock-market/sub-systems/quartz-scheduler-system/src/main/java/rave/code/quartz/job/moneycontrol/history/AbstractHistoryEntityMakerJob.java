@@ -1,10 +1,10 @@
-package rave.code.quartz.job.moneycontrol;
+package rave.code.quartz.job.moneycontrol.history;
 
-import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
+import rave.code.quartz.job.AbstractQuartzJob;
 
-public abstract class AbstractHistoryJob<S, T> implements Job {
+public abstract class AbstractHistoryEntityMakerJob<S, T> extends AbstractQuartzJob {
 
     public abstract void loadHistoryAndClearSource();
 

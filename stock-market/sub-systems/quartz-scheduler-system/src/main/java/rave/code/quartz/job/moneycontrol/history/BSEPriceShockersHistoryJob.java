@@ -1,11 +1,10 @@
 package rave.code.quartz.job.moneycontrol.history;
 
-import rave.code.quartz.job.moneycontrol.AbstractHistoryJob;
 import rave.code.stockmarket.dataaccess.StockMarketHistoryEnabledDataAccess;
 import rave.code.stockmarket.entity.BSEActive500Entity;
 import rave.code.stockmarket.entity.BSEActive500HistoryEntity;
 
-public class BSEPriceShockersHistoryJob extends AbstractHistoryJob<BSEActive500Entity, BSEActive500HistoryEntity> {
+public class BSEPriceShockersHistoryJob extends AbstractHistoryEntityMakerJob<BSEActive500Entity, BSEActive500HistoryEntity> {
 
     @Override
     public void loadHistoryAndClearSource() {

@@ -1,7 +1,8 @@
-package rave.code.quartz.job.moneycontrol;
+package rave.code.quartz.job.moneycontrol.misc;
 
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
+import rave.code.quartz.job.AbstractQuartzJob;
 import rave.code.stockmarket.dataaccess.*;
 import rave.code.stockmarket.entity.*;
 
@@ -10,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class StockBaseJob extends AbstractJob<Object, Object> {
+public class StockBaseJob extends AbstractQuartzJob{
 
     private BSEActive100DataAccess bseActive100DataAccess = new BSEActive100DataAccess();
     private BSEActive200DataAccess bseActive200DataAccess = new BSEActive200DataAccess();
@@ -22,21 +23,6 @@ public class StockBaseJob extends AbstractJob<Object, Object> {
     private BSESmallCapGainerDataAccess bseSmallCapGainerDataAccess = new BSESmallCapGainerDataAccess();
     private BSEMidCapGainerDataAccess bseMidCapGainerDataAccess = new BSEMidCapGainerDataAccess();
     private BSETopDividendDataAccess bseTopDividendDataAccess = new BSETopDividendDataAccess();
-
-    @Override
-    public List<Object> getDataFromSource() {
-        return null;
-    }
-
-    @Override
-    public List<Object> transformSourceData(List<Object> sourceData) {
-        return null;
-    }
-
-    @Override
-    public void saveTransformedData(List<Object> transformedData) {
-
-    }
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {

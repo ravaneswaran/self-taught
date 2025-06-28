@@ -1,7 +1,6 @@
 package rave.code.quartz.job.moneycontrol.investing;
 
 import rave.code.data.parser.html.moneycontrol.BSEMidCapGainersParser;
-import rave.code.quartz.job.moneycontrol.AbstractJob;
 import rave.code.stockmarket.dataaccess.BSEMidCapGainerDataAccess;
 import rave.code.stockmarket.entity.BSEMidCapGainerEntity;
 import rave.code.website.data.model.moneycontrol.CapitalGainerModel;
@@ -14,7 +13,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class BSEMidCapGainerJob extends AbstractJob<CapitalGainerModel, BSEMidCapGainerEntity> {
+public class BSEMidCapGainerJob extends AbstractInvestingEntityMakerJob<CapitalGainerModel, BSEMidCapGainerEntity> {
 
     private static final Logger LOGGER = Logger.getLogger(BSEMidCapGainerJob.class.getName());
 

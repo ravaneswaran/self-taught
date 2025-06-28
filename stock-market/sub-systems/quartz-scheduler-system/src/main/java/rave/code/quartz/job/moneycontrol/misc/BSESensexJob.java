@@ -1,6 +1,7 @@
-package rave.code.quartz.job.moneycontrol;
+package rave.code.quartz.job.moneycontrol.misc;
 
 import rave.code.data.parser.html.moneycontrol.BSESensexParser;
+import rave.code.quartz.job.moneycontrol.AbstractEntityMakerJob;
 import rave.code.stockmarket.dataaccess.BSESensexDataAccess;
 import rave.code.stockmarket.entity.BSESensexEntity;
 import rave.code.website.data.model.moneycontrol.BSEGenericActiveModel;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class BSESensexJob extends AbstractJob<BSEGenericActiveModel, BSESensexEntity> {
+public class BSESensexJob extends AbstractEntityMakerJob<BSEGenericActiveModel, BSESensexEntity> {
 
     private static final Logger LOGGER = Logger.getLogger(BSESensexJob.class.getName());
 

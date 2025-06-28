@@ -1,7 +1,6 @@
 package rave.code.quartz.job.moneycontrol.investing;
 
 import rave.code.data.parser.html.moneycontrol.BSETopDividendParser;
-import rave.code.quartz.job.moneycontrol.AbstractJob;
 import rave.code.stockmarket.dataaccess.BSETopDividendDataAccess;
 import rave.code.stockmarket.entity.BSETopDividendEntity;
 import rave.code.website.data.model.moneycontrol.DividendModel;
@@ -14,7 +13,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class BSETopDividendJob extends AbstractJob<DividendModel, BSETopDividendEntity> {
+public class BSETopDividendJob extends AbstractInvestingEntityMakerJob<DividendModel, BSETopDividendEntity> {
 
     private static final Logger LOGGER = Logger.getLogger(BSETopDividendJob.class.getName());
 

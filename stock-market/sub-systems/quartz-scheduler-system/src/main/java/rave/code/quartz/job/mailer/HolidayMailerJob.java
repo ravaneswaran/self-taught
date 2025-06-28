@@ -1,8 +1,8 @@
 package rave.code.quartz.job.mailer;
 
-import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
+import rave.code.quartz.job.AbstractQuartzJob;
 import rave.code.stockmarket.dataaccess.HolidayDataAccess;
 import rave.code.stockmarket.entity.HolidayEntity;
 
@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class HolidayMailerJob implements Job {
+public class HolidayMailerJob extends AbstractQuartzJob {
 
     public static void main(String[] args) throws JobExecutionException {
         HolidayMailerJob holidayMailerJob = new HolidayMailerJob();
@@ -32,5 +32,4 @@ public class HolidayMailerJob implements Job {
             }
         }
     }
-
 }

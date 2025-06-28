@@ -2,7 +2,7 @@ package rave.code.quartz.job.groww;
 
 import org.quartz.JobExecutionException;
 import rave.code.data.parser.html.groww.HolidayListParser;
-import rave.code.quartz.job.moneycontrol.AbstractJob;
+import rave.code.quartz.job.moneycontrol.AbstractEntityMakerJob;
 import rave.code.stockmarket.dataaccess.HolidayDataAccess;
 import rave.code.stockmarket.entity.HolidayEntity;
 import rave.code.website.data.model.groww.HolidayModel;
@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-public class HolidayJob extends AbstractJob<HolidayModel, HolidayEntity> {
+public class HolidayJob extends AbstractEntityMakerJob<HolidayModel, HolidayEntity> {
 
     public static void main(String[] args) throws JobExecutionException {
         new HolidayJob().execute(null);

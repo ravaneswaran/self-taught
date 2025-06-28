@@ -1,7 +1,6 @@
 package rave.code.quartz.job.moneycontrol.trading;
 
 import rave.code.data.parser.html.moneycontrol.BSEPriceShockersParser;
-import rave.code.quartz.job.moneycontrol.AbstractJob;
 import rave.code.stockmarket.dataaccess.BSEPriceShockerDataAccess;
 import rave.code.stockmarket.entity.BSEPriceShockerEntity;
 import rave.code.website.data.model.moneycontrol.PriceShockerModel;
@@ -14,7 +13,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class BSEPriceShockersJob extends AbstractJob<PriceShockerModel, BSEPriceShockerEntity> {
+public class BSEPriceShockersJob extends AbstractTradingEntityMakerJob<PriceShockerModel, BSEPriceShockerEntity> {
 
     private static final Logger LOGGER = Logger.getLogger(BSEPriceShockersJob.class.getName());
 
