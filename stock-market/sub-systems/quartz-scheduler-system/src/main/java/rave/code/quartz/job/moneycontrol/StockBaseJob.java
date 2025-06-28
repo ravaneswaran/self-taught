@@ -19,6 +19,9 @@ public class StockBaseJob extends AbstractJob<Object, Object> {
     private BSEVolumeShockerDataAccess bseVolumeShockerDataAccess = new BSEVolumeShockerDataAccess();
     private BSESensexDataAccess bseSensexDataAccess = new BSESensexDataAccess();
     private StockBaseDataAccess stockBaseDataAccess = new StockBaseDataAccess();
+    private BSESmallCapGainerDataAccess bseSmallCapGainerDataAccess = new BSESmallCapGainerDataAccess();
+    private BSEMidCapGainerDataAccess bseMidCapGainerDataAccess = new BSEMidCapGainerDataAccess();
+    private BSETopDividendDataAccess bseTopDividendDataAccess = new BSETopDividendDataAccess();
 
     @Override
     public List<Object> getDataFromSource() {
@@ -44,6 +47,10 @@ public class StockBaseJob extends AbstractJob<Object, Object> {
         List<BSEPriceShockerEntity> bsePriceShockerEntities = this.bsePriceShockerDataAccess.findAll();
         List<BSEVolumeShockerEntity> bseVolumeShockerEntities = this.bseVolumeShockerDataAccess.findAll();
         List<BSESensexEntity> bseSensexEntities = this.bseSensexDataAccess.findAll();
+        List<BSESmallCapGainerEntity> bseSmallCapGainerEntities = this.bseSmallCapGainerDataAccess.findAll();
+        List<BSEMidCapGainerEntity> bseMidCapGainerEntities = this.bseMidCapGainerDataAccess.findAll();
+        List<BSETopDividendEntity> bseTopDividendEntities = this.bseTopDividendDataAccess.findAll();
+
 
         List<StockBaseEntity> stockBaseEntities = new ArrayList<>();
 
@@ -144,6 +151,60 @@ public class StockBaseJob extends AbstractJob<Object, Object> {
                 stockBaseEntity.setBSEBasePrice(bseSensexEntity.getLastPrice());
             }
             stockBaseEntity.setStockName(bseSensexEntity.getStockName());
+            stockBaseEntity.setBSE(1);
+
+            Date toDate = new Date();
+            stockBaseEntity.setCreatedDate(toDate);
+            stockBaseEntity.setModifiedDate(toDate);
+            stockBaseEntity.setCreatedBy("SYSTEM");
+            stockBaseEntity.setModifiedBy("SYSTEM");
+
+            stockBaseEntities.add(stockBaseEntity);
+        }
+
+        for (BSESmallCapGainerEntity bseSmallCapGainerEntity : bseSmallCapGainerEntities) {
+            StockBaseEntity stockBaseEntity = this.stockBaseDataAccess.findBy(bseSmallCapGainerEntity.getStockName());
+            if (null == stockBaseEntity) {
+                stockBaseEntity = new StockBaseEntity();
+                stockBaseEntity.setBSEBasePrice(bseSmallCapGainerEntity.getLastPrice());
+            }
+            stockBaseEntity.setStockName(bseSmallCapGainerEntity.getStockName());
+            stockBaseEntity.setBSE(1);
+
+            Date toDate = new Date();
+            stockBaseEntity.setCreatedDate(toDate);
+            stockBaseEntity.setModifiedDate(toDate);
+            stockBaseEntity.setCreatedBy("SYSTEM");
+            stockBaseEntity.setModifiedBy("SYSTEM");
+
+            stockBaseEntities.add(stockBaseEntity);
+        }
+
+        for (BSEMidCapGainerEntity bseMidCapGainerEntity : bseMidCapGainerEntities) {
+            StockBaseEntity stockBaseEntity = this.stockBaseDataAccess.findBy(bseMidCapGainerEntity.getStockName());
+            if (null == stockBaseEntity) {
+                stockBaseEntity = new StockBaseEntity();
+                stockBaseEntity.setBSEBasePrice(bseMidCapGainerEntity.getLastPrice());
+            }
+            stockBaseEntity.setStockName(bseMidCapGainerEntity.getStockName());
+            stockBaseEntity.setBSE(1);
+
+            Date toDate = new Date();
+            stockBaseEntity.setCreatedDate(toDate);
+            stockBaseEntity.setModifiedDate(toDate);
+            stockBaseEntity.setCreatedBy("SYSTEM");
+            stockBaseEntity.setModifiedBy("SYSTEM");
+
+            stockBaseEntities.add(stockBaseEntity);
+        }
+
+        for (BSETopDividendEntity bseTopDividendEntity : bseTopDividendEntities) {
+            StockBaseEntity stockBaseEntity = this.stockBaseDataAccess.findBy(bseTopDividendEntity.getStockName());
+            if (null == stockBaseEntity) {
+                stockBaseEntity = new StockBaseEntity();
+                stockBaseEntity.setBSEBasePrice(bseTopDividendEntity.getLastPrice());
+            }
+            stockBaseEntity.setStockName(bseTopDividendEntity.getStockName());
             stockBaseEntity.setBSE(1);
 
             Date toDate = new Date();
