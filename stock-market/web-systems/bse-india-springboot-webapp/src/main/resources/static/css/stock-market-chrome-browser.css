@@ -410,4 +410,36 @@ td{
    color:#FFFFFF;
 }
 
+/**************************** Under or Over valued stock *******************************/
+
+.green-under-valued{
+    text-decoration: underline;
+    text-decoration-thickness:3px;
+    text-decoration-color : #0BDA51;
+}
+
+.yellow-under-valued{
+    text-decoration: underline;
+    text-decoration-thickness:3px;
+    text-decoration-color : yellow;
+}
+
+.orange-under-valued{
+    text-decoration: underline;
+    text-decoration-thickness:3px;
+    text-decoration-color : #FFA500;
+}
+
+.white-equally-valued{
+    text-decoration: underline;
+    text-decoration-thickness:3px;
+    text-decoration-color : #FFFFFF;
+}
+
+.red-over-valued{
+    text-decoration: underline;
+    text-decoration-thickness:3px;
+    text-decoration-color :#ff0c07;
+}
+
 

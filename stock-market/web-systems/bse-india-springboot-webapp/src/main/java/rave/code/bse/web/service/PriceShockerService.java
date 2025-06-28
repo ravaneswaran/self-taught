@@ -43,6 +43,7 @@ public class PriceShockerService extends AbstractService<BSEPriceShockerEntity, 
             stock.setToolTip(toolTip);
             stock.setCategory(entity.getCategory());
             stock.applyCssStyleBasedOnGroup(entity.getCategory());
+            stock.applyCssStyleBasedOnUnderOrOverValuedPercentage(entity.getUnderOrOverValuedPercentage());
 
             String sector = entity.getSector();
             stock.setSectorToolTip(sector);

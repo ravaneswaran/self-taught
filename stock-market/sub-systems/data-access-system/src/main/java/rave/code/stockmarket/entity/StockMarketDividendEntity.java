@@ -2,6 +2,7 @@ package rave.code.stockmarket.entity;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Transient;
 
 @MappedSuperclass
 public class StockMarketDividendEntity extends StockMarketEntity {
@@ -48,5 +49,11 @@ public class StockMarketDividendEntity extends StockMarketEntity {
     }
     public void setDividendYieldPercentageAtCurrent(String dividendYieldPercentageAtCurrent) {
         this.dividendYieldPercentageAtCurrent = dividendYieldPercentageAtCurrent;
+    }
+
+    @Override
+    @Transient
+    public int getUnderOrOverValuedPercentage(){
+        return 100;
     }
 }

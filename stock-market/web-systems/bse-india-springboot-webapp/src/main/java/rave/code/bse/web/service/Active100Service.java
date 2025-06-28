@@ -25,14 +25,14 @@ public class Active100Service extends AbstractService<BSEActive100Entity, Active
     }
 
     public List<BSEActive100Entity> getEntities() {
-        BSEActive100DataAccess moneyControlBSEActive100DataAccess = new BSEActive100DataAccess();
-        return moneyControlBSEActive100DataAccess.findAll();
+        BSEActive100DataAccess bseActive100DataAccess = new BSEActive100DataAccess();
+        return bseActive100DataAccess.findAll();
     }
 
-    public List<ActiveStock> getStocks(List<BSEActive100Entity> moneyControlBSEActive100Entities) {
+    public List<ActiveStock> getStocks(List<BSEActive100Entity> bseActive100Entities) {
 
         List<ActiveStock> stocks = new ArrayList<>();
-        for (BSEActive100Entity entity : moneyControlBSEActive100Entities) {
+        for (BSEActive100Entity entity : bseActive100Entities) {
             ActiveStock stock = new ActiveStock();
 
             stock.setDisplayName(entity.getStockName());
@@ -40,6 +40,7 @@ public class Active100Service extends AbstractService<BSEActive100Entity, Active
             stock.setToolTip(toolTip);
             stock.setCategory(entity.getCategory());
             stock.applyCssStyleBasedOnGroup(entity.getCategory());
+            stock.applyCssStyleBasedOnUnderOrOverValuedPercentage(entity.getUnderOrOverValuedPercentage());
 
             try {
                 String lastPrice = entity.getLastPrice();

@@ -165,4 +165,24 @@ public class Stock {
             this.stockMarketChartImageDivCssStyle = String.format(STOCK_MARKET_IMAGE_DIV_CSS_STYLE, "no-group-stock");
         }
     }
+
+    public void applyCssStyleBasedOnUnderOrOverValuedPercentage(int percentage){
+        switch (percentage){
+            case 25:
+                this.titleCssStyle = String.format("%s %s", this.titleCssStyle, "green-under-valued");
+                break;
+            case 50:
+                this.titleCssStyle = String.format("%s %s", this.titleCssStyle, "yellow-under-valued");
+                break;
+            case 75:
+                this.titleCssStyle = String.format("%s %s", this.titleCssStyle, "orange-under-valued");
+                break;
+            case 100:
+                this.titleCssStyle = String.format("%s %s", this.titleCssStyle, "white-equally-valued");
+                break;
+            default:
+                this.titleCssStyle = String.format("%s %s", this.titleCssStyle, "red-over-valued");
+                break;
+        }
+    }
 }

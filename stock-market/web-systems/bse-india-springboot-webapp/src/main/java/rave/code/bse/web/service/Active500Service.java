@@ -40,6 +40,7 @@ public class Active500Service extends AbstractService<BSEActive500Entity, Active
             stock.setToolTip(toolTip);
             stock.setCategory(entity.getCategory());
             stock.applyCssStyleBasedOnGroup(entity.getCategory());
+            stock.applyCssStyleBasedOnUnderOrOverValuedPercentage(entity.getUnderOrOverValuedPercentage());
 
             try {
                 String high = entity.getHigh();

@@ -2,6 +2,7 @@ package rave.code.stockmarket.entity;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Transient;
 
 @MappedSuperclass
 public class StockMarketShockerEntity extends StockMarketEntity {
@@ -137,6 +138,28 @@ public class StockMarketShockerEntity extends StockMarketEntity {
     }
     public void setDisplacedMovingAverage200D(String displacedMovingAverage200D) {
         this.displacedMovingAverage200D = displacedMovingAverage200D;
+    }
+
+    @Override
+    @Transient
+    public int getUnderOrOverValuedPercentage(){
+        try{
+            String actualPBRatio = null != this.priceToBookRatio ? this.priceToBookRatio : "0.0";
+            double pbValue = Double.parseDouble(actualPBRatio) * 100;
+            if(0 < pbValue && pbValue <= 25){
+                return 25;
+            } else if(25 < pbValue && pbValue <= 50){
+                return 50;
+            } else if(50 < pbValue && pbValue <= 75){
+                return 75;
+            } else if(75 < pbValue && pbValue <= 100){
+                return 100;
+            } else {
+                return 200;
+            }
+        } catch(NumberFormatException nfe) {
+            return 0;
+        }
     }
 
 }

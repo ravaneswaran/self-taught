@@ -40,6 +40,7 @@ public class SensexService extends AbstractService<BSESensexEntity, ActiveStock>
             stock.setToolTip(toolTip);
             stock.setCategory(entity.getCategory());
             stock.applyCssStyleBasedOnGroup(entity.getCategory());
+            stock.applyCssStyleBasedOnUnderOrOverValuedPercentage(entity.getUnderOrOverValuedPercentage());
 
             try {
                 String lastPrice = entity.getLastPrice();

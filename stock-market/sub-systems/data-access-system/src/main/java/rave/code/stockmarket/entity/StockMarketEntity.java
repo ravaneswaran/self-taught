@@ -28,4 +28,7 @@ public abstract class StockMarketEntity extends AbstractStockEntity {
     public void setNewEntity(boolean newEntity) {
         this.newEntity = newEntity;
     }
+
+    @Transient
+    public abstract int getUnderOrOverValuedPercentage();
 }
