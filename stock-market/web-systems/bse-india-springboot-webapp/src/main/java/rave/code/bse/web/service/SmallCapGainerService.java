@@ -2,6 +2,7 @@ package rave.code.bse.web.service;
 
 import rave.code.bse.web.model.page.WebPage;
 import rave.code.bse.web.model.stock.CapitalGainerStock;
+import rave.code.bse.web.model.stock.Stock;
 import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
 import rave.code.stockmarket.dataaccess.BSESmallCapGainerDataAccess;
 import rave.code.stockmarket.entity.BSESmallCapGainerEntity;
@@ -38,7 +39,7 @@ public class SmallCapGainerService extends AbstractService<BSESmallCapGainerEnti
             stock.setDisplayName(entity.getStockName());
             String toolTip = String.format("%s", entity.getStockName());
             stock.setToolTip(toolTip);
-            stock.applyCssStyleBasedOnGroup("A");
+            stock.applyCssStyleBasedOnGroup("no-group-stock");
 
             String value = "";
             try {
@@ -100,7 +101,13 @@ public class SmallCapGainerService extends AbstractService<BSESmallCapGainerEnti
             try {
                 value = entity.getPercentageGain();
                 if (null != value) {
-                    stock.setPercentageGain(Double.parseDouble(value));
+                    double percentageGain = Double.parseDouble(value);
+                    stock.setPercentageGain(percentageGain);
+                    if(percentageGain < 0){
+                        stock.setPercentageGainCssStyle(Stock.RED_BG_CSS_STYLE);
+                    } else {
+                        stock.setPercentageGainCssStyle(Stock.GREEN_BG_CSS_STYLE);
+                    }
                 } else {
                     stock.setPercentageGain(0.0);
                 }
@@ -108,7 +115,7 @@ public class SmallCapGainerService extends AbstractService<BSESmallCapGainerEnti
                 LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
                 stock.setPercentageGain(0.0);
             }
-            //---------------------------------------
+
             try {
                 value = entity.getAverageVolume5Days();
                 if (null != value) {

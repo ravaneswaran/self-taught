@@ -14,7 +14,7 @@ public class TestBSESmallCapGainerDataAccess extends TestCase {
         bseSmallCapGainerEntity.setStockName("test-" + new Date().getTime());
         bseSmallCapGainerEntity.setHigh("20");
         bseSmallCapGainerEntity.setLow("10");
-        bseSmallCapGainerEntity.setVariation("s");
+        bseSmallCapGainerEntity.setVariation("2");
         bseSmallCapGainerEntity.setLastPrice("34");
         bseSmallCapGainerEntity.setPercentageGain("4");
         bseSmallCapGainerEntity.setPreviousClose("21");

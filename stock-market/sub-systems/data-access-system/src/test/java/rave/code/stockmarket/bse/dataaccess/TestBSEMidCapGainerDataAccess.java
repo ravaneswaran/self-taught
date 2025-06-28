@@ -15,9 +15,9 @@ public class TestBSEMidCapGainerDataAccess extends TestCase {
         bseMidCapGainerEntity.setHigh("20");
         bseMidCapGainerEntity.setLow("10");
         bseMidCapGainerEntity.setVariation("34");
-        bseMidCapGainerEntity.setLastPrice("s45");
-        bseMidCapGainerEntity.setPercentageGain("s2.1");
-        bseMidCapGainerEntity.setPreviousClose("23e");
+        bseMidCapGainerEntity.setLastPrice("45");
+        bseMidCapGainerEntity.setPercentageGain("2.1");
+        bseMidCapGainerEntity.setPreviousClose("23");
         Date toDate = new Date();
         bseMidCapGainerEntity.setCreatedDate(toDate);
         bseMidCapGainerEntity.setModifiedDate(toDate);
