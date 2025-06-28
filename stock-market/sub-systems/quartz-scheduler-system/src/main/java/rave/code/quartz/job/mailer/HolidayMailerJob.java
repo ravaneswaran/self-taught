@@ -3,8 +3,8 @@ package rave.code.quartz.job.mailer;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
-import rave.code.stockmarket.bse.dataaccess.HolidayDataAccess;
-import rave.code.stockmarket.bse.entity.HolidayEntity;
+import rave.code.stockmarket.dataaccess.HolidayDataAccess;
+import rave.code.stockmarket.entity.HolidayEntity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

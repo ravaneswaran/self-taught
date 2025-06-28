@@ -1,8 +1,8 @@
 package rave.code.quartz.job.moneycontrol;
 
 import rave.code.data.parser.html.moneycontrol.BSESensexParser;
-import rave.code.stockmarket.bse.dataaccess.BSESensexDataAccess;
-import rave.code.stockmarket.bse.entity.BSESensexEntity;
+import rave.code.stockmarket.dataaccess.BSESensexDataAccess;
+import rave.code.stockmarket.entity.BSESensexEntity;
 import rave.code.website.data.model.moneycontrol.BSEGenericActiveModel;
 
 import java.text.NumberFormat;

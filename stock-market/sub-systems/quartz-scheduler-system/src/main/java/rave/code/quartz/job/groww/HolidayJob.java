@@ -3,8 +3,8 @@ package rave.code.quartz.job.groww;
 import org.quartz.JobExecutionException;
 import rave.code.data.parser.html.groww.HolidayListParser;
 import rave.code.quartz.job.moneycontrol.AbstractJob;
-import rave.code.stockmarket.bse.dataaccess.HolidayDataAccess;
-import rave.code.stockmarket.bse.entity.HolidayEntity;
+import rave.code.stockmarket.dataaccess.HolidayDataAccess;
+import rave.code.stockmarket.entity.HolidayEntity;
 import rave.code.website.data.model.groww.HolidayModel;
 
 import java.util.ArrayList;

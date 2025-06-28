@@ -1,9 +1,9 @@
 package rave.code.quartz.job.moneycontrol.history;
 
 import rave.code.quartz.job.moneycontrol.AbstractHistoryJob;
-import rave.code.stockmarket.StockMarketHistoryEnabledDataAccess;
-import rave.code.stockmarket.bse.entity.BSEActive100Entity;
-import rave.code.stockmarket.bse.entity.BSEActive100HistoryEntity;
+import rave.code.stockmarket.dataaccess.StockMarketHistoryEnabledDataAccess;
+import rave.code.stockmarket.entity.BSEActive100Entity;
+import rave.code.stockmarket.entity.BSEActive100HistoryEntity;
 
 public class BSEActive100HistoryJob extends AbstractHistoryJob<BSEActive100Entity, BSEActive100HistoryEntity> {
 

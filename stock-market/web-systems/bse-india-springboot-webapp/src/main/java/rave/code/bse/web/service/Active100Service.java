@@ -4,8 +4,8 @@ import rave.code.bse.web.model.page.WebPage;
 import rave.code.bse.web.model.stock.ActiveStock;
 import rave.code.bse.web.model.stock.Stock;
 import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
-import rave.code.stockmarket.bse.dataaccess.BSEActive100DataAccess;
-import rave.code.stockmarket.bse.entity.BSEActive100Entity;
+import rave.code.stockmarket.dataaccess.BSEActive100DataAccess;
+import rave.code.stockmarket.entity.BSEActive100Entity;
 
 import java.util.ArrayList;
 import java.util.Collections;

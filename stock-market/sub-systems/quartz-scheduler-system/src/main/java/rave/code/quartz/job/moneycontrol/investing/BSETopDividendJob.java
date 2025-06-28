@@ -2,8 +2,8 @@ package rave.code.quartz.job.moneycontrol.investing;
 
 import rave.code.data.parser.html.moneycontrol.BSETopDividendParser;
 import rave.code.quartz.job.moneycontrol.AbstractJob;
-import rave.code.stockmarket.bse.dataaccess.BSETopDividendDataAccess;
-import rave.code.stockmarket.bse.entity.BSETopDividendEntity;
+import rave.code.stockmarket.dataaccess.BSETopDividendDataAccess;
+import rave.code.stockmarket.entity.BSETopDividendEntity;
 import rave.code.website.data.model.moneycontrol.DividendModel;
 
 import java.text.NumberFormat;

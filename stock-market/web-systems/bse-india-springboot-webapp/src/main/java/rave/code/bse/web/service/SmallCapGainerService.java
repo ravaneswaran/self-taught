@@ -3,8 +3,8 @@ package rave.code.bse.web.service;
 import rave.code.bse.web.model.page.WebPage;
 import rave.code.bse.web.model.stock.CapitalGainerStock;
 import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
-import rave.code.stockmarket.bse.dataaccess.BSESmallCapGainerDataAccess;
-import rave.code.stockmarket.bse.entity.BSESmallCapGainerEntity;
+import rave.code.stockmarket.dataaccess.BSESmallCapGainerDataAccess;
+import rave.code.stockmarket.entity.BSESmallCapGainerEntity;
 
 import java.util.ArrayList;
 import java.util.Collections;

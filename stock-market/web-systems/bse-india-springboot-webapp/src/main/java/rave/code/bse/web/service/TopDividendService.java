@@ -3,8 +3,8 @@ package rave.code.bse.web.service;
 import rave.code.bse.web.model.page.WebPage;
 import rave.code.bse.web.model.stock.TopDividendStock;
 import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
-import rave.code.stockmarket.bse.dataaccess.BSETopDividendDataAccess;
-import rave.code.stockmarket.bse.entity.BSETopDividendEntity;
+import rave.code.stockmarket.dataaccess.BSETopDividendDataAccess;
+import rave.code.stockmarket.entity.BSETopDividendEntity;
 
 import java.util.ArrayList;
 import java.util.Collections;

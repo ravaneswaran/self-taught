@@ -1,7 +1,8 @@
 package rave.code.stockmarket.bse.dataaccess;
 
 import junit.framework.TestCase;
-import rave.code.stockmarket.bse.entity.BSEActive100Entity;
+import rave.code.stockmarket.dataaccess.BSEActive100DataAccess;
+import rave.code.stockmarket.entity.BSEActive100Entity;
 
 import java.util.Date;
 

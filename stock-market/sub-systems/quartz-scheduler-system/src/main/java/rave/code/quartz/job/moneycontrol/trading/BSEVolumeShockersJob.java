@@ -2,8 +2,8 @@ package rave.code.quartz.job.moneycontrol.trading;
 
 import rave.code.data.parser.html.moneycontrol.BSEVolumeShockersParser;
 import rave.code.quartz.job.moneycontrol.AbstractJob;
-import rave.code.stockmarket.bse.dataaccess.BSEVolumeShockerDataAccess;
-import rave.code.stockmarket.bse.entity.BSEVolumeShockerEntity;
+import rave.code.stockmarket.dataaccess.BSEVolumeShockerDataAccess;
+import rave.code.stockmarket.entity.BSEVolumeShockerEntity;
 import rave.code.website.data.model.moneycontrol.VolumeShockerModel;
 
 import java.text.NumberFormat;

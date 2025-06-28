@@ -1,7 +1,8 @@
 package rave.code.stockmarket.bse.dataaccess;
 
 import junit.framework.TestCase;
-import rave.code.stockmarket.bse.entity.BSETopDividendEntity;
+import rave.code.stockmarket.dataaccess.BSETopDividendDataAccess;
+import rave.code.stockmarket.entity.BSETopDividendEntity;
 
 import java.util.Date;
 

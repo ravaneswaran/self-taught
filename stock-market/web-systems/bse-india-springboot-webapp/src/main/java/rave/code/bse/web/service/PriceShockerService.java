@@ -4,8 +4,8 @@ import rave.code.bse.web.model.page.PriceShockerWebPage;
 import rave.code.bse.web.model.stock.PriceShockerStock;
 import rave.code.bse.web.model.stock.Stock;
 import rave.code.bse.web.service.algorithms.sort.CurrentPriceComparator;
-import rave.code.stockmarket.bse.dataaccess.BSEPriceShockerDataAccess;
-import rave.code.stockmarket.bse.entity.BSEPriceShockerEntity;
+import rave.code.stockmarket.dataaccess.BSEPriceShockerDataAccess;
+import rave.code.stockmarket.entity.BSEPriceShockerEntity;
 
 import java.util.ArrayList;
 import java.util.Collections;

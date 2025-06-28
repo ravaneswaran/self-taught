@@ -2,8 +2,8 @@ package rave.code.quartz.job.moneycontrol;
 
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
-import rave.code.stockmarket.bse.dataaccess.*;
-import rave.code.stockmarket.bse.entity.*;
+import rave.code.stockmarket.dataaccess.*;
+import rave.code.stockmarket.entity.*;
 
 import java.util.ArrayList;
 import java.util.Date;

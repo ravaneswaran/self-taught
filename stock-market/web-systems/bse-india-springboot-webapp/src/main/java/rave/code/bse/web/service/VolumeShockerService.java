@@ -4,8 +4,8 @@ import rave.code.bse.web.model.page.VolumeShockerWebPage;
 import rave.code.bse.web.model.stock.Stock;
 import rave.code.bse.web.model.stock.VolumeShockerStock;
 import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
-import rave.code.stockmarket.bse.dataaccess.BSEVolumeShockerDataAccess;
-import rave.code.stockmarket.bse.entity.BSEVolumeShockerEntity;
+import rave.code.stockmarket.dataaccess.BSEVolumeShockerDataAccess;
+import rave.code.stockmarket.entity.BSEVolumeShockerEntity;
 
 import java.util.ArrayList;
 import java.util.Collections;
