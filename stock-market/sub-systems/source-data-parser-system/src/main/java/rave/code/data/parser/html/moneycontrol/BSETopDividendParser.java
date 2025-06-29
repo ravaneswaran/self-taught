@@ -64,8 +64,8 @@ public class BSETopDividendParser extends HTMLSourceParser<DividendModel> {
 
             return dividendModels.stream().distinct().collect(Collectors.toList());
 
-        } catch (SocketTimeoutException ste) {
-            LOGGER.log(Level.SEVERE, ste.getMessage(), ste);
+        } catch (SocketTimeoutException socketTimeoutException) {
+            LOGGER.log(Level.SEVERE, socketTimeoutException.getMessage());
             return this.parse();
         } catch (IOException ste) {
             LOGGER.log(Level.SEVERE, ste.getMessage(), ste);

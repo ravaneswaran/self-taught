@@ -125,7 +125,7 @@ public class BSEActive500Parser extends BSEActiveParser {
             return bseGenericActiveModels.stream().distinct().collect(Collectors.toList());
 
         } catch (SocketTimeoutException socketTimeoutException) {
-            LOGGER.log(Level.SEVERE, socketTimeoutException.getMessage(), socketTimeoutException);
+            LOGGER.log(Level.SEVERE, socketTimeoutException.getMessage());
             LOGGER.log(Level.INFO, "trying again to connect to the site(https://www.moneycontrol.com) for the data.....");
             return this.parse();
         } catch (IOException ioException) {

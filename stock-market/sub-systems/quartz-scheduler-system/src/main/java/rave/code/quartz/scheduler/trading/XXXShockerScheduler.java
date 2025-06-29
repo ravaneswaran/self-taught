@@ -2,15 +2,16 @@ package rave.code.quartz.scheduler.trading;
 
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
+import rave.code.quartz.enums.Group;
 import rave.code.quartz.job.moneycontrol.trading.BSEPriceShockersJob;
 import rave.code.quartz.job.moneycontrol.trading.BSEVolumeShockersJob;
 import rave.code.quartz.scheduler.AbstractQuartzScheduler;
+import rave.code.quartz.enums.CronExpression;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static org.quartz.JobBuilder.newJob;
-import static org.quartz.SimpleScheduleBuilder.simpleSchedule;
 import static org.quartz.TriggerBuilder.newTrigger;
 
 public class XXXShockerScheduler extends AbstractQuartzScheduler {
@@ -35,27 +36,21 @@ public class XXXShockerScheduler extends AbstractQuartzScheduler {
             }
 
             JobDetail bsePriceShockersJobDetail = newJob(BSEPriceShockersJob.class)
-                    .withIdentity("PriceShockersJob", "Trading")
+                    .withIdentity("PriceShockersJob", Group.TRADING.toString())
                     .build();
             JobDetail bseVolumeShockersJobDetail = newJob(BSEVolumeShockersJob.class)
-                    .withIdentity("VolumeShockersJob", "Trading")
+                    .withIdentity("VolumeShockersJob", Group.TRADING.toString())
                     .build();
 
             Trigger bsePriceShockersJobTrigger = newTrigger()
-                    .withIdentity("PriceShockersJobTrigger", "Trading")
-                    .startNow()
-                    .withSchedule(simpleSchedule()
-                            .withIntervalInMinutes(AbstractQuartzScheduler.RUN_INTERVAL)
-                            .repeatForever())
+                    .withIdentity("PriceShockersJobTrigger", Group.TRADING.toString())
+                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5_MINUTE_ON_ALL_DAYS.toString()))
                     .withPriority(AbstractQuartzScheduler.MID_PRIORITY)
                     .build();
             Trigger bseVolumeShockersJobTrigger = newTrigger()
-                    .withIdentity("VolumeShockersJobTrigger", "Trading")
-                    .startNow()
-                    .withSchedule(simpleSchedule()
-                            .withIntervalInMinutes(AbstractQuartzScheduler.RUN_INTERVAL)
-                            .repeatForever())
-                    .withPriority(AbstractQuartzScheduler.TOP_PRIORITY)
+                    .withIdentity("VolumeShockersJobTrigger", Group.TRADING.toString())
+                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5_MINUTE_ON_ALL_DAYS.toString()))
+                    .withPriority(AbstractQuartzScheduler.HIGH_PRIORITY)
                     .build();
 
             try {
@@ -66,11 +61,11 @@ public class XXXShockerScheduler extends AbstractQuartzScheduler {
                 LOGGER.log(Level.SEVERE, se.getMessage(), se);
             }
 
-            try {
+            /*try {
                 scheduler.shutdown(true);
             } catch (SchedulerException se) {
                 LOGGER.log(Level.SEVERE, se.getMessage(), se);
-            }
+            }*/
         }
     }
 

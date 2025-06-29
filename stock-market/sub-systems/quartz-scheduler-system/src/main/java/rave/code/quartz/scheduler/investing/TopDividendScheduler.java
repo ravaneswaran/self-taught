@@ -2,16 +2,15 @@ package rave.code.quartz.scheduler.investing;
 
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
-import rave.code.quartz.job.moneycontrol.investing.BSEMidCapGainerJob;
-import rave.code.quartz.job.moneycontrol.investing.BSESmallCapGainerJob;
+import rave.code.quartz.enums.Group;
 import rave.code.quartz.job.moneycontrol.investing.BSETopDividendJob;
 import rave.code.quartz.scheduler.AbstractQuartzScheduler;
+import rave.code.quartz.enums.CronExpression;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static org.quartz.JobBuilder.newJob;
-import static org.quartz.SimpleScheduleBuilder.simpleSchedule;
 import static org.quartz.TriggerBuilder.newTrigger;
 
 public class TopDividendScheduler extends AbstractQuartzScheduler {
@@ -42,16 +41,13 @@ public class TopDividendScheduler extends AbstractQuartzScheduler {
             }
 
             JobDetail bseTopDividendJob = newJob(BSETopDividendJob.class)
-                    .withIdentity("BSETopDividend", AbstractQuartzScheduler.INVESTING_GROUP)
+                    .withIdentity("BSETopDividend", Group.INVESTING.toString())
                     .build();
 
             Trigger bseTopDividendJobTrigger = newTrigger()
-                    .withIdentity("BSETopDividend", AbstractQuartzScheduler.INVESTING_GROUP)
-                    .startNow()
-                    .withSchedule(simpleSchedule()
-                            .withIntervalInMinutes(AbstractQuartzScheduler.RUN_INTERVAL)
-                            .repeatForever())
-                    .withPriority(AbstractQuartzScheduler.TOP_PRIORITY)
+                    .withIdentity("BSETopDividend", Group.INVESTING.toString())
+                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5_MINUTE_ON_ALL_DAYS.toString()))
+                    .withPriority(AbstractQuartzScheduler.HIGH_PRIORITY)
                     .build();
 
             try {

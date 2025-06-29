@@ -2,15 +2,16 @@ package rave.code.quartz.scheduler.investing;
 
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
+import rave.code.quartz.enums.Group;
 import rave.code.quartz.job.moneycontrol.investing.BSEMidCapGainerJob;
 import rave.code.quartz.job.moneycontrol.investing.BSESmallCapGainerJob;
 import rave.code.quartz.scheduler.AbstractQuartzScheduler;
+import rave.code.quartz.enums.CronExpression;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static org.quartz.JobBuilder.newJob;
-import static org.quartz.SimpleScheduleBuilder.simpleSchedule;
 import static org.quartz.TriggerBuilder.newTrigger;
 
 public class XXXCapGainerScheduler extends AbstractQuartzScheduler {
@@ -41,27 +42,21 @@ public class XXXCapGainerScheduler extends AbstractQuartzScheduler {
             }
 
             JobDetail bseMidCapGainerJob = newJob(BSEMidCapGainerJob.class)
-                    .withIdentity("BSEMidCapGainer", AbstractQuartzScheduler.INVESTING_GROUP)
+                    .withIdentity("BSEMidCapGainer", Group.INVESTING.toString())
                     .build();
             JobDetail bseSmallCapGainerJob = newJob(BSESmallCapGainerJob.class)
-                    .withIdentity("BSESmallCapGainer", AbstractQuartzScheduler.INVESTING_GROUP)
+                    .withIdentity("BSESmallCapGainer", Group.INVESTING.toString())
                     .build();
 
             Trigger bseMidCapGainerJobTrigger = newTrigger()
-                    .withIdentity("BSEMidCapGainer", AbstractQuartzScheduler.INVESTING_GROUP)
-                    .startNow()
-                    .withSchedule(simpleSchedule()
-                            .withIntervalInMinutes(AbstractQuartzScheduler.MID_PRIORITY)
-                            .repeatForever())
+                    .withIdentity("BSEMidCapGainer", Group.INVESTING.toString())
+                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5_MINUTE_ON_ALL_DAYS.toString()))
                     .withPriority(AbstractQuartzScheduler.MID_PRIORITY)
                     .build();
             Trigger bseSmallCapGainerJobTrigger = newTrigger()
-                    .withIdentity("BSESmallCapGainer", AbstractQuartzScheduler.INVESTING_GROUP)
-                    .startNow()
-                    .withSchedule(simpleSchedule()
-                            .withIntervalInMinutes(AbstractQuartzScheduler.TOP_PRIORITY)
-                            .repeatForever())
-                    .withPriority(AbstractQuartzScheduler.TOP_PRIORITY)
+                    .withIdentity("BSESmallCapGainer", Group.INVESTING.toString())
+                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5_MINUTE_ON_ALL_DAYS.toString()))
+                    .withPriority(AbstractQuartzScheduler.HIGH_PRIORITY)
                     .build();
 
 
