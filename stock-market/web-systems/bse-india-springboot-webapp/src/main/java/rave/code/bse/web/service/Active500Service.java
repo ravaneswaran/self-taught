@@ -4,6 +4,7 @@ import rave.code.bse.web.model.page.WebPage;
 import rave.code.bse.web.model.stock.ActiveStock;
 import rave.code.bse.web.model.stock.Stock;
 import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
+import rave.code.bse.web.service.decorators.*;
 import rave.code.stockmarket.dataaccess.BSEActive500DataAccess;
 import rave.code.stockmarket.entity.BSEActive500Entity;
 
@@ -31,6 +32,13 @@ public class Active500Service extends AbstractService<BSEActive500Entity, Active
 
     public List<ActiveStock> getStocks(List<BSEActive500Entity> entities) {
 
+        StockTitleDecorator stockTitleDecorator = new StockTitleDecorator();
+        StockTitleContainerDecorator stockTitleContainerDecorator = new StockTitleContainerDecorator();
+        StockChartContainerDecorator stockChartContainerDecorator = new StockChartContainerDecorator();
+        StockPBRatioDecorator stockPBRatioDecorator = new StockPBRatioDecorator();
+        StockLastPriceDecorator stockLastPriceDecorator = new StockLastPriceDecorator();
+        StockPercentageGainOrChangeDecorator stockPercentageGainOrChangeDecorator = new StockPercentageGainOrChangeDecorator();
+
         List<ActiveStock> stocks = new ArrayList<>();
         for (BSEActive500Entity entity : entities) {
             ActiveStock stock = new ActiveStock();
@@ -39,8 +47,6 @@ public class Active500Service extends AbstractService<BSEActive500Entity, Active
             String toolTip = String.format("%s (%s)", entity.getStockName(), entity.getCategory());
             stock.setToolTip(toolTip);
             stock.setCategory(entity.getCategory());
-            stock.applyCssStyleBasedOnGroup(entity.getCategory());
-            stock.applyCssStyleBasedOnUnderOrOverValuedPercentage(entity.getUnderOrOverValuedPercentage());
 
             try {
                 String high = entity.getHigh();
@@ -100,13 +106,7 @@ public class Active500Service extends AbstractService<BSEActive500Entity, Active
             try {
                 String percentageChange = entity.getPercentageChange();
                 if (null != percentageChange) {
-                    double value = Double.parseDouble(percentageChange);
-                    stock.setPercentageChange(value);
-                    if(value < 0){
-                        stock.setPercentageGainCssStyle(Stock.RED_BG_CSS_STYLE);
-                    } else {
-                        stock.setPercentageGainCssStyle(Stock.GREEN_BG_CSS_STYLE);
-                    }
+                    stock.setPercentageChange(Double.parseDouble(percentageChange));
                 } else {
                     stock.setPercentageChange(0.0);
                 }
@@ -235,6 +235,14 @@ public class Active500Service extends AbstractService<BSEActive500Entity, Active
                 LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
                 stock.setValueInCrores(0.0);
             }
+
+            stockTitleDecorator.decorate(stock);
+            stockTitleContainerDecorator.decorate(stock);
+            stockChartContainerDecorator.decorate(stock);
+            stockPBRatioDecorator.decorate(stock);
+            stockLastPriceDecorator.decorate(stock);
+            stockPercentageGainOrChangeDecorator.decorate(stock);
+
             stocks.add(stock);
         }
         Collections.sort(stocks, new LastPriceComparator());

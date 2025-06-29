@@ -15,6 +15,8 @@ public class Stock {
 
     public static final String STOCK_MARKET_CHART_IMAGE_SOURCE = "/images/icons/stock-market-chart.png";
 
+    public static final String NO_CATEGORY_STOCK = "no-category-stock";
+
     private String id;
     private String displayName;
     private String toolTip;
@@ -74,6 +76,14 @@ public class Stock {
         return titleContainerCssStyle;
     }
 
+    public void setTitleContainerCssStyle(String titleContainerCssStyle) {
+        this.titleContainerCssStyle = titleContainerCssStyle;
+    }
+
+    public void setStockMarketChartImageDivCssStyle(String stockMarketChartImageDivCssStyle) {
+        this.stockMarketChartImageDivCssStyle = stockMarketChartImageDivCssStyle;
+    }
+
     public String getStockMarketChartImageDivCssStyle() {
         return stockMarketChartImageDivCssStyle;
     }
@@ -130,59 +140,4 @@ public class Stock {
         return this.stockMarketChartImageSrc;
     }
 
-    public void applyCssStyleBasedOnGroup(String category) {
-        if (category.startsWith("A")) {
-            this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "a-group-stock");
-            this.titleCssStyle = String.format(TITLE_CSS_STYLE, "a-group-stock");
-            this.stockMarketChartImageDivCssStyle = String.format(STOCK_MARKET_IMAGE_DIV_CSS_STYLE, "a-group-stock");
-        } else if (category.startsWith("B")) {
-            this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "b-group-stock");
-            this.titleCssStyle = String.format(TITLE_CSS_STYLE, "b-group-stock");
-            this.stockMarketChartImageDivCssStyle = String.format(STOCK_MARKET_IMAGE_DIV_CSS_STYLE, "b-group-stock");
-        } else if (category.startsWith("F")) {
-            this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "f-group-stock");
-            this.titleCssStyle = String.format(TITLE_CSS_STYLE, "f-group-stock");
-            this.stockMarketChartImageDivCssStyle = String.format(STOCK_MARKET_IMAGE_DIV_CSS_STYLE, "f-group-stock");
-        } else if (category.startsWith("S")) {
-            this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "s-group-stock");
-            this.titleCssStyle = String.format(TITLE_CSS_STYLE, "s-group-stock");
-            this.stockMarketChartImageDivCssStyle = String.format(STOCK_MARKET_IMAGE_DIV_CSS_STYLE, "s-group-stock");
-        } else if (category.startsWith("T")) {
-            this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "t-group-stock");
-            this.titleCssStyle = String.format(TITLE_CSS_STYLE, "t-group-stock");
-            this.stockMarketChartImageDivCssStyle = String.format(STOCK_MARKET_IMAGE_DIV_CSS_STYLE, "t-group-stock");
-        } else if (category.startsWith("X")) {
-            this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "x-group-stock");
-            this.titleCssStyle = String.format(TITLE_CSS_STYLE, "x-group-stock");
-            this.stockMarketChartImageDivCssStyle = String.format(STOCK_MARKET_IMAGE_DIV_CSS_STYLE, "x-group-stock");
-        } else if (category.startsWith("Z")) {
-            this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "z-group-stock");
-            this.titleCssStyle = String.format(TITLE_CSS_STYLE, "z-group-stock");
-            this.stockMarketChartImageDivCssStyle = String.format(STOCK_MARKET_IMAGE_DIV_CSS_STYLE, "z-group-stock");
-        } else {
-            this.titleContainerCssStyle = String.format(TITLE_CONTAINER_CSS_STYLE, "no-group-stock");
-            this.titleCssStyle = String.format(TITLE_CSS_STYLE, "no-group-stock");
-            this.stockMarketChartImageDivCssStyle = String.format(STOCK_MARKET_IMAGE_DIV_CSS_STYLE, "no-group-stock");
-        }
-    }
-
-    public void applyCssStyleBasedOnUnderOrOverValuedPercentage(int percentage){
-        switch (percentage){
-            case 25:
-                this.titleCssStyle = String.format("%s %s", this.titleCssStyle, "green-under-valued");
-                break;
-            case 50:
-                this.titleCssStyle = String.format("%s %s", this.titleCssStyle, "yellow-under-valued");
-                break;
-            case 75:
-                this.titleCssStyle = String.format("%s %s", this.titleCssStyle, "orange-under-valued");
-                break;
-            case 100:
-                this.titleCssStyle = String.format("%s %s", this.titleCssStyle, "white-equally-valued");
-                break;
-            default:
-                this.titleCssStyle = String.format("%s %s", this.titleCssStyle, "red-over-valued");
-                break;
-        }
-    }
 }

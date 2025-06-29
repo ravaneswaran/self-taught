@@ -46,12 +46,6 @@ public class StockBaseEntity extends StockMarketEntity {
     }
 
     @Override
-    @Transient
-    public int getUnderOrOverValuedPercentage(){
-        return 100;
-    }
-
-    @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || this.getClass() != obj.getClass()) return false;

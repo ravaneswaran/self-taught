@@ -1,8 +1,10 @@
 package rave.code.bse.web.service;
 
 import rave.code.bse.web.model.page.WebPage;
+import rave.code.bse.web.model.stock.Stock;
 import rave.code.bse.web.model.stock.TopDividendStock;
 import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
+import rave.code.bse.web.service.decorators.*;
 import rave.code.stockmarket.dataaccess.BSETopDividendDataAccess;
 import rave.code.stockmarket.entity.BSETopDividendEntity;
 
@@ -32,15 +34,21 @@ public class TopDividendService extends AbstractService<BSETopDividendEntity, To
     @Override
     public List<TopDividendStock> getStocks(List<BSETopDividendEntity> entities) {
 
+        StockTitleDecorator stockTitleDecorator = new StockTitleDecorator();
+        StockTitleContainerDecorator stockTitleContainerDecorator = new StockTitleContainerDecorator();
+        StockChartContainerDecorator stockChartContainerDecorator = new StockChartContainerDecorator();
+        StockPBRatioDecorator stockPBRatioDecorator = new StockPBRatioDecorator();
+        StockLastPriceDecorator stockLastPriceDecorator = new StockLastPriceDecorator();
+        StockPercentageGainOrChangeDecorator stockPercentageGainOrChangeDecorator = new StockPercentageGainOrChangeDecorator();
+
         List<TopDividendStock> stocks = new ArrayList<>();
         for (BSETopDividendEntity entity : entities) {
             TopDividendStock stock = new TopDividendStock();
 
             stock.setDisplayName(entity.getStockName());
+            stock.setCategory(Stock.NO_CATEGORY_STOCK);
             String toolTip = String.format("%s", entity.getStockName());
             stock.setToolTip(toolTip);
-            stock.applyCssStyleBasedOnGroup("no-group-stock");
-            stock.applyCssStyleBasedOnUnderOrOverValuedPercentage(entity.getUnderOrOverValuedPercentage());
 
             try {
                 String lastPrice = entity.getLastPrice();
@@ -86,6 +94,13 @@ public class TopDividendService extends AbstractService<BSETopDividendEntity, To
                 LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
                 stock.setDividendYieldPercentageAtCurrent(0.0);
             }
+
+            stockTitleDecorator.decorate(stock);
+            stockTitleContainerDecorator.decorate(stock);
+            stockChartContainerDecorator.decorate(stock);
+            stockPBRatioDecorator.decorate(stock);
+            stockLastPriceDecorator.decorate(stock);
+
 
             stocks.add(stock);
         }

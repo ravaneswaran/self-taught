@@ -4,6 +4,7 @@ import rave.code.bse.web.model.page.PriceShockerWebPage;
 import rave.code.bse.web.model.stock.PriceShockerStock;
 import rave.code.bse.web.model.stock.Stock;
 import rave.code.bse.web.service.algorithms.sort.CurrentPriceComparator;
+import rave.code.bse.web.service.decorators.*;
 import rave.code.stockmarket.dataaccess.BSEPriceShockerDataAccess;
 import rave.code.stockmarket.entity.BSEPriceShockerEntity;
 
@@ -34,6 +35,13 @@ public class PriceShockerService extends AbstractService<BSEPriceShockerEntity, 
 
     public List<PriceShockerStock> getStocks(List<BSEPriceShockerEntity> entities) {
 
+        StockTitleDecorator stockTitleDecorator = new StockTitleDecorator();
+        StockTitleContainerDecorator stockTitleContainerDecorator = new StockTitleContainerDecorator();
+        StockChartContainerDecorator stockChartContainerDecorator = new StockChartContainerDecorator();
+        StockPBRatioDecorator stockPBRatioDecorator = new StockPBRatioDecorator();
+        StockLastPriceDecorator stockLastPriceDecorator = new StockLastPriceDecorator();
+        StockPercentageGainOrChangeDecorator stockPercentageGainOrChangeDecorator = new StockPercentageGainOrChangeDecorator();
+
         List<PriceShockerStock> priceShockerStocks = new ArrayList<>();
         for (BSEPriceShockerEntity entity : entities) {
             PriceShockerStock stock = new PriceShockerStock();
@@ -42,8 +50,6 @@ public class PriceShockerService extends AbstractService<BSEPriceShockerEntity, 
             String toolTip = String.format("%s (%s)", entity.getStockName(), entity.getCategory());
             stock.setToolTip(toolTip);
             stock.setCategory(entity.getCategory());
-            stock.applyCssStyleBasedOnGroup(entity.getCategory());
-            stock.applyCssStyleBasedOnUnderOrOverValuedPercentage(entity.getUnderOrOverValuedPercentage());
 
             String sector = entity.getSector();
             stock.setSectorToolTip(sector);
@@ -101,13 +107,7 @@ public class PriceShockerService extends AbstractService<BSEPriceShockerEntity, 
             try {
                 String percentageChange = entity.getPercentageChange();
                 if (null != percentageChange) {
-                    double value = Double.parseDouble(percentageChange);
-                    stock.setPercentageChange(value);
-                    if(value < 0){
-                        stock.setPercentageGainCssStyle(Stock.RED_BG_CSS_STYLE);
-                    } else {
-                        stock.setPercentageGainCssStyle(Stock.GREEN_BG_CSS_STYLE);
-                    }
+                    stock.setPercentageChange(Double.parseDouble(percentageChange));
                 } else {
                     stock.setPercentageChange(0.0);
                 }
@@ -226,6 +226,14 @@ public class PriceShockerService extends AbstractService<BSEPriceShockerEntity, 
                 LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
                 stock.setVolumeWeightedAveragePrice(0.0);
             }
+
+            stockTitleDecorator.decorate(stock);
+            stockTitleContainerDecorator.decorate(stock);
+            stockChartContainerDecorator.decorate(stock);
+            stockPBRatioDecorator.decorate(stock);
+            stockLastPriceDecorator.decorate(stock);
+            stockPercentageGainOrChangeDecorator.decorate(stock);
+
             priceShockerStocks.add(stock);
         }
 

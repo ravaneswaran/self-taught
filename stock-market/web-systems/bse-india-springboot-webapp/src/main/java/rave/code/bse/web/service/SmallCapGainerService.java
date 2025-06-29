@@ -4,6 +4,7 @@ import rave.code.bse.web.model.page.WebPage;
 import rave.code.bse.web.model.stock.CapitalGainerStock;
 import rave.code.bse.web.model.stock.Stock;
 import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
+import rave.code.bse.web.service.decorators.*;
 import rave.code.stockmarket.dataaccess.BSESmallCapGainerDataAccess;
 import rave.code.stockmarket.entity.BSESmallCapGainerEntity;
 
@@ -33,14 +34,21 @@ public class SmallCapGainerService extends AbstractService<BSESmallCapGainerEnti
     public List<CapitalGainerStock> getStocks(List<BSESmallCapGainerEntity> entities) {
 
         List<CapitalGainerStock> stocks = new ArrayList<>();
+
+        StockTitleDecorator stockTitleDecorator = new StockTitleDecorator();
+        StockTitleContainerDecorator stockTitleContainerDecorator = new StockTitleContainerDecorator();
+        StockChartContainerDecorator stockChartContainerDecorator = new StockChartContainerDecorator();
+        StockPBRatioDecorator stockPBRatioDecorator = new StockPBRatioDecorator();
+        StockLastPriceDecorator stockLastPriceDecorator = new StockLastPriceDecorator();
+        StockPercentageGainOrChangeDecorator stockPercentageGainOrChangeDecorator = new StockPercentageGainOrChangeDecorator();
+
         for (BSESmallCapGainerEntity entity : entities) {
             CapitalGainerStock stock = new CapitalGainerStock();
 
             stock.setDisplayName(entity.getStockName());
+            stock.setCategory(Stock.NO_CATEGORY_STOCK);
             String toolTip = String.format("%s", entity.getStockName());
             stock.setToolTip(toolTip);
-            stock.applyCssStyleBasedOnGroup("no-group-stock");
-            stock.applyCssStyleBasedOnUnderOrOverValuedPercentage(entity.getUnderOrOverValuedPercentage());
 
             String value = "";
             try {
@@ -102,13 +110,7 @@ public class SmallCapGainerService extends AbstractService<BSESmallCapGainerEnti
             try {
                 value = entity.getPercentageGain();
                 if (null != value) {
-                    double percentageGain = Double.parseDouble(value);
-                    stock.setPercentageGain(percentageGain);
-                    if(percentageGain < 0){
-                        stock.setPercentageGainCssStyle(Stock.RED_BG_CSS_STYLE);
-                    } else {
-                        stock.setPercentageGainCssStyle(Stock.GREEN_BG_CSS_STYLE);
-                    }
+                    stock.setPercentageGain(Double.parseDouble(value));
                 } else {
                     stock.setPercentageGain(0.0);
                 }
@@ -249,6 +251,13 @@ public class SmallCapGainerService extends AbstractService<BSESmallCapGainerEnti
                 LOGGER.log(Level.SEVERE, nfe.getMessage(), nfe);
                 stock.setDisplacedMovingAverage150Days(0.0);
             }
+
+            stockTitleDecorator.decorate(stock);
+            stockTitleContainerDecorator.decorate(stock);
+            stockChartContainerDecorator.decorate(stock);
+            stockPBRatioDecorator.decorate(stock);
+            stockLastPriceDecorator.decorate(stock);
+            stockPercentageGainOrChangeDecorator.decorate(stock);
 
             stocks.add(stock);
         }
