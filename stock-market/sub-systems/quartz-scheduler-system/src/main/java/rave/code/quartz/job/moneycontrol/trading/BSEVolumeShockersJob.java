@@ -50,7 +50,10 @@ public class BSEVolumeShockersJob extends AbstractTradingEntityMakerJob<VolumeSh
                 if (bseVolumeShockerEntity.isNewEntity()) {
                     bseVolumeShockerEntity.setLastPriceMovement(lastPrice);
                 } else {
-                    bseVolumeShockerEntity.setLastPriceMovement(String.format("%s -> %s", bseVolumeShockerEntity.getLastPriceMovement(), lastPrice));
+                    String lastPriceMovement = bseVolumeShockerEntity.getLastPriceMovement();
+                    if(!lastPriceMovement.contains(lastPrice)) {
+                        bseVolumeShockerEntity.setLastPriceMovement(String.format("%s -> %s", lastPriceMovement, lastPrice));
+                    }
                 }
             } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);

@@ -66,7 +66,10 @@ public class BSEActive100Job extends AbstractTradingEntityMakerJob<BSEGenericAct
                 if (bseActive100Entity.isNewEntity()) {
                     bseActive100Entity.setLastPriceMovement(lastPrice);
                 } else {
-                    bseActive100Entity.setLastPriceMovement(String.format("%s -> %s", bseActive100Entity.getLastPriceMovement(), lastPrice));
+                    String lastPriceMovement = bseActive100Entity.getLastPriceMovement();
+                    if(!lastPriceMovement.contains(lastPrice)) {
+                        bseActive100Entity.setLastPriceMovement(String.format("%s -> %s", lastPriceMovement, lastPrice));
+                    }
                 }
             } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);

@@ -50,7 +50,10 @@ public class BSEPriceShockersJob extends AbstractTradingEntityMakerJob<PriceShoc
                 if (bsePriceShockerEntity.isNewEntity()) {
                     bsePriceShockerEntity.setCurrentPriceMovement(currentPrice);
                 } else {
-                    bsePriceShockerEntity.setCurrentPriceMovement(String.format("%s -> %s", bsePriceShockerEntity.getCurrentPriceMovement(), currentPrice));
+                    String currentPriceMovement = bsePriceShockerEntity.getCurrentPriceMovement();
+                    if(!currentPriceMovement.contains(currentPrice)) {
+                        bsePriceShockerEntity.setCurrentPriceMovement(String.format("%s -> %s", currentPriceMovement, currentPrice));
+                    }
                 }
             } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
