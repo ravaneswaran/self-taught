@@ -23,9 +23,7 @@ public class BSEPriceShockerDataAccess extends StockMarketHistoryEnabledDataAcce
         EntityTransaction entityTransaction = entityManager.getTransaction();
         entityTransaction.begin();
         for (BSEPriceShockerEntity bsePriceShockerEntity : entities) {
-            //BSEPriceShockerEntity fromDB = this.findBy(bsePriceShockerEntity.getCompanyName());
             if (bsePriceShockerEntity.isNewEntity()) {
-                //String priceMovement = String.format("%s->%s", fromDB.getCurrentPrice(), bsePriceShockerEntity.getCurrentPrice());
                 entityManager.persist(bsePriceShockerEntity);
             } else {
                 entityManager.merge(bsePriceShockerEntity);

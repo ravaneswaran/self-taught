@@ -23,9 +23,7 @@ public class BSEVolumeShockerDataAccess extends StockMarketHistoryEnabledDataAcc
         EntityTransaction entityTransaction = entityManager.getTransaction();
         entityTransaction.begin();
         for (BSEVolumeShockerEntity bseVolumeShockerEntity : entities) {
-            //BSEVolumeShockerEntity fromDB = this.findBy(bseVolumeShockerEntity.getCompanyName());
             if (bseVolumeShockerEntity.isNewEntity()) {
-                //String priceMovement = String.format("%s->%s", fromDB.getLastPrice(), bseVolumeShockerEntity.getLastPrice());
                 entityManager.persist(bseVolumeShockerEntity);
             } else {
                 entityManager.merge(bseVolumeShockerEntity);
