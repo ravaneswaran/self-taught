@@ -50,12 +50,12 @@ public class XXXCapGainerScheduler extends AbstractQuartzScheduler {
 
             Trigger bseMidCapGainerJobTrigger = newTrigger()
                     .withIdentity("BSEMidCapGainer", Group.INVESTING.toString())
-                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5_MINUTE_ON_ALL_DAYS.toString()))
+                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
                     .withPriority(AbstractQuartzScheduler.MID_PRIORITY)
                     .build();
             Trigger bseSmallCapGainerJobTrigger = newTrigger()
                     .withIdentity("BSESmallCapGainer", Group.INVESTING.toString())
-                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5_MINUTE_ON_ALL_DAYS.toString()))
+                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
                     .withPriority(AbstractQuartzScheduler.HIGH_PRIORITY)
                     .build();
 

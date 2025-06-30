@@ -48,17 +48,17 @@ public class ActiveXXXScheduler extends AbstractQuartzScheduler {
 
             Trigger bseActive100JobTrigger = newTrigger()
                     .withIdentity("Active100JobTrigger", Group.TRADING.toString())
-                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5_MINUTE_ON_ALL_DAYS.toString()))
+                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
                     .withPriority(AbstractQuartzScheduler.LOW_PRIORITY)
                     .build();
             Trigger bseActive200JobTrigger = newTrigger()
                     .withIdentity("Active200JobTrigger", Group.TRADING.toString())
-                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5_MINUTE_ON_ALL_DAYS.toString()))
+                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
                     .withPriority(AbstractQuartzScheduler.MID_PRIORITY)
                     .build();
             Trigger bseActive500JobTrigger = newTrigger()
                     .withIdentity("Active500JobTrigger", Group.TRADING.toString())
-                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5_MINUTE_ON_ALL_DAYS.toString()))
+                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
                     .withPriority(AbstractQuartzScheduler.HIGH_PRIORITY)
                     .build();
 

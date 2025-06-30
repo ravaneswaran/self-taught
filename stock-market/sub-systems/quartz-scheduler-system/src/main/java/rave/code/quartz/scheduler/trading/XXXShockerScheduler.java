@@ -44,12 +44,12 @@ public class XXXShockerScheduler extends AbstractQuartzScheduler {
 
             Trigger bsePriceShockersJobTrigger = newTrigger()
                     .withIdentity("PriceShockersJobTrigger", Group.TRADING.toString())
-                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5_MINUTE_ON_ALL_DAYS.toString()))
+                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
                     .withPriority(AbstractQuartzScheduler.MID_PRIORITY)
                     .build();
             Trigger bseVolumeShockersJobTrigger = newTrigger()
                     .withIdentity("VolumeShockersJobTrigger", Group.TRADING.toString())
-                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5_MINUTE_ON_ALL_DAYS.toString()))
+                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
                     .withPriority(AbstractQuartzScheduler.HIGH_PRIORITY)
                     .build();
 

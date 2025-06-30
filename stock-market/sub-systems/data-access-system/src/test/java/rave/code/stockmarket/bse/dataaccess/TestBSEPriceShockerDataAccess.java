@@ -55,6 +55,8 @@ public class TestBSEPriceShockerDataAccess extends TestCase {
         System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getPriceToBookRatio());
         System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getLowerCircuit());
         System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getUpperCircuit());
+        System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getCreatedDate());
+        System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getCreatedBy());
         System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getModifiedDate());
         System.out.println("------------------------>>>>>>> " + bsePriceShockerEntity.getModifiedBy());
 

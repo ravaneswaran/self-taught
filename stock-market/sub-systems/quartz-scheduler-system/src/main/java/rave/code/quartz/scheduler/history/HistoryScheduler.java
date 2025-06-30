@@ -59,27 +59,27 @@ public class HistoryScheduler extends AbstractQuartzScheduler {
 
             Trigger active100HistoryJobDetailTrigger = newTrigger()
                     .withIdentity("BSEActive100History", Group.HISTORY.toString())
-                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.NOW.toString()))
+                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
                     .withPriority(AbstractQuartzScheduler.HIGH_PRIORITY)
                     .build();
             Trigger active200HistoryJobDetailTrigger = newTrigger()
                     .withIdentity("BSEActive200History", Group.HISTORY.toString())
-                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.NOW.toString()))
+                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
                     .withPriority(AbstractQuartzScheduler.HIGH_PRIORITY)
                     .build();
             Trigger active500HistoryJobDetailTrigger = newTrigger()
                     .withIdentity("BSEActive500History", Group.HISTORY.toString())
-                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.NOW.toString()))
+                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
                     .withPriority(AbstractQuartzScheduler.HIGH_PRIORITY)
                     .build();
             Trigger priceShockerHistoryJobDetailTrigger = newTrigger()
                     .withIdentity("BSEPriceShockerHistory", Group.HISTORY.toString())
-                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.NOW.toString()))
+                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
                     .withPriority(AbstractQuartzScheduler.HIGH_PRIORITY)
                     .build();
             Trigger volumeShockerHistoryJobDetailTrigger = newTrigger()
                     .withIdentity("BSEVolumeShockerHistory", Group.HISTORY.toString())
-                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.NOW.toString()))
+                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
                     .withPriority(AbstractQuartzScheduler.HIGH_PRIORITY)
                     .build();
 

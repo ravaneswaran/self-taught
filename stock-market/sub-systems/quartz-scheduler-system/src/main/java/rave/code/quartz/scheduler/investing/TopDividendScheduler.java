@@ -46,7 +46,7 @@ public class TopDividendScheduler extends AbstractQuartzScheduler {
 
             Trigger bseTopDividendJobTrigger = newTrigger()
                     .withIdentity("BSETopDividend", Group.INVESTING.toString())
-                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5_MINUTE_ON_ALL_DAYS.toString()))
+                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
                     .withPriority(AbstractQuartzScheduler.HIGH_PRIORITY)
                     .build();
 

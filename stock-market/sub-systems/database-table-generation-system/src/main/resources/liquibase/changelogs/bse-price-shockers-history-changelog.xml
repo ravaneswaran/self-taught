@@ -11,6 +11,7 @@
             <column name="category" type="varchar2(100)"/>
             <column name="sector" type="varchar2(100)"/>
             <column name="current_price" type="varchar2(100)"/>
+            <column name="current_price_movement" type="varchar2(1000)"/>
             <column name="previous_price" type="varchar2(100)"/>
             <column name="percentage_change" type="varchar2(100)"/>
             <column name="average_volume_5d" type="varchar2(100)"/>
