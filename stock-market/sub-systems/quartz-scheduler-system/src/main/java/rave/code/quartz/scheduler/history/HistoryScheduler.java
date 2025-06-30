@@ -93,11 +93,11 @@ public class HistoryScheduler extends AbstractQuartzScheduler {
                 LOGGER.log(Level.SEVERE, se.getMessage(), se);
             }
 
-            /*try {
+            try {
                 scheduler.shutdown(true);
             } catch (SchedulerException se) {
                 LOGGER.log(Level.SEVERE, se.getMessage(), se);
-            }*/
+            }
         }
     }
 }
