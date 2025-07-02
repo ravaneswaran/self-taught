@@ -42,7 +42,7 @@ public class StockPBRatioDecorator implements Decorator {
                 stock.setPbRatioCssStyle(String.format("%s", "color:black;background:#FFA500;font-weight: bold;"));
                 break;
             case 100:
-                stock.setPbRatioCssStyle(String.format("%s", "color:black;background:#E0E0E0;font-weight: bold;"));
+                stock.setPbRatioCssStyle(String.format("%s", "color:black;background:#FF8DA1;font-weight: bold;"));
                 break;
             default:
                 stock.setPbRatioCssStyle(String.format("%s", "color:black;background:#ff0c07;font-weight: bold;"));
