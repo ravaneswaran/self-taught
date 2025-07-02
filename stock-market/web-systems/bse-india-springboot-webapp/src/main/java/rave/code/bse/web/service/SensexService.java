@@ -38,6 +38,7 @@ public class SensexService extends AbstractService<BSESensexEntity, ActiveStock>
         StockPBRatioDecorator stockPBRatioDecorator = new StockPBRatioDecorator();
         StockLastPriceDecorator stockLastPriceDecorator = new StockLastPriceDecorator();
         StockPercentageGainOrChangeDecorator stockPercentageGainOrChangeDecorator = new StockPercentageGainOrChangeDecorator();
+        StockPERatioDecorator stockPERatioDecorator = new StockPERatioDecorator();
 
         List<ActiveStock> stocks = new ArrayList<>();
         for (BSESensexEntity entity : bseSensexEntities) {
@@ -249,6 +250,7 @@ public class SensexService extends AbstractService<BSESensexEntity, ActiveStock>
             stockPBRatioDecorator.decorate(stock);
             stockLastPriceDecorator.decorate(stock);
             stockPercentageGainOrChangeDecorator.decorate(stock);
+            stockPERatioDecorator.decorate(stock);
 
             stocks.add(stock);
         }

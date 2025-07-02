@@ -39,6 +39,7 @@ public class MidCapGainerService extends AbstractService<BSEMidCapGainerEntity, 
         StockPBRatioDecorator stockPBRatioDecorator = new StockPBRatioDecorator();
         StockLastPriceDecorator stockLastPriceDecorator = new StockLastPriceDecorator();
         StockPercentageGainOrChangeDecorator stockPercentageGainOrChangeDecorator = new StockPercentageGainOrChangeDecorator();
+        StockPERatioDecorator stockPERatioDecorator = new StockPERatioDecorator();
 
         List<CapitalGainerStock> stocks = new ArrayList<>();
         for (BSEMidCapGainerEntity entity : entities) {
@@ -257,6 +258,7 @@ public class MidCapGainerService extends AbstractService<BSEMidCapGainerEntity, 
             stockPBRatioDecorator.decorate(stock);
             stockLastPriceDecorator.decorate(stock);
             stockPercentageGainOrChangeDecorator.decorate(stock);
+            stockPERatioDecorator.decorate(stock);
 
             stocks.add(stock);
         }

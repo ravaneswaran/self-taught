@@ -46,8 +46,8 @@
                             <td class="td-right" th:text="${stock.lowerCircuit}"></td>
                         </tr>
                         <tr>
-                            <td class="td-left">P/E Ratio</td>
-                            <td class="td-right" th:text="${stock.priceToEarningRatio}"></td>
+                            <td class="td-left" th:style="${stock.peRatioCssStyle}">P/E Ratio</td>
+                            <td class="td-right" th:style="${stock.peRatioCssStyle}"  th:text="${stock.priceToEarningRatio}"></td>
                         </tr>
                         <tr>
                             <td class="td-left" th:style="${stock.pbRatioCssStyle}">P/B Ratio</td>

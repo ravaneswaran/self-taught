@@ -40,6 +40,7 @@ public class TopDividendService extends AbstractService<BSETopDividendEntity, To
         StockPBRatioDecorator stockPBRatioDecorator = new StockPBRatioDecorator();
         StockLastPriceDecorator stockLastPriceDecorator = new StockLastPriceDecorator();
         StockPercentageGainOrChangeDecorator stockPercentageGainOrChangeDecorator = new StockPercentageGainOrChangeDecorator();
+        StockPERatioDecorator stockPERatioDecorator = new StockPERatioDecorator();
 
         List<TopDividendStock> stocks = new ArrayList<>();
         for (BSETopDividendEntity entity : entities) {
@@ -100,6 +101,7 @@ public class TopDividendService extends AbstractService<BSETopDividendEntity, To
             stockChartContainerDecorator.decorate(stock);
             stockPBRatioDecorator.decorate(stock);
             stockLastPriceDecorator.decorate(stock);
+            stockPERatioDecorator.decorate(stock);
 
 
             stocks.add(stock);

@@ -41,6 +41,7 @@ public class SmallCapGainerService extends AbstractService<BSESmallCapGainerEnti
         StockPBRatioDecorator stockPBRatioDecorator = new StockPBRatioDecorator();
         StockLastPriceDecorator stockLastPriceDecorator = new StockLastPriceDecorator();
         StockPercentageGainOrChangeDecorator stockPercentageGainOrChangeDecorator = new StockPercentageGainOrChangeDecorator();
+        StockPERatioDecorator stockPERatioDecorator = new StockPERatioDecorator();
 
         for (BSESmallCapGainerEntity entity : entities) {
             CapitalGainerStock stock = new CapitalGainerStock();
@@ -258,6 +259,7 @@ public class SmallCapGainerService extends AbstractService<BSESmallCapGainerEnti
             stockPBRatioDecorator.decorate(stock);
             stockLastPriceDecorator.decorate(stock);
             stockPercentageGainOrChangeDecorator.decorate(stock);
+            stockPERatioDecorator.decorate(stock);
 
             stocks.add(stock);
         }

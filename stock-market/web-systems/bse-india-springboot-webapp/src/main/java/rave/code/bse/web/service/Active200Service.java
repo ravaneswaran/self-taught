@@ -38,6 +38,7 @@ public class Active200Service extends AbstractService<BSEActive200Entity, Active
         StockPBRatioDecorator stockPBRatioDecorator = new StockPBRatioDecorator();
         StockLastPriceDecorator stockLastPriceDecorator = new StockLastPriceDecorator();
         StockPercentageGainOrChangeDecorator stockPercentageGainOrChangeDecorator = new StockPercentageGainOrChangeDecorator();
+        StockPERatioDecorator stockPERatioDecorator = new StockPERatioDecorator();
 
         List<ActiveStock> stocks = new ArrayList<>();
         for (BSEActive200Entity entity : entities) {
@@ -242,6 +243,7 @@ public class Active200Service extends AbstractService<BSEActive200Entity, Active
             stockPBRatioDecorator.decorate(stock);
             stockLastPriceDecorator.decorate(stock);
             stockPercentageGainOrChangeDecorator.decorate(stock);
+            stockPERatioDecorator.decorate(stock);
 
             stocks.add(stock);
         }

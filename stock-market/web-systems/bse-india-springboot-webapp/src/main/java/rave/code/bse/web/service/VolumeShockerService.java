@@ -43,6 +43,7 @@ public class VolumeShockerService extends AbstractService<BSEVolumeShockerEntity
         StockPBRatioDecorator stockPBRatioDecorator = new StockPBRatioDecorator();
         StockLastPriceDecorator stockLastPriceDecorator = new StockLastPriceDecorator();
         StockPercentageGainOrChangeDecorator stockPercentageGainOrChangeDecorator = new StockPercentageGainOrChangeDecorator();
+        StockPERatioDecorator stockPERatioDecorator = new StockPERatioDecorator();
 
         List<VolumeShockerStock> volumeShockerStocks = new ArrayList<>();
         for (BSEVolumeShockerEntity entity : entities) {
@@ -235,6 +236,7 @@ public class VolumeShockerService extends AbstractService<BSEVolumeShockerEntity
             stockPBRatioDecorator.decorate(stock);
             stockLastPriceDecorator.decorate(stock);
             stockPercentageGainOrChangeDecorator.decorate(stock);
+            stockPERatioDecorator.decorate(stock);
 
             volumeShockerStocks.add(stock);
         }

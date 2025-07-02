@@ -6,7 +6,9 @@ public class StockTitleDecorator implements Decorator{
 
     @Override
     public Stock decorate(Stock stock) {
-        switch (stock.getCategory()){
+        String category = stock.getCategory();
+        category = category.substring(0,1);
+        switch (category){
             case "A":
                 stock.setTitleCssStyle(String.format(Stock.TITLE_CSS_STYLE, "a-group-stock"));
                 break;

@@ -41,6 +41,7 @@ public class PriceShockerService extends AbstractService<BSEPriceShockerEntity, 
         StockPBRatioDecorator stockPBRatioDecorator = new StockPBRatioDecorator();
         StockLastPriceDecorator stockLastPriceDecorator = new StockLastPriceDecorator();
         StockPercentageGainOrChangeDecorator stockPercentageGainOrChangeDecorator = new StockPercentageGainOrChangeDecorator();
+        StockPERatioDecorator stockPERatioDecorator = new StockPERatioDecorator();
 
         List<PriceShockerStock> priceShockerStocks = new ArrayList<>();
         for (BSEPriceShockerEntity entity : entities) {
@@ -233,6 +234,7 @@ public class PriceShockerService extends AbstractService<BSEPriceShockerEntity, 
             stockPBRatioDecorator.decorate(stock);
             stockLastPriceDecorator.decorate(stock);
             stockPercentageGainOrChangeDecorator.decorate(stock);
+            stockPERatioDecorator.decorate(stock);
 
             priceShockerStocks.add(stock);
         }
