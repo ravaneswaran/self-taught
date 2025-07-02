@@ -33,19 +33,19 @@ public class StockPBRatioDecorator implements Decorator {
 
         switch (pbRatioPercentage) {
             case 25:
-                stock.setTitleCssStyle(String.format("%s %s", stock.getTitleCssStyle(), "green-under-valued"));
+                stock.setPbRatioCssStyle(String.format("%s",  "color:black;background:#0BDA51;font-weight: bold;"));
                 break;
             case 50:
-                stock.setTitleCssStyle(String.format("%s %s", stock.getTitleCssStyle(), "yellow-under-valued"));
+                stock.setPbRatioCssStyle(String.format("%s", "color:black;background:yellow;font-weight: bold;"));
                 break;
             case 75:
-                stock.setTitleCssStyle(String.format("%s %s", stock.getTitleCssStyle(), "orange-under-valued"));
+                stock.setPbRatioCssStyle(String.format("%s", "color:black;background:#FFA500;font-weight: bold;"));
                 break;
             case 100:
-                stock.setTitleCssStyle(String.format("%s %s", stock.getTitleCssStyle(), "white-equally-valued"));
+                stock.setPbRatioCssStyle(String.format("%s", "color:black;background:#E0E0E0;font-weight: bold;"));
                 break;
             default:
-                stock.setTitleCssStyle(String.format("%s %s", stock.getTitleCssStyle(), "red-over-valued"));
+                stock.setPbRatioCssStyle(String.format("%s", "color:black;background:#ff0c07;font-weight: bold;"));
                 break;
         }
 

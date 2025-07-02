@@ -3,7 +3,7 @@ package rave.code.bse.web.model.stock;
 public class Stock {
 
     public static final String TITLE_CONTAINER_CSS_STYLE = "right-container-company-title-container %s";
-    public static final String TITLE_CSS_STYLE = "right-container-company-title-div %s";
+    public static final String TITLE_CSS_STYLE = "right-container-company-title-div";
     public static final String STOCK_MARKET_IMAGE_DIV_CSS_STYLE = "right-container-company-stock-market-chart-div %s";
 
     public static final String GREEN_BG_CSS_STYLE = "color: black; background: #0BDA51; font-weight:bold;";
@@ -30,6 +30,7 @@ public class Stock {
     private String lastPriceCssStyle = MAUVE_PINK_BG_CSS_STYLE;
     private String percentageGainCssStyle = RED_BG_CSS_STYLE;
     private String tradingStatisticsCssStyle = "";
+    private String pbRatioCssStyle = "td-right";
 
     private String stockMarketChartImageSrc = STOCK_MARKET_CHART_IMAGE_SOURCE;
 
@@ -140,4 +141,11 @@ public class Stock {
         return this.stockMarketChartImageSrc;
     }
 
+    public String getPbRatioCssStyle() {
+        return pbRatioCssStyle;
+    }
+
+    public void setPbRatioCssStyle(String pbRatioCssStyle) {
+        this.pbRatioCssStyle = pbRatioCssStyle;
+    }
 }
