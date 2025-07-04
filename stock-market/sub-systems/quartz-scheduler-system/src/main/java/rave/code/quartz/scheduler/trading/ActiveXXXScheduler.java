@@ -21,61 +21,49 @@ public class ActiveXXXScheduler extends AbstractQuartzScheduler {
 
     @Override
     public void scheduleJob() {
+
+        JobDetail bseActive100JobDetail = newJob(BSEActive100Job.class)
+                .withIdentity("Active100Job", Group.TRADING.toString())
+                .build();
+        JobDetail bseActive200JobDetail = newJob(BSEActive200Job.class)
+                .withIdentity("Active200Job", Group.TRADING.toString())
+                .build();
+        JobDetail bseActive500JobDetail = newJob(BSEActive500Job.class)
+                .withIdentity("Active500Job", Group.TRADING.toString())
+                .build();
+
+        Trigger bseActive100JobTrigger = newTrigger()
+                .withIdentity("Active100JobTrigger", Group.TRADING.toString())
+                .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
+                //.withPriority(AbstractQuartzScheduler.LOW_PRIORITY)
+                .build();
+        Trigger bseActive200JobTrigger = newTrigger()
+                .withIdentity("Active200JobTrigger", Group.TRADING.toString())
+                .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
+                //.withPriority(AbstractQuartzScheduler.MID_PRIORITY)
+                .build();
+        Trigger bseActive500JobTrigger = newTrigger()
+                .withIdentity("Active500JobTrigger", Group.TRADING.toString())
+                .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
+                //.withPriority(AbstractQuartzScheduler.HIGH_PRIORITY)
+                .build();
+
         SchedulerFactory schedulerFactory = new StdSchedulerFactory();
-        Scheduler scheduler = null;
+
         try {
-            scheduler = schedulerFactory.getScheduler();
+            Scheduler scheduler = schedulerFactory.getScheduler();
+
+            scheduler.scheduleJob(bseActive200JobDetail, bseActive200JobTrigger);
+            scheduler.scheduleJob(bseActive500JobDetail, bseActive500JobTrigger);
+            scheduler.scheduleJob(bseActive100JobDetail, bseActive100JobTrigger);
+
+            scheduler.start();
+
+            //scheduler.shutdown(true);
         } catch (SchedulerException se) {
             LOGGER.log(Level.SEVERE, se.getMessage(), se);
         }
 
-        if (null != scheduler) {
-            try {
-                scheduler.start();
-            } catch (SchedulerException se) {
-                LOGGER.log(Level.SEVERE, se.getMessage(), se);
-            }
-
-            JobDetail bseActive100JobDetail = newJob(BSEActive100Job.class)
-                    .withIdentity("Active100Job", Group.TRADING.toString())
-                    .build();
-            JobDetail bseActive200JobDetail = newJob(BSEActive200Job.class)
-                    .withIdentity("Active200Job", Group.TRADING.toString())
-                    .build();
-            JobDetail bseActive500JobDetail = newJob(BSEActive500Job.class)
-                    .withIdentity("Active500Job", Group.TRADING.toString())
-                    .build();
-
-            Trigger bseActive100JobTrigger = newTrigger()
-                    .withIdentity("Active100JobTrigger", Group.TRADING.toString())
-                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
-                    .withPriority(AbstractQuartzScheduler.LOW_PRIORITY)
-                    .build();
-            Trigger bseActive200JobTrigger = newTrigger()
-                    .withIdentity("Active200JobTrigger", Group.TRADING.toString())
-                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
-                    .withPriority(AbstractQuartzScheduler.MID_PRIORITY)
-                    .build();
-            Trigger bseActive500JobTrigger = newTrigger()
-                    .withIdentity("Active500JobTrigger", Group.TRADING.toString())
-                    .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
-                    .withPriority(AbstractQuartzScheduler.HIGH_PRIORITY)
-                    .build();
-
-            try {
-                scheduler.scheduleJob(bseActive100JobDetail, bseActive100JobTrigger);
-                scheduler.scheduleJob(bseActive200JobDetail, bseActive200JobTrigger);
-                scheduler.scheduleJob(bseActive500JobDetail, bseActive500JobTrigger);
-            } catch (SchedulerException se) {
-                LOGGER.log(Level.SEVERE, se.getMessage(), se);
-            }
-
-            /*try {
-                scheduler.shutdown(true);
-            } catch (SchedulerException se) {
-                LOGGER.log(Level.SEVERE, se.getMessage(), se);
-            }*/
-        }
     }
 
     public static void main(String[] args) {

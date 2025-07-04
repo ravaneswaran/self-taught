@@ -23,7 +23,6 @@ public class BSEActive100DataAccess extends StockMarketHistoryEnabledDataAccess<
         EntityTransaction entityTransaction = entityManager.getTransaction();
         entityTransaction.begin();
         for (BSEActive100Entity bseActive100Entity : entities) {
-            //BSEActive100Entity fromDB = this.findBy(bseActive100Entity.getCompanyName());
             if (bseActive100Entity.isNewEntity()) {
                 entityManager.persist(bseActive100Entity);
             } else {

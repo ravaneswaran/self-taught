@@ -1,5 +1,6 @@
 package rave.code.quartz.job.moneycontrol.trading;
 
+import org.quartz.DisallowConcurrentExecution;
 import rave.code.data.parser.html.moneycontrol.BSEActive500Parser;
 import rave.code.stockmarket.dataaccess.BSEActive500DataAccess;
 import rave.code.stockmarket.entity.BSEActive500Entity;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+@DisallowConcurrentExecution
 public class BSEActive500Job extends AbstractTradingEntityMakerJob<BSEGenericActiveModel, BSEActive500Entity> {
 
     private static final Logger LOGGER = Logger.getLogger(BSEActive500Job.class.getName());
@@ -58,16 +60,22 @@ public class BSEActive500Job extends AbstractTradingEntityMakerJob<BSEGenericAct
             }
 
             try {
-                value = format.parse(bseActive500Entity.getLastPrice());
-                String lastPrice = String.valueOf(value.doubleValue());
-                bseActive500Entity.setLastPrice(lastPrice);
-                if (bseActive500Entity.isNewEntity()) {
-                    bseActive500Entity.setLastPriceMovement(lastPrice);
-                } else {
-                    String lastPriceMovement = bseActive500Entity.getLastPriceMovement();
-                    if(!lastPriceMovement.contains(lastPrice)) {
-                        bseActive500Entity.setLastPriceMovement(String.format("%s -> %s", lastPriceMovement, lastPrice));
+                String lastPrice = bseActive500Model.getLastPrice();
+                if(null != lastPrice && !"".equals(lastPrice)){
+                    value = format.parse(lastPrice);
+                    lastPrice = String.valueOf(value.doubleValue());
+                    bseActive500Entity.setLastPrice(lastPrice);
+                    if (bseActive500Entity.isNewEntity()) {
+                        bseActive500Entity.setLastPriceMovement(lastPrice);
+                    } else {
+                        String lastPriceMovement = bseActive500Entity.getLastPriceMovement();
+                        if(!lastPriceMovement.contains(lastPrice)) {
+                            bseActive500Entity.setLastPriceMovement(String.format("%s -> %s", lastPriceMovement, lastPrice));
+                        }
                     }
+                } else {
+                    LOGGER.log(Level.SEVERE, "LAST PRICE : is found to be null or empty... setting last price to 0.0");
+                    bseActive500Entity.setLastPrice(String.valueOf(0.00));
                 }
             } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);

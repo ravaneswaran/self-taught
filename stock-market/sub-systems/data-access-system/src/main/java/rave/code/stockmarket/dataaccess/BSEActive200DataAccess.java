@@ -25,9 +25,7 @@ public class BSEActive200DataAccess extends StockMarketHistoryEnabledDataAccess<
         EntityTransaction entityTransaction = entityManager.getTransaction();
         entityTransaction.begin();
         for (BSEActive200Entity bseActive200Entity : entities) {
-            //BSEActive200Entity fromDB = this.findBy(bseActive200Entity.getCompanyName());
             if (bseActive200Entity.isNewEntity()) {
-                //String priceMovement = String.format("%s->%s", fromDB.getLastPrice(), bseActive200Entity.getLastPrice());
                 entityManager.persist(bseActive200Entity);
             } else {
                 entityManager.merge(bseActive200Entity);

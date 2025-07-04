@@ -20,9 +20,7 @@ public class BSEActive500Parser extends BSEActiveParser {
     private static final Logger LOGGER = Logger.getLogger(BSEActive500Parser.class.getName());
 
     public BSEActive500Parser() {
-        //https://www.moneycontrol.com/stocks/marketstats/bse-gainer/bse-500_12/
-        //https://www.moneycontrol.com/stocks/marketstats/bse-mostactive-stocks/bse-500-12/
-        super("https://www.moneycontrol.com/stocks/marketstats/bse-gainer/bse-500_12/");
+        super("https://www.moneycontrol.com/stocks/marketstats/bse-mostactive-stocks/bse-500-12/");
     }
 
     public static void main(String[] args) {
@@ -32,6 +30,8 @@ public class BSEActive500Parser extends BSEActiveParser {
 
     @Override
     public List<BSEGenericActiveModel> parse() {
+        LOGGER.log(Level.INFO, String.format("BSEActive500Parser : Looking for BSE active 500 stocks at(%s)...", this.getSourceUrl()));
+
         try {
             Document document = null;
             try {

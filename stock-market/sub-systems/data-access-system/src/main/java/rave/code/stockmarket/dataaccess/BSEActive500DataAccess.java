@@ -23,9 +23,7 @@ public class BSEActive500DataAccess extends StockMarketHistoryEnabledDataAccess<
         EntityTransaction entityTransaction = entityManager.getTransaction();
         entityTransaction.begin();
         for (BSEActive500Entity bseActive500Entity : entities) {
-            //BSEActive500Entity fromDB = this.findBy(bseActive500Entity.getCompanyName());
             if (bseActive500Entity.isNewEntity()) {
-                //String priceMovement = String.format("%s->%s", fromDB.getLastPrice(), bseActive500Entity.getLastPrice());
                 entityManager.persist(bseActive500Entity);
             } else {
                 entityManager.merge(bseActive500Entity);

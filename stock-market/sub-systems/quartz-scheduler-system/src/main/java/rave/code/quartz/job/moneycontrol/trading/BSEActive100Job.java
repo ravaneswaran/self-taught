@@ -1,5 +1,6 @@
 package rave.code.quartz.job.moneycontrol.trading;
 
+import org.quartz.DisallowConcurrentExecution;
 import rave.code.data.parser.html.moneycontrol.BSEActive100Parser;
 import rave.code.stockmarket.dataaccess.BSEActive100DataAccess;
 import rave.code.stockmarket.entity.BSEActive100Entity;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+@DisallowConcurrentExecution
 public class BSEActive100Job extends AbstractTradingEntityMakerJob<BSEGenericActiveModel, BSEActive100Entity> {
 
     private static final Logger LOGGER = Logger.getLogger(BSEActive100Job.class.getName());
@@ -21,9 +23,9 @@ public class BSEActive100Job extends AbstractTradingEntityMakerJob<BSEGenericAct
 
     @Override
     public List<BSEGenericActiveModel> getDataFromSource() {
-        BSEActive100Parser moneyControlBSEActive100Parser = new BSEActive100Parser();
-        List<BSEGenericActiveModel> moneyControlBSEActive100Models = moneyControlBSEActive100Parser.parse();
-        return moneyControlBSEActive100Models;
+        BSEActive100Parser bseActive100Parser = new BSEActive100Parser();
+        List<BSEGenericActiveModel> bseActive100Models = bseActive100Parser.parse();
+        return bseActive100Models;
     }
 
     @Override
@@ -60,16 +62,22 @@ public class BSEActive100Job extends AbstractTradingEntityMakerJob<BSEGenericAct
             }
 
             try {
-                value = format.parse(bseActive100Model.getLastPrice());
-                String lastPrice = String.valueOf(value.doubleValue());
-                bseActive100Entity.setLastPrice(lastPrice);
-                if (bseActive100Entity.isNewEntity()) {
-                    bseActive100Entity.setLastPriceMovement(lastPrice);
-                } else {
-                    String lastPriceMovement = bseActive100Entity.getLastPriceMovement();
-                    if(!lastPriceMovement.contains(lastPrice)) {
-                        bseActive100Entity.setLastPriceMovement(String.format("%s -> %s", lastPriceMovement, lastPrice));
+                String lastPrice = bseActive100Model.getLastPrice();
+                if(null != lastPrice && !"".equals(lastPrice)){
+                    value = format.parse(lastPrice);
+                    lastPrice = String.valueOf(value.doubleValue());
+                    bseActive100Entity.setLastPrice(lastPrice);
+                    if (bseActive100Entity.isNewEntity()) {
+                        bseActive100Entity.setLastPriceMovement(lastPrice);
+                    } else {
+                        String lastPriceMovement = bseActive100Entity.getLastPriceMovement();
+                        if(!lastPriceMovement.contains(lastPrice)) {
+                            bseActive100Entity.setLastPriceMovement(String.format("%s -> %s", lastPriceMovement, lastPrice));
+                        }
                     }
+                } else {
+                    LOGGER.log(Level.SEVERE, "LAST PRICE : is found to be null or empty... setting last price to 0.0");
+                    bseActive100Entity.setLastPrice(String.valueOf(0.00));
                 }
             } catch (ParseException parseException) {
                 LOGGER.log(Level.SEVERE, parseException.getMessage(), parseException);
