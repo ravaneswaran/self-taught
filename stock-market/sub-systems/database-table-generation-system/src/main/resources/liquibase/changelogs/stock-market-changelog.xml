@@ -21,6 +21,5 @@
     <include relativeToChangelogFile="true" file="holidays-changelog.xml"/>
     <include relativeToChangelogFile="true" file="bse-sensex-changelog.xml"/>
     <include relativeToChangelogFile="true" file="stock-base-changelog.xml"/>
-    <include relativeToChangelogFile="true" file="bse-only-buyers-changelog.xml"/>
 
 </databaseChangeLog>
