@@ -2,10 +2,10 @@ package rave.code.quartz.scheduler.misc;
 
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
-import rave.code.quartz.enums.Group;
+import rave.code.quartz.enums.*;
+import rave.code.quartz.enums.CronExpression;
 import rave.code.quartz.job.moneycontrol.misc.StockBaseJob;
 import rave.code.quartz.scheduler.AbstractQuartzScheduler;
-import rave.code.quartz.enums.CronExpression;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,13 +40,13 @@ public class StockBaseScheduler extends AbstractQuartzScheduler {
             }
 
             JobDetail stockBaseJobDetail = newJob(StockBaseJob.class)
-                    .withIdentity("StockBaseJob", Group.MISCELLANEOUS.toString())
+                    .withIdentity(JobName.BSE_STOCK_BASE_JOB_NAME.get(), Group.MISCELLANEOUS.toString())
                     .build();
 
             Trigger stockBaseJobTrigger = newTrigger()
-                    .withIdentity("StockBaseJobTrigger", Group.MISCELLANEOUS.toString())
+                    .withIdentity(TriggerName.BSE_STOCK_BASE_TRIGGER_NAME.get(), Group.MISCELLANEOUS.toString())
                     .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.AT_4PM_MONDAY_TO_FRIDAY.toString()))
-                    .withPriority(AbstractQuartzScheduler.HIGH_PRIORITY)
+                    .withPriority(Priorities.HIGH.get())
                     .build();
             try {
                 scheduler.scheduleJob(stockBaseJobDetail, stockBaseJobTrigger);

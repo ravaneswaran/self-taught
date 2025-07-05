@@ -2,11 +2,11 @@ package rave.code.quartz.scheduler.trading;
 
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
-import rave.code.quartz.enums.Group;
+import rave.code.quartz.enums.*;
+import rave.code.quartz.enums.CronExpression;
 import rave.code.quartz.job.moneycontrol.trading.BSEPriceShockersJob;
 import rave.code.quartz.job.moneycontrol.trading.BSEVolumeShockersJob;
 import rave.code.quartz.scheduler.AbstractQuartzScheduler;
-import rave.code.quartz.enums.CronExpression;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,21 +36,21 @@ public class XXXShockerScheduler extends AbstractQuartzScheduler {
             }
 
             JobDetail bsePriceShockersJobDetail = newJob(BSEPriceShockersJob.class)
-                    .withIdentity("PriceShockersJob", Group.TRADING.toString())
+                    .withIdentity(JobName.BSE_PRICE_SHOCKERS_JOB_NAME.get(), Group.TRADING.toString())
                     .build();
             JobDetail bseVolumeShockersJobDetail = newJob(BSEVolumeShockersJob.class)
-                    .withIdentity("VolumeShockersJob", Group.TRADING.toString())
+                    .withIdentity(JobName.BSE_VOLUME_SHOCKERS_JOB_NAME.get(), Group.TRADING.toString())
                     .build();
 
             Trigger bsePriceShockersJobTrigger = newTrigger()
-                    .withIdentity("PriceShockersJobTrigger", Group.TRADING.toString())
+                    .withIdentity(TriggerName.BSE_PRICE_SHOCKERS_TRIGGER_NAME.get(), Group.TRADING.toString())
                     .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
-                    .withPriority(AbstractQuartzScheduler.MID_PRIORITY)
+                    .withPriority(Priorities.MID.get())
                     .build();
             Trigger bseVolumeShockersJobTrigger = newTrigger()
-                    .withIdentity("VolumeShockersJobTrigger", Group.TRADING.toString())
+                    .withIdentity(TriggerName.BSE_VOLUME_SHOCKERS_TRIGGER_NAME.get(), Group.TRADING.toString())
                     .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
-                    .withPriority(AbstractQuartzScheduler.HIGH_PRIORITY)
+                    .withPriority(Priorities.HIGH.get())
                     .build();
 
             try {

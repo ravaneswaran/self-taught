@@ -2,8 +2,8 @@ package rave.code.quartz.scheduler.misc;
 
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
+import rave.code.quartz.enums.*;
 import rave.code.quartz.enums.CronExpression;
-import rave.code.quartz.enums.Group;
 import rave.code.quartz.job.moneycontrol.misc.BSESensexJob;
 import rave.code.quartz.scheduler.AbstractQuartzScheduler;
 
@@ -40,13 +40,13 @@ public class SensexScheduler extends AbstractQuartzScheduler {
             }
 
             JobDetail sensexJobDetail = newJob(BSESensexJob.class)
-                    .withIdentity("SensexJob", Group.MISCELLANEOUS.toString())
+                    .withIdentity(JobName.BSE_SENSEX_JOB_NAME.get(), Group.MISCELLANEOUS.toString())
                     .build();
 
             Trigger sensexJobTrigger = newTrigger()
-                    .withIdentity("SensexJobTrigger", Group.MISCELLANEOUS.toString())
+                    .withIdentity(TriggerName.BSE_SENSEX_TRIGGER_NAME.get(), Group.MISCELLANEOUS.toString())
                     .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
-                    .withPriority(AbstractQuartzScheduler.HIGH_PRIORITY)
+                    .withPriority(Priorities.HIGH.get())
                     .build();
             try {
                 scheduler.scheduleJob(sensexJobDetail, sensexJobTrigger);

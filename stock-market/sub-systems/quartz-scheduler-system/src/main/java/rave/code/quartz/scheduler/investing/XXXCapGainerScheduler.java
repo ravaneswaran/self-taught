@@ -2,11 +2,11 @@ package rave.code.quartz.scheduler.investing;
 
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
-import rave.code.quartz.enums.Group;
+import rave.code.quartz.enums.*;
+import rave.code.quartz.enums.CronExpression;
 import rave.code.quartz.job.moneycontrol.investing.BSEMidCapGainerJob;
 import rave.code.quartz.job.moneycontrol.investing.BSESmallCapGainerJob;
 import rave.code.quartz.scheduler.AbstractQuartzScheduler;
-import rave.code.quartz.enums.CronExpression;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,23 +42,22 @@ public class XXXCapGainerScheduler extends AbstractQuartzScheduler {
             }
 
             JobDetail bseMidCapGainerJob = newJob(BSEMidCapGainerJob.class)
-                    .withIdentity("BSEMidCapGainer", Group.INVESTING.toString())
+                    .withIdentity(JobName.BSE_MID_CAP_GAINER_JOB_NAME.get(), Group.INVESTING.toString())
                     .build();
             JobDetail bseSmallCapGainerJob = newJob(BSESmallCapGainerJob.class)
-                    .withIdentity("BSESmallCapGainer", Group.INVESTING.toString())
+                    .withIdentity(JobName.BSE_SMALL_CAP_GAINER_JOB_NAME.get(), Group.INVESTING.toString())
                     .build();
 
             Trigger bseMidCapGainerJobTrigger = newTrigger()
-                    .withIdentity("BSEMidCapGainer", Group.INVESTING.toString())
+                    .withIdentity(TriggerName.BSE_MID_CAP_GAINER_TRIGGER_NAME.get(), Group.INVESTING.toString())
                     .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
-                    .withPriority(AbstractQuartzScheduler.MID_PRIORITY)
+                    .withPriority(Priorities.HIGH.get())
                     .build();
             Trigger bseSmallCapGainerJobTrigger = newTrigger()
-                    .withIdentity("BSESmallCapGainer", Group.INVESTING.toString())
+                    .withIdentity(TriggerName.BSE_SMALL_CAP_GAINER_TRIGGER_NAME.get(), Group.INVESTING.toString())
                     .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
-                    .withPriority(AbstractQuartzScheduler.HIGH_PRIORITY)
+                    .withPriority(Priorities.HIGH.get())
                     .build();
-
 
             try {
                 scheduler.scheduleJob(bseSmallCapGainerJob, bseSmallCapGainerJobTrigger);

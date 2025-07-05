@@ -2,12 +2,12 @@ package rave.code.quartz.scheduler.trading;
 
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
-import rave.code.quartz.enums.Group;
+import rave.code.quartz.enums.*;
+import rave.code.quartz.enums.CronExpression;
 import rave.code.quartz.job.moneycontrol.trading.BSEActive100Job;
 import rave.code.quartz.job.moneycontrol.trading.BSEActive200Job;
 import rave.code.quartz.job.moneycontrol.trading.BSEActive500Job;
 import rave.code.quartz.scheduler.AbstractQuartzScheduler;
-import rave.code.quartz.enums.CronExpression;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,29 +23,29 @@ public class ActiveXXXScheduler extends AbstractQuartzScheduler {
     public void scheduleJob() {
 
         JobDetail bseActive100JobDetail = newJob(BSEActive100Job.class)
-                .withIdentity("Active100Job", Group.TRADING.toString())
+                .withIdentity(JobName.BSE_ACTIVE_100_JOB_NAME.get(), Group.TRADING.toString())
                 .build();
         JobDetail bseActive200JobDetail = newJob(BSEActive200Job.class)
-                .withIdentity("Active200Job", Group.TRADING.toString())
+                .withIdentity(JobName.BSE_ACTIVE_200_JOB_NAME.get(), Group.TRADING.toString())
                 .build();
         JobDetail bseActive500JobDetail = newJob(BSEActive500Job.class)
-                .withIdentity("Active500Job", Group.TRADING.toString())
+                .withIdentity(JobName.BSE_ACTIVE_500_JOB_NAME.get(), Group.TRADING.toString())
                 .build();
 
         Trigger bseActive100JobTrigger = newTrigger()
-                .withIdentity("Active100JobTrigger", Group.TRADING.toString())
+                .withIdentity(TriggerName.BSE_ACTIVE_100_TRIGGER_NAME.get(), Group.TRADING.toString())
                 .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
-                //.withPriority(AbstractQuartzScheduler.LOW_PRIORITY)
+                .withPriority(Priorities.LOW.get())
                 .build();
         Trigger bseActive200JobTrigger = newTrigger()
-                .withIdentity("Active200JobTrigger", Group.TRADING.toString())
+                .withIdentity(TriggerName.BSE_ACTIVE_200_TRIGGER_NAME.get(), Group.TRADING.toString())
                 .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
-                //.withPriority(AbstractQuartzScheduler.MID_PRIORITY)
+                .withPriority(Priorities.MID.get())
                 .build();
         Trigger bseActive500JobTrigger = newTrigger()
-                .withIdentity("Active500JobTrigger", Group.TRADING.toString())
+                .withIdentity(TriggerName.BSE_ACTIVE_500_TRIGGER_NAME.get(), Group.TRADING.toString())
                 .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
-                //.withPriority(AbstractQuartzScheduler.HIGH_PRIORITY)
+                .withPriority(Priorities.HIGH.get())
                 .build();
 
         SchedulerFactory schedulerFactory = new StdSchedulerFactory();
