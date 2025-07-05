@@ -41,7 +41,7 @@ public class HolidayMailerJob extends AbstractQuartzJob {
         try {
             int noOfBytesRead = inputStream.read(bytes);
             if(-1 < noOfBytesRead){
-                mailContent = new String(bytes);
+                mailContent = new String(bytes).trim();
             }
         } catch (IOException ioException) {
             LOGGER.log(Level.SEVERE, ioException.getMessage(), ioException);
