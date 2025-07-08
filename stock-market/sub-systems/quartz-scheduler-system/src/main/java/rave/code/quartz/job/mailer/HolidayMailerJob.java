@@ -28,6 +28,7 @@ public class HolidayMailerJob extends AbstractQuartzJob {
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
+
         Date toDate = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMMM dd, YYYY");
         String formattedToDate = simpleDateFormat.format(toDate);
@@ -35,25 +36,28 @@ public class HolidayMailerJob extends AbstractQuartzJob {
         HolidayDataAccess stockMarketHolidayDataAccess = new HolidayDataAccess();
         List<HolidayEntity> entities = stockMarketHolidayDataAccess.findAll();
 
-        String mailContent = "";
-        byte[] bytes = new byte[500];
-        InputStream inputStream = this.getClass().getResourceAsStream("/holiday_mail.html");
-        try {
-            int noOfBytesRead = inputStream.read(bytes);
-            if(-1 < noOfBytesRead){
-                mailContent = new String(bytes).trim();
-            }
-        } catch (IOException ioException) {
-            LOGGER.log(Level.SEVERE, ioException.getMessage(), ioException);
-        }
-
-        ElectronicMail electronicMail = new ElectronicMail();
         for (HolidayEntity entity : entities) {
             if (formattedToDate.trim().equals(entity.getHolidate().trim())) {
-                LOGGER.log(Level.INFO, "SENDING MAIL....");
-                mailContent = String.format(mailContent, entity.getHoliday(), entity.getDescription());
+
+                String mailContent = "";
+                byte[] bytes = new byte[500];
+                InputStream inputStream = this.getClass().getResourceAsStream("/holiday_mail.html");
                 try {
-                    electronicMail.sendMail("noreply@stockmarket.con", "ravaneswaran@gmail.com", "Holiday Remainder", mailContent);
+                    int noOfBytesRead = inputStream.read(bytes);
+                    if(-1 < noOfBytesRead){
+                        mailContent = new String(bytes).trim();
+                    }
+                } catch (IOException ioException) {
+                    LOGGER.log(Level.SEVERE, ioException.getMessage(), ioException);
+                }
+
+                mailContent = String.format(mailContent, entity.getHoliday(), entity.getDescription());
+
+                try {
+                    LOGGER.log(Level.INFO, "SENDING MAIL....");
+                    ElectronicMail electronicMail = new ElectronicMail();
+                    electronicMail.connect("mail.smtp.host", "2005", "", "");
+                    electronicMail.sendMail("noreply@stockmarket.com", "ravaneswaran@gmail.com", "Holiday Remainder", mailContent);
                 } catch (MessagingException messagingException) {
                     LOGGER.log(Level.SEVERE, messagingException.getMessage(), messagingException);
                 }
