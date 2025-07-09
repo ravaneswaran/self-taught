@@ -15,6 +15,7 @@
         <module>razorpay-payment-gateway-web-integration</module>
         <module>stock-market</module>
         <module>spring-webflux-tutor</module>
+        <module>bhairava-siddhar-trust</module>
     </modules>
 
 </project>
