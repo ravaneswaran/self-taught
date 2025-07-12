@@ -9,6 +9,9 @@ razorpay-payment-gateway-web-integration/tmp/
 utilities/.mvn/
 utilities/target/
 
+payment-gateway-integration-tutor/razorpay/target
+payment-gateway-integration-tutor/paytm/target
+
 stock-market/sub-systems/data-access-system/target/
 stock-market/sub-systems/source-data-model-system/target/
 stock-market/sub-systems/source-data-parser-system/target/
