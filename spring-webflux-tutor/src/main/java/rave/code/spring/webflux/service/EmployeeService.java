@@ -13,7 +13,7 @@ public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    public Employee findBy(String id) {
+    public Employee findEmployeeById(String id) {
         return this.employeeRepository.findBy(id);
     }
 

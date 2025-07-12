@@ -22,7 +22,7 @@ public class EmployeeController {
 
     @GetMapping("/{id}")
     public Mono<Employee> getEmployeeById(@PathVariable String id) {
-        return Mono.just(this.employeeService.findBy(id));
+        return Mono.just(this.employeeService.findEmployeeById(id));
     }
 
     @GetMapping
