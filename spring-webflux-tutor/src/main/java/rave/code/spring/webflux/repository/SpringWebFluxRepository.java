@@ -45,9 +45,9 @@ public abstract class SpringWebFluxRepository<T> {
     }
 
     public T save(T entity) {
-        this.entityManager.getTransaction().begin();
+        //this.entityManager.getTransaction().begin();
         this.entityManager.persist(entity);
-        this.entityManager.getTransaction().commit();
+        //this.entityManager.getTransaction().commit();
         return entity;
     }
 
@@ -65,8 +65,7 @@ public abstract class SpringWebFluxRepository<T> {
         return entity;
     }
 
-    // method introduced specially to move the data to the history tables...
-    public List findAll() {
+    public List<T>findAll() {
         EntityManager entityManager = this.getEntityManager();
         String queryString = "from ? entity".replace("?", type.getName());
         Query query = entityManager.createQuery(queryString, type);
