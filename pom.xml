@@ -10,12 +10,8 @@
     <name>self-taught</name>
 
     <modules>
-        <module>java-design-patterns</module>
-        <module>candle-stick-patterns</module>
         <module>razorpay-payment-gateway-web-integration</module>
         <module>utilities</module>
-        <module>software-testing-quick-start-guide</module>
-        <module>money-control-webs</module>
         <module>stock-market</module>
         <module>android-apps</module>
     </modules>
