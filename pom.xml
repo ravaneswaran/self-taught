@@ -14,7 +14,7 @@
         <module>utilities</module>
         <module>stock-market</module>
         <module>android-apps</module>
-        <module>payment-gateway-integration</module>
+        <module>payment-gateway-integration-tutor</module>
     </modules>
 
 </project>
