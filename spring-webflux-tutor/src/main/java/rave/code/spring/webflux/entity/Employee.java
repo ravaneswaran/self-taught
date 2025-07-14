@@ -1,35 +1,25 @@
 package rave.code.spring.webflux.entity;
 
+import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.mapping.Table;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "employee")
+@Table
 public class Employee {
 
-    @Id
-    @Column(name = "id")
-    private String id;
-
-    @Column(name = "name")
+    @PrimaryKey
+    private int id;
     private String name;
+    private String address;
+    private String email;
+    private int age;
 
-    public String getId() {
-        return id;
-    }
+    public Employee(){}
 
-    public void setId(String id) {
+    public Employee(int id, String name, String address, String email, int age){
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
         this.name = name;
+        this.address = address;
+        this.email = email;
+        this.age = age;
     }
 }

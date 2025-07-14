@@ -1,56 +1,50 @@
 package rave.code.spring.webflux.controller;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import rave.code.spring.webflux.entity.Employee;
-import rave.code.spring.webflux.service.impl.EmployeeService;
+import rave.code.spring.webflux.service.EmployeeService;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/employee")
+@RequestMapping("employee")
 public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
 
-    @RequestMapping(value = {"/create", "/"}, method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody Employee e) {
-        this.employeeService.create(e);
+    @PostConstruct
+    public void saveEmployees() {
+        List<Employee> employees = new ArrayList<>();
+        employees.add(new Employee(123, "John Doe", "Delaware", "jdoe@xyz.com", 31));
+        employees.add(new Employee(324, "Adam Smith", "North Carolina", "asmith@xyz.com", 43));
+        employees.add(new Employee(355, "Kevin Dunner", "Virginia", "kdunner@xyz.com", 24));
+        employees.add(new Employee(643, "Mike Lauren", "New York", "mlauren@xyz.com", 41));
+        this.employeeService.initializeEmployees(employees);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Mono<Employee>> findById(@PathVariable("id") Integer id) {
-        Mono<Employee> e = this.employeeService.findById(id);
-        return new ResponseEntity<Mono<Employee>>(e, HttpStatus.OK);
+    @GetMapping("/list")
+    public Flux<Employee> getAllEmployees() {
+        Flux<Employee> employees = employeeService.getAllEmployees();
+        return employees;
     }
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ResponseEntity<Flux<List<Employee>>> listAllEmployees() {
-        Flux<List<Employee>> e = this.employeeService.listAllEmployees();
-        return new ResponseEntity<Flux<List<Employee>>>(e, HttpStatus.OK);
+    @GetMapping("/{id}")
+    public Mono<Employee> getEmployeeById(@PathVariable int id) {
+        return employeeService.getEmployeeById(id);
     }
 
-    @RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
-    public Flux<Employee> findByName(@PathVariable("name") String name) {
-        return this.employeeService.findByName(name);
-    }
-
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    @ResponseStatus(HttpStatus.OK)
-    public Mono<Employee> update(@RequestBody Employee e) {
-        return this.employeeService.update(e);
-    }
-
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-    @ResponseStatus(HttpStatus.OK)
-    public void delete(@PathVariable("id") Integer id) {
-        this.employeeService.delete(id).subscribe();
+    @GetMapping("/filterByAge/{age}")
+    public Flux<Employee> getEmployeesFilterByAge(@PathVariable int age) {
+        return employeeService.getEmployeesFilterByAge(age);
     }
 
 }
