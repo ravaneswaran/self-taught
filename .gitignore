@@ -27,6 +27,11 @@ stock-market/sub-systems/quartz-scheduler-system/quartz-scheduler-system.iml
 stock-market/sub-systems/sub-systems.iml
 stock-market/web-systems/web-systems.iml
 
+springboot-universe/target
+springboot-universe/springboot-with-cassandra/target
+springboot-universe/springboot-with-kafka/target
+springboot-universe/springboot-with-mongodb/target
+
 
 
 
