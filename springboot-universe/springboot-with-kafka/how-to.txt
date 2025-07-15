@@ -1,0 +1,53 @@
+Download the Kafka Server
+=========================
+Download the latest version of kafka server from the download link given below....
+https://www.apache.org/dyn/closer.cgi?path=/kafka/4.0.0/kafka_2.13-4.0.0.tgz
+
+Extract the package to your preferred location.
+
+How to start kafka server
+=========================
+1. Create a file called "start-kafka.sh" at the bin/ directory of the kafka server
+2. Copy & Paste the above lines of code in "start-kafka.sh"
+KAFKA_CLUSTER_ID="$(./kafka-storage.sh random-uuid)"
+./kafka-storage.sh format --standalone -t $KAFKA_CLUSTER_ID -c ../config/server.properties
+./kafka-server-start.sh ../config/server.properties
+
+3. chmod 755 start-kafka.sh
+
+Now you are ready to start the server from your terminal.
+
+Creating a topic
+================
+Move to bin directory of kafka server using terminal and fire the command below to create a topic named "quickstart-events"
+
+./kafka-topics.sh --create --topic quickstart-events --bootstrap-server localhost:9092
+
+Description about the topic
+===========================
+Fire the command below to know about the topic "quickstart-events"
+
+./kafka-topics.sh --describe --topic quickstart-events --bootstrap-server localhost:9092
+
+Producing Events
+================
+Fire the command below to create/produce the events
+
+./kafka-console-producer.sh --topic quickstart-events --bootstrap-server localhost:9092
+
+the above command would open the command prompt to create the events
+
+Consuming Events
+================
+Fire the command below in another terminal window to consume the events
+
+./kafka-console-consumer.sh --topic quickstart-events --from-beginning --bootstrap-server localhost:9092
+
+When ever the event is created/produced in the publisher window, you could see those events in the consumer window too...
+
+
+
+
+
+
+
