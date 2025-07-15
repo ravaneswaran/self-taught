@@ -14,6 +14,7 @@
         <module>springboot-with-kafka</module>
         <module>springboot-with-mongodb</module>
         <module>springboot-with-rabbit-mq</module>
+        <module>springboot-with-neo4j</module>
     </modules>
 
 </project>

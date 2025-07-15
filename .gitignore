@@ -32,6 +32,7 @@ springboot-universe/springboot-with-cassandra/target
 springboot-universe/springboot-with-kafka/target
 springboot-universe/springboot-with-mongodb/target
 springboot-universe/springboot-with-rabbit-mq/target
+springboot-universe/springboot-with-neo4j/target
 
 
 
