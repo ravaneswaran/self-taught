@@ -13,6 +13,7 @@
         <module>springboot-with-cassandra</module>
         <module>springboot-with-kafka</module>
         <module>springboot-with-mongodb</module>
+        <module>springboot-with-rabbit-mq</module>
     </modules>
 
 </project>
