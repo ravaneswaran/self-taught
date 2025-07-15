@@ -1,4 +1,4 @@
-package rave.code.web.controller;
+package rave.code.kafka.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
