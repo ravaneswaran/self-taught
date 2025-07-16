@@ -1,0 +1,16 @@
+To Create a User
+================
+curl -XPOST -H "Content-type: application/json" -d '{"id":"1", "name":"Ravaneswaran Chinnasamy", "email": "rave@gmail.com"}' 'http://localhost:8080/api/users/create'
+
+To List Users
+=============
+curl -XGET -H "Content-type: application/json" 'http://localhost:8080/api/users/list'
+
+To Get a User
+=============
+curl -XGET -H "Content-type: application/json" 'http://localhost:8080/api/users/1'
+
+To Delete a User
+================
+curl -XDELETE -H "Content-type: application/json" 'http://localhost:8080/api/users/2'
+
