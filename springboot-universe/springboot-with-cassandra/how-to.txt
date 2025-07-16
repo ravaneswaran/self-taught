@@ -1,0 +1,62 @@
+1. Installing cassandra docker image
+====================================
+$ sudo docker pull cassandra
+
+
+Using default tag: latest
+latest: Pulling from library/cassandra
+1d387567261e: Pull complete
+b8f81c124c7b: Pull complete
+1791a8ed1ca8: Pull complete
+b0d063b69b5d: Pull complete
+1824101659b5: Pull complete
+30ed8b679407: Pull complete
+a988f17f5830: Pull complete
+46a67a43fb41: Pull complete
+027ce3c09a1f: Pull complete
+a24f167b5f7b: Pull complete
+Digest: sha256:218e0cfc96ee38dd561092ab56b006f51ef8859e297b054c9bf8410fc0b4938e
+Status: Downloaded newer image for cassandra:latest
+docker.io/library/cassandra:latest
+
+
+2. To List the docker images
+============================
+$ sudo docker images
+
+REPOSITORY    TAG            IMAGE ID       CREATED        SIZE
+cassandra     latest         7ddf1d948166   3 months ago   381MB
+
+3. To run the docker image
+==========================
+$ sudo docker run -p 7000:7000 -p 7001:7001 -p 7199:7199 -p 9160:9160 -p 9042:9042 --name cassandra -d cassandra:latest
+or
+$ sudo docker start cassandra
+
+4. Check the container running or not
+=====================================
+$ sudo docker ps
+
+5. To get into docker container
+===============================
+$ sudo docker exec -it cassandra bash
+
+6. Connect to cqlsh
+===================
+# cqlsh
+
+7. Creating a key space
+=======================
+cqlsh> CREATE KEYSPACE springboot WITH replication = {'class':'SimpleStrategy', 'replication_factor':1};
+
+8. Describing the Key spaces
+============================
+cqlsh> DESC KEYSPACES;
+
+9. Using the keyspace
+=====================
+cqlsh> use springboot;
+
+9. Creating the table
+======================
+cqlsh> CREATE TABLE book(id INT PRIMARY KEY, title TEXT, description TEXT, author TEXT, year INT, dateCreated TEXT);
