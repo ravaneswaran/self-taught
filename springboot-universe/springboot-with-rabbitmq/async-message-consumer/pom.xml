@@ -9,11 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>rave.code</groupId>
-    <artifactId>springboot-with-rabbit-mq</artifactId>
+    <artifactId>async-message-consumer</artifactId>
     <version>1.0-SNAPSHOT</version>
-
-    <name>springboot-with-rabbit-mq</name>
-    <!-- FIXME change it to the project's website -->
+    <name>async-message-consumer</name>
     <url>http://www.example.com</url>
 
     <properties>
@@ -28,7 +26,30 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit-test</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
