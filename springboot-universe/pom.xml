@@ -15,6 +15,7 @@
         <module>springboot-with-mongodb</module>
         <module>springboot-with-rabbitmq</module>
         <module>springboot-with-neo4j</module>
+        <module>springboot-with-apache-camel</module>
     </modules>
 
 </project>

@@ -35,6 +35,7 @@ springboot-universe/springboot-with-rabbitmq/target
 springboot-universe/springboot-with-rabbitmq/async-message-consumer/target
 springboot-universe/springboot-with-rabbitmq/async-message-producer/target
 springboot-universe/springboot-with-neo4j/target
+springboot-universe/springboot-with-apache-camel/target
 
 
 
