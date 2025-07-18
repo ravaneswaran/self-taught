@@ -16,6 +16,7 @@
         <module>springboot-with-rabbitmq</module>
         <module>springboot-with-neo4j</module>
         <module>springboot-with-apache-camel</module>
+        <module>springboot-with-activemq</module>
     </modules>
 
 </project>

@@ -3,6 +3,7 @@ package rave.code.camel.routes;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jackson.JacksonDataFormat;
 import org.apache.camel.model.rest.RestBindingMode;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -12,6 +13,7 @@ import rave.code.camel.service.BookService;
 @Component
 public class BookRoute extends RouteBuilder {
 
+    @Autowired
     private final Environment env;
 
     public BookRoute(Environment env) {
@@ -23,14 +25,14 @@ public class BookRoute extends RouteBuilder {
         restConfiguration()
                 .contextPath(env.getProperty("camel.component.servlet.mapping.contextPath", "/rest/*"))
                 .apiContextPath("/api-doc")
-                .apiProperty("api.title", "Spring Boot Camel Postgres Rest API.")
+                .apiProperty("api.title", "Spring Boot Camel Mysql Rest API.")
                 .apiProperty("api.version", "1.0")
                 .apiProperty("cors", "true")
                 .apiContextRouteId("doc-api")
                 .port(env.getProperty("server.port", "8080"))
                 .bindingMode(RestBindingMode.json);
 
-        rest("book")
+        rest("/book")
                 .consumes(MediaType.APPLICATION_JSON_VALUE)
                 .produces(MediaType.APPLICATION_JSON_VALUE)
                 .get("/{name}").route()
@@ -55,11 +57,9 @@ public class BookRoute extends RouteBuilder {
         from("{{route.findAllBooks}}")
                 .bean(BookService.class, "findAllBooks");
 
-
         from("{{route.saveBook}}")
                 .log("Received Body ${body}")
                 .bean(BookService.class, "addBook(${body})");
-
 
         from("{{route.removeBook}}")
                 .log("Received header : ${header.bookId}")
