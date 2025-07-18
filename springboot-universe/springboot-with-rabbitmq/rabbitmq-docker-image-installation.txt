@@ -1,0 +1,15 @@
+To pull the docker image from the hub
+======================================
+sudo docker pull rabbitmq:3-management
+
+To run the rabbitmq container
+=============================
+sudo docker run -d -p 5672:5672 rabbitmq:3-management
+
+To get the rabbitmq container id
+================================
+sudo docker ps
+
+To stop the rabbitmq container
+==============================
+sudo docker stop <container-id>
