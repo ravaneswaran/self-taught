@@ -18,6 +18,7 @@
         <module>springboot-with-apache-camel</module>
         <module>springboot-with-activemq</module>
         <module>springboot-with-openai</module>
+        <module>springboot-with-couchbase</module>
     </modules>
 
 </project>
