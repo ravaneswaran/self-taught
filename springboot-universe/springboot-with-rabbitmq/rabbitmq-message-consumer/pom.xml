@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>rave.code</groupId>
-    <artifactId>async-message-consumer</artifactId>
+    <artifactId>rabbitmq-message-consumer</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>async-message-consumer</name>
+    <name>rabbitmq-message-consumer</name>
     <url>http://www.example.com</url>
 
     <properties>

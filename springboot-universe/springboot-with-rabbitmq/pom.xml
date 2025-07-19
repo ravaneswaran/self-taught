@@ -11,8 +11,8 @@
     <url>http://www.example.com</url>
 
     <modules>
-        <module>async-message-producer</module>
-        <module>async-message-consumer</module>
+        <module>rabbitmq-message-producer</module>
+        <module>rabbitmq-message-consumer</module>
     </modules>
 
 </project>

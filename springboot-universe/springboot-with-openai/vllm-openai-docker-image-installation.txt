@@ -1,0 +1,15 @@
+To install vllm-openai docker image
+===================================
+$ sudo docker pull vllm:vllm-openai
+
+To run the vllm-openai docker container
+=======================================
+$ sudo docker run --runtime nvidia --gpus all -v ~/.cache/huggingface:/root/.cache/huggingface --env "HUGGING_FACE_HUB_TOKEN=<secret>" -p 8000:8000 --ipc=host vllm/vllm-openai:latest --model mistralai/Mistral-7B-v0.1
+
+To find the container id of vllm-openai
+=======================================
+$ sudo docker ps
+
+To stop the container
+=====================
+$ sudo docker stop <container-id>

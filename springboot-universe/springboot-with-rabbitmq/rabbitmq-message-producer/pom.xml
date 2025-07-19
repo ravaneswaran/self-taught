@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>rave.code</groupId>
-    <artifactId>async-message-producer</artifactId>
+    <artifactId>rabbitmq-message-producer</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>async-message-producer</name>
+    <name>rabbitmq-message-producer</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 

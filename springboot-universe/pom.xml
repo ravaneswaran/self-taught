@@ -17,6 +17,7 @@
         <module>springboot-with-neo4j</module>
         <module>springboot-with-apache-camel</module>
         <module>springboot-with-activemq</module>
+        <module>springboot-with-openai</module>
     </modules>
 
 </project>
