@@ -1,0 +1,18 @@
+To configure the couchbase server follow the methods below....
+
+http://localhost:8091/ui/index.html#/query/workbench?commonBucket=user-bucket&scenarioZoom=minute&scenario=23ylpoih2
+
+Click on set up a new cluster
+
+Provide the cluster name
+Create the Admin User
+create password & Confirm password
+Click on Accept Terms
+Check Accept terms checkbox and click on "Configure Disk, Memory, Services" button
+Click on Save & Finish
+
+On the DashBoard
+Click on bucket link
+Click Add Bucket
+Provide the name of the Bucket, in this case it is "user-bucket"
+Click on Add Bucket
