@@ -1,0 +1,11 @@
+To execute command inside the container of mysql
+===========================================z=====
+$ sudo docker exec -it <container-id> bash
+
+To create the database
+======================
+# mysql -u root -p
+* provide the password "admin" to get into mysql command prompt
+
+mysql> create database spring_boot;
+
