@@ -3,6 +3,7 @@ self-taught.ipr
 self-taught.iws
 android-apps/android-apps.iml
 razorpay-payment-gateway-web-integration/razorpay-payment-gateway-web-integration.iml
+
 springboot-universe/springboot-universe.iml
 springboot-universe/springboot-with-activemq/activemq-message-consumer/activemq-message-consumer.iml
 springboot-universe/springboot-with-activemq/activemq-message-producer/activemq-message-producer.iml
@@ -16,6 +17,7 @@ springboot-universe/springboot-with-rabbitmq/rabbitmq-message-consumer/rabbitmq-
 springboot-universe/springboot-with-rabbitmq/rabbitmq-message-producer/rabbitmq-message-producer.iml
 springboot-universe/springboot-with-rabbitmq/springboot-with-rabbitmq.iml
 springboot-universe/springboot-with-openai/springboot-with-openai.iml
+
 stock-market/stock-market.iml
 stock-market/stock-market.ipr
 stock-market/stock-market.iws
@@ -37,6 +39,7 @@ razorpay-payment-gateway-web-integration/.mvn/
 razorpay-payment-gateway-web-integration/target/
 razorpay-payment-gateway-web-integration/tmp/
 utilities/target/
+
 springboot-universe/target
 springboot-universe/springboot-with-cassandra/target
 springboot-universe/springboot-with-kafka/target
@@ -51,6 +54,13 @@ springboot-universe/springboot-with-activemq/activemq-message-producer/target
 springboot-universe/springboot-with-activemq/activemq-message-consumer/target
 springboot-universe/springboot-with-openai/target
 springboot-universe/springboot-with-couchbase/target
+springboot-universe/springboot-jpa-with-apache-derby/target
+springboot-universe/springboot-jpa-with-mssql/target
+springboot-universe/springboot-jpa-with-mysql/target
+springboot-universe/springboot-jpa-with-oracle/target
+springboot-universe/springboot-jpa-with-sqllite/target
+springboot-universe/springboot-jpa-with-postgres/target
+
 stock-market/sub-systems/ai-system/target/
 stock-market/sub-systems/data-access-system/target/
 stock-market/sub-systems/database-table-generation-system/target/

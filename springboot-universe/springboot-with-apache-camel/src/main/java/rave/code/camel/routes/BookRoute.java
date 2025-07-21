@@ -3,7 +3,6 @@ package rave.code.camel.routes;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jackson.JacksonDataFormat;
 import org.apache.camel.model.rest.RestBindingMode;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -13,7 +12,6 @@ import rave.code.camel.service.BookService;
 @Component
 public class BookRoute extends RouteBuilder {
 
-    @Autowired
     private final Environment env;
 
     public BookRoute(Environment env) {
