@@ -2,7 +2,7 @@ package rave.code.jpa.mysql.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import rave.code.jpa.mysql.entity.User;
+import rave.code.jpa.mysql.entity.Person;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, String>{}
+public interface PersonRepository extends CrudRepository<Person, String>{}

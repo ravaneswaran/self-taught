@@ -2,7 +2,7 @@ package rave.code.jpa.mysql.request;
 
 import java.util.Date;
 
-public class UserRequest {
+public class PersonRequest {
     private String id;
     private String firstName;
     private String lastName;
@@ -10,7 +10,7 @@ public class UserRequest {
     private int age;
     private Date modifiedDate;
 
-    public UserRequest(){
+    public PersonRequest(){
         this.modifiedDate = new Date();
     }
 

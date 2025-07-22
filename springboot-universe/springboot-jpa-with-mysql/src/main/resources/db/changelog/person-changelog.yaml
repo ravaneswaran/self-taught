@@ -1,15 +1,15 @@
 databaseChangeLog:
   - changeSet:
-      id: create-user-table
+      id: create-person-table
       author: Ravaneswaran Chinnasamy
       preConditions:
         - onFail: CONTINUE
         - not:
             - tableExists:
-                tableName: user
+                tableName: person
       changes:
         - createTable:
-            tableName: user
+            tableName: person
             columns:
               - column:
                   name: id
