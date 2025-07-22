@@ -17,14 +17,13 @@
         <module>springboot-with-neo4j</module>
         <module>springboot-with-apache-camel</module>
         <module>springboot-with-activemq</module>
-        <module>springboot-with-openai</module>
         <module>springboot-with-couchbase</module>
         <module>springboot-jpa-with-mysql</module>
         <module>springboot-jpa-with-postgres</module>
         <module>springboot-jpa-with-mssql</module>
         <module>springboot-jpa-with-oracle</module>
         <module>springboot-jpa-with-apache-derby</module>
-        <module>springboot-jpa-with-sqllite</module>
+        <module>springboot-jpa-with-sqlite</module>
     </modules>
 
 </project>

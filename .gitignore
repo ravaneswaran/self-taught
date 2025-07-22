@@ -16,7 +16,8 @@ springboot-universe/springboot-with-neo4j/springboot-with-neo4j.iml
 springboot-universe/springboot-with-rabbitmq/rabbitmq-message-consumer/rabbitmq-message-consumer.iml
 springboot-universe/springboot-with-rabbitmq/rabbitmq-message-producer/rabbitmq-message-producer.iml
 springboot-universe/springboot-with-rabbitmq/springboot-with-rabbitmq.iml
-springboot-universe/springboot-with-openai/springboot-with-openai.iml
+springboot-universe/springboot-jpa-with-sqlite/springboot-jpa-with-sqlite.iml
+springboot-universe/springboot-jpa-with-sqlite/spring_boot.db
 
 stock-market/stock-market.iml
 stock-market/stock-market.ipr
@@ -58,7 +59,7 @@ springboot-universe/springboot-jpa-with-apache-derby/target
 springboot-universe/springboot-jpa-with-mssql/target
 springboot-universe/springboot-jpa-with-mysql/target
 springboot-universe/springboot-jpa-with-oracle/target
-springboot-universe/springboot-jpa-with-sqllite/target
+springboot-universe/springboot-jpa-with-sqlite/target
 springboot-universe/springboot-jpa-with-postgres/target
 
 stock-market/sub-systems/ai-system/target/
