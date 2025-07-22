@@ -22,8 +22,6 @@
         </liquibase.master.changelog.file>
         <database.connection.url>jdbc:sqlite:spring_boot.db</database.connection.url>
         <database.driver>org.sqlite.JDBC</database.driver>
-        <!--<database.username>postgres</database.username>
-        <database.password>postgres</database.password>-->
     </properties>
 
     <dependencies>
@@ -70,9 +68,7 @@
                     <propertyFile>${liquibase.property.file}</propertyFile>
                     <changeLogFile>${liquibase.master.changelog.file}</changeLogFile>
                     <url>${database.connection.url}</url>
-                    <!--<driver>${database.driver}</driver>
-                    <username>${database.username}</username>
-                    <password>${database.password}</password>-->
+                    <driver>${database.driver}</driver>
                 </configuration>
             </plugin>
             <plugin>

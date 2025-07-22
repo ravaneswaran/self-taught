@@ -24,6 +24,8 @@
         <module>springboot-jpa-with-oracle</module>
         <module>springboot-jpa-with-apache-derby</module>
         <module>springboot-jpa-with-sqlite</module>
+        <module>springboot-jpa-with-sybase</module>
+        <module>springboot-jpa-with-db2</module>
     </modules>
 
 </project>

@@ -1,0 +1,15 @@
+To pull and install derby from docker hub
+=========================================
+$ sudo docker pull az82/docker-derby
+
+To run the mysql container
+==========================
+$ sudo docker run -p 1527:1527 --name spring-boot-derby -d az82/docker-derby:latest
+
+To identify the container id of mysql
+=====================================
+$ sudo docker ps
+
+To stop the container
+=====================
+$ sudo docker stop <container-id>

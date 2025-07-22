@@ -18,6 +18,8 @@ springboot-universe/springboot-with-rabbitmq/rabbitmq-message-producer/rabbitmq-
 springboot-universe/springboot-with-rabbitmq/springboot-with-rabbitmq.iml
 springboot-universe/springboot-jpa-with-sqlite/springboot-jpa-with-sqlite.iml
 springboot-universe/springboot-jpa-with-sqlite/spring_boot.db
+springboot-universe/springboot-jpa-with-apache-derby/databasechangelog.csv
+springboot-universe/springboot-jpa-with-apache-derby/derby.log
 
 stock-market/stock-market.iml
 stock-market/stock-market.ipr
@@ -56,6 +58,7 @@ springboot-universe/springboot-with-activemq/activemq-message-consumer/target
 springboot-universe/springboot-with-openai/target
 springboot-universe/springboot-with-couchbase/target
 springboot-universe/springboot-jpa-with-apache-derby/target
+springboot-universe/springboot-jpa-with-apache-derby/spring_boot
 springboot-universe/springboot-jpa-with-mssql/target
 springboot-universe/springboot-jpa-with-mysql/target
 springboot-universe/springboot-jpa-with-oracle/target
