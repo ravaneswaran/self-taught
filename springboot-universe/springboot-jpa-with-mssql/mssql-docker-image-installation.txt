@@ -1,0 +1,15 @@
+To pull and install mssql from docker hub
+=========================================
+$ sudo docker pull mcr.microsoft.com/mssql/server:2022-latest
+
+To run the mssql container
+==========================
+$ sudo docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=$pring_b00t" -p 1433:1433 --name spring-boot-mssql --hostname localhost -d mcr.microsoft.com/mssql/server:2025-latest
+
+To identify the container id of mssql
+=====================================
+$ sudo docker ps
+
+To stop the container
+=====================
+$ sudo docker stop <container-id>

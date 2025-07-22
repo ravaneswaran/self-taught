@@ -1,0 +1,25 @@
+To get all Persons
+==================
+curl -XGET -H "Content-type: application/json" 'http://localhost:8080/person/get/all'
+
+To create a Person
+==================
+curl -XPOST -H "Content-type: application/json" -d '{"firstName":"Ravaneswaran", "lastName":"Chinnasamy", "emailId":"test@test.com", "age":20}' 'http://localhost:8080/person/create'
+curl -XPOST -H "Content-type: application/json" -d '{"firstName":"Namda", "lastName":"Nanda", "emailId":"test@test.com", "age":20}' 'http://localhost:8080/person/create'
+
+To update a Person
+==================
+curl -XPOST -H "Content-type: application/json" -d '{"id":"5714d20d-bec7-4111-aa34-17bb9627546e", "firstName":"Nanda", "lastName":"Kumar", "emailId":"test@test.com", "age":20}' 'http://localhost:8080/person/update'
+/* change the Person id accordingly */
+
+To get all Person
+=================
+curl -XGET -H "Content-type: application/json" 'http://localhost:8080/person/get/all'
+
+To get a Person
+===============
+curl -XGET -H "Content-type: application/json" 'http://localhost:8080/person/get/5714d20d-bec7-4111-aa34-17bb9627546e' /* change the Person id accordingly */
+
+To delete a Person
+==================
+curl -XDELETE -H "Content-type: application/json" 'http://localhost:8080/person/delete/5714d20d-bec7-4111-aa34-17bb9627546e' /* change the Person id accordingly */

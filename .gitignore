@@ -20,6 +20,10 @@ springboot-universe/springboot-jpa-with-sqlite/springboot-jpa-with-sqlite.iml
 springboot-universe/springboot-jpa-with-sqlite/spring_boot.db
 springboot-universe/springboot-jpa-with-apache-derby/databasechangelog.csv
 springboot-universe/springboot-jpa-with-apache-derby/derby.log
+springboot-universe/springboot-jpa-with-hsqldb/spring_boot.db.log
+springboot-universe/springboot-jpa-with-hsqldb/spring_boot.db.properties
+springboot-universe/springboot-jpa-with-hsqldb/spring_boot.db.script
+
 
 stock-market/stock-market.iml
 stock-market/stock-market.ipr
@@ -64,6 +68,9 @@ springboot-universe/springboot-jpa-with-mysql/target
 springboot-universe/springboot-jpa-with-oracle/target
 springboot-universe/springboot-jpa-with-sqlite/target
 springboot-universe/springboot-jpa-with-postgres/target
+springboot-universe/springboot-jpa-with-hsqldb/target
+springboot-universe/springboot-jpa-with-hsqldb/spring_boot.db.tmp
+
 
 stock-market/sub-systems/ai-system/target/
 stock-market/sub-systems/data-access-system/target/

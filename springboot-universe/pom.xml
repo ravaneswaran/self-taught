@@ -26,6 +26,7 @@
         <module>springboot-jpa-with-sqlite</module>
         <module>springboot-jpa-with-sybase</module>
         <module>springboot-jpa-with-db2</module>
+        <module>springboot-jpa-with-hsqldb</module>
     </modules>
 
 </project>
