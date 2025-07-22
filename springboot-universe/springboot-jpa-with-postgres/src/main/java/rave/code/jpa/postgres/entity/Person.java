@@ -1,4 +1,4 @@
-package rave.code.jpa.mysql.entity;
+package rave.code.jpa.postgres.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,8 +9,8 @@ import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "person")
+public class Person {
 
     @Id
     @Column(name="id")
@@ -28,7 +28,7 @@ public class User {
     @Column(name="modified_date")
     private Date modifiedDate;
 
-    public User(){
+    public Person(){
         this.id = UUID.randomUUID().toString();
         Date toDate = new Date();
         this.createdDate = toDate;

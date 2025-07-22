@@ -1,0 +1,9 @@
+To execute command inside the postgres container
+===============================================
+$ sudo docker exec -it <container-id> bash
+
+To create the database
+======================
+# psql -U postgres
+psql> create database spring_boot;
+
