@@ -9,11 +9,11 @@
     <name>springboot-universe</name>
 
     <modules>
-        <module>sql-database</module>
-        <module>no-sql-database</module>
         <module>graph-database</module>
         <module>messaging</module>
+        <module>no-sql-database</module>
         <module>routing</module>
+        <module>sql-database</module>
     </modules>
 
 </project>
