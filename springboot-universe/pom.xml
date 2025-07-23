@@ -6,28 +6,14 @@
     <groupId>rave.code</groupId>
     <artifactId>springboot-universe</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <name>springboot-universe</name>
 
     <modules>
-        <module>springboot-with-cassandra</module>
-        <module>springboot-with-kafka</module>
-        <module>springboot-with-mongodb</module>
-        <module>springboot-with-rabbitmq</module>
-        <module>springboot-with-neo4j</module>
-        <module>springboot-with-apache-camel</module>
-        <module>springboot-with-activemq</module>
-        <module>springboot-with-couchbase</module>
-        <module>springboot-jpa-with-mysql</module>
-        <module>springboot-jpa-with-postgres</module>
-        <module>springboot-jpa-with-mssql</module>
-        <module>springboot-jpa-with-oracle</module>
-        <module>springboot-jpa-with-apache-derby</module>
-        <module>springboot-jpa-with-sqlite</module>
-        <module>springboot-jpa-with-sybase</module>
-        <module>springboot-jpa-with-db2</module>
-        <module>springboot-jpa-with-hsqldb</module>
-        <module>springboot-jpa-with-h2</module>
+        <module>sql-database</module>
+        <module>no-sql-database</module>
+        <module>graph-database</module>
+        <module>messaging</module>
+        <module>routing</module>
     </modules>
 
 </project>

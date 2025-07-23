@@ -8,7 +8,6 @@ import rave.code.cassandra.request.BookRequest;
 import rave.code.cassandra.table.Book;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/book")

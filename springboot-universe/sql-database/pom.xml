@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <groupId>rave.code</groupId>
+    <artifactId>sql-database</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>sql-database</name>
+
+    <modules>
+        <module>springboot-jpa-with-mysql</module>
+        <module>springboot-jpa-with-postgres</module>
+        <module>springboot-jpa-with-mssql</module>
+        <module>springboot-jpa-with-oracle</module>
+        <module>springboot-jpa-with-apache-derby</module>
+        <module>springboot-jpa-with-sqlite</module>
+        <module>springboot-jpa-with-sybase</module>
+        <module>springboot-jpa-with-db2</module>
+        <module>springboot-jpa-with-hsqldb</module>
+        <module>springboot-jpa-with-h2</module>
+    </modules>
+
+</project>
