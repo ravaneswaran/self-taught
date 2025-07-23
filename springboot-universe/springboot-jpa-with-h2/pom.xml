@@ -21,7 +21,6 @@
         <liquibase.master.changelog.file>src/main/resources/liquibase/changelogs/master-changelog.xml
         </liquibase.master.changelog.file>
         <database.connection.url>jdbc:h2:file:./spring_boot</database.connection.url>
-        <database.driver>org.h2.Driverr</database.driver>
         <database.username>sa</database.username>
         <database.password></database.password>
     </properties>
@@ -65,7 +64,6 @@
                 <configuration>
                     <propertyFile>${liquibase.property.file}</propertyFile>
                     <changeLogFile>${liquibase.master.changelog.file}</changeLogFile>
-                    <driver>${database.driver}</driver>
                     <url>${database.connection.url}</url>
                     <username>${database.username}</username>
                     <password>${database.password}</password>
