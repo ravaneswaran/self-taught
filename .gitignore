@@ -65,10 +65,12 @@ springboot-universe/no-sql-database/springboot-with-couchbase/target
 springboot-universe/routing/springboot-with-apache-camel/target
 springboot-universe/sql-database/springboot-jpa-with-apache-derby/target
 springboot-universe/sql-database/springboot-jpa-with-apache-derby/spring_boot
+springboot-universe/sql-database/springboot-jpa-with-db2/target
 springboot-universe/sql-database/springboot-jpa-with-mssql/target
 springboot-universe/sql-database/springboot-jpa-with-mysql/target
 springboot-universe/sql-database/springboot-jpa-with-oracle/target
 springboot-universe/sql-database/springboot-jpa-with-sqlite/target
+springboot-universe/sql-database/springboot-jpa-with-sybase/target
 springboot-universe/sql-database/springboot-jpa-with-postgres/target
 springboot-universe/sql-database/springboot-jpa-with-hsqldb/target
 springboot-universe/sql-database/springboot-jpa-with-hsqldb/spring_boot.db.tmp
