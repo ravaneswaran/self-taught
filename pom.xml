@@ -14,7 +14,7 @@
         <module>utilities</module>
         <module>stock-market</module>
         <module>android-apps</module>
-        <module>springboot-universe</module>
+        <module>springboot-apps</module>
     </modules>
 
 </project>
