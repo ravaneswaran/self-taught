@@ -1,10 +1,14 @@
+https://learn.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-ver17&preserve-view=true&tabs=cli&pivots=cs1-bash
+https://learn.microsoft.com/en-us/sql/linux/sql-server-linux-docker-container-troubleshooting?view=sql-server-ver17&pivots=cs1-bash
+
+
 To pull and install mssql from docker hub
 =========================================
-$ sudo docker pull mcr.microsoft.com/mssql/server:2022-latest
+$ sudo docker pull mcr.microsoft.com/mssql/server:2025-latest
 
 To run the mssql container
 ==========================
-$ sudo docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=$pring_b00t" -p 1433:1433 --name spring-boot-mssql --hostname localhost -d mcr.microsoft.com/mssql/server:2025-latest
+$ sudo docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Welcome@2025" -p 1433:1433 --name spring-boot-mssql --hostname spring-boot-mssql -d mcr.microsoft.com/mssql/server:2025-latest
 
 To identify the container id of mssql
 =====================================

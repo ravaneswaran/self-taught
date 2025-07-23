@@ -1,11 +1,17 @@
 To execute command inside the container of mssql
 ===========================================z=====
-$ sudo docker exec -it <container-id> bash
+$ sudo docker exec -it spring-boot-mssql bash
+$ cd /opt/mssql-tools18/bin
+$ ./sqlcmd -S localhost -U sa -P Welcome@2025 -C
 
 To create the database
 ======================
-# mysql -u root -p
-* provide the password "admin" to get into mysql command prompt
+1> create database spring_boot;
+1> go
 
-mysql> create database spring_boot;
+To view the database created
+============================
+1> SELECT name FROM sys.databases;
+1> go
+
 
