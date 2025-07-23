@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -9,9 +8,10 @@
         <version>3.5.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <artifactId>springboot-jpa-with-sybase</artifactId>
+    <groupId>rave.code</groupId>
+    <artifactId>springboot-jpa-with-h2</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>springboot-jpa-with-sybase</name>
+    <name>springboot-jpa-with-h2</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,10 +20,10 @@
         <liquibase.property.file>src/main/resources/liquibase/liquibase.properties</liquibase.property.file>
         <liquibase.master.changelog.file>src/main/resources/liquibase/changelogs/master-changelog.xml
         </liquibase.master.changelog.file>
-        <database.connection.url>jdbc:jtds:sybase://localhost:5000/spring_boot</database.connection.url>
-        <database.driver>net.sourceforge.jtds.jdbc.Driver</database.driver>
+        <database.connection.url>jdbc:h2:file:./spring_boot</database.connection.url>
+        <database.driver>org.h2.Driverr</database.driver>
         <database.username>sa</database.username>
-        <database.password>myPassword</database.password>
+        <database.password></database.password>
     </properties>
 
     <dependencies>
@@ -41,10 +41,11 @@
             <artifactId>liquibase-core</artifactId>
             <version>4.31.1</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
         <dependency>
-            <groupId>net.sourceforge.jtds</groupId>
-            <artifactId>jtds</artifactId>
-            <version>1.3.1</version>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>2.2.224</version>
         </dependency>
 
         <dependency>
