@@ -22,7 +22,7 @@
         <liquibase.property.file>src/main/resources/liquibase/liquibase.properties</liquibase.property.file>
         <liquibase.master.changelog.file>src/main/resources/liquibase/changelogs/master-changelog.xml
         </liquibase.master.changelog.file>
-        <database.connection.url>jdbc:sqlserver://localhost/1433;databaseName=spring_boot;integratedSecurity=true;encrypt=true;trustServerCertificate=true</database.connection.url>
+        <database.connection.url>jdbc:sqlserver://172.17.0.4:1433;databaseName=spring_boot;trustServerCertificate=true</database.connection.url>
         <database.driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</database.driver>
         <database.username>sa</database.username>
         <database.password>Welcome@2025</database.password>
@@ -43,12 +43,13 @@
             <artifactId>liquibase-core</artifactId>
             <version>4.31.1</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
-            <version>6.1.0.jre8</version>
+            <version>11.2.0.jre17</version>
+            <scope>compile</scope>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

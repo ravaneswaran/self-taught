@@ -1,3 +1,4 @@
+https://medium.com/@zzpzaf.se/ms-sql-server-in-docker-b0397a55859c
 https://learn.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-ver17&preserve-view=true&tabs=cli&pivots=cs1-bash
 https://learn.microsoft.com/en-us/sql/linux/sql-server-linux-docker-container-troubleshooting?view=sql-server-ver17&pivots=cs1-bash
 
