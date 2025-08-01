@@ -1,6 +1,6 @@
 To execute command inside the container of derby
 ===========================================z=====
-$ sudo docker exec -it <container-id> bash
+$ sudo docker exec -it spring-boot-derby bash
 
 To create the database
 ======================

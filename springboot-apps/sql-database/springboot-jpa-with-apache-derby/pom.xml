@@ -20,7 +20,7 @@
         <liquibase.property.file>src/main/resources/liquibase/liquibase.properties</liquibase.property.file>
         <liquibase.master.changelog.file>src/main/resources/liquibase/changelogs/master-changelog.xml
         </liquibase.master.changelog.file>
-        <database.connection.url>jdbc:derby://localhost:1527/spring_boot;create=true;user=spring;password=boot</database.connection.url>
+        <database.connection.url>jdbc:derby://spring-boot-derby:1527/spring_boot;create=true</database.connection.url>
         <database.driver>org.apache.derby.jdbc.ClientDriver</database.driver>
         <!--<database.connection.url>jdbc:derby:spring_boot;create=true</database.connection.url>
         <database.driver>org.apache.derby.jdbc.EmbeddedDriver</database.driver>-->

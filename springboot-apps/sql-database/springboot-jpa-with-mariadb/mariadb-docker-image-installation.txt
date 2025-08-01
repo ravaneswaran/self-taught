@@ -1,0 +1,15 @@
+To pull and install mariadb from docker hub
+===========================================
+$ sudo docker pull mariadb
+
+To run the mssql container
+==========================
+$ sudo docker run --name spring-boot-mariadb --hostname spring-boot-mariadb -p 3307:3307 -d mariadb:latest
+
+To identify the container id of mariadb
+=======================================
+$ sudo docker ps
+
+To stop the container
+=====================
+$ sudo docker stop spring-boot-mariadb

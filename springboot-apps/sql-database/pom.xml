@@ -19,6 +19,7 @@
         <module>springboot-jpa-with-db2</module>
         <module>springboot-jpa-with-hsqldb</module>
         <module>springboot-jpa-with-h2</module>
+        <module>springboot-jpa-with-mariadb</module>
     </modules>
 
 </project>
