@@ -4,7 +4,7 @@ $ sudo docker pull mariadb
 
 To run the mssql container
 ==========================
-$ sudo docker run --name spring-boot-mariadb --hostname spring-boot-mariadb -p 3307:3307 -d mariadb:latest
+$ sudo docker run --name spring-boot-mariadb -e MARIADB_ROOT_PASSWORD=root123 -e MARIADB_DATABASE=spring_boot -e MARIADB_USER=admin -e MARIADB_PASSWORD=admin -p 3306:3306 -d mariadb:latest
 
 To identify the container id of mariadb
 =======================================
