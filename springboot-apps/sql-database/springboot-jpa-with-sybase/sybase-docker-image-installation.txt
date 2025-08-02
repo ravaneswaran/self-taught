@@ -4,10 +4,10 @@ $ sudo docker pull datagrip/sybase
 
 To run the mssql container
 ==========================
-$ sudo docker run --name spring-boot-sybase --hostname spring-boot-sybase -t -p 5000:5000 -e "SYBASE_USER=sa" -e "SYBASE_PASSWORD=myPassword" -d datagrip/sybase:latest
+$ sudo docker run --name spring-boot-sybase --hostname spring-boot-sybase -t -p 5000:5000 -e "SYBASE_USER=sa" -e "SYBASE_PASSWORD=Welcome@2025" -d datagrip/sybase:latest
 
-To identify the container id of mssql
-=====================================
+To identify the container id of sybase
+======================================
 $ sudo docker ps
 
 To stop the container
