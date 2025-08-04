@@ -3,8 +3,7 @@ self-taught.ipr
 self-taught.iws
 android-apps/android-apps.iml
 
-payment-gateway-integration-tutor/razorpay/target
-payment-gateway-integration-tutor/paytm/target
+
 
 razorpay-payment-gateway-web-integration/razorpay-payment-gateway-web-integration.iml
 
@@ -87,6 +86,8 @@ springboot-apps/sql-database/springboot-jpa-with-hsqldb/spring_boot.db.tmp
 springboot-apps/sql-database/springboot-jpa-with-h2/target
 springboot-apps/sql-database/springboot-jpa-with-mariadb/target
 springboot-apps/sql-database/springboot-jpa-with-cubrid/target
+springboot-apps/payment-gateways/razorpay/target
+springboot-apps/payment-gateways/paytm/target
 
 
 stock-market/sub-systems/ai-system/target/
