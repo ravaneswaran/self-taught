@@ -1,0 +1,1 @@
+$ mvn install:install-file -Dfile=lib/JDBC-11.2-latest-cubrid.jar -DgroupId=cubrid -DartifactId=JDBC -Dversion=11.2-latest-cubrid -Dpackaging=jar

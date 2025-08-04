@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -9,9 +8,10 @@
         <version>3.5.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <artifactId>springboot-jpa-with-sybase</artifactId>
+    <groupId>rave.code</groupId>
+    <artifactId>springboot-jpa-with-cubrid</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>springboot-jpa-with-sybase</name>
+    <name>springboot-jpa-with-cubrid</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,10 +20,10 @@
         <liquibase.property.file>src/main/resources/liquibase/liquibase.properties</liquibase.property.file>
         <liquibase.master.changelog.file>src/main/resources/liquibase/changelogs/master-changelog.xml
         </liquibase.master.changelog.file>
-        <database.connection.url>jdbc:sybase:Tds:localhost:5000/sybasedb</database.connection.url>
-        <database.driver>com.sybase.jdbc4.jdbc.SybDriver</database.driver>
-        <database.username>sa</database.username>
-        <database.password>Welcome@2025</database.password>
+        <database.connection.url>jdbc:cubrid:localhost:33000:cubdb:dba:</database.connection.url>
+        <database.driver>cubrid.jdbc.driver.CUBRIDDriver</database.driver>
+        <database.username>dba</database.username>
+        <database.password></database.password>
     </properties>
 
     <dependencies>
@@ -41,11 +41,10 @@
             <artifactId>liquibase-core</artifactId>
             <version>4.31.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/jdbc.sybase/jconn4 -->
         <dependency>
-            <groupId>com.sybase</groupId>
-            <artifactId>jconn4</artifactId>
-            <version>7.0</version>
+            <groupId>cubrid</groupId>
+            <artifactId>JDBC</artifactId>
+            <version>11.2-latest-cubrid</version>
         </dependency>
 
         <dependency>

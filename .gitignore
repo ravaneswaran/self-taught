@@ -76,6 +76,7 @@ springboot-apps/sql-database/springboot-jpa-with-hsqldb/target
 springboot-apps/sql-database/springboot-jpa-with-hsqldb/spring_boot.db.tmp
 springboot-apps/sql-database/springboot-jpa-with-h2/target
 springboot-apps/sql-database/springboot-jpa-with-mariadb/target
+springboot-apps/sql-database/springboot-jpa-with-cubrid/target
 
 
 stock-market/sub-systems/ai-system/target/
