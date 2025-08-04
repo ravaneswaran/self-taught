@@ -1,0 +1,10 @@
+To execute command inside the container of derby
+===========================================z=====
+$ sudo docker exec -it spring-boot-derby bash
+
+To create the database
+======================
+# java -jar $DERBY_HOME/lib/derbyrun.jar ij
+
+ij> CONNECT 'jdbc:derby:spring_boot;create=true';
+

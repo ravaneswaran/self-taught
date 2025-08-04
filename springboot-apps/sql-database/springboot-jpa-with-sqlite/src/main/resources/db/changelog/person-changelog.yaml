@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-person-table
+      author: Ravaneswaran Chinnasamy
+      preConditions:
+        - onFail: CONTINUE
+        - not:
+            - tableExists:
+                tableName: person
+      changes:
+        - createTable:
+            tableName: person
+            columns:
+              - column:
+                  name: id
+                  type: varchar(100)
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: first_name
+                  type: varchar(100)
+              - column:
+                  name: last_name
+                  type: varchar(100)
+              - column:
+                  name: email_id
+                  type: varchar(100)
+              - column:
+                  name: age
+                  type: int
+              - column:
+                  name: created_date
+                  type: varchar(20)
+              - column:
+                  name: modified_date
+                  type: varchar(20)

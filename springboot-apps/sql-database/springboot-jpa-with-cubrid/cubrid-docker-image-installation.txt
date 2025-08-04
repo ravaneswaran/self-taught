@@ -1,0 +1,15 @@
+To pull and install mssql from docker hub
+=========================================
+$ sudo docker pull cubrid/cubrid
+
+To run the mssql container
+==========================
+$ sudo docker run --name spring-boot-cubrid --hostname spring-boot-cubrid -p 33000:33000 -p 30000:30000 -d cubrid/cubrid:latest
+
+To identify the container id of sybase
+======================================
+$ sudo docker ps
+
+To stop the container
+=====================
+$ sudo docker stop spring-boot-cubrid

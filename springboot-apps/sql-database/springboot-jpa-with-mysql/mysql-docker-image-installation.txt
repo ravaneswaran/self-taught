@@ -1,0 +1,15 @@
+To pull and install mysql from docker hub
+=========================================
+$ sudo docker pull mysql
+
+To run the mysql container
+==========================
+$ sudo docker run --name spring-boot-mysql --hostname spring-boot-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=admin -d mysql:latest
+
+To identify the container id of mysql
+=====================================
+$ sudo docker ps
+
+To stop the container
+=====================
+$ sudo docker stop spring-boot-mysql

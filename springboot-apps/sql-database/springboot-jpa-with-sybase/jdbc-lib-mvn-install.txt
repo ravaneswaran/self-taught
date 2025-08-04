@@ -1,0 +1,1 @@
+$ mvn install:install-file -Dfile=lib/jconn4.jar -DgroupId=com.sybase -DartifactId=jconn4 -Dversion=7.0 -Dpackaging=jar

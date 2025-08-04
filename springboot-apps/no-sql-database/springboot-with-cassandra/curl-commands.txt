@@ -1,0 +1,7 @@
+To get the list of books
+=========================
+curl -XGET -H "Content-type: application/json" 'http://localhost:8080/book/list'
+
+To Create a book
+================
+curl -XPOST -H "Content-type: application/json" -d '{"id":1, "author":"Ravaneswaran Chinnasamy", "description": "The Cassandra Story...", "title":"Cassandra Way", "year":2000, "dateCreated":"01/01/2000"}' 'http://localhost:8080/book/create'

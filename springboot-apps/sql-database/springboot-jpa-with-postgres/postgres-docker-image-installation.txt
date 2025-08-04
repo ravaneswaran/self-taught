@@ -1,0 +1,15 @@
+To pull and install postgres from docker hub
+============================================
+$ sudo docker pull postgres
+
+To run the postgres container
+=============================
+$ sudo docker run --name spring-boot-postgres --hostname spring-boot-postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres:latest
+
+To identify the container id of postgres
+========================================
+$ sudo docker ps
+
+To stop the container
+=====================
+$ sudo docker stop spring-boot-postgres

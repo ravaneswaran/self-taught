@@ -1,0 +1,4 @@
+To Send the Message
+===================
+
+curl -XGET -H "Content-type: text/html" 'http://localhost:8081/send?message=Hello'

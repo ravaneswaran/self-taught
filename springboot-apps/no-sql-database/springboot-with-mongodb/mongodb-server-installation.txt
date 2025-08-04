@@ -1,0 +1,19 @@
+Download the MongoDB Community Server
+=====================================
+Download the latest version of mongodb community server from the download link given below....
+https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu2404-8.0.11.tgz
+
+or select the appropriate one for your need from the web page
+https://www.mongodb.com/try/download/community-edition/releases
+
+Extract the package to your preferred location.
+
+Creating data folder for the server
+===================================
+1. Move to any of your preferred location and create the folder mongodb/data by using the following command...
+mkdir mongodb/data
+
+How to start mongodb community server
+=====================================
+1. Move to the bin folder of the server and fire the command below from the terminal
+./mongod --port 27017 --dbpath <preferred location>/mongodb/data

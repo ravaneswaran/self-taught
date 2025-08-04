@@ -1,0 +1,15 @@
+To pull and install hsqldb from docker hub
+==========================================
+$ sudo docker pull blacklabelops/hsqldb
+
+To run the hsqldb container
+===========================
+$ sudo docker run --name spring-boot-hsqldb --hostname spring-boot-hsqldb -p 9001:9001 -d blacklabelops/hsqldb
+
+To identify the container id of mysql
+=====================================
+$ sudo docker ps
+
+To stop the container
+=====================
+$ sudo docker stop spring-boot-hsqldb

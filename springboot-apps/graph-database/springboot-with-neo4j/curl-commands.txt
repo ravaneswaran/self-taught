@@ -1,0 +1,1 @@
+curl -XPOST -H "Content-type: application/json" -d  '{"id":"1", "name": "Robin Sharma","books": [{"id":"1","name": "The 5 Am Club"},{"id":"2","name": "Who Will Cry When You Die"},{"id":"3","name": "The Monk Who Sold His Ferrari"},{"id":"4","name": "Discover Your Destiny"}]}' 'http://localhost:8080/author'

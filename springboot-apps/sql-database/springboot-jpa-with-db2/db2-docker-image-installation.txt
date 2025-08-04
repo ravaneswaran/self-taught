@@ -1,0 +1,15 @@
+To pull and install db2 from docker hub
+=========================================
+$ sudo docker pull icr.io/db2_community/db2
+
+To run the db2 container
+==========================
+$ sudo docker run -itd --name spring-boot-db2 -e DB2INST1_PASSWORD=db2inst1-pwd -e LICENSE=accept -e DBNAME=testdb -p 50000:50000 --privileged icr.io/db2_community/db2:latest
+
+To identify the container id of db2
+=====================================
+$ sudo docker ps
+
+To stop the container
+=====================
+$ sudo docker stop spring-boot-db2

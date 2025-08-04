@@ -1,0 +1,45 @@
+Pulling the docker image of neo4j:2025.06.2 community edition
+=============================================================
+sudo docker pull neo4j:2025.06.2
+
+2025.06.2: Pulling from library/neo4j
+cc41ef31545f: Pull complete
+0dcf7e19a062: Pull complete
+84cba868ee5b: Pull complete
+8cdc12f40895: Pull complete
+7292f03bd7c2: Pull complete
+4f4fb700ef54: Pull complete
+Digest: sha256:3b2c8ac7874f6b91f5bad0d6e03f8488bda8f4b9f58d0c1c5acd6c0a33e3e72a
+Status: Downloaded newer image for neo4j:2025.06.2
+docker.io/library/neo4j:2025.06.2
+
+To list the images download
+===========================
+$ sudo docker images
+REPOSITORY    TAG            IMAGE ID       CREATED        SIZE
+neo4j         2025.06.2      4d129a4f2ecd   5 days ago     662MB
+
+To Run the docker image
+=======================
+sudo docker run --restart always --publish=7474:7474 --publish=7687:7687 neo4j:2025.06.2
+
+2025-07-17 06:20:00.868+0000 INFO  Logging config in use: File '/var/lib/neo4j/conf/user-logs.xml'
+2025-07-17 06:20:00.979+0000 INFO  Starting...
+2025-07-17 06:20:02.924+0000 INFO  This instance is ServerId{a7c6c891} (a7c6c891-6d90-4590-bca8-24bb08d87bc6)
+2025-07-17 06:20:04.894+0000 INFO  ======== Neo4j 2025.06.2 ========
+2025-07-17 06:20:07.639+0000 INFO  Anonymous Usage Data is being sent to Neo4j, see https://neo4j.com/docs/usage-data/
+2025-07-17 06:20:08.925+0000 INFO  Bolt enabled on 0.0.0.0:7687.
+2025-07-17 06:20:10.243+0000 INFO  HTTP enabled on 0.0.0.0:7474.
+2025-07-17 06:20:10.244+0000 INFO  Remote interface available at http://localhost:7474/
+2025-07-17 06:20:10.249+0000 INFO  id: 00AA4BEDD1733B0D1E0D9AA7DB9F9C1391D13AA0B827E7B606B42B184BABB46D
+2025-07-17 06:20:10.250+0000 INFO  name: system
+2025-07-17 06:20:10.251+0000 INFO  creationDate: 2025-07-17T06:20:06.687Z
+2025-07-17 06:20:10.251+0000 INFO  Started.
+
+http://localhost:7474/
+username : neo4j
+password : admin123
+
+
+
+

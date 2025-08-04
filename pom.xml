@@ -14,6 +14,7 @@
         <module>utilities</module>
         <module>stock-market</module>
         <module>android-apps</module>
+        <module>springboot-apps</module>
         <module>payment-gateway-integration-tutor</module>
     </modules>
 

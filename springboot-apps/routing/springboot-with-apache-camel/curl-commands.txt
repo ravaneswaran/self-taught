@@ -1,0 +1,18 @@
+To Create a Book
+================
+curl -XPOST -H "Content-type: application/json" -d '{"id":0,"name":"Camel in Action","author":"Claus Ibsen and Jonathan Anstey","price": 56}' 'http://localhost:8080/rest/book'
+
+To Find all Books
+=================
+curl -XGET -H "Content-type: application/json" 'http://localhost:8080/rest/book'
+
+To find a book by name
+======================
+curl -XGET -H "Content-type: application/json" 'http://localhost:8080/rest/book/Camel%20in%20Action'
+
+To delete a Book
+================
+curl -XDELETE -H "Content-type: application/json" 'http://localhost:8080/rest/book/1'
+
+
+
