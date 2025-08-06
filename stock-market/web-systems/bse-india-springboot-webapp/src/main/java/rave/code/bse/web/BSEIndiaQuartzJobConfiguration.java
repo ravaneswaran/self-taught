@@ -6,7 +6,7 @@ import rave.code.quartz.scheduler.trading.ActiveXXXScheduler;
 import rave.code.quartz.scheduler.trading.XXXShockerScheduler;
 
 @Configuration
-public class BSEIndiaActiveXXXConfiguration {
+public class BSEIndiaQuartzJobConfiguration {
 
     @Bean
     public int scheduleActiveXXXJobs() {
