@@ -18,7 +18,7 @@
         <module>data-access-system</module>
         <module>quartz-scheduler-system</module>
         <module>ai-system</module>
-        <module>technical-indicator-system</module>
+        <module>stock-tech-analysis-system</module>
     </modules>
 
 </project>
