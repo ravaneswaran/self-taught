@@ -22,4 +22,5 @@
     <include relativeToChangelogFile="true" file="bse-sensex-changelog.xml"/>
     <include relativeToChangelogFile="true" file="stock-base-changelog.xml"/>
 
+    <include relativeToChangelogFile="true" file="quartz-scheduler-changelog.xml"/>
 </databaseChangeLog>

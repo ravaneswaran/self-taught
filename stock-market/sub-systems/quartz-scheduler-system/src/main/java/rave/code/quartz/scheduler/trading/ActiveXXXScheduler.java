@@ -23,13 +23,13 @@ public class ActiveXXXScheduler extends AbstractQuartzScheduler {
     public void scheduleJob() {
 
         JobDetail bseActive100JobDetail = newJob(BSEActive100Job.class)
-                .withIdentity(JobName.BSE_ACTIVE_100_JOB_NAME.get(), Group.TRADING.toString())
+                .withIdentity(JobName.BSE_ACTIVE_100_JOB_NAME.get(), Group.TRADING.toString()).storeDurably()
                 .build();
         JobDetail bseActive200JobDetail = newJob(BSEActive200Job.class)
-                .withIdentity(JobName.BSE_ACTIVE_200_JOB_NAME.get(), Group.TRADING.toString())
+                .withIdentity(JobName.BSE_ACTIVE_200_JOB_NAME.get(), Group.TRADING.toString()).storeDurably()
                 .build();
         JobDetail bseActive500JobDetail = newJob(BSEActive500Job.class)
-                .withIdentity(JobName.BSE_ACTIVE_500_JOB_NAME.get(), Group.TRADING.toString())
+                .withIdentity(JobName.BSE_ACTIVE_500_JOB_NAME.get(), Group.TRADING.toString()).storeDurably()
                 .build();
 
         Trigger bseActive100JobTrigger = newTrigger()
@@ -48,9 +48,8 @@ public class ActiveXXXScheduler extends AbstractQuartzScheduler {
                 .withPriority(Priorities.HIGH.get())
                 .build();
 
-        SchedulerFactory schedulerFactory = new StdSchedulerFactory();
-
         try {
+            SchedulerFactory schedulerFactory = new StdSchedulerFactory();
             Scheduler scheduler = schedulerFactory.getScheduler();
 
             scheduler.scheduleJob(bseActive200JobDetail, bseActive200JobTrigger);
