@@ -1,4 +1,4 @@
-package rave.code.tech.indicator;
+package rave.code.tech.analysis;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,21 +8,21 @@ public class SimpleMovingAverage {
 
     // Method to calculate SMA
     public static List<Double> calculateSMA(List<Double> prices, int period) {
-        List<Double> sma = new ArrayList<>();
+        List<Double> simpleMovingAverage = new ArrayList<>();
         if (prices == null || prices.size() < period) {
-            return sma; // Not enough data
+            return simpleMovingAverage; // Not enough data
         }
         double sum = 0.0;
-        for (int i = 0; i < prices.size(); i++) {
-            sum += prices.get(i);
-            if (i >= period - 1) {
-                if (i >= period) {
-                    sum -= prices.get(i - period);
+        for (int index = 0; index < prices.size(); index++) {
+            sum += prices.get(index);
+            if (index >= period - 1) {
+                if (index >= period) {
+                    sum -= prices.get(index - period);
                 }
-                sma.add(sum / period);
+                simpleMovingAverage.add(sum / period);
             }
         }
-        return sma;
+        return simpleMovingAverage;
     }
 
     public static void main(String[] args) {
