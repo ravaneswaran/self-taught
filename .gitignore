@@ -3,8 +3,6 @@ self-taught.ipr
 self-taught.iws
 android-apps/android-apps.iml
 
-
-
 razorpay-payment-gateway-web-integration/razorpay-payment-gateway-web-integration.iml
 
 springboot-apps/springboot-apps.iml
@@ -30,27 +28,21 @@ springboot-apps/sql-database/springboot-jpa-with-hsqldb/spring_boot.db.script
 springboot-apps/sql-database/springboot-jpa-with-h2/spring_boot.mv.db
 springboot-apps/sql-database/springboot-jpa-with-h2/spring_boot.trace.db
 
-stock-market/sub-systems/data-access-system/target/
-stock-market/sub-systems/source-data-model-system/target/
-stock-market/sub-systems/source-data-parser-system/target/
-stock-market/sub-systems/database-table-generation-system/target/
-stock-market/sub-systems/quartz-scheduler-system/target/
-stock-market/sub-systems/email-system/target/
-stock-market/sub-systems/ai-system/target/
+
 stock-market/stock-market.iml
 stock-market/stock-market.ipr
 stock-market/stock-market.iws
 stock-market/sub-systems/sub-systems.iml
-stock-market/sub-systems/data-access-system/data-access-system.iml
-stock-market/sub-systems/database-table-generation-system/database-table-generation-system.iml
+stock-market/sub-systems/repository-system/repository-system.iml
+stock-market/sub-systems/table-generation-system/table-generation-system.iml
 stock-market/sub-systems/quartz-scheduler-system/quartz-scheduler-system.iml
-stock-market/sub-systems/source-data-model-system/source-data-model-system.iml
-stock-market/sub-systems/source-data-parser-system/source-data-parser-system.iml
+stock-market/sub-systems/data-model-system/data-model-system.iml
+stock-market/sub-systems/data-parser-system/data-parser-system.iml
 stock-market/sub-systems/ai-system/ai-system.iml
 stock-market/sub-systems/email-system/email-system.iml
+stock-market/sub-systems/technical-analysis-system/technical-analysis-system.iml
 stock-market/web-systems/web-systems.iml
 utilities/utilities.iml
-
 
 .gradle/
 .idea/
@@ -91,11 +83,12 @@ springboot-apps/payment-gateways/paytm/target
 
 
 stock-market/sub-systems/ai-system/target/
-stock-market/sub-systems/data-access-system/target/
-stock-market/sub-systems/database-table-generation-system/target/
+stock-market/sub-systems/repository-system/target/
+stock-market/sub-systems/table-generation-system/target/
 stock-market/sub-systems/email-system/target/
 stock-market/sub-systems/quartz-scheduler-system/target/
-stock-market/sub-systems/source-data-model-system/target/
-stock-market/sub-systems/source-data-parser-system/target/
-stock-market/sub-systems/stock-tech-analysis-system/target/
+stock-market/sub-systems/data-model-system/target/
+stock-market/sub-systems/data-parser-system/target/
+stock-market/sub-systems/technical-analysis-system/target/
+
 

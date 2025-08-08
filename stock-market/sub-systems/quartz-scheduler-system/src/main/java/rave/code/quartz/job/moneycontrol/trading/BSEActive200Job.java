@@ -1,10 +1,8 @@
 package rave.code.quartz.job.moneycontrol.trading;
 
 import org.quartz.DisallowConcurrentExecution;
-import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
 import rave.code.data.parser.html.moneycontrol.BSEActive200Parser;
-import rave.code.stockmarket.dataaccess.BSEActive200DataAccess;
+import rave.code.stockmarket.repository.BSEActive200Repository;
 import rave.code.stockmarket.entity.BSEActive200Entity;
 import rave.code.website.data.model.moneycontrol.BSEGenericActiveModel;
 
@@ -21,7 +19,7 @@ public class BSEActive200Job extends AbstractTradingEntityMakerJob<BSEGenericAct
 
     private static final Logger LOGGER = Logger.getLogger(BSEActive200Job.class.getName());
 
-    private BSEActive200DataAccess bseActive200DataAccess = new BSEActive200DataAccess(BSEActive200Entity.class);
+    private BSEActive200Repository bseActive200Repository = new BSEActive200Repository(BSEActive200Entity.class);
 
     @Override
     public List<BSEGenericActiveModel> getDataFromSource() {
@@ -38,7 +36,7 @@ public class BSEActive200Job extends AbstractTradingEntityMakerJob<BSEGenericAct
 
         for (BSEGenericActiveModel bseActive200Model : sourceData) {
 
-            BSEActive200Entity bseActive200Entity = this.bseActive200DataAccess.findBy(bseActive200Model.getStockName().trim());
+            BSEActive200Entity bseActive200Entity = this.bseActive200Repository.findBy(bseActive200Model.getStockName().trim());
             if (null == bseActive200Entity) {
                 bseActive200Entity = new BSEActive200Entity();
                 bseActive200Entity.setStockName(bseActive200Model.getStockName().trim());
@@ -211,6 +209,6 @@ public class BSEActive200Job extends AbstractTradingEntityMakerJob<BSEGenericAct
 
     @Override
     public void saveTransformedData(List<BSEActive200Entity> transformedData) {
-        this.bseActive200DataAccess.bulkUpsert(transformedData);
+        this.bseActive200Repository.bulkUpsert(transformedData);
     }
 }

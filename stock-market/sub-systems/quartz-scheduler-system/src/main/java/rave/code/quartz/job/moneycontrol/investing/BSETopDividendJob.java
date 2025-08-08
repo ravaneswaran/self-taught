@@ -1,7 +1,7 @@
 package rave.code.quartz.job.moneycontrol.investing;
 
 import rave.code.data.parser.html.moneycontrol.BSETopDividendParser;
-import rave.code.stockmarket.dataaccess.BSETopDividendDataAccess;
+import rave.code.stockmarket.repository.BSETopDividendRepository;
 import rave.code.stockmarket.entity.BSETopDividendEntity;
 import rave.code.website.data.model.moneycontrol.DividendModel;
 
@@ -89,7 +89,7 @@ public class BSETopDividendJob extends AbstractInvestingEntityMakerJob<DividendM
 
     @Override
     public void saveTransformedData(List<BSETopDividendEntity> transformedData) {
-        BSETopDividendDataAccess moneyControlBSETopDividendDataAccess = new BSETopDividendDataAccess();
-        moneyControlBSETopDividendDataAccess.bulkUpsert(transformedData);
+        BSETopDividendRepository bseTopDividendRepository = new BSETopDividendRepository();
+        bseTopDividendRepository.bulkUpsert(transformedData);
     }
 }

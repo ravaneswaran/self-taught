@@ -2,10 +2,9 @@ package rave.code.bse.web.service;
 
 import rave.code.bse.web.model.page.WebPage;
 import rave.code.bse.web.model.stock.ActiveStock;
-import rave.code.bse.web.model.stock.Stock;
 import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
 import rave.code.bse.web.service.decorators.*;
-import rave.code.stockmarket.dataaccess.BSEActive100DataAccess;
+import rave.code.stockmarket.repository.BSEActive100Repository;
 import rave.code.stockmarket.entity.BSEActive100Entity;
 
 import java.util.ArrayList;
@@ -26,7 +25,7 @@ public class Active100Service extends AbstractService<BSEActive100Entity, Active
     }
 
     public List<BSEActive100Entity> getEntities() {
-        BSEActive100DataAccess bseActive100DataAccess = new BSEActive100DataAccess();
+        BSEActive100Repository bseActive100DataAccess = new BSEActive100Repository();
         return bseActive100DataAccess.findAll();
     }
 

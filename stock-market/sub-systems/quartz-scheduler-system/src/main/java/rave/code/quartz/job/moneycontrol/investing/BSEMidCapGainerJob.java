@@ -1,7 +1,7 @@
 package rave.code.quartz.job.moneycontrol.investing;
 
 import rave.code.data.parser.html.moneycontrol.BSEMidCapGainersParser;
-import rave.code.stockmarket.dataaccess.BSEMidCapGainerDataAccess;
+import rave.code.stockmarket.repository.BSEMidCapGainerRepository;
 import rave.code.stockmarket.entity.BSEMidCapGainerEntity;
 import rave.code.website.data.model.moneycontrol.CapitalGainerModel;
 
@@ -195,7 +195,7 @@ public class BSEMidCapGainerJob extends AbstractInvestingEntityMakerJob<CapitalG
 
     @Override
     public void saveTransformedData(List<BSEMidCapGainerEntity> transformedData) {
-        BSEMidCapGainerDataAccess moneyControlBSEMidCapGainerDataAccess = new BSEMidCapGainerDataAccess(BSEMidCapGainerEntity.class);
-        moneyControlBSEMidCapGainerDataAccess.bulkUpsert(transformedData);
+        BSEMidCapGainerRepository bseMidCapGainerRepository = new BSEMidCapGainerRepository(BSEMidCapGainerEntity.class);
+        bseMidCapGainerRepository.bulkUpsert(transformedData);
     }
 }

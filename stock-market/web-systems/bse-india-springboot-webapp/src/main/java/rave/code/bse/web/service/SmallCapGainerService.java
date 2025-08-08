@@ -5,7 +5,7 @@ import rave.code.bse.web.model.stock.CapitalGainerStock;
 import rave.code.bse.web.model.stock.Stock;
 import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
 import rave.code.bse.web.service.decorators.*;
-import rave.code.stockmarket.dataaccess.BSESmallCapGainerDataAccess;
+import rave.code.stockmarket.repository.BSESmallCapGainerRepository;
 import rave.code.stockmarket.entity.BSESmallCapGainerEntity;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class SmallCapGainerService extends AbstractService<BSESmallCapGainerEnti
 
     @Override
     public List<BSESmallCapGainerEntity> getEntities() {
-        return new BSESmallCapGainerDataAccess().findAll();
+        return new BSESmallCapGainerRepository().findAll();
     }
 
     @Override

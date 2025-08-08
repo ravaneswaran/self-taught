@@ -1,7 +1,7 @@
 package rave.code.quartz.job.moneycontrol.trading;
 
 import rave.code.data.parser.html.moneycontrol.BSEVolumeShockersParser;
-import rave.code.stockmarket.dataaccess.BSEVolumeShockerDataAccess;
+import rave.code.stockmarket.repository.BSEVolumeShockerRepository;
 import rave.code.stockmarket.entity.BSEVolumeShockerEntity;
 import rave.code.website.data.model.moneycontrol.VolumeShockerModel;
 
@@ -17,7 +17,7 @@ public class BSEVolumeShockersJob extends AbstractTradingEntityMakerJob<VolumeSh
 
     private static final Logger LOGGER = Logger.getLogger(BSEVolumeShockersJob.class.getName());
 
-    private BSEVolumeShockerDataAccess bseVolumeShockerDataAccess = new BSEVolumeShockerDataAccess();
+    private BSEVolumeShockerRepository bseVolumeShockerRepository = new BSEVolumeShockerRepository();
 
     @Override
     public List<VolumeShockerModel> getDataFromSource() {
@@ -33,7 +33,7 @@ public class BSEVolumeShockersJob extends AbstractTradingEntityMakerJob<VolumeSh
 
         for (VolumeShockerModel volumeShockerModel : sourceData) {
 
-            BSEVolumeShockerEntity bseVolumeShockerEntity = this.bseVolumeShockerDataAccess.findBy(volumeShockerModel.getStockName().trim());
+            BSEVolumeShockerEntity bseVolumeShockerEntity = this.bseVolumeShockerRepository.findBy(volumeShockerModel.getStockName().trim());
             if (null == bseVolumeShockerEntity) {
                 bseVolumeShockerEntity = new BSEVolumeShockerEntity();
                 bseVolumeShockerEntity.setStockName(volumeShockerModel.getStockName().trim());
@@ -186,6 +186,6 @@ public class BSEVolumeShockersJob extends AbstractTradingEntityMakerJob<VolumeSh
 
     @Override
     public void saveTransformedData(List<BSEVolumeShockerEntity> transformedData) {
-        this.bseVolumeShockerDataAccess.bulkUpsert(transformedData);
+        this.bseVolumeShockerRepository.bulkUpsert(transformedData);
     }
 }

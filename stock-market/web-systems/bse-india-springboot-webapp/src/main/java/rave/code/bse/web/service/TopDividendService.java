@@ -5,7 +5,7 @@ import rave.code.bse.web.model.stock.Stock;
 import rave.code.bse.web.model.stock.TopDividendStock;
 import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
 import rave.code.bse.web.service.decorators.*;
-import rave.code.stockmarket.dataaccess.BSETopDividendDataAccess;
+import rave.code.stockmarket.repository.BSETopDividendRepository;
 import rave.code.stockmarket.entity.BSETopDividendEntity;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class TopDividendService extends AbstractService<BSETopDividendEntity, To
 
     @Override
     public List<BSETopDividendEntity> getEntities() {
-        BSETopDividendDataAccess moneyControlBSETopDividendDataAccess = new BSETopDividendDataAccess();
+        BSETopDividendRepository moneyControlBSETopDividendDataAccess = new BSETopDividendRepository();
         return moneyControlBSETopDividendDataAccess.findAll();
     }
 

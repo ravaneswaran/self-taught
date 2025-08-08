@@ -1,11 +1,10 @@
 package rave.code.bse.web.service;
 
 import rave.code.bse.web.model.page.VolumeShockerWebPage;
-import rave.code.bse.web.model.stock.Stock;
 import rave.code.bse.web.model.stock.VolumeShockerStock;
 import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
 import rave.code.bse.web.service.decorators.*;
-import rave.code.stockmarket.dataaccess.BSEVolumeShockerDataAccess;
+import rave.code.stockmarket.repository.BSEVolumeShockerRepository;
 import rave.code.stockmarket.entity.BSEVolumeShockerEntity;
 
 import java.util.ArrayList;
@@ -31,7 +30,7 @@ public class VolumeShockerService extends AbstractService<BSEVolumeShockerEntity
 
     @Override
     public List<BSEVolumeShockerEntity> getEntities() {
-        return new BSEVolumeShockerDataAccess().findAll();
+        return new BSEVolumeShockerRepository().findAll();
     }
 
     @Override

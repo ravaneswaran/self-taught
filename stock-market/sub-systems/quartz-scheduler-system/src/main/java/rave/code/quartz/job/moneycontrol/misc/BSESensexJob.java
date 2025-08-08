@@ -2,7 +2,7 @@ package rave.code.quartz.job.moneycontrol.misc;
 
 import rave.code.data.parser.html.moneycontrol.BSESensexParser;
 import rave.code.quartz.job.moneycontrol.AbstractEntityMakerJob;
-import rave.code.stockmarket.dataaccess.BSESensexDataAccess;
+import rave.code.stockmarket.repository.BSESensexRepository;
 import rave.code.stockmarket.entity.BSESensexEntity;
 import rave.code.website.data.model.moneycontrol.BSEGenericActiveModel;
 
@@ -18,7 +18,7 @@ public class BSESensexJob extends AbstractEntityMakerJob<BSEGenericActiveModel, 
 
     private static final Logger LOGGER = Logger.getLogger(BSESensexJob.class.getName());
 
-    private BSESensexDataAccess bseSensexDataAccess = new BSESensexDataAccess();
+    private BSESensexRepository bseSensexRepository = new BSESensexRepository();
 
     @Override
     public List<BSEGenericActiveModel> getDataFromSource() {
@@ -35,7 +35,7 @@ public class BSESensexJob extends AbstractEntityMakerJob<BSEGenericActiveModel, 
 
         for (BSEGenericActiveModel bseSensexModel : sourceData) {
 
-            BSESensexEntity bseSensexEntity = this.bseSensexDataAccess.findBy(bseSensexModel.getStockName().trim());
+            BSESensexEntity bseSensexEntity = this.bseSensexRepository.findBy(bseSensexModel.getStockName().trim());
             if (null == bseSensexEntity) {
                 bseSensexEntity = new BSESensexEntity();
                 bseSensexEntity.setStockName(bseSensexModel.getStockName().trim());
@@ -200,6 +200,6 @@ public class BSESensexJob extends AbstractEntityMakerJob<BSEGenericActiveModel, 
 
     @Override
     public void saveTransformedData(List<BSESensexEntity> transformedData) {
-        this.bseSensexDataAccess.bulkUpsert(transformedData);
+        this.bseSensexRepository.bulkUpsert(transformedData);
     }
 }

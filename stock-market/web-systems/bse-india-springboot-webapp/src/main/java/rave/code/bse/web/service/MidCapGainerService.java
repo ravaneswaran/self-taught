@@ -5,7 +5,7 @@ import rave.code.bse.web.model.stock.CapitalGainerStock;
 import rave.code.bse.web.model.stock.Stock;
 import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
 import rave.code.bse.web.service.decorators.*;
-import rave.code.stockmarket.dataaccess.BSEMidCapGainerDataAccess;
+import rave.code.stockmarket.repository.BSEMidCapGainerRepository;
 import rave.code.stockmarket.entity.BSEMidCapGainerEntity;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class MidCapGainerService extends AbstractService<BSEMidCapGainerEntity, 
 
     @Override
     public List<BSEMidCapGainerEntity> getEntities() {
-        return new BSEMidCapGainerDataAccess().findAll();
+        return new BSEMidCapGainerRepository().findAll();
     }
 
     @Override

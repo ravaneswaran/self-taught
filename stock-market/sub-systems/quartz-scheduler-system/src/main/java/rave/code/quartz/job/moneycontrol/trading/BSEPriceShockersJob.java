@@ -1,7 +1,7 @@
 package rave.code.quartz.job.moneycontrol.trading;
 
 import rave.code.data.parser.html.moneycontrol.BSEPriceShockersParser;
-import rave.code.stockmarket.dataaccess.BSEPriceShockerDataAccess;
+import rave.code.stockmarket.repository.BSEPriceShockerRepository;
 import rave.code.stockmarket.entity.BSEPriceShockerEntity;
 import rave.code.website.data.model.moneycontrol.PriceShockerModel;
 
@@ -17,7 +17,7 @@ public class BSEPriceShockersJob extends AbstractTradingEntityMakerJob<PriceShoc
 
     private static final Logger LOGGER = Logger.getLogger(BSEPriceShockersJob.class.getName());
 
-    private BSEPriceShockerDataAccess bsePriceShockerDataAccess = new BSEPriceShockerDataAccess();
+    private BSEPriceShockerRepository bsePriceShockerRepository = new BSEPriceShockerRepository();
 
     @Override
     public List<PriceShockerModel> getDataFromSource() {
@@ -33,7 +33,7 @@ public class BSEPriceShockersJob extends AbstractTradingEntityMakerJob<PriceShoc
 
         for (PriceShockerModel priceShockerModel : sourceData) {
 
-            BSEPriceShockerEntity bsePriceShockerEntity = this.bsePriceShockerDataAccess.findBy(priceShockerModel.getStockName().trim());
+            BSEPriceShockerEntity bsePriceShockerEntity = this.bsePriceShockerRepository.findBy(priceShockerModel.getStockName().trim());
             if (null == bsePriceShockerEntity) {
                 bsePriceShockerEntity = new BSEPriceShockerEntity();
                 bsePriceShockerEntity.setStockName(priceShockerModel.getStockName().trim());
@@ -186,6 +186,6 @@ public class BSEPriceShockersJob extends AbstractTradingEntityMakerJob<PriceShoc
 
     @Override
     public void saveTransformedData(List<BSEPriceShockerEntity> transformedData) {
-        this.bsePriceShockerDataAccess.bulkUpsert(transformedData);
+        this.bsePriceShockerRepository.bulkUpsert(transformedData);
     }
 }

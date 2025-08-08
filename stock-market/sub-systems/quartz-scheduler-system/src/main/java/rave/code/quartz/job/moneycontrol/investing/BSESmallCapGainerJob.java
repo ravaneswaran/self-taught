@@ -1,7 +1,7 @@
 package rave.code.quartz.job.moneycontrol.investing;
 
 import rave.code.data.parser.html.moneycontrol.BSESmallCapGainersParser;
-import rave.code.stockmarket.dataaccess.BSESmallCapGainerDataAccess;
+import rave.code.stockmarket.repository.BSESmallCapGainerRepository;
 import rave.code.stockmarket.entity.BSESmallCapGainerEntity;
 import rave.code.website.data.model.moneycontrol.CapitalGainerModel;
 
@@ -194,7 +194,7 @@ public class BSESmallCapGainerJob extends AbstractInvestingEntityMakerJob<Capita
 
     @Override
     public void saveTransformedData(List<BSESmallCapGainerEntity> transformedData) {
-        BSESmallCapGainerDataAccess moneyControlBSESmallCapGainerDataAccess = new BSESmallCapGainerDataAccess(BSESmallCapGainerEntity.class);
-        moneyControlBSESmallCapGainerDataAccess.bulkUpsert(transformedData);
+        BSESmallCapGainerRepository bseSmallCapGainerRepository = new BSESmallCapGainerRepository(BSESmallCapGainerEntity.class);
+        bseSmallCapGainerRepository.bulkUpsert(transformedData);
     }
 }

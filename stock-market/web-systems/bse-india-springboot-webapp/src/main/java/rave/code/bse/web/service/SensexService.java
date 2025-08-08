@@ -5,7 +5,7 @@ import rave.code.bse.web.model.stock.ActiveStock;
 import rave.code.bse.web.model.stock.Stock;
 import rave.code.bse.web.service.algorithms.sort.LastPriceComparator;
 import rave.code.bse.web.service.decorators.*;
-import rave.code.stockmarket.dataaccess.BSESensexDataAccess;
+import rave.code.stockmarket.repository.BSESensexRepository;
 import rave.code.stockmarket.entity.BSESensexEntity;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class SensexService extends AbstractService<BSESensexEntity, ActiveStock>
     }
 
     public List<BSESensexEntity> getEntities() {
-        BSESensexDataAccess bseSensexDataAccess = new BSESensexDataAccess();
+        BSESensexRepository bseSensexDataAccess = new BSESensexRepository();
         return bseSensexDataAccess.findAll();
     }
 

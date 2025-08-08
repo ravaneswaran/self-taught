@@ -63,19 +63,20 @@
         </dependency>
 
         <!-- Module dependencies  -->
+
         <dependency>
             <groupId>rave.code</groupId>
-            <artifactId>data-access-system</artifactId>
+            <artifactId>repository-system</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>rave.code</groupId>
+            <artifactId>data-parser-system</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>rave.code</groupId>
             <artifactId>quartz-scheduler-system</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>rave.code</groupId>
-            <artifactId>source-data-parser-system</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

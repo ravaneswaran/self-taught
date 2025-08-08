@@ -3,7 +3,7 @@ package rave.code.quartz.job.moneycontrol.misc;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import rave.code.quartz.job.AbstractQuartzJob;
-import rave.code.stockmarket.dataaccess.*;
+import rave.code.stockmarket.repository.*;
 import rave.code.stockmarket.entity.*;
 
 import java.util.ArrayList;
@@ -13,35 +13,35 @@ import java.util.stream.Collectors;
 
 public class StockBaseJob extends AbstractQuartzJob{
 
-    private BSEActive100DataAccess bseActive100DataAccess = new BSEActive100DataAccess();
-    private BSEActive200DataAccess bseActive200DataAccess = new BSEActive200DataAccess();
-    private BSEActive500DataAccess bseActive500DataAccess = new BSEActive500DataAccess();
-    private BSEPriceShockerDataAccess bsePriceShockerDataAccess = new BSEPriceShockerDataAccess();
-    private BSEVolumeShockerDataAccess bseVolumeShockerDataAccess = new BSEVolumeShockerDataAccess();
-    private BSESensexDataAccess bseSensexDataAccess = new BSESensexDataAccess();
-    private StockBaseDataAccess stockBaseDataAccess = new StockBaseDataAccess();
-    private BSESmallCapGainerDataAccess bseSmallCapGainerDataAccess = new BSESmallCapGainerDataAccess();
-    private BSEMidCapGainerDataAccess bseMidCapGainerDataAccess = new BSEMidCapGainerDataAccess();
-    private BSETopDividendDataAccess bseTopDividendDataAccess = new BSETopDividendDataAccess();
+    private BSEActive100Repository bseActive100Repository = new BSEActive100Repository();
+    private BSEActive200Repository bseActive200Repository = new BSEActive200Repository();
+    private BSEActive500Repository bseActive500Repository = new BSEActive500Repository();
+    private BSEPriceShockerRepository bsePriceShockerRepository = new BSEPriceShockerRepository();
+    private BSEVolumeShockerRepository bseVolumeShockerRepository = new BSEVolumeShockerRepository();
+    private BSESensexRepository bseSensexRepository = new BSESensexRepository();
+    private StockBaseRepository stockBaseRepository = new StockBaseRepository();
+    private BSESmallCapGainerRepository bseSmallCapGainerRepository = new BSESmallCapGainerRepository();
+    private BSEMidCapGainerRepository bseMidCapGainerRepository = new BSEMidCapGainerRepository();
+    private BSETopDividendRepository bseTopDividendRepository = new BSETopDividendRepository();
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
 
-        List<BSEActive100Entity> bseActive100Entities = this.bseActive100DataAccess.findAll();
-        List<BSEActive200Entity> bseActive200Entities = this.bseActive200DataAccess.findAll();
-        List<BSEActive500Entity> bseActive500Entities = this.bseActive500DataAccess.findAll();
-        List<BSEPriceShockerEntity> bsePriceShockerEntities = this.bsePriceShockerDataAccess.findAll();
-        List<BSEVolumeShockerEntity> bseVolumeShockerEntities = this.bseVolumeShockerDataAccess.findAll();
-        List<BSESensexEntity> bseSensexEntities = this.bseSensexDataAccess.findAll();
-        List<BSESmallCapGainerEntity> bseSmallCapGainerEntities = this.bseSmallCapGainerDataAccess.findAll();
-        List<BSEMidCapGainerEntity> bseMidCapGainerEntities = this.bseMidCapGainerDataAccess.findAll();
-        List<BSETopDividendEntity> bseTopDividendEntities = this.bseTopDividendDataAccess.findAll();
+        List<BSEActive100Entity> bseActive100Entities = this.bseActive100Repository.findAll();
+        List<BSEActive200Entity> bseActive200Entities = this.bseActive200Repository.findAll();
+        List<BSEActive500Entity> bseActive500Entities = this.bseActive500Repository.findAll();
+        List<BSEPriceShockerEntity> bsePriceShockerEntities = this.bsePriceShockerRepository.findAll();
+        List<BSEVolumeShockerEntity> bseVolumeShockerEntities = this.bseVolumeShockerRepository.findAll();
+        List<BSESensexEntity> bseSensexEntities = this.bseSensexRepository.findAll();
+        List<BSESmallCapGainerEntity> bseSmallCapGainerEntities = this.bseSmallCapGainerRepository.findAll();
+        List<BSEMidCapGainerEntity> bseMidCapGainerEntities = this.bseMidCapGainerRepository.findAll();
+        List<BSETopDividendEntity> bseTopDividendEntities = this.bseTopDividendRepository.findAll();
 
 
         List<StockBaseEntity> stockBaseEntities = new ArrayList<>();
 
         for (BSEActive100Entity bseActive100Entity : bseActive100Entities) {
-            StockBaseEntity stockBaseEntity = this.stockBaseDataAccess.findBy(bseActive100Entity.getStockName());
+            StockBaseEntity stockBaseEntity = this.stockBaseRepository.findBy(bseActive100Entity.getStockName());
             if (null == stockBaseEntity) {
                 stockBaseEntity = new StockBaseEntity();
                 stockBaseEntity.setBSEBasePrice(bseActive100Entity.getLastPrice());
@@ -59,7 +59,7 @@ public class StockBaseJob extends AbstractQuartzJob{
         }
 
         for (BSEActive200Entity bseActive200Entity : bseActive200Entities) {
-            StockBaseEntity stockBaseEntity = this.stockBaseDataAccess.findBy(bseActive200Entity.getStockName());
+            StockBaseEntity stockBaseEntity = this.stockBaseRepository.findBy(bseActive200Entity.getStockName());
             if (null == stockBaseEntity) {
                 stockBaseEntity = new StockBaseEntity();
                 stockBaseEntity.setBSEBasePrice(bseActive200Entity.getLastPrice());
@@ -77,7 +77,7 @@ public class StockBaseJob extends AbstractQuartzJob{
         }
 
         for (BSEActive500Entity bseActive500Entity : bseActive500Entities) {
-            StockBaseEntity stockBaseEntity = this.stockBaseDataAccess.findBy(bseActive500Entity.getStockName());
+            StockBaseEntity stockBaseEntity = this.stockBaseRepository.findBy(bseActive500Entity.getStockName());
             if (null == stockBaseEntity) {
                 stockBaseEntity = new StockBaseEntity();
                 stockBaseEntity.setBSEBasePrice(bseActive500Entity.getLastPrice());
@@ -95,7 +95,7 @@ public class StockBaseJob extends AbstractQuartzJob{
         }
 
         for (BSEPriceShockerEntity bsePriceShockerEntity : bsePriceShockerEntities) {
-            StockBaseEntity stockBaseEntity = this.stockBaseDataAccess.findBy(bsePriceShockerEntity.getStockName());
+            StockBaseEntity stockBaseEntity = this.stockBaseRepository.findBy(bsePriceShockerEntity.getStockName());
             if (null == stockBaseEntity) {
                 stockBaseEntity = new StockBaseEntity();
                 stockBaseEntity.setBSEBasePrice(bsePriceShockerEntity.getCurrentPrice());
@@ -113,7 +113,7 @@ public class StockBaseJob extends AbstractQuartzJob{
         }
 
         for (BSEVolumeShockerEntity bseVolumeShockerEntity : bseVolumeShockerEntities) {
-            StockBaseEntity stockBaseEntity = this.stockBaseDataAccess.findBy(bseVolumeShockerEntity.getStockName());
+            StockBaseEntity stockBaseEntity = this.stockBaseRepository.findBy(bseVolumeShockerEntity.getStockName());
             if (null == stockBaseEntity) {
                 stockBaseEntity = new StockBaseEntity();
                 stockBaseEntity.setBSEBasePrice(bseVolumeShockerEntity.getLastPrice());
@@ -131,7 +131,7 @@ public class StockBaseJob extends AbstractQuartzJob{
         }
 
         for (BSESensexEntity bseSensexEntity : bseSensexEntities) {
-            StockBaseEntity stockBaseEntity = this.stockBaseDataAccess.findBy(bseSensexEntity.getStockName());
+            StockBaseEntity stockBaseEntity = this.stockBaseRepository.findBy(bseSensexEntity.getStockName());
             if (null == stockBaseEntity) {
                 stockBaseEntity = new StockBaseEntity();
                 stockBaseEntity.setBSEBasePrice(bseSensexEntity.getLastPrice());
@@ -149,7 +149,7 @@ public class StockBaseJob extends AbstractQuartzJob{
         }
 
         for (BSESmallCapGainerEntity bseSmallCapGainerEntity : bseSmallCapGainerEntities) {
-            StockBaseEntity stockBaseEntity = this.stockBaseDataAccess.findBy(bseSmallCapGainerEntity.getStockName());
+            StockBaseEntity stockBaseEntity = this.stockBaseRepository.findBy(bseSmallCapGainerEntity.getStockName());
             if (null == stockBaseEntity) {
                 stockBaseEntity = new StockBaseEntity();
                 stockBaseEntity.setBSEBasePrice(bseSmallCapGainerEntity.getLastPrice());
@@ -167,7 +167,7 @@ public class StockBaseJob extends AbstractQuartzJob{
         }
 
         for (BSEMidCapGainerEntity bseMidCapGainerEntity : bseMidCapGainerEntities) {
-            StockBaseEntity stockBaseEntity = this.stockBaseDataAccess.findBy(bseMidCapGainerEntity.getStockName());
+            StockBaseEntity stockBaseEntity = this.stockBaseRepository.findBy(bseMidCapGainerEntity.getStockName());
             if (null == stockBaseEntity) {
                 stockBaseEntity = new StockBaseEntity();
                 stockBaseEntity.setBSEBasePrice(bseMidCapGainerEntity.getLastPrice());
@@ -185,7 +185,7 @@ public class StockBaseJob extends AbstractQuartzJob{
         }
 
         for (BSETopDividendEntity bseTopDividendEntity : bseTopDividendEntities) {
-            StockBaseEntity stockBaseEntity = this.stockBaseDataAccess.findBy(bseTopDividendEntity.getStockName());
+            StockBaseEntity stockBaseEntity = this.stockBaseRepository.findBy(bseTopDividendEntity.getStockName());
             if (null == stockBaseEntity) {
                 stockBaseEntity = new StockBaseEntity();
                 stockBaseEntity.setBSEBasePrice(bseTopDividendEntity.getLastPrice());
@@ -204,6 +204,6 @@ public class StockBaseJob extends AbstractQuartzJob{
 
         List<StockBaseEntity> uniqueItemList = stockBaseEntities.stream().distinct().collect(Collectors.toList());
 
-        this.stockBaseDataAccess.bulkUpsert(uniqueItemList);
+        this.stockBaseRepository.bulkUpsert(uniqueItemList);
     }
 }

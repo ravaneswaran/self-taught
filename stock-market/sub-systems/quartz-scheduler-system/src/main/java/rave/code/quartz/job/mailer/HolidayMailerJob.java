@@ -4,8 +4,7 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import rave.code.mail.java.ElectronicMail;
 import rave.code.quartz.job.AbstractQuartzJob;
-import rave.code.quartz.job.moneycontrol.trading.BSEActive100Job;
-import rave.code.stockmarket.dataaccess.HolidayDataAccess;
+import rave.code.stockmarket.repository.HolidayRepository;
 import rave.code.stockmarket.entity.HolidayEntity;
 
 import javax.mail.MessagingException;
@@ -33,7 +32,7 @@ public class HolidayMailerJob extends AbstractQuartzJob {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMMM dd, YYYY");
         String formattedToDate = simpleDateFormat.format(toDate);
 
-        HolidayDataAccess stockMarketHolidayDataAccess = new HolidayDataAccess();
+        HolidayRepository stockMarketHolidayDataAccess = new HolidayRepository();
         List<HolidayEntity> entities = stockMarketHolidayDataAccess.findAll();
 
         for (HolidayEntity entity : entities) {

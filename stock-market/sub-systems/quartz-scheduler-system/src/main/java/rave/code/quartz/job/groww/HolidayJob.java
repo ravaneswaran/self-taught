@@ -3,7 +3,7 @@ package rave.code.quartz.job.groww;
 import org.quartz.JobExecutionException;
 import rave.code.data.parser.html.groww.HolidayListParser;
 import rave.code.quartz.job.moneycontrol.AbstractEntityMakerJob;
-import rave.code.stockmarket.dataaccess.HolidayDataAccess;
+import rave.code.stockmarket.repository.HolidayRepository;
 import rave.code.stockmarket.entity.HolidayEntity;
 import rave.code.website.data.model.groww.HolidayModel;
 
@@ -47,7 +47,7 @@ public class HolidayJob extends AbstractEntityMakerJob<HolidayModel, HolidayEnti
 
     @Override
     public void saveTransformedData(List<HolidayEntity> transformedData) {
-        HolidayDataAccess stockMarketHolidayDataAccess = new HolidayDataAccess();
+        HolidayRepository stockMarketHolidayDataAccess = new HolidayRepository();
         for (HolidayEntity entity : transformedData) {
             stockMarketHolidayDataAccess.save(entity);
         }
