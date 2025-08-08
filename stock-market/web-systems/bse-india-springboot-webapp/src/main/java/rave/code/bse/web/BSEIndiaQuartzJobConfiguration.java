@@ -23,7 +23,7 @@ public class BSEIndiaQuartzJobConfiguration{
         return 0;
     }
 
-    /*@Bean
+    @Bean
     public int scheduleXXXCapGainerJobs(){
         new XXXCapGainerScheduler().scheduleJob();
         return 0;
@@ -33,5 +33,5 @@ public class BSEIndiaQuartzJobConfiguration{
     public int scheduleTopDividendJob(){
         new TopDividendScheduler().scheduleJob();
         return 0;
-    }*/
+    }
 }
