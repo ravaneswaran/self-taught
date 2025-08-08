@@ -1,9 +1,16 @@
 package rave.code.quartz.entity;
 
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import rave.code.quartz.entity.id.QuartzEntryId;
+
+@Entity
+@Table(name = "QUARTZ_FIRED_TRIGGERS")
 public class QuartzFiredTriggerEntity {
 
-    private String schedulerName;
-    private String entryId;
+    @EmbeddedId
+    private QuartzEntryId quartzEntryId;
     private String triggerName;
     private String triggerGroup;
     private String instanceName;
@@ -16,20 +23,12 @@ public class QuartzFiredTriggerEntity {
     private String isNonConcurrent;
     private String requestRecovery;
 
-    public String getSchedulerName() {
-        return schedulerName;
+    public QuartzEntryId getQuartzEntryId() {
+        return quartzEntryId;
     }
 
-    public void setSchedulerName(String schedulerName) {
-        this.schedulerName = schedulerName;
-    }
-
-    public String getEntryId() {
-        return entryId;
-    }
-
-    public void setEntryId(String entryId) {
-        this.entryId = entryId;
+    public void setQuartzEntryId(QuartzEntryId quartzEntryId) {
+        this.quartzEntryId = quartzEntryId;
     }
 
     public String getTriggerName() {

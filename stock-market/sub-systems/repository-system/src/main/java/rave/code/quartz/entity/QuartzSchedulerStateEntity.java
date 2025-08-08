@@ -1,26 +1,25 @@
 package rave.code.quartz.entity;
 
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import rave.code.quartz.entity.id.QuartzInstanceId;
+
+@Entity
+@Table(name = "QUARTZ_SCHEDULER_STATE")
 public class QuartzSchedulerStateEntity {
 
-    private String schedulerName;
-    private String instanceName;
+    @EmbeddedId
+    private QuartzInstanceId quartzInstanceId;
     private long lastCheckInTime;
     private long checkInInterval;
 
-    public String getSchedulerName() {
-        return schedulerName;
+    public QuartzInstanceId getQuartzInstanceId() {
+        return quartzInstanceId;
     }
 
-    public void setSchedulerName(String schedulerName) {
-        this.schedulerName = schedulerName;
-    }
-
-    public String getInstanceName() {
-        return instanceName;
-    }
-
-    public void setInstanceName(String instanceName) {
-        this.instanceName = instanceName;
+    public void setQuartzInstanceId(QuartzInstanceId quartzInstanceId) {
+        this.quartzInstanceId = quartzInstanceId;
     }
 
     public long getLastCheckInTime() {

@@ -1,23 +1,22 @@
 package rave.code.quartz.entity;
 
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import rave.code.quartz.entity.id.QuartzLockId;
+
+@Entity
+@Table(name = "QUARTZ_LOCKS")
 public class QuartzLockEntity {
 
-    private String schedulerName;
-    private String lockName;
+    @EmbeddedId
+    private QuartzLockId quartzLockId;
 
-    public String getSchedulerName() {
-        return schedulerName;
+    public QuartzLockId getQuartzLockId() {
+        return quartzLockId;
     }
 
-    public void setSchedulerName(String schedulerName) {
-        this.schedulerName = schedulerName;
-    }
-
-    public String getLockName() {
-        return lockName;
-    }
-
-    public void setLockName(String lockName) {
-        this.lockName = lockName;
+    public void setQuartzLockId(QuartzLockId quartzLockId) {
+        this.quartzLockId = quartzLockId;
     }
 }

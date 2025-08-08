@@ -1,12 +1,18 @@
 package rave.code.quartz.entity;
 
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import rave.code.quartz.entity.id.QuartzJobDetailId;
+
 import java.sql.Blob;
 
+@Entity
+@Table(name = "QUARTZ_JOB_DETAILS")
 public class QuartzJobDetailEntity {
 
-    private String schedulerName;
-    private String jobName;
-    private String jobGroup;
+    @EmbeddedId
+    private QuartzJobDetailId quartzJobDetailId;
     private String description;
     private String jobClassName;
     private String isDurable;
@@ -15,28 +21,12 @@ public class QuartzJobDetailEntity {
     private String requestRecovery;
     private Blob jobData;
 
-    public String getSchedulerName() {
-        return schedulerName;
+    public QuartzJobDetailId getQuartzJobDetailId() {
+        return quartzJobDetailId;
     }
 
-    public void setSchedulerName(String schedulerName) {
-        this.schedulerName = schedulerName;
-    }
-
-    public String getJobName() {
-        return jobName;
-    }
-
-    public void setJobName(String jobName) {
-        this.jobName = jobName;
-    }
-
-    public String getJobGroup() {
-        return jobGroup;
-    }
-
-    public void setJobGroup(String jobGroup) {
-        this.jobGroup = jobGroup;
+    public void setQuartzJobDetailId(QuartzJobDetailId quartzJobDetailId) {
+        this.quartzJobDetailId = quartzJobDetailId;
     }
 
     public String getDescription() {

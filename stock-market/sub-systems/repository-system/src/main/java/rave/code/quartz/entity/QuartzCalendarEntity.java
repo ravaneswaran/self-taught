@@ -1,27 +1,26 @@
 package rave.code.quartz.entity;
 
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import rave.code.quartz.entity.id.QuartzCalendarId;
+
 import java.sql.Blob;
 
+@Entity
+@Table(name = "QUARTZ_CALENDARS")
 public class QuartzCalendarEntity {
 
-    private String schedulerName;
-    private String calendarName;
+    @EmbeddedId
+    private QuartzCalendarId quartzCalendarId;
     private Blob calendar;
 
-    public String getSchedulerName() {
-        return schedulerName;
+    public QuartzCalendarId getQuartzCalendarId() {
+        return quartzCalendarId;
     }
 
-    public void setSchedulerName(String schedulerName) {
-        this.schedulerName = schedulerName;
-    }
-
-    public String getCalendarName() {
-        return calendarName;
-    }
-
-    public void setCalendarName(String calendarName) {
-        this.calendarName = calendarName;
+    public void setQuartzCalendarId(QuartzCalendarId quartzCalendarId) {
+        this.quartzCalendarId = quartzCalendarId;
     }
 
     public Blob getCalendar() {

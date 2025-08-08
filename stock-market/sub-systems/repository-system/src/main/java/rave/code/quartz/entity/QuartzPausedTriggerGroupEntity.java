@@ -1,23 +1,22 @@
 package rave.code.quartz.entity;
 
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import rave.code.quartz.entity.id.QuartzPausedTriggerGroupId;
+
+@Entity
+@Table(name = "QUARTZ_PAUSED_TRIGGER_GRPS")
 public class QuartzPausedTriggerGroupEntity {
 
-    private String schedulerName;
-    private String triggerGroup;
+    @EmbeddedId
+    private QuartzPausedTriggerGroupId quartzPausedTriggerGroupId;
 
-    public String getSchedulerName() {
-        return schedulerName;
+    public QuartzPausedTriggerGroupId getQuartzPausedTriggerGroupId() {
+        return quartzPausedTriggerGroupId;
     }
 
-    public void setSchedulerName(String schedulerName) {
-        this.schedulerName = schedulerName;
-    }
-
-    public String getTriggerGroup() {
-        return triggerGroup;
-    }
-
-    public void setTriggerGroup(String triggerGroup) {
-        this.triggerGroup = triggerGroup;
+    public void setQuartzPausedTriggerGroupId(QuartzPausedTriggerGroupId quartzPausedTriggerGroupId) {
+        this.quartzPausedTriggerGroupId = quartzPausedTriggerGroupId;
     }
 }

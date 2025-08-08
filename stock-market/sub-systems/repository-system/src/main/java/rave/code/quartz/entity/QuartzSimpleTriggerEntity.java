@@ -1,36 +1,26 @@
 package rave.code.quartz.entity;
 
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import rave.code.quartz.entity.id.QuartzTriggerId;
+
+@Entity
+@Table(name = "QUARTZ_SIMPLE_TRIGGERS")
 public class QuartzSimpleTriggerEntity {
 
-    private String schedulerName;
-    private String triggerName;
-    private String triggerGroup;
+    @EmbeddedId
+    private QuartzTriggerId quartzTriggerId;
     private long repeatCount;
     private long repeatInterval;
     private long timesTriggered;
 
-    public String getSchedulerName() {
-        return schedulerName;
+    public QuartzTriggerId getQuartzTriggerId() {
+        return quartzTriggerId;
     }
 
-    public void setSchedulerName(String schedulerName) {
-        this.schedulerName = schedulerName;
-    }
-
-    public String getTriggerName() {
-        return triggerName;
-    }
-
-    public void setTriggerName(String triggerName) {
-        this.triggerName = triggerName;
-    }
-
-    public String getTriggerGroup() {
-        return triggerGroup;
-    }
-
-    public void setTriggerGroup(String triggerGroup) {
-        this.triggerGroup = triggerGroup;
+    public void setQuartzTriggerId(QuartzTriggerId quartzTriggerId) {
+        this.quartzTriggerId = quartzTriggerId;
     }
 
     public long getRepeatCount() {
