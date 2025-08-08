@@ -1,6 +1,5 @@
 package rave.code.bse.web.service;
 
-
 import rave.code.bse.web.model.page.WebPage;
 import rave.code.bse.web.model.stock.Stock;
 
