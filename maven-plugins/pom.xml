@@ -10,10 +10,17 @@
     <name>maven-plugins</name>
 
     <modules>
+        <module>quartz-cloudscape-maven-plugin</module>
+        <module>quartz-cubrid-maven-plugin</module>
+        <module>quartz-db2-maven-plugin</module>
+        <module>quartz-derby-maven-plugin</module>
+        <module>quartz-firebird-maven-plugin</module>
+        <module>quartz-gauss-maven-plugin</module>
+        <module>quartz-h2-maven-plugin</module>
+        <module>quartz-hsqldb-maven-plugin</module>
         <module>quartz-mysql-maven-plugin</module>
     </modules>
 
-    <!--
-        mvn archetype:generate -DgroupId=rave.code -DartifactId=quartz-mysql-maven-plugin -Dversion=1.0.0 -DarchetypeArtifactId=maven-archetype-plugin
-    -->
+    <!-- mvn archetype:generate -DgroupId=rave.code -DartifactId=quartz-mysql-maven-plugin -Dversion=1.0.0 -DarchetypeArtifactId=maven-archetype-plugin -->
+
 </project>

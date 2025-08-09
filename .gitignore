@@ -52,6 +52,14 @@ stock-market/sub-systems/technical-analysis-system/technical-analysis-system.iml
 stock-market/web-systems/web-systems.iml
 utilities/utilities.iml
 
+maven-plugins/quartz-cloudscape-maven-plugin/target/
+maven-plugins/quartz-cubrid-maven-plugin/target/
+maven-plugins/quartz-db2-maven-plugin/target/
+maven-plugins/quartz-derby-maven-plugin/target/
+maven-plugins/quartz-firebird-maven-plugin/target/
+maven-plugins/quartz-gauss-maven-plugin/target/
+maven-plugins/quartz-h2-maven-plugin/target/
+maven-plugins/quartz-hsqldb-maven-plugin/target/
 maven-plugins/quartz-mysql-maven-plugin/target
 
 razorpay-payment-gateway-web-integration/.mvn/
