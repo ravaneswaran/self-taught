@@ -4,11 +4,11 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>rave.code.maven.plugins</groupId>
+        <groupId>rave.code.maven-plugins</groupId>
         <artifactId>maven-plugins</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>rave.code.maven.plugins</groupId>
+    <groupId>rave.code.maven-plugins</groupId>
     <artifactId>quartz-mysql-maven-plugin</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>maven-plugin</packaging>
@@ -54,7 +54,7 @@
                 <version>3.8.1</version>
             </plugin>
             <plugin>
-                <groupId>rave.code.maven.plugins</groupId>
+                <groupId>rave.code.maven-plugins</groupId>
                 <artifactId>quartz-mysql-maven-plugin</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
                 <configuration>

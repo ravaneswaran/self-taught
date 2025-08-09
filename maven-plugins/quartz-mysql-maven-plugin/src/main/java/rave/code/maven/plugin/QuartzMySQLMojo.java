@@ -1,4 +1,4 @@
-package rave.code.maven.plugins;
+package rave.code.maven.plugin;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.Parameter;
