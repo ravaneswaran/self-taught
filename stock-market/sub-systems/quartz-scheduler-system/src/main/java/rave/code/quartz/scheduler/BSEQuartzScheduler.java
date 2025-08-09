@@ -48,46 +48,45 @@ public class BSEQuartzScheduler extends AbstractQuartzScheduler{
                 .build();
 
 
-
         Trigger bseActive100JobTrigger = newTrigger()
                 .withIdentity(TriggerName.BSE_ACTIVE_100_TRIGGER_NAME.get(), Group.TRADING.toString())
                 .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
-                .withPriority(Priorities.MID.get())
+                .withPriority(Priorities.MID.get()).withDescription(TriggerDescription.BSE_ACTIVE_100.get())
                 .build();
         Trigger bseActive200JobTrigger = newTrigger()
                 .withIdentity(TriggerName.BSE_ACTIVE_200_TRIGGER_NAME.get(), Group.TRADING.toString())
                 .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
-                .withPriority(Priorities.MID.get())
+                .withPriority(Priorities.MID.get()).withDescription(TriggerDescription.BSE_ACTIVE_200.get())
                 .build();
         Trigger bseActive500JobTrigger = newTrigger()
                 .withIdentity(TriggerName.BSE_ACTIVE_500_TRIGGER_NAME.get(), Group.TRADING.toString())
                 .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
-                .withPriority(Priorities.MID.get())
+                .withPriority(Priorities.MID.get()).withDescription(TriggerDescription.BSE_ACTIVE_500.get())
                 .build();
         Trigger bsePriceShockersJobTrigger = newTrigger()
                 .withIdentity(TriggerName.BSE_PRICE_SHOCKERS_TRIGGER_NAME.get(), Group.TRADING.toString())
                 .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
-                .withPriority(Priorities.MID.get())
+                .withPriority(Priorities.MID.get()).withDescription(TriggerDescription.BSE_PRICE_SHOCKER.get())
                 .build();
         Trigger bseVolumeShockersJobTrigger = newTrigger()
                 .withIdentity(TriggerName.BSE_VOLUME_SHOCKERS_TRIGGER_NAME.get(), Group.TRADING.toString())
                 .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
-                .withPriority(Priorities.MID.get())
+                .withPriority(Priorities.MID.get()).withDescription(TriggerDescription.BSE_VOLUME_SHOCKER.get())
                 .build();
         Trigger bseTopDividendJobTrigger = newTrigger()
                 .withIdentity(TriggerName.BSE_TOP_DIVIDEND_TRIGGER_NAME.get(), Group.INVESTING.toString())
                 .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
-                .withPriority(Priorities.MID.get())
+                .withPriority(Priorities.MID.get()).withDescription(TriggerDescription.BSE_TOP_DIVIDEND.get())
                 .build();
         Trigger bseMidCapGainerJobTrigger = newTrigger()
                 .withIdentity(TriggerName.BSE_MID_CAP_GAINER_TRIGGER_NAME.get(), Group.INVESTING.toString())
                 .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
-                .withPriority(Priorities.MID.get())
+                .withPriority(Priorities.MID.get()).withDescription(TriggerDescription.BSE_MID_CAP_GAINER.get())
                 .build();
         Trigger bseSmallCapGainerJobTrigger = newTrigger()
                 .withIdentity(TriggerName.BSE_SMALL_CAP_GAINER_TRIGGER_NAME.get(), Group.INVESTING.toString())
                 .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
-                .withPriority(Priorities.MID.get())
+                .withPriority(Priorities.MID.get()).withDescription(TriggerDescription.BSE_SMALL_CAP_GAINER.get())
                 .build();
 
         try {
@@ -107,7 +106,6 @@ public class BSEQuartzScheduler extends AbstractQuartzScheduler{
             scheduler.scheduleJob(bseMidCapGainerJob, bseMidCapGainerJobTrigger);
 
             scheduler.start();
-
             //scheduler.shutdown(true);
         } catch (SchedulerException se) {
             LOGGER.log(Level.SEVERE, se.getMessage(), se);

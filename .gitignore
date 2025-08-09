@@ -32,6 +32,8 @@ springboot-apps/sql-database/springboot-jpa-with-h2/spring_boot.trace.db
 stock-market/stock-market.iml
 stock-market/stock-market.ipr
 stock-market/stock-market.iws
+stock-market/sub-systems/sub-systems.ipr
+stock-market/sub-systems/sub-systems.iws
 stock-market/sub-systems/sub-systems.iml
 stock-market/sub-systems/repository-system/repository-system.iml
 stock-market/sub-systems/table-generation-system/table-generation-system.iml
