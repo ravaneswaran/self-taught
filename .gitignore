@@ -1,7 +1,11 @@
-self-taught.iml
-self-taught.ipr
-self-taught.iws
-android-apps/android-apps.iml
+java.iml
+java.ipr
+java.iws
+
+.gradle/
+.idea/
+
+android-apps/android-apps.
 
 razorpay-payment-gateway-web-integration/razorpay-payment-gateway-web-integration.iml
 
@@ -28,6 +32,8 @@ springboot-apps/sql-database/springboot-jpa-with-hsqldb/spring_boot.db.script
 springboot-apps/sql-database/springboot-jpa-with-h2/spring_boot.mv.db
 springboot-apps/sql-database/springboot-jpa-with-h2/spring_boot.trace.db
 
+springboot-apps/payment-gateways/paytm/paytm.iml
+springboot-apps/payment-gateways/razorpay/razorpay.iml
 
 stock-market/stock-market.iml
 stock-market/stock-market.ipr
@@ -46,11 +52,12 @@ stock-market/sub-systems/technical-analysis-system/technical-analysis-system.iml
 stock-market/web-systems/web-systems.iml
 utilities/utilities.iml
 
-.gradle/
-.idea/
+maven-plugins/quartz-mysql-maven-plugin/target
+
 razorpay-payment-gateway-web-integration/.mvn/
 razorpay-payment-gateway-web-integration/target/
 razorpay-payment-gateway-web-integration/tmp/
+
 utilities/target/
 
 springboot-apps/target
