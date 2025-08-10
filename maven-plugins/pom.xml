@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <groupId>rave.code.maven-plugins</groupId>
@@ -26,11 +25,14 @@
         <module>quartz-postgres-maven-plugin</module>
         <module>quartz-sapdb-maven-plugin</module>
         <module>quartz-solid-maven-plugin</module>
+        <module>quartz-sqlite-maven-plugin</module>
         <module>quartz-sybase-maven-plugin</module>
     </modules>
 
     <!--
-    mvn archetype:generate -DgroupId=rave.code -DartifactId=quartz-mysql-maven-plugin -Dversion=1.0.0 -DarchetypeArtifactId=maven-archetype-plugin
-    -->
 
+    mvn archetype:generate -DgroupId=rave.code -DartifactId=quartz-mysql-maven-plugin -Dversion=1.0.0 -DarchetypeArtifactId=maven-archetype-plugin
+    https://github.com/quartz-scheduler/quartz/blob/main/quartz/src/main/resources/org/quartz/impl/jdbcjobstore/tables_cloudscape.sql
+
+    -->
 </project>

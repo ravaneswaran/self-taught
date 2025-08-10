@@ -38,6 +38,12 @@
             <artifactId>maven-plugin-annotations</artifactId>
             <version>3.15.1</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>11.2.0.jre17</version>
+        </dependency>
     </dependencies>
 
     <build>

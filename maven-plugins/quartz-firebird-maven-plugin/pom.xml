@@ -38,6 +38,12 @@
             <artifactId>maven-plugin-annotations</artifactId>
             <version>3.15.1</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.firebirdsql.jdbc/jaybird -->
+        <dependency>
+            <groupId>org.firebirdsql.jdbc</groupId>
+            <artifactId>jaybird</artifactId>
+            <version>6.0.2</version>
+        </dependency>
     </dependencies>
 
     <build>

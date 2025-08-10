@@ -38,6 +38,12 @@
             <artifactId>maven-plugin-annotations</artifactId>
             <version>3.15.1</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.ibm.db2/jcc -->
+        <dependency>
+            <groupId>com.ibm.db2</groupId>
+            <artifactId>jcc</artifactId>
+            <version>12.1.2.0</version>
+        </dependency>
     </dependencies>
 
     <build>

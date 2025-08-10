@@ -9,10 +9,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>rave.code.maven-plugins</groupId>
-    <artifactId>quartz-hsql-maven-plugin</artifactId>
+    <artifactId>quartz-sqlite-maven-plugin</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>maven-plugin</packaging>
-    <name>quartz-hsql-maven-plugin</name>
+    <name>quartz-sqlite-maven-plugin</name>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -38,10 +38,11 @@
             <artifactId>maven-plugin-annotations</artifactId>
             <version>3.15.1</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc -->
         <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <version>2.7.1</version>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.50.3.0</version>
         </dependency>
     </dependencies>
 

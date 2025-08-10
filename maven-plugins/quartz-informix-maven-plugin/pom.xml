@@ -38,6 +38,12 @@
             <artifactId>maven-plugin-annotations</artifactId>
             <version>3.15.1</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.ibm.informix/jdbc -->
+        <dependency>
+            <groupId>com.ibm.informix</groupId>
+            <artifactId>jdbc</artifactId>
+            <version>15.0.0.1.1</version>
+        </dependency>
     </dependencies>
 
     <build>
