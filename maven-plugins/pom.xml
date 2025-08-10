@@ -19,15 +19,18 @@
         <module>quartz-h2-maven-plugin</module>
         <module>quartz-hsqldb-maven-plugin</module>
         <module>quartz-informix-maven-plugin</module>
+        <module>quartz-mssql-maven-plugin</module>
         <module>quartz-mysql-maven-plugin</module>
         <module>quartz-oracle-maven-plugin</module>
         <module>quartz-pointbase-maven-plugin</module>
         <module>quartz-postgres-maven-plugin</module>
         <module>quartz-sapdb-maven-plugin</module>
+        <module>quartz-solid-maven-plugin</module>
+        <module>quartz-sybase-maven-plugin</module>
     </modules>
 
     <!--
-      mvn archetype:generate -DgroupId=rave.code -DartifactId=quartz-mysql-maven-plugin -Dversion=1.0.0 -DarchetypeArtifactId=maven-archetype-plugin
-      -->
+    mvn archetype:generate -DgroupId=rave.code -DartifactId=quartz-mysql-maven-plugin -Dversion=1.0.0 -DarchetypeArtifactId=maven-archetype-plugin
+    -->
 
 </project>
