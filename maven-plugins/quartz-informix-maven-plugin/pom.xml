@@ -9,10 +9,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>rave.code.maven-plugins</groupId>
-    <artifactId>quartz-hsql-maven-plugin</artifactId>
+    <artifactId>quartz-informix-maven-plugin</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>maven-plugin</packaging>
-    <name>quartz-hsql-maven-plugin</name>
+    <name>quartz-informix-maven-plugin</name>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -56,9 +56,10 @@
                     <driver>com.mysql.cj.jdbc.Driver</driver>
                     <username>admin</username>
                     <password>admin</password>
-                    <prefix>QUARTZ_</prefix>
+                    <prefix>Q</prefix>
                 </configuration>
             </plugin>-->
         </plugins>
     </build>
+
 </project>

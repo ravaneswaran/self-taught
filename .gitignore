@@ -60,7 +60,13 @@ maven-plugins/quartz-firebird-maven-plugin/target/
 maven-plugins/quartz-gauss-maven-plugin/target/
 maven-plugins/quartz-h2-maven-plugin/target/
 maven-plugins/quartz-hsqldb-maven-plugin/target/
+maven-plugins/quartz-informix-maven-plugin/target/
 maven-plugins/quartz-mysql-maven-plugin/target
+maven-plugins/quartz-oracle-maven-plugin/target/
+maven-plugins/quartz-pointbase-maven-plugin/target/
+maven-plugins/quartz-postgres-maven-plugin/target/
+maven-plugins/quartz-sapdb-maven-plugin/target/
+
 
 razorpay-payment-gateway-web-integration/.mvn/
 razorpay-payment-gateway-web-integration/target/
