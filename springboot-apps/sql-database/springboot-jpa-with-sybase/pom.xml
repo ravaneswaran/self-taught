@@ -9,6 +9,7 @@
         <version>3.5.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+    <groupId>rave.code.springboot-apps.sql-database</groupId>
     <artifactId>springboot-jpa-with-sybase</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>springboot-jpa-with-sybase</name>
