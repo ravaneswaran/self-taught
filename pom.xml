@@ -16,7 +16,7 @@
         <module>stock-market</module>
         <module>maven-plugins</module>
         <module>education</module>
-        <module>bst</module>
+        <module>bhairava-siddhar</module>
     </modules>
 
 </project>

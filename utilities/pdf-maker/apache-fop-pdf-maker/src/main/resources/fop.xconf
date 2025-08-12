@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<fop version="1.0">
+    <renderers>
+        <renderer mime="application/pdf">
+            <fonts>
+                <font kerning="yes" embed-url="file:/home/ravaneswaran/github/java/utilities/pdf-maker/apache-fop-pdf-maker/src/main/resources/fonts/google/notosans-tamil-variable-font.ttf">
+                    <font-triplet name="TamilIlangoNormal" style="normal" weight="normal"/>
+                </font>
+                <font kerning="yes" embed-url="file:/home/ravaneswaran/github/java/utilities/pdf-maker/apache-fop-pdf-maker/src/main/resources/fonts/google/notosans-tamil-variable-font.ttf">
+                    <font-triplet name="TamilIlangoBold" style="normal" weight="bold"/>
+                </font>
+            </fonts>
+        </renderer>
+    </renderers>
+</fop>
