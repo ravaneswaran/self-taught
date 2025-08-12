@@ -4,9 +4,12 @@ import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 import rave.code.quartz.enums.CronExpression;
 import rave.code.quartz.enums.*;
+import rave.code.quartz.job.moneycontrol.history.*;
 import rave.code.quartz.job.moneycontrol.investing.BSEMidCapGainerJob;
 import rave.code.quartz.job.moneycontrol.investing.BSESmallCapGainerJob;
 import rave.code.quartz.job.moneycontrol.investing.BSETopDividendJob;
+import rave.code.quartz.job.moneycontrol.misc.BSESensexJob;
+import rave.code.quartz.job.moneycontrol.misc.StockBaseJob;
 import rave.code.quartz.job.moneycontrol.trading.*;
 
 import java.util.logging.Level;
@@ -37,6 +40,7 @@ public class BSEQuartzScheduler extends AbstractQuartzScheduler{
         JobDetail bseVolumeShockersJobDetail = newJob(BSEVolumeShockersJob.class)
                 .withIdentity(JobName.BSE_VOLUME_SHOCKERS_JOB_NAME.get(), Group.TRADING.toString()).storeDurably()
                 .build();
+
         JobDetail bseTopDividendJob = newJob(BSETopDividendJob.class)
                 .withIdentity(JobName.BSE_TOP_DIVIDEND_JOB_NAME.get(), Group.INVESTING.toString()).storeDurably()
                 .build();
@@ -45,6 +49,30 @@ public class BSEQuartzScheduler extends AbstractQuartzScheduler{
                 .build();
         JobDetail bseSmallCapGainerJob = newJob(BSESmallCapGainerJob.class)
                 .withIdentity(JobName.BSE_SMALL_CAP_GAINER_JOB_NAME.get(), Group.INVESTING.toString()).storeDurably()
+                .build();
+
+        JobDetail sensexJobDetail = newJob(BSESensexJob.class)
+                .withIdentity(JobName.BSE_SENSEX_JOB_NAME.get(), Group.MISCELLANEOUS.toString())
+                .build();
+        JobDetail stockBaseJobDetail = newJob(StockBaseJob.class)
+                .withIdentity(JobName.BSE_STOCK_BASE_JOB_NAME.get(), Group.MISCELLANEOUS.toString())
+                .build();
+
+        /* Histroy Job Details....*/
+        JobDetail bseActive100HistoryJobDetail = newJob(BSEActive100HistoryJob.class)
+                .withIdentity(JobName.BSE_ACTIVE_100_HISTORY_JOB_NAME.get(), Group.HISTORY.toString())
+                .build();
+        JobDetail bseActive200HistoryJobDetail = newJob(BSEActive200HistoryJob.class)
+                .withIdentity(JobName.BSE_ACTIVE_200_HISTORY_JOB_NAME.get(), Group.HISTORY.toString())
+                .build();
+        JobDetail bseActive500HistoryJobDetail = newJob(BSEActive500HistoryJob.class)
+                .withIdentity(JobName.BSE_ACTIVE_500_HISTORY_JOB_NAME.get(), Group.HISTORY.toString())
+                .build();
+        JobDetail bsePriceShockerHistoryJobDetail = newJob(BSEPriceShockersHistoryJob.class)
+                .withIdentity(JobName.BSE_ACTIVE_PRICE_SHOCKER_HISTORY_JOB_NAME.get(), Group.HISTORY.toString())
+                .build();
+        JobDetail bseVolumeShockerHistoryJobDetail = newJob(BSEVolumeShockersHistoryJob.class)
+                .withIdentity(JobName.BSE_ACTIVE_VOLUME_SHOCKER_HISTORY_JOB_NAME.get(), Group.HISTORY.toString())
                 .build();
 
 
@@ -73,6 +101,7 @@ public class BSEQuartzScheduler extends AbstractQuartzScheduler{
                 .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
                 .withPriority(Priorities.MID.get()).withDescription(TriggerDescription.BSE_VOLUME_SHOCKER.get())
                 .build();
+
         Trigger bseTopDividendJobTrigger = newTrigger()
                 .withIdentity(TriggerName.BSE_TOP_DIVIDEND_TRIGGER_NAME.get(), Group.INVESTING.toString())
                 .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
@@ -87,6 +116,44 @@ public class BSEQuartzScheduler extends AbstractQuartzScheduler{
                 .withIdentity(TriggerName.BSE_SMALL_CAP_GAINER_TRIGGER_NAME.get(), Group.INVESTING.toString())
                 .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
                 .withPriority(Priorities.MID.get()).withDescription(TriggerDescription.BSE_SMALL_CAP_GAINER.get())
+                .build();
+
+        Trigger sensexJobTrigger = newTrigger()
+                .withIdentity(TriggerName.BSE_SENSEX_TRIGGER_NAME.get(), Group.MISCELLANEOUS.toString())
+                .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
+                .withPriority(Priorities.MID.get()).withDescription(TriggerDescription.SENSEX.get())
+                .build();
+        Trigger stockBaseJobTrigger = newTrigger()
+                .withIdentity(TriggerName.BSE_STOCK_BASE_TRIGGER_NAME.get(), Group.MISCELLANEOUS.toString())
+                .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.AT_4PM_MONDAY_TO_FRIDAY.toString()))
+                .withPriority(Priorities.MID.get()).withDescription(TriggerDescription.STOCK_BASE.get())
+                .build();
+
+        /* History triggers...*/
+        Trigger bseActive100HistoryJobDetailTrigger = newTrigger()
+                .withIdentity(TriggerName.BSE_ACTIVE_100_HISTORY_TRIGGER_NAME.get(), Group.HISTORY.toString())
+                .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
+                .withPriority(Priorities.HIGH.get()).withDescription(TriggerDescription.BSE_ACTIVE_100_HISTORY.get())
+                .build();
+        Trigger bseActive200HistoryJobDetailTrigger = newTrigger()
+                .withIdentity(TriggerName.BSE_ACTIVE_200_HISTORY_TRIGGER_NAME.get(), Group.HISTORY.toString())
+                .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
+                .withPriority(Priorities.HIGH.get()).withDescription(TriggerDescription.BSE_ACTIVE_200_HISTORY.get())
+                .build();
+        Trigger bseActive500HistoryJobDetailTrigger = newTrigger()
+                .withIdentity(TriggerName.BSE_ACTIVE_500_HISTORY_TRIGGER_NAME.get(), Group.HISTORY.toString())
+                .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
+                .withPriority(Priorities.HIGH.get()).withDescription(TriggerDescription.BSE_ACTIVE_500_HISTORY.get())
+                .build();
+        Trigger bsePriceShockerHistoryJobDetailTrigger = newTrigger()
+                .withIdentity(TriggerName.BSE_PRICE_SHOCKER_HISTORY_TRIGGER_NAME.get(), Group.HISTORY.toString())
+                .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
+                .withPriority(Priorities.HIGH.get()).withDescription(TriggerDescription.BSE_PRICE_SHOCKER_HISTORY.get())
+                .build();
+        Trigger bseVolumeShockerHistoryJobDetailTrigger = newTrigger()
+                .withIdentity(TriggerName.BSE_VOLUME_SHOCKER_HISTORY_TRIGGER_NAME.get(), Group.HISTORY.toString())
+                .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.EVERY_5TH_MINUTE_OF_THE_CLOCK_ON_ALL_DAYS.toString()))
+                .withPriority(Priorities.HIGH.get()).withDescription(TriggerDescription.BSE_VOLUME_SHOCKER_HISTORY.get())
                 .build();
 
         try {
@@ -104,6 +171,16 @@ public class BSEQuartzScheduler extends AbstractQuartzScheduler{
 
             scheduler.scheduleJob(bseSmallCapGainerJob, bseSmallCapGainerJobTrigger);
             scheduler.scheduleJob(bseMidCapGainerJob, bseMidCapGainerJobTrigger);
+
+            scheduler.scheduleJob(sensexJobDetail, sensexJobTrigger);
+            scheduler.scheduleJob(stockBaseJobDetail, stockBaseJobTrigger);
+
+            scheduler.scheduleJob(bseActive100HistoryJobDetail, bseActive100HistoryJobDetailTrigger);
+            scheduler.scheduleJob(bseActive200HistoryJobDetail, bseActive200HistoryJobDetailTrigger);
+            scheduler.scheduleJob(bseActive500HistoryJobDetail, bseActive500HistoryJobDetailTrigger);
+            scheduler.scheduleJob(bsePriceShockerHistoryJobDetail, bsePriceShockerHistoryJobDetailTrigger);
+            scheduler.scheduleJob(bseVolumeShockerHistoryJobDetail, bseVolumeShockerHistoryJobDetailTrigger);
+
 
             scheduler.start();
             //scheduler.shutdown(true);
