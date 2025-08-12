@@ -14,8 +14,6 @@
         <module>razorpay-payment-gateway-web-integration</module>
         <module>utilities</module>
         <module>stock-market</module>
-        <module>android-apps</module>
-        <module>springboot-apps</module>
         <module>maven-plugins</module>
         <module>education</module>
     </modules>

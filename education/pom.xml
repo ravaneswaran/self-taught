@@ -13,6 +13,7 @@
     <name>education</name>
 
     <modules>
+        <module>android-apps</module>
         <module>springboot-apps</module>
     </modules>
 
