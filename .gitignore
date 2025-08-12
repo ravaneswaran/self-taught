@@ -75,7 +75,11 @@ razorpay-payment-gateway-web-integration/.mvn/
 razorpay-payment-gateway-web-integration/target/
 razorpay-payment-gateway-web-integration/tmp/
 
-utilities/target/
+utilities/google-zxing-qrcode/target/
+utilities/java-email/target
+utilities/java-image/target
+utilities/krysalis-barcode/target
+utilities/pdf-maker/target
 
 education/springboot-apps/target
 education/springboot-apps/graph-database/springboot-with-neo4j/target

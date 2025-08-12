@@ -7,7 +7,6 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
 import rave.code.utility.qrcode.QRCode;
 
-
 import java.awt.image.BufferedImage;
 
 public class GoogleZxingQRCode implements QRCode {

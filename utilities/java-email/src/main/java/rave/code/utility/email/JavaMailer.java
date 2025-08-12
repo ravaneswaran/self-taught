@@ -1,4 +1,4 @@
-package rave.code.utility.mail;
+package rave.code.utility.email;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
