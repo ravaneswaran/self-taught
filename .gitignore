@@ -79,15 +79,13 @@ utilities/google-zxing-qrcode/target/
 utilities/java-email/target
 utilities/java-image/target
 utilities/krysalis-barcode/target
-utilities/pdf-maker/target
+utilities/pdf-maker/apache-fop-pdf-maker/target
+utilities/pdf-maker/itext-pdf-maker/target
 
-education/springboot-apps/target
 education/springboot-apps/graph-database/springboot-with-neo4j/target
 education/springboot-apps/messaging/springboot-with-kafka/target
-education/springboot-apps/messaging/springboot-with-rabbitmq/target
 education/springboot-apps/messaging/springboot-with-rabbitmq/rabbitmq-message-consumer/target
 education/springboot-apps/messaging/springboot-with-rabbitmq/rabbitmq-message-producer/target
-education/springboot-apps/messaging/springboot-with-activemq/target
 education/springboot-apps/messaging/springboot-with-activemq/activemq-message-producer/target
 education/springboot-apps/messaging/springboot-with-activemq/activemq-message-consumer/target
 education/springboot-apps/no-sql-database/springboot-with-cassandra/target
