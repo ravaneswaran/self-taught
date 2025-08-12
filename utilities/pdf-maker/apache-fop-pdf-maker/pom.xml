@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <groupId>rave.code.utilities.pdf-maker.apache-fop-pdf-maker</groupId>
+    <groupId>rave.code.utilities.pdf-maker</groupId>
     <artifactId>apache-fop-pdf-maker</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>apache-fop-pdf-maker</name>
