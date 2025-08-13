@@ -4,14 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>rave.code</groupId>
-        <artifactId>bhairava-siddhar</artifactId>
+        <artifactId>bhairava-siddhar-org</artifactId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <groupId>rave.code.bhairava-siddhar</groupId>
-    <artifactId>trust</artifactId>
+    <name>bso-web-systems</name>
+    <artifactId>bso-web-systems</artifactId>
+    <groupId>rave.code.bhairava-siddhar-org</groupId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>trust</name>
 
 </project>

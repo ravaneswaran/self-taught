@@ -3,15 +3,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
+    <name>bhairava-siddhar-org</name>
+    <artifactId>bhairava-siddhar-org</artifactId>
     <groupId>rave.code</groupId>
-    <artifactId>bhairava-siddhar</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>bhairava-siddhar</name>
 
     <modules>
-        <module>trust</module>
-        <module>temple</module>
+        <module>bso-sub-systems</module>
+        <module>bso-web-systems</module>
     </modules>
 
 </project>

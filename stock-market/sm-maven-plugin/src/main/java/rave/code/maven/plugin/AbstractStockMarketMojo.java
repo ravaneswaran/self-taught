@@ -19,8 +19,6 @@ public abstract class AbstractStockMarketMojo extends AbstractMojo {
     protected String username;
     @Parameter(property = "password", required = true)
     protected String password;
-    @Parameter(property = "prefix", required = false, defaultValue = "QRTZ_")
-    protected String prefix;
 
     protected void executeFile(String fileName) {
         getLog().info(String.format("Executing the file -- %s", fileName));
@@ -43,8 +41,7 @@ public abstract class AbstractStockMarketMojo extends AbstractMojo {
                 // If we reached a semicolon, execute the statement
                 if (line.endsWith(";")) {
                     String sql = sqlBuilder.toString();
-                    sql = sql.substring(0, sql.length() - 1).replaceAll("QRTZ_", this.prefix);
-                    ; // remove last semicolon
+                    sql = sql.substring(0, sql.length() - 1);; // remove last semicolon
                     getLog().info(String.format("mysql> %s%s", sql, "\n"));
                     statement.execute(sql);
                     sqlBuilder.setLength(0); // reset buffer

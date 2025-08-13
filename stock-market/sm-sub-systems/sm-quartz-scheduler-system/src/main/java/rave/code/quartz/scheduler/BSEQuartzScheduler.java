@@ -160,15 +160,13 @@ public class BSEQuartzScheduler extends AbstractQuartzScheduler{
             SchedulerFactory schedulerFactory = new StdSchedulerFactory();
             Scheduler scheduler = schedulerFactory.getScheduler();
 
+            scheduler.scheduleJob(bseActive100JobDetail, bseActive100JobTrigger);
             scheduler.scheduleJob(bseActive200JobDetail, bseActive200JobTrigger);
             scheduler.scheduleJob(bseActive500JobDetail, bseActive500JobTrigger);
-            scheduler.scheduleJob(bseActive100JobDetail, bseActive100JobTrigger);
-
             scheduler.scheduleJob(bsePriceShockersJobDetail, bsePriceShockersJobTrigger);
             scheduler.scheduleJob(bseVolumeShockersJobDetail, bseVolumeShockersJobTrigger);
 
             scheduler.scheduleJob(bseTopDividendJob, bseTopDividendJobTrigger);
-
             scheduler.scheduleJob(bseSmallCapGainerJob, bseSmallCapGainerJobTrigger);
             scheduler.scheduleJob(bseMidCapGainerJob, bseMidCapGainerJobTrigger);
 
@@ -180,7 +178,6 @@ public class BSEQuartzScheduler extends AbstractQuartzScheduler{
             scheduler.scheduleJob(bseActive500HistoryJobDetail, bseActive500HistoryJobDetailTrigger);
             scheduler.scheduleJob(bsePriceShockerHistoryJobDetail, bsePriceShockerHistoryJobDetailTrigger);
             scheduler.scheduleJob(bseVolumeShockerHistoryJobDetail, bseVolumeShockerHistoryJobDetailTrigger);
-
 
             scheduler.start();
             //scheduler.shutdown(true);

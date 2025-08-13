@@ -9,9 +9,10 @@
         <version>1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <groupId>rave.code.stock-market</groupId>
-    <artifactId>sm-maven-plugin</artifactId>
     <name>sm-maven-plugin</name>
+    <artifactId>sm-maven-plugin</artifactId>
+    <groupId>rave.code.stock-market</groupId>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
