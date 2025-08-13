@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>rave.code</groupId>
+        <artifactId>stock-market</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <name>sm-sub-systems</name>
+    <artifactId>sm-sub-systems</artifactId>
+    <groupId>rave.code.stock-market</groupId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+
+    <modules>
+        <module>sm-table-generation-system</module>
+        <module>sm-email-system</module>
+        <module>sm-data-model-system</module>
+        <module>sm-data-parser-system</module>
+        <module>sm-repository-system</module>
+        <module>sm-quartz-scheduler-system</module>
+        <module>sm-ai-system</module>
+        <module>sm-technical-analysis-system</module>
+    </modules>
+
+</project>

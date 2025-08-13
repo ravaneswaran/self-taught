@@ -38,18 +38,18 @@ education/springboot-apps/payment-gateways/razorpay/razorpay.iml
 stock-market/stock-market.iml
 stock-market/stock-market.ipr
 stock-market/stock-market.iws
-stock-market/sub-systems/sub-systems.ipr
-stock-market/sub-systems/sub-systems.iws
-stock-market/sub-systems/sub-systems.iml
-stock-market/sub-systems/repository-system/repository-system.iml
-stock-market/sub-systems/table-generation-system/table-generation-system.iml
-stock-market/sub-systems/quartz-scheduler-system/quartz-scheduler-system.iml
-stock-market/sub-systems/data-model-system/data-model-system.iml
-stock-market/sub-systems/data-parser-system/data-parser-system.iml
-stock-market/sub-systems/ai-system/ai-system.iml
-stock-market/sub-systems/email-system/email-system.iml
-stock-market/sub-systems/technical-analysis-system/technical-analysis-system.iml
-stock-market/web-systems/web-systems.iml
+stock-market/sm-sub-systems/sm-sub-systems.ipr
+stock-market/sm-sub-systems/sm-sub-systems.iws
+stock-market/sm-sub-systems/sm-sub-systems.iml
+stock-market/sm-sub-systems/sm-repository-system/sm-repository-system.iml
+stock-market/sm-sub-systems/sm-table-generation-system/sm-table-generation-system.iml
+stock-market/sm-sub-systems/sm-quartz-scheduler-system/sm-quartz-scheduler-system.iml
+stock-market/sm-sub-systems/sm-data-model-system/sm-data-model-system.iml
+stock-market/sm-sub-systems/sm-data-parser-system/sm-data-parser-system.iml
+stock-market/sm-sub-systems/sm-ai-system/sm-ai-system.iml
+stock-market/sm-sub-systems/sm-email-system/sm-email-system.iml
+stock-market/sm-sub-systems/sm-technical-analysis-system/sm-technical-analysis-system.iml
+stock-market/sm-web-systems/sm-web-systems.iml
 utilities/utilities.iml
 
 maven-plugins/quartz-cloudscape-maven-plugin/target/
@@ -110,13 +110,13 @@ education/springboot-apps/payment-gateways/razorpay/target
 education/springboot-apps/payment-gateways/paytm/target
 
 
-stock-market/sub-systems/ai-system/target/
-stock-market/sub-systems/repository-system/target/
-stock-market/sub-systems/table-generation-system/target/
-stock-market/sub-systems/email-system/target/
-stock-market/sub-systems/quartz-scheduler-system/target/
-stock-market/sub-systems/data-model-system/target/
-stock-market/sub-systems/data-parser-system/target/
-stock-market/sub-systems/technical-analysis-system/target/
+stock-market/sm-sub-systems/sm-ai-system/target/
+stock-market/sm-sub-systems/sm-repository-system/target/
+stock-market/sm-sub-systems/sm-table-generation-system/target/
+stock-market/sm-sub-systems/sm-email-system/target/
+stock-market/sm-sub-systems/sm-quartz-scheduler-system/target/
+stock-market/sm-sub-systems/sm-data-model-system/target/
+stock-market/sm-sub-systems/sm-data-parser-system/target/
+stock-market/sm-sub-systems/sm-technical-analysis-system/target/
 
 

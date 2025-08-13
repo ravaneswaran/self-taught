@@ -10,8 +10,9 @@
     <name>stock-market</name>
 
     <modules>
-        <module>sub-systems</module>
-        <module>web-systems</module>
+        <module>sm-maven-plugin</module>
+        <module>sm-sub-systems</module>
+        <module>sm-web-systems</module>
     </modules>
 
 </project>
