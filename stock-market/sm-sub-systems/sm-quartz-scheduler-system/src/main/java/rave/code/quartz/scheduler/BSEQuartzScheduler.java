@@ -132,27 +132,27 @@ public class BSEQuartzScheduler extends AbstractQuartzScheduler{
         /* History triggers...*/
         Trigger bseActive100HistoryJobDetailTrigger = newTrigger()
                 .withIdentity(TriggerName.BSE_ACTIVE_100_HISTORY_TRIGGER_NAME.get(), Group.HISTORY.toString())
-                .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.AT_8AM_MONDAY_TO_FRIDAY.toString()))
+                .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.AT_QUARTER_T0_9_AM_MONDAY_TO_FRIDAY.toString()))
                 .withPriority(Priorities.HIGH.get()).withDescription(TriggerDescription.BSE_ACTIVE_100_HISTORY.get())
                 .build();
         Trigger bseActive200HistoryJobDetailTrigger = newTrigger()
                 .withIdentity(TriggerName.BSE_ACTIVE_200_HISTORY_TRIGGER_NAME.get(), Group.HISTORY.toString())
-                .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.AT_8AM_MONDAY_TO_FRIDAY.toString()))
+                .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.AT_QUARTER_T0_9_AM_MONDAY_TO_FRIDAY.toString()))
                 .withPriority(Priorities.HIGH.get()).withDescription(TriggerDescription.BSE_ACTIVE_200_HISTORY.get())
                 .build();
         Trigger bseActive500HistoryJobDetailTrigger = newTrigger()
                 .withIdentity(TriggerName.BSE_ACTIVE_500_HISTORY_TRIGGER_NAME.get(), Group.HISTORY.toString())
-                .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.AT_8AM_MONDAY_TO_FRIDAY.toString()))
+                .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.AT_QUARTER_T0_9_AM_MONDAY_TO_FRIDAY.toString()))
                 .withPriority(Priorities.HIGH.get()).withDescription(TriggerDescription.BSE_ACTIVE_500_HISTORY.get())
                 .build();
         Trigger bsePriceShockerHistoryJobDetailTrigger = newTrigger()
                 .withIdentity(TriggerName.BSE_PRICE_SHOCKER_HISTORY_TRIGGER_NAME.get(), Group.HISTORY.toString())
-                .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.AT_8AM_MONDAY_TO_FRIDAY.toString()))
+                .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.AT_QUARTER_T0_9_AM_MONDAY_TO_FRIDAY.toString()))
                 .withPriority(Priorities.HIGH.get()).withDescription(TriggerDescription.BSE_PRICE_SHOCKER_HISTORY.get())
                 .build();
         Trigger bseVolumeShockerHistoryJobDetailTrigger = newTrigger()
                 .withIdentity(TriggerName.BSE_VOLUME_SHOCKER_HISTORY_TRIGGER_NAME.get(), Group.HISTORY.toString())
-                .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.AT_8AM_MONDAY_TO_FRIDAY.toString()))
+                .withSchedule(CronScheduleBuilder.cronSchedule(CronExpression.AT_QUARTER_T0_9_AM_MONDAY_TO_FRIDAY.toString()))
                 .withPriority(Priorities.HIGH.get()).withDescription(TriggerDescription.BSE_VOLUME_SHOCKER_HISTORY.get())
                 .build();
 

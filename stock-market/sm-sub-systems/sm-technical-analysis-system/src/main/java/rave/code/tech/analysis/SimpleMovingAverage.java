@@ -1,7 +1,9 @@
 package rave.code.tech.analysis;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class SimpleMovingAverage {
@@ -32,7 +34,10 @@ public class SimpleMovingAverage {
         // SMA for 3-day period
         int period = 3;
         List<Double> smaValues = calculateSMA(prices, period);
-
         System.out.println("SMA (" + period + "-day): " + smaValues);
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        Date testDate = new Date(1755141300000l);
+        System.out.println("--------------->>>>>> "+simpleDateFormat.format(testDate));
     }
 }
