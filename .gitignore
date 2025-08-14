@@ -81,7 +81,8 @@ utilities/java-image/target
 utilities/krysalis-barcode/target
 utilities/pdf-maker/apache-fop-pdf-maker/target
 utilities/pdf-maker/itext-pdf-maker/target
-utilities/csv-reader/apache-commons-csv-reader/target/
+utilities/file-readers/csv-file-readers/apache-commons-csv-file-reader/target/
+utilities/file-readers/zip-file-reader/target
 
 education/springboot-apps/graph-database/springboot-with-neo4j/target
 education/springboot-apps/messaging/springboot-with-kafka/target

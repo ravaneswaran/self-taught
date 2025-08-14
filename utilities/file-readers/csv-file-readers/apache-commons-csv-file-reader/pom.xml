@@ -4,14 +4,14 @@
 
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>csv-reader</artifactId>
-        <groupId>rave.code.utilities</groupId>
+        <artifactId>csv-file-readers</artifactId>
+        <groupId>rave.code.utilities.file-readers</groupId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <name>apache-commons-csv-reader</name>
-    <artifactId>apache-commons-csv-reader</artifactId>
-    <groupId>rave.code.utilities.csv-reader</groupId>
+    <name>apache-commons-csv-file-reader</name>
+    <artifactId>apache-commons-csv-file-reader</artifactId>
+    <groupId>rave.code.utilities.file-readers.csv-file-readers</groupId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
