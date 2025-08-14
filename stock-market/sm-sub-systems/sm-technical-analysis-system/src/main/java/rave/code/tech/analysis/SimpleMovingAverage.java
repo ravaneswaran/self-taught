@@ -37,7 +37,7 @@ public class SimpleMovingAverage {
         System.out.println("SMA (" + period + "-day): " + smaValues);
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        Date testDate = new Date(1755141300000l);
+        Date testDate = new Date(1755166320000l);
         System.out.println("--------------->>>>>> "+simpleDateFormat.format(testDate));
     }
 }
