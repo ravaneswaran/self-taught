@@ -1,4 +1,4 @@
-package rave.code;
+package rave.code.utility.download;
 
 import org.junit.jupiter.api.Test;
 import rave.code.utility.download.FileDownload;
