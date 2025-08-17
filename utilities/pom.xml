@@ -21,6 +21,7 @@
         <module>google-zxing-qrcode</module>
         <module>pdf-maker</module>
         <module>file-readers</module>
+        <module>file-downloader</module>
     </modules>
 
 </project>

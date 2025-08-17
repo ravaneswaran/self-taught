@@ -2,9 +2,9 @@ package rave.code.utility.csv;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
+import rave.code.utility.download.FileDownload;
 
 import java.io.*;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class ApacheCommonsCSVFileReader {
     }
 
     public List<CSVRecord> read(URL url) throws IOException {
-        InputStream inputStream = this.downloadFile(url);
+        InputStream inputStream = new FileDownload().downloadFile(url);
         return this.read(inputStream);
     }
 
@@ -49,19 +49,5 @@ public class ApacheCommonsCSVFileReader {
             }
         }
         return csvRecordList;
-    }
-
-    public InputStream downloadFile(String url) throws IOException {
-        return this.downloadFile(new URL(url));
-    }
-
-    public InputStream downloadFile(URL url) throws IOException {
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("GET");
-        conn.setRequestProperty("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36)");
-        conn.setRequestProperty("Referer", "https://www.bseindia.com/");
-        conn.setInstanceFollowRedirects(true);
-
-        return conn.getInputStream();
     }
 }
