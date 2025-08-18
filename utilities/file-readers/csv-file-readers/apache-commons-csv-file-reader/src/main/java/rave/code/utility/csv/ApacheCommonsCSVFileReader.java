@@ -2,16 +2,18 @@ package rave.code.utility.csv;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
-import rave.code.utility.download.FileDownload;
+import rave.code.utility.download.FileDownloader;
 
-import java.io.*;
-import java.net.URL;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ApacheCommonsCSVFileReader {
+public class ApacheCommonsCSVFileReader implements FileReader{
 
     //https://www.bseindia.com/download/BhavCopy/Equity/BhavCopy_BSE_CM_0_0_0_20250813_F_0000.CSV
 
@@ -19,25 +21,13 @@ public class ApacheCommonsCSVFileReader {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
         String url = String.format("https://www.bseindia.com/download/BhavCopy/Equity/BhavCopy_BSE_CM_0_0_0_%s_F_0000.CSV", simpleDateFormat.format(new Date()));
         System.out.println("---------------->>>>> " + url);
+        FileDownloader fileDownloader = new FileDownloader();
+        InputStream inputStream = fileDownloader.downloadFile("https://www.bseindia.com/download/BhavCopy/Equity/BhavCopy_BSE_CM_0_0_0_20250813_F_0000.CSV");
         ApacheCommonsCSVFileReader apacheCommonsCSVReader = new ApacheCommonsCSVFileReader();
-        List<CSVRecord> csvRecords = apacheCommonsCSVReader.read("https://www.bseindia.com/download/BhavCopy/Equity/BhavCopy_BSE_CM_0_0_0_20250813_F_0000.CSV");
+        List<CSVRecord> csvRecords = apacheCommonsCSVReader.read(inputStream);
         for (CSVRecord csvRecord : csvRecords) {
             System.out.println(csvRecord.toString());
         }
-    }
-
-    public List<CSVRecord> read(String url) throws IOException {
-        return this.read(new URL(url));
-    }
-
-    public List<CSVRecord> read(URL url) throws IOException {
-        InputStream inputStream = new FileDownload().downloadFile(url);
-        return this.read(inputStream);
-    }
-
-    public List<CSVRecord> read(File file) throws IOException {
-        InputStream inputStream = new FileInputStream(file);
-        return this.read(inputStream);
     }
 
     public List<CSVRecord> read(InputStream inputStream) throws IOException {
