@@ -24,4 +24,6 @@ public interface Image {
 
     public BufferedImage toThumbnail(byte[] imageAsBytes) throws IOException;
 
+    public BufferedImage toTransparentBackground(byte[] imageAsBytes) throws IOException;
+
 }

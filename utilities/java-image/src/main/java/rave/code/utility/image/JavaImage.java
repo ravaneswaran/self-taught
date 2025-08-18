@@ -82,6 +82,11 @@ public class JavaImage implements Image {
         return resizedImage.getSubimage(x, y, thumbnailWidth, thumbnailWidth);
     }
 
+    @Override
+    public BufferedImage toTransparentBackground(byte[] imageAsBytes) throws IOException {
+        return null;
+    }
+
     public File toFileObj(BufferedImage image) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ImageIO.write( image, SUFFIX, baos );
