@@ -1,7 +1,5 @@
 package rave.code.stockmarket.entity;
 
-import rave.code.stockmarket.entity.StockMarketDividendEntity;
-
 import javax.persistence.*;
 
 @Entity

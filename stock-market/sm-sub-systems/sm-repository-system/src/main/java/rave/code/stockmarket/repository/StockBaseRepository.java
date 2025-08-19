@@ -12,6 +12,10 @@ public class StockBaseRepository extends StockMarketRepository<StockBaseEntity> 
         super(StockBaseEntity.class);
     }
 
+    public StockBaseRepository(Class<StockBaseEntity> type) {
+        super(type);
+    }
+
     @Override
     public void bulkUpsert(List<StockBaseEntity> entities) {
         EntityManager entityManager = this.getEntityManager();

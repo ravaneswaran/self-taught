@@ -1,7 +1,5 @@
 package rave.code.stockmarket.entity;
 
-import rave.code.stockmarket.entity.StockMarketGainerEntity;
-
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;

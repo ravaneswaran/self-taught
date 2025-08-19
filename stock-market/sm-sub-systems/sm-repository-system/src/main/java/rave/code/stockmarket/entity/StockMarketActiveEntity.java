@@ -2,8 +2,6 @@ package rave.code.stockmarket.entity;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Transient;
-import java.text.ParseException;
 
 @MappedSuperclass
 public class StockMarketActiveEntity extends StockMarketEntity {
