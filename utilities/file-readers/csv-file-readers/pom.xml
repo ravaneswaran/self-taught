@@ -17,6 +17,7 @@
 
     <modules>
         <module>apache-commons-csv-file-reader</module>
+        <module>open-csv-file-reader</module>
     </modules>
 
 </project>

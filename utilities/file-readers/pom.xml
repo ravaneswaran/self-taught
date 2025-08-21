@@ -18,6 +18,7 @@
     <modules>
         <module>csv-file-readers</module>
         <module>zip-file-reader</module>
+        <module>simple-file-reader</module>
     </modules>
 
 </project>

@@ -1,6 +1,5 @@
 package rave.code.stockmarket.entity;
 
-
 import javax.persistence.*;
 
 @Entity
@@ -28,7 +27,6 @@ public class StockBaseEntity extends StockMarketEntity {
     private String low52Week;
     private String dailyClosePrice;
 
-    @Id
     @Column(name = "id")
     public String getId() {return id;}
     public void setId(String id) {this.id = id;}

@@ -1,9 +1,7 @@
 package rave.code.utility.zip;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -13,28 +11,26 @@ public class ZipFileReader {
     public static final Logger LOGGER = Logger.getLogger(ZipFileReader.class.getName());
 
     public InputStream read(InputStream inputStream, String zipEntryName) throws IOException {
-        if (null != inputStream && null != zipEntryName && !"".equals(zipEntryName)) {
-            try (ZipInputStream zipInputStream = new ZipInputStream(inputStream)) {
-                ZipEntry zipEntry;
-                while ((zipEntry = zipInputStream.getNextEntry()) != null) {
-                    if (null != zipEntry && zipEntryName.toLowerCase().equals(zipEntry.getName().toLowerCase())) {
-                        LOGGER.info(String.format("the entry '%s' exist in the zip file", zipEntryName));
-                        return this.readZipEntry(inputStream, zipEntry);
+        ZipInputStream zis = new ZipInputStream(inputStream);
+        StringBuffer lineBuffer = new StringBuffer();
+        ZipEntry entry;
+        while ((entry = zis.getNextEntry()) != null) {
+            if (entry.getName().equalsIgnoreCase(zipEntryName)) {
+                try (BufferedReader br = new BufferedReader(new InputStreamReader(zis, "UTF-8"))) {
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        lineBuffer.append(line).append("\n");
                     }
                 }
+                break; // stop after reading the target file
             }
+            zis.closeEntry();
         }
-        LOGGER.info(String.format("the entry '%s' does not exist in the zip file", zipEntryName));
-        return null;
-    }
+        if(lineBuffer.toString().length() > 0){
+            return new ByteArrayInputStream(lineBuffer.toString().getBytes(StandardCharsets.UTF_8));
+        } else {
+            return null;
+        }
 
-    private InputStream readZipEntry(InputStream inputStream, ZipEntry zipEntry) throws IOException {
-        byte[] buffer = new byte[1024];
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        int length;
-        while ((length = inputStream.read(buffer)) > 0) {
-            byteArrayOutputStream.write(buffer, 0, length);
-        }
-        return new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
     }
 }
