@@ -3,6 +3,7 @@ package rave.code.quartz.job.moneycontrol.misc;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import rave.code.quartz.enums.DailyPriceListDownloadLink;
+import rave.code.quartz.enums.NSEClassification;
 import rave.code.quartz.job.AbstractQuartzJob;
 import rave.code.stockmarket.entity.NSEStockBaseEntity;
 import rave.code.stockmarket.entity.StockBaseEntity;
@@ -122,40 +123,76 @@ public class StockBaseJob extends AbstractQuartzJob {
                 int lineNumber = 1;
                 for (String line : lines) {
                     String[] lineDetails = line.split(",");
-                    if(1 == lineNumber){
+                    if (1 == lineNumber) {
                         LOGGER.log(Level.INFO, "skipping the header... ");
                         LOGGER.log(Level.INFO, "<<<<< paring indexes... >>>>>");
                         lineNumber = lineNumber + 1;
                         continue;
                     }
-                    if("".equals(lineDetails[2].trim()) && "".equals(lineDetails[3].trim()) && "".equals(lineDetails[4].trim())){
+                    if ("".equals(lineDetails[2].trim()) && "".equals(lineDetails[3].trim()) && "".equals(lineDetails[4].trim())) {
                         continue;
                     }
-                    if("".equals(lineDetails[2].trim()) && !"".equals(lineDetails[3].trim()) && "".equals(lineDetails[4].trim())){
+                    if ("".equals(lineDetails[2].trim()) && !"".equals(lineDetails[3].trim()) && "".equals(lineDetails[4].trim())) {
                         LOGGER.log(Level.INFO, String.format("<<<<< paring the section... %s >>>>>", lineDetails[3]));
                         continue;
                     }
 
+                    String series = lineDetails[1].trim();
+                    if ("".equals(series)) {
+                        series = "Empty";
+                    }
+                    switch (series) {
+                        case "Empty":
+                            series = NSEClassification.EMPTY.getClassification();
+                            break;
+                        case "EQ":
+                            series = NSEClassification.EQ.getClassification();
+                            break;
+                        case "SM":
+                            series = NSEClassification.SM.getClassification();
+                            break;
+                        case "IV":
+                            series = NSEClassification.IV.getClassification();
+                            break;
+                        case "RR":
+                            series = NSEClassification.RR.getClassification();
+                            break;
+                        case "T0":
+                            series = NSEClassification.T0.getClassification();
+                            break;
+                        case "E1":
+                            series = NSEClassification.E1.getClassification();
+                            break;
+                        case "BE":
+                            series = NSEClassification.BE.getClassification();
+                            break;
+                        case "BZ":
+                            series = NSEClassification.BZ.getClassification();
+                            break;
+
+                        default:
+                            series = NSEClassification.DEFAULT.getClassification();
+                            break;
+                    }
+
                     NSEStockBaseEntity nseStockBaseEntity = new NSEStockBaseEntity();
-                    nseStockBaseEntity.setMkt(lineDetails[0]);
-                    nseStockBaseEntity.setSeries(lineDetails[1]);
-                    nseStockBaseEntity.setStockSymbol(lineDetails[2]);
-                    nseStockBaseEntity.setStockName(lineDetails[3]);
-                    nseStockBaseEntity.setPreviousClosePrice(lineDetails[4]);
-                    nseStockBaseEntity.setOpenPrice(lineDetails[5]);
-                    nseStockBaseEntity.setHighPrice(lineDetails[6]);
-                    nseStockBaseEntity.setLowPrice(lineDetails[7]);
-                    String closePrice = lineDetails[8];
+                    nseStockBaseEntity.setMkt(lineDetails[0].trim());
+                    nseStockBaseEntity.setSeries(series);
+                    nseStockBaseEntity.setStockSymbol(lineDetails[2].trim());
+                    nseStockBaseEntity.setStockName(lineDetails[3].trim());
+                    nseStockBaseEntity.setPreviousClosePrice(lineDetails[4].trim());
+                    nseStockBaseEntity.setOpenPrice(lineDetails[5].trim());
+                    nseStockBaseEntity.setHighPrice(lineDetails[6].trim());
+                    nseStockBaseEntity.setLowPrice(lineDetails[7].trim());
+                    String closePrice = lineDetails[8].trim();
                     nseStockBaseEntity.setClosePrice(closePrice);
-                    nseStockBaseEntity.setNetTradedValue(lineDetails[9]);
-                    nseStockBaseEntity.setNetTradedQuantity(lineDetails[10]);
-                    String indexOrSecurity = lineDetails[11];
-                    indexOrSecurity = "Y".equalsIgnoreCase(indexOrSecurity) ? "INDEX" : "SECURITY";
-                    nseStockBaseEntity.setIndexOrSecurity(indexOrSecurity);
-                    nseStockBaseEntity.setCorpIndex(lineDetails[12]);
-                    nseStockBaseEntity.setTrades(lineDetails[13]);
-                    nseStockBaseEntity.setHigh52Week(lineDetails[14]);
-                    nseStockBaseEntity.setLow52Week(lineDetails[15]);
+                    nseStockBaseEntity.setNetTradedValue(lineDetails[9].trim());
+                    nseStockBaseEntity.setNetTradedQuantity(lineDetails[10].trim());
+                    nseStockBaseEntity.setIndexOrSecurity(lineDetails[11].trim());
+                    nseStockBaseEntity.setCorpIndex(lineDetails[12].trim());
+                    nseStockBaseEntity.setTrades(lineDetails[13].trim());
+                    nseStockBaseEntity.setHigh52Week(lineDetails[14].trim());
+                    nseStockBaseEntity.setLow52Week(lineDetails[15].trim());
                     nseStockBaseEntity.setDailyClosePrice(closePrice);
                     Date now = new Date();
                     nseStockBaseEntity.setCreatedDate(now);
@@ -171,15 +208,13 @@ public class StockBaseJob extends AbstractQuartzJob {
                 LOGGER.log(Level.SEVERE, ioException.getMessage(), ioException);
             }
 
-            System.out.println("1 ------------------->>>>>> "+nseStockBaseEntities.size());
-
             this.stockBaseRepository.bulkUpsert(nseStockBaseEntities);
         }
     }
 
     public static void main(String[] args) throws JobExecutionException {
         LocalDate today = LocalDate.now();
-        LocalDate yesterday = today.minusDays(1);
+        LocalDate yesterday = today.minusDays(2);
 
         Date toDate = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
         Date yesterDate = Date.from(yesterday.atStartOfDay(ZoneId.systemDefault()).toInstant());
