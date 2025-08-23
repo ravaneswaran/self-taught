@@ -1,15 +1,15 @@
 package rave.code.stockmarket.repository;
 
+import org.hibernate.query.internal.QueryImpl;
 import rave.code.stockmarket.entity.StockBaseEntity;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
+import javax.persistence.*;
 import java.util.List;
 
 public class StockBaseRepository extends StockMarketRepository<StockBaseEntity> {
 
     public StockBaseRepository() {
-        super(StockBaseEntity.class);
+        this(StockBaseEntity.class);
     }
 
     public StockBaseRepository(Class<StockBaseEntity> type) {
@@ -22,21 +22,8 @@ public class StockBaseRepository extends StockMarketRepository<StockBaseEntity> 
         EntityTransaction entityTransaction = entityManager.getTransaction();
         entityTransaction.begin();
         for (StockBaseEntity stockBaseEntity : entities) {
-            if (stockBaseEntity.isNewEntity()) {
-                entityManager.persist(stockBaseEntity);
-            } else {
-                entityManager.merge(stockBaseEntity);
-            }
+            entityManager.persist(stockBaseEntity);
         }
         entityTransaction.commit();
-    }
-
-    @Override
-    public StockBaseEntity findBy(String primaryKey) {
-        StockBaseEntity stockBaseEntity = super.findBy(primaryKey);
-        if (null != stockBaseEntity) {
-            stockBaseEntity.setNewEntity(false);
-        }
-        return stockBaseEntity;
     }
 }

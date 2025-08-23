@@ -12,7 +12,7 @@ public class TestStockBaseRepository extends TestCase {
 
     public void testSaveMethod() {;
 
-        NSEStockBaseEntity nseStockBaseEntity = new NSEStockBaseEntity();
+        StockBaseEntity nseStockBaseEntity = new NSEStockBaseEntity();
 
         String id = UUID.randomUUID().toString();
         nseStockBaseEntity.setId(id);
@@ -39,10 +39,9 @@ public class TestStockBaseRepository extends TestCase {
         nseStockBaseEntity.setCreatedBy("SYSTEM");
         nseStockBaseEntity.setModifiedBy("SYSTEM");
 
-
         StockBaseRepository stockBaseRepository = new StockBaseRepository();
         stockBaseRepository.save(nseStockBaseEntity);
-        StockBaseEntity returnElement = stockBaseRepository.findBy(StockBaseEntity.class, nseStockBaseEntity);
+        StockBaseEntity returnElement = stockBaseRepository.findBy(nseStockBaseEntity.getId());
         assertNotNull(returnElement);
     }
 }

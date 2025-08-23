@@ -119,10 +119,24 @@ public class StockBaseJob extends AbstractQuartzJob {
                  InputStream csvFileInputStream = new ZipFileReader().read(inputStream, zipEntryFileName)) {
 
                 List<String> lines = new SimpleFileReader().read(csvFileInputStream);
+                int lineNumber = 1;
                 for (String line : lines) {
-                    NSEStockBaseEntity nseStockBaseEntity = new NSEStockBaseEntity();
                     String[] lineDetails = line.split(",");
+                    if(1 == lineNumber){
+                        LOGGER.log(Level.INFO, "skipping the header... ");
+                        LOGGER.log(Level.INFO, "<<<<< paring indexes... >>>>>");
+                        lineNumber = lineNumber + 1;
+                        continue;
+                    }
+                    if("".equals(lineDetails[2].trim()) && "".equals(lineDetails[3].trim()) && "".equals(lineDetails[4].trim())){
+                        continue;
+                    }
+                    if("".equals(lineDetails[2].trim()) && !"".equals(lineDetails[3].trim()) && "".equals(lineDetails[4].trim())){
+                        LOGGER.log(Level.INFO, String.format("<<<<< paring the section... %s >>>>>", lineDetails[3]));
+                        continue;
+                    }
 
+                    NSEStockBaseEntity nseStockBaseEntity = new NSEStockBaseEntity();
                     nseStockBaseEntity.setMkt(lineDetails[0]);
                     nseStockBaseEntity.setSeries(lineDetails[1]);
                     nseStockBaseEntity.setStockSymbol(lineDetails[2]);
@@ -135,9 +149,9 @@ public class StockBaseJob extends AbstractQuartzJob {
                     nseStockBaseEntity.setClosePrice(closePrice);
                     nseStockBaseEntity.setNetTradedValue(lineDetails[9]);
                     nseStockBaseEntity.setNetTradedQuantity(lineDetails[10]);
-                    String indexOrsecurity = lineDetails[11];
-                    indexOrsecurity = "Y".equalsIgnoreCase(indexOrsecurity) ? "INDEX" : "SECURITY";
-                    nseStockBaseEntity.setIndexOrSecurity(indexOrsecurity);
+                    String indexOrSecurity = lineDetails[11];
+                    indexOrSecurity = "Y".equalsIgnoreCase(indexOrSecurity) ? "INDEX" : "SECURITY";
+                    nseStockBaseEntity.setIndexOrSecurity(indexOrSecurity);
                     nseStockBaseEntity.setCorpIndex(lineDetails[12]);
                     nseStockBaseEntity.setTrades(lineDetails[13]);
                     nseStockBaseEntity.setHigh52Week(lineDetails[14]);
@@ -150,14 +164,14 @@ public class StockBaseJob extends AbstractQuartzJob {
                     nseStockBaseEntity.setModifiedBy("SYSTEM");
 
                     nseStockBaseEntities.add(nseStockBaseEntity);
+
+                    LOGGER.log(Level.INFO, nseStockBaseEntity.toString());
                 }
             } catch (IOException ioException) {
                 LOGGER.log(Level.SEVERE, ioException.getMessage(), ioException);
             }
 
-            for (StockBaseEntity nseStockBaseEntity: nseStockBaseEntities) {
-                System.out.println(nseStockBaseEntity.getId());
-            }
+            System.out.println("1 ------------------->>>>>> "+nseStockBaseEntities.size());
 
             this.stockBaseRepository.bulkUpsert(nseStockBaseEntities);
         }
@@ -165,14 +179,12 @@ public class StockBaseJob extends AbstractQuartzJob {
 
     public static void main(String[] args) throws JobExecutionException {
         LocalDate today = LocalDate.now();
-        LocalDate yesterday = today.minusDays(7);
+        LocalDate yesterday = today.minusDays(1);
 
-        //Date toDate = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        Date toDate = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
         Date yesterDate = Date.from(yesterday.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("ddMMyy");
-        //System.out.println(simpleDateFormat.format(toDate));
-        System.out.println(simpleDateFormat.format(yesterDate));
 
         StockBaseJob stockBaseJob = new StockBaseJob(yesterDate);
         stockBaseJob.execute(null);

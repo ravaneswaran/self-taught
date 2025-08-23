@@ -7,12 +7,13 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "source", discriminatorType = DiscriminatorType.STRING)
 @Access(AccessType.PROPERTY)
-public class StockBaseEntity extends StockMarketEntity {
+public class StockBaseEntity extends AbstractStockEntity {
 
     private String id;
     private String mkt;
     private String series;
     private String stockSymbol;
+    private String stockName;
     private String openPrice;
     private String highPrice;
     private String lowPrice;
@@ -27,6 +28,7 @@ public class StockBaseEntity extends StockMarketEntity {
     private String low52Week;
     private String dailyClosePrice;
 
+    @Id
     @Column(name = "id")
     public String getId() {return id;}
     public void setId(String id) {this.id = id;}
@@ -54,6 +56,10 @@ public class StockBaseEntity extends StockMarketEntity {
     public void setStockSymbol(String stockSymbol) {
         this.stockSymbol = stockSymbol;
     }
+
+    @Column(name = "stock_name")
+    public String getStockName() {return stockName;}
+    public void setStockName(String stockName) {this.stockName = stockName;}
 
     @Column(name = "open_price")
     public String getOpenPrice() {

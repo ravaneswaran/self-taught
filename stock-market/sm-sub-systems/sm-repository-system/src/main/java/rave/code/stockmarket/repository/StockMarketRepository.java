@@ -44,10 +44,6 @@ public abstract class StockMarketRepository<T> {
         return this.entityManager.find(this.type, primaryKey);
     }
 
-    public T findBy(Class<T> clazz, T obj) {
-        return this.entityManager.find(clazz, obj);
-    }
-
     public T save(T entity) {
         this.entityManager.getTransaction().begin();
         this.entityManager.persist(entity);
