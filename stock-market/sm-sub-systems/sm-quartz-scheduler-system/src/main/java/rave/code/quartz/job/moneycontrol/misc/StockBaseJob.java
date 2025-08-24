@@ -1,17 +1,18 @@
 package rave.code.quartz.job.moneycontrol.misc;
 
+import org.apache.commons.csv.CSVRecord;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import rave.code.quartz.enums.DailyPriceListDownloadLink;
 import rave.code.quartz.enums.NSEClassification;
 import rave.code.quartz.job.AbstractQuartzJob;
-import rave.code.quartz.job.moneycontrol.AbstractEntityMakerJob;
-import rave.code.quartz.job.nse.AbstractNSEEntityMakerJob;
+import rave.code.quartz.job.AbstractStockMarketEntityMakerJob;
 import rave.code.stockmarket.entity.BSEStockBaseEntity;
 import rave.code.stockmarket.entity.NSEStockBaseEntity;
 import rave.code.stockmarket.entity.StockBaseEntity;
 import rave.code.stockmarket.repository.StockBaseRepository;
 import rave.code.utilities.file.SimpleFileReader;
+import rave.code.utility.csv.ApacheCommonsCSVFileReader;
 import rave.code.utility.download.FileDownloader;
 import rave.code.utility.log.JavaUtilLogDecor;
 import rave.code.utility.zip.ZipFileReader;
@@ -42,76 +43,78 @@ public class StockBaseJob extends AbstractQuartzJob {
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        new NSEStockBaseJob().execute(jobExecutionContext);
+        //new NSEStockBaseJob().execute(jobExecutionContext);
+        new BSEStockBaseJob().execute(jobExecutionContext);
     }
 
-    class BSEStockBaseJob extends AbstractEntityMakerJob<Object, BSEStockBaseEntity> {
+    class BSEStockBaseJob extends AbstractStockMarketEntityMakerJob<List<CSVRecord>, List<StockBaseEntity>> {
 
         private static final Logger LOGGER = Logger.getLogger(BSEStockBaseJob.class.getName());
 
         private StockBaseRepository stockBaseRepository = new StockBaseRepository();
 
         @Override
-        public List<Object> getDataFromSource() {
-            return null;
-        }
-
-        @Override
-        public List<BSEStockBaseEntity> transformSourceData(List<Object> sourceData) {
-            return null;
-        }
-
-        @Override
-        public void saveTransformedData(List<BSEStockBaseEntity> transformedData) {
-
-        }
-
-        @Override
-        public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
+        public List<CSVRecord> getDataFromSource() {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
             String url = String.format(DailyPriceListDownloadLink.DAILY_PRICE_LIST_DOWNLOAD_LINK_BSE.get(), simpleDateFormat.format(StockBaseJob.this.date));
-            FileDownloader fileDownloader = new FileDownloader();//new BSEStockBaseJob().execute(jobExecutionContext);
-
-            /*try (InputStream inputStream = fileDownloader.downloadFile(url)) {
+            LOGGER.log(Level.INFO, String.format("Downloading file... %s", url));
+            FileDownloader fileDownloader = new FileDownloader();
+            List<CSVRecord> csvRecords = new ArrayList<>();
+            try (InputStream inputStream = fileDownloader.downloadFile(url)) {
                 ApacheCommonsCSVFileReader apacheCommonsCSVReader = new ApacheCommonsCSVFileReader();
-                List<CSVRecord> csvRecords = apacheCommonsCSVReader.read(inputStream);
-                List<StockBaseEntity> bseStockBaseEntities = new ArrayList<>();
-                for (CSVRecord csvRecord : csvRecords) {
-                    BSEStockBaseEntity bseStockBaseEntity = new BSEStockBaseEntity();
-
-                    bseStockBaseEntity.setMkt(csvRecord.get(0));
-                    bseStockBaseEntity.setSeries(csvRecord.get(0));
-                    bseStockBaseEntity.setStockSymbol(csvRecord.get(0));
-                    bseStockBaseEntity.setStockName(csvRecord.get(0));
-                    bseStockBaseEntity.setOpenPrice(csvRecord.get(0));
-                    bseStockBaseEntity.setHighPrice(csvRecord.get(0));
-                    bseStockBaseEntity.setLowPrice(csvRecord.get(0));
-                    bseStockBaseEntity.setClosePrice(csvRecord.get(0));
-                    bseStockBaseEntity.setPreviousClosePrice(csvRecord.get(0));
-                    bseStockBaseEntity.setNetTradedValue(csvRecord.get(0));
-                    bseStockBaseEntity.setNetTradedQuantity(csvRecord.get(0));
-                    bseStockBaseEntity.setIndexOrSecurity(csvRecord.get(0));
-                    bseStockBaseEntity.setCorpIndex(csvRecord.get(0));
-                    bseStockBaseEntity.setTrades(csvRecord.get(0));
-                    bseStockBaseEntity.setHigh52Week(csvRecord.get(0));
-                    bseStockBaseEntity.setLow52Week(csvRecord.get(0));
-                    bseStockBaseEntity.setDailyClosePrice(csvRecord.get(0));
-                    Date now = new Date();
-                    bseStockBaseEntity.setCreatedDate(now);
-                    bseStockBaseEntity.setModifiedDate(now);
-                    bseStockBaseEntity.setCreatedBy("SYSTEM");
-                    bseStockBaseEntity.setModifiedBy("SYSTEM");
-
-                    bseStockBaseEntities.add(bseStockBaseEntity);
-                }
-                this.stockBaseRepository.bulkUpsert(bseStockBaseEntities);
+                csvRecords = apacheCommonsCSVReader.read(inputStream);
+            } catch (FileNotFoundException fileNotFoundException) {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                LOGGER.log(Level.SEVERE, String.format("Resource(%s) not found...", url));
+                LOGGER.log(Level.SEVERE, "Possibly could be the following reason(s)...");
+                LOGGER.log(Level.SEVERE, String.format("the day which the date(%s) referring to could be either HOLIDAY or WEEKEND(SATURDAY or SUNDAY)", sdf.format(StockBaseJob.this.date)));
             } catch (IOException ioException) {
                 LOGGER.log(Level.SEVERE, ioException.getMessage(), ioException);
-            }*/
+            }
+            return csvRecords;
+        }
+
+        @Override
+        public List<StockBaseEntity> transformSourceData(List<CSVRecord> sourceData) {
+            List<StockBaseEntity> bseStockBaseEntities = new ArrayList<>();
+            for (CSVRecord csvRecord : sourceData) {
+                BSEStockBaseEntity bseStockBaseEntity = new BSEStockBaseEntity();
+
+                bseStockBaseEntity.setMkt(csvRecord.get(0));
+                bseStockBaseEntity.setSeries(csvRecord.get(0));
+                bseStockBaseEntity.setStockSymbol(csvRecord.get(0));
+                bseStockBaseEntity.setStockName(csvRecord.get(0));
+                bseStockBaseEntity.setOpenPrice(csvRecord.get(0));
+                bseStockBaseEntity.setHighPrice(csvRecord.get(0));
+                bseStockBaseEntity.setLowPrice(csvRecord.get(0));
+                bseStockBaseEntity.setClosePrice(csvRecord.get(0));
+                bseStockBaseEntity.setPreviousClosePrice(csvRecord.get(0));
+                bseStockBaseEntity.setNetTradedValue(csvRecord.get(0));
+                bseStockBaseEntity.setNetTradedQuantity(csvRecord.get(0));
+                bseStockBaseEntity.setIndexOrSecurity(csvRecord.get(0));
+                bseStockBaseEntity.setCorpIndex(csvRecord.get(0));
+                bseStockBaseEntity.setTrades(csvRecord.get(0));
+                bseStockBaseEntity.setHigh52Week(csvRecord.get(0));
+                bseStockBaseEntity.setLow52Week(csvRecord.get(0));
+                bseStockBaseEntity.setDailyClosePrice(csvRecord.get(0));
+                Date now = new Date();
+                bseStockBaseEntity.setCreatedDate(now);
+                bseStockBaseEntity.setModifiedDate(now);
+                bseStockBaseEntity.setCreatedBy("SYSTEM");
+                bseStockBaseEntity.setModifiedBy("SYSTEM");
+
+                bseStockBaseEntities.add(bseStockBaseEntity);
+            }
+            return bseStockBaseEntities;
+        }
+
+        @Override
+        public void saveTransformedData(List<StockBaseEntity> transformedData) {
+            //this.stockBaseRepository.bulkUpsert(transformedData);
         }
     }
 
-    class NSEStockBaseJob extends AbstractNSEEntityMakerJob<List<String>, List<StockBaseEntity>> {
+    class NSEStockBaseJob extends AbstractStockMarketEntityMakerJob<List<String>, List<StockBaseEntity>> {
 
         private static final Logger LOGGER = Logger.getLogger(NSEStockBaseJob.class.getName());
 
@@ -151,7 +154,9 @@ public class StockBaseJob extends AbstractQuartzJob {
             int lineNumber = 1;
             int records = 1;
             for (String line : sourceData) {
+
                 String[] lineDetails = line.split(",");
+
                 if (1 == lineNumber) {
                     LOGGER.log(Level.INFO, "skipping the header... ");
                     LOGGER.log(Level.INFO, "<<<<< paring indexes... >>>>>");
@@ -204,9 +209,8 @@ public class StockBaseJob extends AbstractQuartzJob {
                         break;
                 }
 
-                //StockBaseEntity nseStockBaseEntity = new NSEStockBaseEntity();
-                StockBaseEntity nseStockBaseEntity = this.stockBaseRepository.findBy("NSE", lineDetails[0].trim(), series, lineDetails[2].trim(), lineDetails[3].trim());
-                System.out.println("---------------->>>>>>>> "+records);
+                StockBaseEntity nseStockBaseEntity = new NSEStockBaseEntity();
+                //StockBaseEntity nseStockBaseEntity = this.stockBaseRepository.findBy("NSE", lineDetails[0].trim(), series, lineDetails[2].trim(), lineDetails[3].trim());
                 if (null == nseStockBaseEntity) {
                     nseStockBaseEntity = new NSEStockBaseEntity();
                 }

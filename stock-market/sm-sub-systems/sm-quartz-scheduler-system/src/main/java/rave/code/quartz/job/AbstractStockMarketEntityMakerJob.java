@@ -1,10 +1,9 @@
-package rave.code.quartz.job.nse;
+package rave.code.quartz.job;
 
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
-import rave.code.quartz.job.AbstractQuartzJob;
 
-public abstract class AbstractNSEEntityMakerJob<S, T> extends AbstractQuartzJob {
+public abstract class AbstractStockMarketEntityMakerJob<S, T> extends AbstractQuartzJob {
 
     public abstract S getDataFromSource();
 
