@@ -11,6 +11,9 @@ public class NSEStockBaseEntity extends StockBaseEntity {
 
     public NSEStockBaseEntity() {
         this.setId(UUID.randomUUID().toString());
+        this.setISIN("N/A");
+        this.setFinancialInstrumentId("N/A");
+        this.setFinancialInstrumentType("N/A");
     }
 
     @Override
@@ -32,6 +35,7 @@ public class NSEStockBaseEntity extends StockBaseEntity {
         stringBuilder.append("trades:").append(this.getTrades().trim()).append(", ");
         stringBuilder.append("52_week_high:").append(this.getHigh52Week().trim()).append(", ");
         stringBuilder.append("52_week_low:").append(this.getLow52Week().trim()).append(", ");
+        stringBuilder.append("ISIN:").append(this.getISIN().trim()).append(", ");
         stringBuilder.append("daily_close_price:").append(this.getDailyClosePrice().trim()).append(", ");
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");

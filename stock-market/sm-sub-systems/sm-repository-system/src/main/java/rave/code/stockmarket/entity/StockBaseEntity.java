@@ -10,6 +10,8 @@ import javax.persistence.*;
 public class StockBaseEntity extends AbstractStockEntity {
 
     private String id;
+    private String financialInstrumentId;
+    private String financialInstrumentType;
     private String mkt;
     private String series;
     private String stockSymbol;
@@ -26,6 +28,7 @@ public class StockBaseEntity extends AbstractStockEntity {
     private String trades;
     private String high52Week;
     private String low52Week;
+    private String ISIN;
     private String dailyClosePrice;
 
     public StockBaseEntity(){
@@ -36,6 +39,14 @@ public class StockBaseEntity extends AbstractStockEntity {
     @Column(name = "id")
     public String getId() {return id;}
     public void setId(String id) {this.id = id;}
+
+    @Column(name = "financial_instrument_id")
+    public String getFinancialInstrumentId() {return financialInstrumentId;}
+    public void setFinancialInstrumentId(String financialInstrumentId) {this.financialInstrumentId = financialInstrumentId;}
+
+    @Column(name = "financial_instrument_type")
+    public String getFinancialInstrumentType() {return financialInstrumentType;}
+    public void setFinancialInstrumentType(String financialInstrumentType) {this.financialInstrumentType = financialInstrumentType;}
 
     @Column(name = "mkt")
     public String getMkt() {
@@ -157,6 +168,10 @@ public class StockBaseEntity extends AbstractStockEntity {
         this.low52Week = low52Week;
     }
 
+    @Column(name = "ISIN")
+    public String getISIN() {return ISIN;}
+    public void setISIN(String ISIN) {this.ISIN = ISIN;}
+
     @Column(name = "daily_close_price")
     public String getDailyClosePrice() {
         return dailyClosePrice;
@@ -164,4 +179,5 @@ public class StockBaseEntity extends AbstractStockEntity {
     public void setDailyClosePrice(String dailyClosePrice) {
         this.dailyClosePrice = dailyClosePrice;
     }
+
 }

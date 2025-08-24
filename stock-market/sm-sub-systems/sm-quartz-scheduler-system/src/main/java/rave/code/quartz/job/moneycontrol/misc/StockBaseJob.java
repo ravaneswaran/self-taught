@@ -26,6 +26,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -43,8 +44,8 @@ public class StockBaseJob extends AbstractQuartzJob {
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        //new NSEStockBaseJob().execute(jobExecutionContext);
-        new BSEStockBaseJob().execute(jobExecutionContext);
+        new NSEStockBaseJob().execute(jobExecutionContext);
+        //new BSEStockBaseJob().execute(jobExecutionContext);
     }
 
     class BSEStockBaseJob extends AbstractStockMarketEntityMakerJob<List<CSVRecord>, List<StockBaseEntity>> {
@@ -80,23 +81,26 @@ public class StockBaseJob extends AbstractQuartzJob {
             for (CSVRecord csvRecord : sourceData) {
                 BSEStockBaseEntity bseStockBaseEntity = new BSEStockBaseEntity();
 
-                bseStockBaseEntity.setMkt(csvRecord.get(0));
-                bseStockBaseEntity.setSeries(csvRecord.get(0));
-                bseStockBaseEntity.setStockSymbol(csvRecord.get(0));
-                bseStockBaseEntity.setStockName(csvRecord.get(0));
-                bseStockBaseEntity.setOpenPrice(csvRecord.get(0));
-                bseStockBaseEntity.setHighPrice(csvRecord.get(0));
-                bseStockBaseEntity.setLowPrice(csvRecord.get(0));
-                bseStockBaseEntity.setClosePrice(csvRecord.get(0));
-                bseStockBaseEntity.setPreviousClosePrice(csvRecord.get(0));
-                bseStockBaseEntity.setNetTradedValue(csvRecord.get(0));
-                bseStockBaseEntity.setNetTradedQuantity(csvRecord.get(0));
-                bseStockBaseEntity.setIndexOrSecurity(csvRecord.get(0));
-                bseStockBaseEntity.setCorpIndex(csvRecord.get(0));
-                bseStockBaseEntity.setTrades(csvRecord.get(0));
-                bseStockBaseEntity.setHigh52Week(csvRecord.get(0));
-                bseStockBaseEntity.setLow52Week(csvRecord.get(0));
-                bseStockBaseEntity.setDailyClosePrice(csvRecord.get(0));
+                bseStockBaseEntity.setMkt(csvRecord.get(2));
+                bseStockBaseEntity.setSeries(csvRecord.get(3));
+                bseStockBaseEntity.setFinancialInstrumentType(csvRecord.get(4));
+                bseStockBaseEntity.setFinancialInstrumentId(csvRecord.get(5));
+                bseStockBaseEntity.setISIN(csvRecord.get(6));
+                bseStockBaseEntity.setStockSymbol(csvRecord.get(7));
+                bseStockBaseEntity.setStockName(csvRecord.get(13));
+                bseStockBaseEntity.setOpenPrice(csvRecord.get(14));
+                bseStockBaseEntity.setHighPrice(csvRecord.get(15));
+                bseStockBaseEntity.setLowPrice(csvRecord.get(16));
+                bseStockBaseEntity.setClosePrice(csvRecord.get(17));
+                bseStockBaseEntity.setPreviousClosePrice(csvRecord.get(19));
+                bseStockBaseEntity.setNetTradedQuantity(csvRecord.get(24));
+                bseStockBaseEntity.setNetTradedValue(csvRecord.get(25));
+                bseStockBaseEntity.setIndexOrSecurity("N/A");
+                bseStockBaseEntity.setCorpIndex("N/A");
+                bseStockBaseEntity.setTrades("N/A");
+                bseStockBaseEntity.setHigh52Week("N/A");
+                bseStockBaseEntity.setLow52Week("N/A");
+                bseStockBaseEntity.setDailyClosePrice(csvRecord.get(17));
                 Date now = new Date();
                 bseStockBaseEntity.setCreatedDate(now);
                 bseStockBaseEntity.setModifiedDate(now);
@@ -151,10 +155,15 @@ public class StockBaseJob extends AbstractQuartzJob {
         @Override
         public List<StockBaseEntity> transformSourceData(List<String> sourceData) {
             List<StockBaseEntity> nseStockBaseEntities = new ArrayList<>();
+            String source = "NSE";
             int lineNumber = 1;
-            int records = 1;
-            for (String line : sourceData) {
+            Map<String, StockBaseEntity> mappedStockBaseEntities = this.stockBaseRepository.findBySource(source);
 
+            if (mappedStockBaseEntities.size() == 0) {
+                LOGGER.log(Level.INFO, "Loading fresh set of stocks into the repository for the first time...");
+            }
+
+            for (String line : sourceData) {
                 String[] lineDetails = line.split(",");
 
                 if (1 == lineNumber) {
@@ -209,40 +218,48 @@ public class StockBaseJob extends AbstractQuartzJob {
                         break;
                 }
 
-                StockBaseEntity nseStockBaseEntity = new NSEStockBaseEntity();
-                //StockBaseEntity nseStockBaseEntity = this.stockBaseRepository.findBy("NSE", lineDetails[0].trim(), series, lineDetails[2].trim(), lineDetails[3].trim());
-                if (null == nseStockBaseEntity) {
-                    nseStockBaseEntity = new NSEStockBaseEntity();
+                StockBaseEntity stockBaseEntity = null;
+                if (mappedStockBaseEntities.size() > 0) {
+                    String key = String.format("%s:%s:%s:%s:%s", source, lineDetails[0].trim(), series, lineDetails[2].trim(), lineDetails[3].trim());
+                    stockBaseEntity = mappedStockBaseEntities.get(key);
+                    if (null != stockBaseEntity) {
+                        LOGGER.log(Level.INFO, String.format("[%s]Stock is already available in the repository hence updating it...", key));
+                        stockBaseEntity.setNewEntity(false);
+                    } else {
+                        LOGGER.log(Level.INFO, String.format("[%s]Stock is not available in the repository hence creating it......", key));
+                        stockBaseEntity = new NSEStockBaseEntity();
+                    }
+                } else {
+                    stockBaseEntity = new NSEStockBaseEntity();
                 }
 
-                nseStockBaseEntity.setMkt(lineDetails[0].trim());
-                nseStockBaseEntity.setSeries(series);
-                nseStockBaseEntity.setStockSymbol(lineDetails[2].trim());
-                nseStockBaseEntity.setStockName(lineDetails[3].trim());
-                nseStockBaseEntity.setPreviousClosePrice(lineDetails[4].trim());
-                nseStockBaseEntity.setOpenPrice(lineDetails[5].trim());
-                nseStockBaseEntity.setHighPrice(lineDetails[6].trim());
-                nseStockBaseEntity.setLowPrice(lineDetails[7].trim());
+                stockBaseEntity.setMkt(lineDetails[0].trim());
+                stockBaseEntity.setSeries(series);
+                stockBaseEntity.setStockSymbol(lineDetails[2].trim());
+                stockBaseEntity.setStockName(lineDetails[3].trim());
+                stockBaseEntity.setPreviousClosePrice(lineDetails[4].trim());
+                stockBaseEntity.setOpenPrice(lineDetails[5].trim());
+                stockBaseEntity.setHighPrice(lineDetails[6].trim());
+                stockBaseEntity.setLowPrice(lineDetails[7].trim());
                 String closePrice = lineDetails[8].trim();
-                nseStockBaseEntity.setClosePrice(closePrice);
-                nseStockBaseEntity.setNetTradedValue(lineDetails[9].trim());
-                nseStockBaseEntity.setNetTradedQuantity(lineDetails[10].trim());
-                nseStockBaseEntity.setIndexOrSecurity(lineDetails[11].trim());
-                nseStockBaseEntity.setCorpIndex(lineDetails[12].trim());
-                nseStockBaseEntity.setTrades(lineDetails[13].trim());
-                nseStockBaseEntity.setHigh52Week(lineDetails[14].trim());
-                nseStockBaseEntity.setLow52Week(lineDetails[15].trim());
-                nseStockBaseEntity.setDailyClosePrice(closePrice);
+                stockBaseEntity.setClosePrice(closePrice);
+                stockBaseEntity.setNetTradedValue(lineDetails[9].trim());
+                stockBaseEntity.setNetTradedQuantity(lineDetails[10].trim());
+                stockBaseEntity.setIndexOrSecurity(lineDetails[11].trim());
+                stockBaseEntity.setCorpIndex(lineDetails[12].trim());
+                stockBaseEntity.setTrades(lineDetails[13].trim());
+                stockBaseEntity.setHigh52Week(lineDetails[14].trim());
+                stockBaseEntity.setLow52Week(lineDetails[15].trim());
+                stockBaseEntity.setDailyClosePrice(closePrice);
                 Date now = new Date();
-                nseStockBaseEntity.setCreatedDate(now);
-                nseStockBaseEntity.setModifiedDate(now);
-                nseStockBaseEntity.setCreatedBy("SYSTEM");
-                nseStockBaseEntity.setModifiedBy("SYSTEM");
+                stockBaseEntity.setCreatedDate(now);
+                stockBaseEntity.setModifiedDate(now);
+                stockBaseEntity.setCreatedBy("SYSTEM");
+                stockBaseEntity.setModifiedBy("SYSTEM");
 
-                nseStockBaseEntities.add(nseStockBaseEntity);
-
-                records++;
+                nseStockBaseEntities.add(stockBaseEntity);
             }
+
             return nseStockBaseEntities;
         }
 
@@ -256,7 +273,7 @@ public class StockBaseJob extends AbstractQuartzJob {
         JavaUtilLogDecor.setupLogDecor();
 
         LocalDate today = LocalDate.now();
-        LocalDate yesterday = today.minusDays(2);
+        LocalDate yesterday = today.minusDays(6);
 
         Date toDate = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
         Date yesterDate = Date.from(yesterday.atStartOfDay(ZoneId.systemDefault()).toInstant());

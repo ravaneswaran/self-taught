@@ -10,6 +10,8 @@
             <column name="id" type="varchar2(100)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="financial_instrument_id" type="varchar2(100)"/>
+            <column name="financial_instrument_type" type="varchar2(100)"/>
             <column name="source" type="varchar2(100)"/>
             <column name="mkt" type="varchar2(100)"/>
             <column name="series" type="varchar2(100)"/>
@@ -27,6 +29,7 @@
             <column name="trades" type="varchar2(100)"/>
             <column name="high_52_week" type="varchar2(100)"/>
             <column name="low_52_week" type="varchar2(100)"/>
+            <column name="ISIN" type="varchar2(100)"/>
             <column name="daily_close_price" type="varchar2(2000)"/>
             <column name="created_date" type="datetime"/>
             <column name="modified_date" type="datetime"/>

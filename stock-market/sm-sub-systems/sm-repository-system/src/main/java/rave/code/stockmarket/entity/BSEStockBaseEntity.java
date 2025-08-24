@@ -9,4 +9,5 @@ public class BSEStockBaseEntity extends StockBaseEntity{
     public BSEStockBaseEntity(){
         this.setId(UUID.randomUUID().toString());
     }
+
 }

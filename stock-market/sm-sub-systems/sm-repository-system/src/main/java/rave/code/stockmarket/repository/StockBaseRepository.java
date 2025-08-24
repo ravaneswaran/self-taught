@@ -7,7 +7,9 @@ import rave.code.stockmarket.entity.StockBaseEntity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -39,17 +41,7 @@ public class StockBaseRepository extends StockMarketRepository<StockBaseEntity> 
     }
 
 
-    public StockBaseEntity findBy(String source, String mkt, String series, String stockSymbol, String stockName) {
-
-        StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("SELECT stockBaseEntity FROM StockBaseEntity stockBaseEntity").append(" ");
-        queryBuilder.append("WHERE").append(" ");
-        queryBuilder.append("type(stockBaseEntity)").append("=").append(":source").append(" AND ");
-        queryBuilder.append("stockBaseEntity.mkt").append("=").append(":mkt").append(" AND ");
-        queryBuilder.append("stockBaseEntity.series").append("=").append(":series").append(" AND ");
-        queryBuilder.append("stockBaseEntity.stockSymbol").append("=").append(":stockSymbol").append(" AND ");
-        queryBuilder.append("stockBaseEntity.stockName").append("=").append(":stockName");
-
+    public Map<String, StockBaseEntity> findBySource(String source){
         Class sourceType = null;
         switch (source) {
             case "NSE":
@@ -59,24 +51,22 @@ public class StockBaseRepository extends StockMarketRepository<StockBaseEntity> 
                 sourceType = BSEStockBaseEntity.class;
                 break;
         }
-
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("SELECT stockBaseEntity FROM StockBaseEntity stockBaseEntity").append(" ");
+        queryBuilder.append("WHERE").append(" ");
+        queryBuilder.append("type(stockBaseEntity)").append("=").append(":source");
         Query query = this.getEntityManager().createQuery(queryBuilder.toString());
         query.setParameter("source", sourceType);
-        query.setParameter("mkt", mkt);
-        query.setParameter("series", series);
-        query.setParameter("stockSymbol", stockSymbol);
-        query.setParameter("stockName", stockName);
 
         List<StockBaseEntity> stockBaseEntities = query.getResultList();
-
         LOGGER.log(Level.INFO, String.format("the query(<<< %s >>>) did find %s item(s) in the repository...", query.toString(), stockBaseEntities.size()));
 
-        if (stockBaseEntities.size() > 0 && stockBaseEntities.size() == 1) {
-            StockBaseEntity stockBaseEntity = stockBaseEntities.get(0);
-            stockBaseEntity.setNewEntity(false);
-            return stockBaseEntity;
-        } else {
-            return null;
+        Map<String, StockBaseEntity> mappedStockBaseEntity = new HashMap<>();
+        for (StockBaseEntity stockBaseEntity: stockBaseEntities) {
+            String key = String.format("%s:%s:%s:%s:%s", source, stockBaseEntity.getMkt(), stockBaseEntity.getSeries(), stockBaseEntity.getStockSymbol(), stockBaseEntity.getStockName());
+            mappedStockBaseEntity.put(key, stockBaseEntity);
         }
+
+        return mappedStockBaseEntity;
     }
 }
