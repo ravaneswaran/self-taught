@@ -223,10 +223,10 @@ public class StockBaseJob extends AbstractQuartzJob {
                     String key = String.format("%s:%s:%s:%s:%s", source, lineDetails[0].trim(), series, lineDetails[2].trim(), lineDetails[3].trim());
                     stockBaseEntity = mappedStockBaseEntities.get(key);
                     if (null != stockBaseEntity) {
-                        LOGGER.log(Level.INFO, String.format("[%s]Stock is already available in the repository hence updating it...", key));
+                        LOGGER.log(Level.INFO, String.format("[%s] - Stock is already available in the repository hence updating it...", key));
                         stockBaseEntity.setNewEntity(false);
                     } else {
-                        LOGGER.log(Level.INFO, String.format("[%s]Stock is not available in the repository hence creating it......", key));
+                        LOGGER.log(Level.INFO, String.format("\u001B[97m[%s]\u001B[92m - Stock is not available in the repository hence creating it......", key));
                         stockBaseEntity = new NSEStockBaseEntity();
                     }
                 } else {
@@ -273,7 +273,7 @@ public class StockBaseJob extends AbstractQuartzJob {
         JavaUtilLogDecor.setupLogDecor();
 
         LocalDate today = LocalDate.now();
-        LocalDate yesterday = today.minusDays(6);
+        LocalDate yesterday = today.minusDays(4);
 
         Date toDate = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
         Date yesterDate = Date.from(yesterday.atStartOfDay(ZoneId.systemDefault()).toInstant());
