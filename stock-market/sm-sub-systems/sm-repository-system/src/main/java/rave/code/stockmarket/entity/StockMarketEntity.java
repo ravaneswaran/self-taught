@@ -8,7 +8,6 @@ import javax.persistence.Transient;
 @MappedSuperclass
 public abstract class StockMarketEntity extends AbstractStockEntity {
 
-    private boolean newEntity;
     protected String stockName;
 
     public StockMarketEntity() {
@@ -22,14 +21,6 @@ public abstract class StockMarketEntity extends AbstractStockEntity {
     }
     public void setStockName(String stockName) {
         this.stockName = stockName;
-    }
-
-    @Transient
-    public boolean isNewEntity() {
-        return newEntity;
-    }
-    public void setNewEntity(boolean newEntity) {
-        this.newEntity = newEntity;
     }
 
 }

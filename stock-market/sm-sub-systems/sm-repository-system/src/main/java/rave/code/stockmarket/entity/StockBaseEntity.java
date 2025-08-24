@@ -28,6 +28,10 @@ public class StockBaseEntity extends AbstractStockEntity {
     private String low52Week;
     private String dailyClosePrice;
 
+    public StockBaseEntity(){
+        this.setNewEntity(true);
+    }
+
     @Id
     @Column(name = "id")
     public String getId() {return id;}

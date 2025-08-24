@@ -86,6 +86,7 @@ utilities/file-readers/csv-file-readers/apache-commons-csv-file-reader/target/
 utilities/file-readers/csv-file-readers/open-csv-file-reader/target/
 utilities/file-readers/simple-file-reader/target/
 utilities/file-readers/zip-file-reader/target
+utilities/log-decors/java-util-log-decor/target/
 
 education/springboot-apps/graph-database/springboot-with-neo4j/target
 education/springboot-apps/messaging/springboot-with-kafka/target

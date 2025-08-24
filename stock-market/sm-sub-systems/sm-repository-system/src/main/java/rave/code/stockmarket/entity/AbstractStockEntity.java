@@ -1,9 +1,6 @@
 package rave.code.stockmarket.entity;
 
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -14,6 +11,7 @@ public class AbstractStockEntity implements Serializable {
     protected Date modifiedDate;
     protected String createdBy;
     protected String modifiedBy;
+    protected boolean newEntity;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_date")
@@ -47,5 +45,13 @@ public class AbstractStockEntity implements Serializable {
     }
     public void setModifiedBy(String modifiedBy) {
         this.modifiedBy = modifiedBy;
+    }
+
+    @Transient
+    public boolean isNewEntity() {
+        return newEntity;
+    }
+    public void setNewEntity(boolean newEntity) {
+        this.newEntity = newEntity;
     }
 }

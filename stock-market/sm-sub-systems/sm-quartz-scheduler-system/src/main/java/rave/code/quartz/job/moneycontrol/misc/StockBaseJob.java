@@ -5,13 +5,18 @@ import org.quartz.JobExecutionException;
 import rave.code.quartz.enums.DailyPriceListDownloadLink;
 import rave.code.quartz.enums.NSEClassification;
 import rave.code.quartz.job.AbstractQuartzJob;
+import rave.code.quartz.job.moneycontrol.AbstractEntityMakerJob;
+import rave.code.quartz.job.nse.AbstractNSEEntityMakerJob;
+import rave.code.stockmarket.entity.BSEStockBaseEntity;
 import rave.code.stockmarket.entity.NSEStockBaseEntity;
 import rave.code.stockmarket.entity.StockBaseEntity;
 import rave.code.stockmarket.repository.StockBaseRepository;
 import rave.code.utilities.file.SimpleFileReader;
 import rave.code.utility.download.FileDownloader;
+import rave.code.utility.log.JavaUtilLogDecor;
 import rave.code.utility.zip.ZipFileReader;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
@@ -37,20 +42,34 @@ public class StockBaseJob extends AbstractQuartzJob {
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        //new BSEStockBaseJob().execute(jobExecutionContext);
-        new NSEStockBaseJob(this.date).execute(jobExecutionContext);
+        new NSEStockBaseJob().execute(jobExecutionContext);
     }
 
-    class BSEStockBaseJob extends StockBaseJob {
+    class BSEStockBaseJob extends AbstractEntityMakerJob<Object, BSEStockBaseEntity> {
 
         private static final Logger LOGGER = Logger.getLogger(BSEStockBaseJob.class.getName());
 
         private StockBaseRepository stockBaseRepository = new StockBaseRepository();
 
         @Override
+        public List<Object> getDataFromSource() {
+            return null;
+        }
+
+        @Override
+        public List<BSEStockBaseEntity> transformSourceData(List<Object> sourceData) {
+            return null;
+        }
+
+        @Override
+        public void saveTransformedData(List<BSEStockBaseEntity> transformedData) {
+
+        }
+
+        @Override
         public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
-            String url = String.format(DailyPriceListDownloadLink.DAILY_PRICE_LIST_DOWNLOAD_LINK_BSE.get(), simpleDateFormat.format(this.date));
+            String url = String.format(DailyPriceListDownloadLink.DAILY_PRICE_LIST_DOWNLOAD_LINK_BSE.get(), simpleDateFormat.format(StockBaseJob.this.date));
             FileDownloader fileDownloader = new FileDownloader();//new BSEStockBaseJob().execute(jobExecutionContext);
 
             /*try (InputStream inputStream = fileDownloader.downloadFile(url)) {
@@ -92,7 +111,7 @@ public class StockBaseJob extends AbstractQuartzJob {
         }
     }
 
-    class NSEStockBaseJob extends StockBaseJob {
+    class NSEStockBaseJob extends AbstractNSEEntityMakerJob<List<String>, List<StockBaseEntity>> {
 
         private static final Logger LOGGER = Logger.getLogger(NSEStockBaseJob.class.getName());
 
@@ -102,117 +121,136 @@ public class StockBaseJob extends AbstractQuartzJob {
             super();
         }
 
-        public NSEStockBaseJob(Date date) {
-            super(date);
-        }
-
         @Override
-        public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-
+        public List<String> getDataFromSource() {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("ddMMyy");
-            String url = String.format(DailyPriceListDownloadLink.DAILY_PRICE_LIST_DOWNLOAD_LINK_NSE.get(), simpleDateFormat.format(this.date));
+            String formattedDate = simpleDateFormat.format(StockBaseJob.this.date);
+            String url = String.format(DailyPriceListDownloadLink.DAILY_PRICE_LIST_DOWNLOAD_LINK_NSE.get(), formattedDate);
             LOGGER.log(Level.INFO, String.format("Downloading file... %s", url));
             FileDownloader fileDownloader = new FileDownloader();
-            String zipEntryFileName = String.format("Pd%s.csv", simpleDateFormat.format(this.date));
-            List<StockBaseEntity> nseStockBaseEntities = new ArrayList<>();
+            String zipEntryFileName = String.format("Pd%s.csv", formattedDate);
 
+            List<String> lines = new ArrayList<>();
             try (InputStream inputStream = fileDownloader.downloadFile(url);
-                 InputStream csvFileInputStream = new ZipFileReader().read(inputStream, zipEntryFileName)) {
-
-                List<String> lines = new SimpleFileReader().read(csvFileInputStream);
-                int lineNumber = 1;
-                for (String line : lines) {
-                    String[] lineDetails = line.split(",");
-                    if (1 == lineNumber) {
-                        LOGGER.log(Level.INFO, "skipping the header... ");
-                        LOGGER.log(Level.INFO, "<<<<< paring indexes... >>>>>");
-                        lineNumber = lineNumber + 1;
-                        continue;
-                    }
-                    if ("".equals(lineDetails[2].trim()) && "".equals(lineDetails[3].trim()) && "".equals(lineDetails[4].trim())) {
-                        continue;
-                    }
-                    if ("".equals(lineDetails[2].trim()) && !"".equals(lineDetails[3].trim()) && "".equals(lineDetails[4].trim())) {
-                        LOGGER.log(Level.INFO, String.format("<<<<< paring the section... %s >>>>>", lineDetails[3]));
-                        continue;
-                    }
-
-                    String series = lineDetails[1].trim();
-                    if ("".equals(series)) {
-                        series = "Empty";
-                    }
-                    switch (series) {
-                        case "Empty":
-                            series = NSEClassification.EMPTY.getClassification();
-                            break;
-                        case "EQ":
-                            series = NSEClassification.EQ.getClassification();
-                            break;
-                        case "SM":
-                            series = NSEClassification.SM.getClassification();
-                            break;
-                        case "IV":
-                            series = NSEClassification.IV.getClassification();
-                            break;
-                        case "RR":
-                            series = NSEClassification.RR.getClassification();
-                            break;
-                        case "T0":
-                            series = NSEClassification.T0.getClassification();
-                            break;
-                        case "E1":
-                            series = NSEClassification.E1.getClassification();
-                            break;
-                        case "BE":
-                            series = NSEClassification.BE.getClassification();
-                            break;
-                        case "BZ":
-                            series = NSEClassification.BZ.getClassification();
-                            break;
-
-                        default:
-                            series = NSEClassification.DEFAULT.getClassification();
-                            break;
-                    }
-
-                    NSEStockBaseEntity nseStockBaseEntity = new NSEStockBaseEntity();
-                    nseStockBaseEntity.setMkt(lineDetails[0].trim());
-                    nseStockBaseEntity.setSeries(series);
-                    nseStockBaseEntity.setStockSymbol(lineDetails[2].trim());
-                    nseStockBaseEntity.setStockName(lineDetails[3].trim());
-                    nseStockBaseEntity.setPreviousClosePrice(lineDetails[4].trim());
-                    nseStockBaseEntity.setOpenPrice(lineDetails[5].trim());
-                    nseStockBaseEntity.setHighPrice(lineDetails[6].trim());
-                    nseStockBaseEntity.setLowPrice(lineDetails[7].trim());
-                    String closePrice = lineDetails[8].trim();
-                    nseStockBaseEntity.setClosePrice(closePrice);
-                    nseStockBaseEntity.setNetTradedValue(lineDetails[9].trim());
-                    nseStockBaseEntity.setNetTradedQuantity(lineDetails[10].trim());
-                    nseStockBaseEntity.setIndexOrSecurity(lineDetails[11].trim());
-                    nseStockBaseEntity.setCorpIndex(lineDetails[12].trim());
-                    nseStockBaseEntity.setTrades(lineDetails[13].trim());
-                    nseStockBaseEntity.setHigh52Week(lineDetails[14].trim());
-                    nseStockBaseEntity.setLow52Week(lineDetails[15].trim());
-                    nseStockBaseEntity.setDailyClosePrice(closePrice);
-                    Date now = new Date();
-                    nseStockBaseEntity.setCreatedDate(now);
-                    nseStockBaseEntity.setModifiedDate(now);
-                    nseStockBaseEntity.setCreatedBy("SYSTEM");
-                    nseStockBaseEntity.setModifiedBy("SYSTEM");
-
-                    nseStockBaseEntities.add(nseStockBaseEntity);
-
-                    LOGGER.log(Level.INFO, nseStockBaseEntity.toString());
-                }
+                 InputStream csvFileInputStream = new ZipFileReader().read(inputStream, zipEntryFileName);) {
+                lines = new SimpleFileReader().read(csvFileInputStream);
+            } catch (FileNotFoundException ioException) {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                LOGGER.log(Level.SEVERE, String.format("Resource(%s) not found...", url));
+                LOGGER.log(Level.SEVERE, "Possibly could be the following reason(s)...");
+                LOGGER.log(Level.SEVERE, String.format("the day which the date(%s) referring to could be either HOLIDAY or WEEKEND(SATURDAY or SUNDAY)", sdf.format(StockBaseJob.this.date)));
             } catch (IOException ioException) {
                 LOGGER.log(Level.SEVERE, ioException.getMessage(), ioException);
             }
+            return lines;
+        }
 
-            this.stockBaseRepository.bulkUpsert(nseStockBaseEntities);
+        @Override
+        public List<StockBaseEntity> transformSourceData(List<String> sourceData) {
+            List<StockBaseEntity> nseStockBaseEntities = new ArrayList<>();
+            int lineNumber = 1;
+            int records = 1;
+            for (String line : sourceData) {
+                String[] lineDetails = line.split(",");
+                if (1 == lineNumber) {
+                    LOGGER.log(Level.INFO, "skipping the header... ");
+                    LOGGER.log(Level.INFO, "<<<<< paring indexes... >>>>>");
+                    lineNumber = lineNumber + 1;
+                    continue;
+                }
+                if ("".equals(lineDetails[2].trim()) && "".equals(lineDetails[3].trim()) && "".equals(lineDetails[4].trim())) {
+                    continue;
+                }
+                if ("".equals(lineDetails[2].trim()) && !"".equals(lineDetails[3].trim()) && "".equals(lineDetails[4].trim())) {
+                    LOGGER.log(Level.INFO, String.format("<<<<< paring the section... %s >>>>>", lineDetails[3]));
+                    continue;
+                }
+
+                String series = lineDetails[1].trim();
+                if ("".equals(series)) {
+                    series = "Empty";
+                }
+                switch (series) {
+                    case "Empty":
+                        series = NSEClassification.EMPTY.getClassification();
+                        break;
+                    case "EQ":
+                        series = NSEClassification.EQ.getClassification();
+                        break;
+                    case "SM":
+                        series = NSEClassification.SM.getClassification();
+                        break;
+                    case "IV":
+                        series = NSEClassification.IV.getClassification();
+                        break;
+                    case "RR":
+                        series = NSEClassification.RR.getClassification();
+                        break;
+                    case "T0":
+                        series = NSEClassification.T0.getClassification();
+                        break;
+                    case "E1":
+                        series = NSEClassification.E1.getClassification();
+                        break;
+                    case "BE":
+                        series = NSEClassification.BE.getClassification();
+                        break;
+                    case "BZ":
+                        series = NSEClassification.BZ.getClassification();
+                        break;
+
+                    default:
+                        series = NSEClassification.DEFAULT.getClassification();
+                        break;
+                }
+
+                //StockBaseEntity nseStockBaseEntity = new NSEStockBaseEntity();
+                StockBaseEntity nseStockBaseEntity = this.stockBaseRepository.findBy("NSE", lineDetails[0].trim(), series, lineDetails[2].trim(), lineDetails[3].trim());
+                System.out.println("---------------->>>>>>>> "+records);
+                if (null == nseStockBaseEntity) {
+                    nseStockBaseEntity = new NSEStockBaseEntity();
+                }
+
+                nseStockBaseEntity.setMkt(lineDetails[0].trim());
+                nseStockBaseEntity.setSeries(series);
+                nseStockBaseEntity.setStockSymbol(lineDetails[2].trim());
+                nseStockBaseEntity.setStockName(lineDetails[3].trim());
+                nseStockBaseEntity.setPreviousClosePrice(lineDetails[4].trim());
+                nseStockBaseEntity.setOpenPrice(lineDetails[5].trim());
+                nseStockBaseEntity.setHighPrice(lineDetails[6].trim());
+                nseStockBaseEntity.setLowPrice(lineDetails[7].trim());
+                String closePrice = lineDetails[8].trim();
+                nseStockBaseEntity.setClosePrice(closePrice);
+                nseStockBaseEntity.setNetTradedValue(lineDetails[9].trim());
+                nseStockBaseEntity.setNetTradedQuantity(lineDetails[10].trim());
+                nseStockBaseEntity.setIndexOrSecurity(lineDetails[11].trim());
+                nseStockBaseEntity.setCorpIndex(lineDetails[12].trim());
+                nseStockBaseEntity.setTrades(lineDetails[13].trim());
+                nseStockBaseEntity.setHigh52Week(lineDetails[14].trim());
+                nseStockBaseEntity.setLow52Week(lineDetails[15].trim());
+                nseStockBaseEntity.setDailyClosePrice(closePrice);
+                Date now = new Date();
+                nseStockBaseEntity.setCreatedDate(now);
+                nseStockBaseEntity.setModifiedDate(now);
+                nseStockBaseEntity.setCreatedBy("SYSTEM");
+                nseStockBaseEntity.setModifiedBy("SYSTEM");
+
+                nseStockBaseEntities.add(nseStockBaseEntity);
+
+                records++;
+            }
+            return nseStockBaseEntities;
+        }
+
+        @Override
+        public void saveTransformedData(List<StockBaseEntity> transformedData) {
+            this.stockBaseRepository.bulkUpsert(transformedData);
         }
     }
 
     public static void main(String[] args) throws JobExecutionException {
+        JavaUtilLogDecor.setupLogDecor();
+
         LocalDate today = LocalDate.now();
         LocalDate yesterday = today.minusDays(2);
 
