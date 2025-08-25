@@ -250,7 +250,7 @@ public class StockBaseJob extends AbstractQuartzJob {
             Map<String, StockBaseEntity> mappedStockBaseEntities = this.stockBaseRepository.findBySource(source);
 
             if (mappedStockBaseEntities.size() == 0) {
-                LOGGER.log(Level.INFO, String.format("%sLoading fresh set of stocks into the repository for the first time...", ASCIIColorCodes.WHITE.get()));
+                LOGGER.log(Level.INFO, String.format("%sLoading fresh set of stocks into the repository...", ASCIIColorCodes.WHITE.get()));
                 this.stockBaseRepository.bulkUpsert(transformedData);
             } else {
                 if (mappedStockBaseEntities.size() == 0) {
@@ -267,7 +267,7 @@ public class StockBaseJob extends AbstractQuartzJob {
                                 stockBaseEntity.setNewEntity(false);
                                 stockBaseEntities.add(mappedStockBaseEntity);
                             } else {
-                                LOGGER.log(Level.INFO, String.format("%s[%s]%s - Stock is not available in the repository hence creating it......", ASCIIColorCodes.WHITE.get(), key, ASCIIColorCodes.GREEN.get()));
+                                LOGGER.log(Level.INFO, String.format("%s[%s]%s - Stock is not available in the repository hence creating it...", ASCIIColorCodes.WHITE.get(), key, ASCIIColorCodes.GREEN.get()));
                                 stockBaseEntities.add(stockBaseEntity);
                             }
                         }

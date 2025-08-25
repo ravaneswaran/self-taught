@@ -40,7 +40,6 @@ public class StockBaseRepository extends StockMarketRepository<StockBaseEntity> 
         entityTransaction.commit();
     }
 
-
     public Map<String, StockBaseEntity> findBySource(String source){
         Class sourceType = null;
         switch (source) {
@@ -68,5 +67,15 @@ public class StockBaseRepository extends StockMarketRepository<StockBaseEntity> 
         }
 
         return mappedStockBaseEntity;
+    }
+
+    public void deleteAll(){
+        EntityManager entityManager = this.getEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+        Query query = this.getEntityManager().createQuery("DELETE FROM StockBaseEntity stockBaseEntity");
+        int noOfRowsAffected = query.executeUpdate();
+        entityTransaction.commit();
+        LOGGER.log(Level.INFO, String.format("%s rows have been deleted from StockBaseEntity table...", noOfRowsAffected));
     }
 }
