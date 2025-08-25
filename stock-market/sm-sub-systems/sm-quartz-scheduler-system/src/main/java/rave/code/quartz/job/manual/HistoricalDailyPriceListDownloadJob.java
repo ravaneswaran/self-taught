@@ -62,18 +62,21 @@ public class HistoricalDailyPriceListDownloadJob extends AbstractQuartzJob {
             Date businessDateInPast = Date.from(businessDaysBackInTime.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
             // now we need to check the 'businessDateInPast' is a holiday or not...
+            boolean holiday = false;
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM dd, yyyy", Locale.ENGLISH);
             for(HolidayEntity holyDayEntity : holidayEntities){
-                LocalDate holyDate = LocalDate.parse(holyDayEntity.getHolidate(), formatter);
-                Date dateObject = Date.from(holyDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-
-                if(dateObject.equals(businessDateInPast)){
-                    index++;
+                LocalDate holyLocalDate = LocalDate.parse(holyDayEntity.getHolidate(), formatter);
+                Date holyDate = Date.from(holyLocalDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                if(businessDateInPast.equals(holyDate)){
+                    holiday = true;
                     noOfDaysInPast += 1;
-                    break;
+                    continue;
                 }
             }
-            dates.add(businessDateInPast);
+
+            if(!holiday) {
+                dates.add(businessDateInPast);
+            }
         }
         Collections.reverse(dates);
 
