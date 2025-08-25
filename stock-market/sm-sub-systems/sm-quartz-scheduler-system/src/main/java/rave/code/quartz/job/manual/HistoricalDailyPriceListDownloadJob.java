@@ -86,7 +86,7 @@ public class HistoricalDailyPriceListDownloadJob extends AbstractQuartzJob {
     public static void main(String[] args) throws JobExecutionException {
         JavaUtilLogDecor.setupLogDecor();
 
-        HistoricalDailyPriceListDownloadJob historicalDailyPriceListDownloadJob = new HistoricalDailyPriceListDownloadJob(8);
+        HistoricalDailyPriceListDownloadJob historicalDailyPriceListDownloadJob = new HistoricalDailyPriceListDownloadJob(10);
         historicalDailyPriceListDownloadJob.execute(null);
     }
 }

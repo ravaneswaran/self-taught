@@ -45,7 +45,7 @@ public class StockBaseJob extends AbstractQuartzJob {
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         new NSEStockBaseJob().execute(jobExecutionContext);
-        //new BSEStockBaseJob().execute(jobExecutionContext);
+        new BSEStockBaseJob().execute(jobExecutionContext);
     }
 
     class BSEStockBaseJob extends AbstractStockMarketEntityMakerJob<List<CSVRecord>, List<StockBaseEntity>> {
@@ -54,7 +54,7 @@ public class StockBaseJob extends AbstractQuartzJob {
 
         private StockBaseRepository stockBaseRepository = new StockBaseRepository();
 
-        @Override //new BSEStockBaseJob().execute(jobExecutionContext);
+        @Override
         public List<CSVRecord> getDataFromSource() {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
             String url = String.format(DailyPriceListDownloadLink.DAILY_PRICE_LIST_DOWNLOAD_LINK_BSE.get(), simpleDateFormat.format(StockBaseJob.this.date));
@@ -114,7 +114,35 @@ public class StockBaseJob extends AbstractQuartzJob {
 
         @Override
         public void saveTransformedData(List<StockBaseEntity> transformedData) {
-            //this.stockBaseRepository.bulkUpsert(transformedData);
+            String source = "BSE";
+            Map<String, StockBaseEntity> mappedStockBaseEntities = this.stockBaseRepository.findBySource(source);
+
+            if (mappedStockBaseEntities.size() == 0) {
+                LOGGER.log(Level.INFO, String.format("%sLoading fresh set of BSE stocks into the repository...", ASCIIColorCodes.WHITE.get()));
+                this.stockBaseRepository.bulkUpsert(transformedData);
+            } else {
+                if (mappedStockBaseEntities.size() == 0) {
+                    LOGGER.log(Level.INFO, String.format("%sLoading fresh set of stocks into the repository for the first time...", ASCIIColorCodes.WHITE.get()));
+                    this.stockBaseRepository.bulkUpsert(transformedData);
+                } else {
+                    List<StockBaseEntity> stockBaseEntities = new ArrayList<>();
+                    for (StockBaseEntity stockBaseEntity : transformedData) {
+                        if (mappedStockBaseEntities.size() > 0) {
+                            String key = String.format("%s:%s:%s:%s:%s", source, stockBaseEntity.getMkt(), stockBaseEntity.getSeries(), stockBaseEntity.getStockSymbol(), stockBaseEntity.getStockName());
+                            StockBaseEntity mappedStockBaseEntity = mappedStockBaseEntities.get(key);
+                            if (null != mappedStockBaseEntity) {
+                                LOGGER.log(Level.INFO, String.format("[%s] - Stock is already available in the repository hence updating it...", key));
+                                stockBaseEntity.setNewEntity(false);
+                                stockBaseEntities.add(mappedStockBaseEntity);
+                            } else {
+                                LOGGER.log(Level.INFO, String.format("%s[%s]%s - Stock is not available in the repository hence creating it...", ASCIIColorCodes.WHITE.get(), key, ASCIIColorCodes.GREEN.get()));
+                                stockBaseEntities.add(stockBaseEntity);
+                            }
+                        }
+                    }
+                    this.stockBaseRepository.bulkUpsert(stockBaseEntities);
+                }
+            }
         }
     }
 
@@ -254,7 +282,7 @@ public class StockBaseJob extends AbstractQuartzJob {
                 this.stockBaseRepository.bulkUpsert(transformedData);
             } else {
                 if (mappedStockBaseEntities.size() == 0) {
-                    LOGGER.log(Level.INFO, String.format("%sLoading fresh set of stocks into the repository for the first time...", ASCIIColorCodes.WHITE.get()));
+                    LOGGER.log(Level.INFO, String.format("%sLoading fresh set of NSE stocks into the repository for the first time...", ASCIIColorCodes.WHITE.get()));
                     this.stockBaseRepository.bulkUpsert(transformedData);
                 } else {
                     List<StockBaseEntity> stockBaseEntities = new ArrayList<>();
@@ -282,7 +310,7 @@ public class StockBaseJob extends AbstractQuartzJob {
         JavaUtilLogDecor.setupLogDecor();
 
         LocalDate today = LocalDate.now();
-        LocalDate yesterday = today.minusDays(6);
+        LocalDate yesterday = today.minusDays(3);
 
         Date toDate = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
         Date yesterDate = Date.from(yesterday.atStartOfDay(ZoneId.systemDefault()).toInstant());

@@ -22,7 +22,7 @@
         <module>pdf-maker</module>
         <module>file-readers</module>
         <module>file-downloader</module>
-        <module>loggers</module>
+        <module>log-decors</module>
     </modules>
 
 </project>
