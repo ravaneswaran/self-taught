@@ -38,13 +38,9 @@ public class StockBaseJob extends AbstractQuartzJob {
     public StockBaseJob() {
         this.date = new Date();
     }
-
     public StockBaseJob(Date date) {
         this.date = date;
     }
-
-    private static final String WHITE = "\u001B[97m";
-    private static final String GREEN = "\u001B[92m";
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
@@ -58,7 +54,7 @@ public class StockBaseJob extends AbstractQuartzJob {
 
         private StockBaseRepository stockBaseRepository = new StockBaseRepository();
 
-        @Override
+        @Override //new BSEStockBaseJob().execute(jobExecutionContext);
         public List<CSVRecord> getDataFromSource() {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
             String url = String.format(DailyPriceListDownloadLink.DAILY_PRICE_LIST_DOWNLOAD_LINK_BSE.get(), simpleDateFormat.format(StockBaseJob.this.date));
@@ -257,22 +253,27 @@ public class StockBaseJob extends AbstractQuartzJob {
                 LOGGER.log(Level.INFO, String.format("%sLoading fresh set of stocks into the repository for the first time...", ASCIIColorCodes.WHITE.get()));
                 this.stockBaseRepository.bulkUpsert(transformedData);
             } else {
-                List<StockBaseEntity> stockBaseEntities = new ArrayList<>();
-                for (StockBaseEntity stockBaseEntity : transformedData) {
-                    if (mappedStockBaseEntities.size() > 0) {
-                        String key = String.format("%s:%s:%s:%s:%s", source, stockBaseEntity.getMkt(), stockBaseEntity.getSeries(), stockBaseEntity.getStockSymbol(), stockBaseEntity.getStockName());
-                        StockBaseEntity mappedStockBaseEntity = mappedStockBaseEntities.get(key);
-                        if (null != mappedStockBaseEntity) {
-                            LOGGER.log(Level.INFO, String.format("[%s] - Stock is already available in the repository hence updating it...", key));
-                            stockBaseEntity.setNewEntity(false);
-                            stockBaseEntities.add(mappedStockBaseEntity);
-                        } else {
-                            LOGGER.log(Level.INFO, String.format("%s[%s]%s - Stock is not available in the repository hence creating it......", ASCIIColorCodes.WHITE.get(), key, ASCIIColorCodes.GREEN.get()));
-                            stockBaseEntities.add(stockBaseEntity);
+                if (mappedStockBaseEntities.size() == 0) {
+                    LOGGER.log(Level.INFO, String.format("%sLoading fresh set of stocks into the repository for the first time...", ASCIIColorCodes.WHITE.get()));
+                    this.stockBaseRepository.bulkUpsert(transformedData);
+                } else {
+                    List<StockBaseEntity> stockBaseEntities = new ArrayList<>();
+                    for (StockBaseEntity stockBaseEntity : transformedData) {
+                        if (mappedStockBaseEntities.size() > 0) {
+                            String key = String.format("%s:%s:%s:%s:%s", source, stockBaseEntity.getMkt(), stockBaseEntity.getSeries(), stockBaseEntity.getStockSymbol(), stockBaseEntity.getStockName());
+                            StockBaseEntity mappedStockBaseEntity = mappedStockBaseEntities.get(key);
+                            if (null != mappedStockBaseEntity) {
+                                LOGGER.log(Level.INFO, String.format("[%s] - Stock is already available in the repository hence updating it...", key));
+                                stockBaseEntity.setNewEntity(false);
+                                stockBaseEntities.add(mappedStockBaseEntity);
+                            } else {
+                                LOGGER.log(Level.INFO, String.format("%s[%s]%s - Stock is not available in the repository hence creating it......", ASCIIColorCodes.WHITE.get(), key, ASCIIColorCodes.GREEN.get()));
+                                stockBaseEntities.add(stockBaseEntity);
+                            }
                         }
                     }
+                    this.stockBaseRepository.bulkUpsert(stockBaseEntities);
                 }
-                this.stockBaseRepository.bulkUpsert(stockBaseEntities);
             }
         }
     }
